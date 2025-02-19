@@ -1,0 +1,45 @@
+
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "lucide-react";
+
+const UpcomingTransactions = () => (
+  <Card className="p-6 mb-6">
+    <div className="flex justify-between items-center mb-4">
+      <h3 className="font-semibold">Upcoming Transactions</h3>
+      <Button variant="ghost" size="sm">
+        See all
+      </Button>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+        <div className="flex items-center">
+          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+            <Calendar className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <p className="font-medium">Netflix Subscription</p>
+            <p className="text-sm text-muted-foreground">Due in 3 days</p>
+          </div>
+        </div>
+        <span className="text-destructive font-medium">-$14.99</span>
+      </div>
+      
+      <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+        <div className="flex items-center">
+          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+            <Calendar className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <p className="font-medium">Gym Membership</p>
+            <p className="text-sm text-muted-foreground">Due in 5 days</p>
+          </div>
+        </div>
+        <span className="text-destructive font-medium">-$29.99</span>
+      </div>
+    </div>
+  </Card>
+);
+
+export default UpcomingTransactions;
