@@ -38,6 +38,7 @@ const AccountsCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const totalPages = accounts.length;
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const scrollToPage = (pageIndex: number) => {
     if (scrollRef.current) {
@@ -57,6 +58,28 @@ const AccountsCarousel = () => {
     }
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchStart - currentTouch;
+    
+    if (Math.abs(diff) > 50) { // Minimum swipe distance
+      const direction = diff > 0 ? 1 : -1;
+      const newPage = Math.min(Math.max(currentPage + direction, 0), totalPages - 1);
+      scrollToPage(newPage);
+      setTouchStart(null);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTouchStart(null);
+  };
+
   useEffect(() => {
     const scrollElement = scrollRef.current;
     if (scrollElement) {
@@ -70,18 +93,21 @@ const AccountsCarousel = () => {
       <div className="relative">
         <div 
           ref={scrollRef}
-          className="flex overflow-x-hidden snap-x snap-mandatory scroll-smooth"
+          className="flex overflow-x-hidden snap-x snap-mandatory scroll-smooth touch-pan-x"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {accounts.map((account) => (
             <Card
               key={account.id}
-              className="w-full flex-none snap-start p-6"
+              className="w-full flex-none snap-start p-6 bg-primary text-primary-foreground"
             >
-              <p className="text-sm text-muted-foreground">{account.title}</p>
-              <h2 className="text-2xl font-semibold mt-1">
+              <p className="text-sm text-primary-foreground/70">{account.title}</p>
+              <h2 className="text-2xl font-semibold mt-1 text-primary-foreground">
                 {account.currency} {account.amount}
               </h2>
-              <p className="text-sm text-emerald-500 mt-1">
+              <p className="text-sm text-emerald-400 mt-1">
                 {account.change} this month
               </p>
             </Card>

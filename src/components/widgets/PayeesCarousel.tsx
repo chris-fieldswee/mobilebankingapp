@@ -1,4 +1,3 @@
-
 import { User2, Coffee, ShoppingBag, Car, Pizza, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
@@ -16,6 +15,7 @@ const PayeesCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const totalPages = Math.ceil(recentPayees.length / 3);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const scrollToPage = (pageIndex: number) => {
     if (scrollRef.current) {
@@ -35,6 +35,28 @@ const PayeesCarousel = () => {
     }
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchStart - currentTouch;
+    
+    if (Math.abs(diff) > 50) { // Minimum swipe distance
+      const direction = diff > 0 ? 1 : -1;
+      const newPage = Math.min(Math.max(currentPage + direction, 0), totalPages - 1);
+      scrollToPage(newPage);
+      setTouchStart(null);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTouchStart(null);
+  };
+
   useEffect(() => {
     const scrollElement = scrollRef.current;
     if (scrollElement) {
@@ -49,7 +71,10 @@ const PayeesCarousel = () => {
       <div className="relative">
         <div 
           ref={scrollRef}
-          className="flex gap-4 overflow-x-hidden snap-x snap-mandatory pb-4 px-4 mb-4 scroll-smooth"
+          className="flex gap-4 overflow-x-hidden snap-x snap-mandatory pb-4 px-4 mb-4 scroll-smooth touch-pan-x"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {recentPayees.map((payee) => (
             <div 

@@ -64,8 +64,8 @@ const Advisor = () => {
         </div>
       </header>
 
-      <main className="flex-1 overflow-auto pt-20 pb-20">
-        <div className="max-w-md mx-auto px-4 py-6 space-y-4">
+      <main className="flex-1 overflow-auto pt-24 pb-24">
+        <div className="max-w-md mx-auto px-4 space-y-4">
           {messages.map((message) => (
             <div
               key={message.id}

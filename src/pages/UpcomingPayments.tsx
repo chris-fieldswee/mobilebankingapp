@@ -19,7 +19,7 @@ const UpcomingPayments = () => {
         </div>
       </header>
 
-      <ScrollArea className="h-[calc(100vh-56px)] mt-14">
+      <ScrollArea className="h-[calc(100vh-56px)] pt-14">
         <main className="max-w-md mx-auto">
           <div className="p-4">
             <div className="space-y-6">
