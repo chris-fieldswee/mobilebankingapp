@@ -44,9 +44,9 @@ const Advisor = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-background">
+    <div className="fixed inset-0 bg-background">
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
-        <div className="max-w-md mx-auto px-4 h-16 flex items-center gap-4">
+        <div className="max-w-md mx-auto px-4 h-14 flex items-center gap-4">
           <Link to="/">
             <Button variant="ghost" size="icon">
               <ArrowLeft className="h-6 w-6" />
@@ -64,8 +64,8 @@ const Advisor = () => {
         </div>
       </header>
 
-      <main className="flex-1 overflow-auto pt-24 pb-24">
-        <div className="max-w-md mx-auto px-4 space-y-4">
+      <main className="h-full pt-14 pb-[72px] overflow-auto">
+        <div className="max-w-md mx-auto p-4 space-y-4">
           {messages.map((message) => (
             <div
               key={message.id}

@@ -7,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 const UpcomingPayments = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="fixed inset-0 bg-background">
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
         <div className="max-w-md mx-auto px-4 h-14 flex items-center">
           <Link to="/">
@@ -19,9 +19,9 @@ const UpcomingPayments = () => {
         </div>
       </header>
 
-      <ScrollArea className="h-[calc(100vh-56px)] pt-14">
-        <main className="max-w-md mx-auto">
-          <div className="p-4">
+      <main className="h-full pt-14">
+        <ScrollArea className="h-full">
+          <div className="max-w-md mx-auto p-4">
             <div className="space-y-6">
               <section>
                 <h3 className="font-semibold mb-4">Subscriptions</h3>
@@ -88,8 +88,8 @@ const UpcomingPayments = () => {
               </section>
             </div>
           </div>
-        </main>
-      </ScrollArea>
+        </ScrollArea>
+      </main>
     </div>
   );
 };
