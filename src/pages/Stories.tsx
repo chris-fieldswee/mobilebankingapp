@@ -32,13 +32,13 @@ const STORY_DURATION = 5000; // 5 seconds per story
 const Stories = () => {
   const [activeStory, setActiveStory] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timer | null>(null);
+  const [intervalId, setIntervalId] = useState<number | null>(null);
 
   const startTimer = () => {
     if (intervalId) clearInterval(intervalId);
     
     const startTime = Date.now();
-    const newIntervalId = setInterval(() => {
+    const newIntervalId = window.setInterval(() => {
       const elapsedTime = Date.now() - startTime;
       const newProgress = (elapsedTime / STORY_DURATION) * 100;
       
