@@ -17,7 +17,7 @@ const SpendingChart = () => {
   const totalReceived = 8497;
 
   return (
-    <Card className="p-6 mb-6 bg-gradient-to-br from-blue-500/5 to-purple-500/5">
+    <Card className="p-6 mb-6">
       <div className="mb-2">
         <h3 className="font-semibold text-sm text-muted-foreground">Spent this month</h3>
         <div className="flex items-center gap-2">
