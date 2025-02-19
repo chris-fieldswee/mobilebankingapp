@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const menuItems = [
   { icon: Home, label: "Home", path: "/" },
-  { icon: Send, label: "Payments", path: "/" },
+  { icon: Send, label: "Payments", path: "/transactions" },
   { icon: MessageSquare, label: "Advisor", path: "/advisor", hasNotification: true },
   { icon: CreditCard, label: "Card", path: "/" },
 ];
