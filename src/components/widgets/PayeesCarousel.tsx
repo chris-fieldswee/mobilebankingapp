@@ -14,7 +14,7 @@ const PayeesCarousel = () => {
   return (
     <div className="mb-6">
       <h3 className="font-semibold mb-4">Recent Payees</h3>
-      <ScrollArea className="w-full" orientation="horizontal">
+      <ScrollArea className="w-full">
         <div className="flex gap-6 pb-4">
           {recentPayees.map((payee) => (
             <div key={payee.id} className="flex flex-col items-center">
