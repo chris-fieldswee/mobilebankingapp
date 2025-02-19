@@ -86,6 +86,60 @@ const AccountsCarousel = () => {
   );
 };
 
+const SpendingChallengeWidget = () => (
+  <Card className="p-6 mb-6 bg-gradient-to-br from-green-500/10 to-yellow-500/10">
+    <div className="flex flex-col">
+      <h3 className="font-semibold mb-3">Your Spending Challenge</h3>
+      <div className="h-2 w-full bg-secondary rounded-full mb-3">
+        <div className="h-full w-[70%] bg-gradient-to-r from-purple-500 to-purple-600 rounded-full" />
+      </div>
+      <div className="flex justify-between text-sm mb-2">
+        <span className="text-muted-foreground">$1,450 spent</span>
+        <span className="text-muted-foreground">$2,000 goal</span>
+      </div>
+      <p className="text-sm text-green-600 font-medium">
+        You're 70% to your goal – keep it up!
+      </p>
+    </div>
+  </Card>
+);
+
+const SpendingChart = () => (
+  <Card className="p-6 mb-6 bg-gradient-to-br from-blue-500/5 to-purple-500/5">
+    <h3 className="font-semibold mb-4">Spent This Month</h3>
+    <div className="h-[200px] w-full">
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart data={mockSpendingData}>
+          <XAxis 
+            dataKey="day" 
+            stroke="#888888" 
+            fontSize={12} 
+            tickLine={false} 
+            axisLine={false}
+            dy={10}
+          />
+          <YAxis 
+            stroke="#888888" 
+            fontSize={12} 
+            tickLine={false} 
+            axisLine={false} 
+            tickFormatter={(value) => `$${value}`}
+            dx={-10}
+          />
+          <Line
+            type="monotone"
+            dataKey="amount"
+            stroke="#3b82f6"
+            strokeWidth={2}
+            dot={false}
+            style={{ opacity: 0.8 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  </Card>
+);
+
 const QuickActions = () => (
   <div className="grid grid-cols-3 gap-4 mb-6">
     {[
@@ -120,33 +174,6 @@ const TransactionItem = ({ merchant, amount, date }: any) => (
       {amount}
     </span>
   </div>
-);
-
-const SpendingChart = () => (
-  <Card className="p-6 mb-6 bg-gradient-to-r from-blue-500/10 to-purple-500/10">
-    <h3 className="font-semibold mb-4">Spent This Month</h3>
-    <div className="h-[200px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={mockSpendingData}>
-          <XAxis dataKey="day" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
-          <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `$${value}`} />
-          <Line
-            type="monotone"
-            dataKey="amount"
-            stroke="url(#gradient)"
-            strokeWidth={2}
-            dot={false}
-          />
-          <defs>
-            <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#3b82f6" stopOpacity={1} />
-              <stop offset="100%" stopColor="#8b5cf6" stopOpacity={1} />
-            </linearGradient>
-          </defs>
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
-  </Card>
 );
 
 const UpcomingTransactions = () => (
@@ -190,13 +217,14 @@ const UpcomingTransactions = () => (
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-16">
       <TopNav />
       
-      <ScrollArea className="h-[calc(100vh-120px)] mt-14 mb-16">
+      <ScrollArea className="h-[calc(100vh-120px)] mt-14">
         <main className="max-w-md mx-auto px-4 py-6">
           <AccountsCarousel />
           <QuickActions />
+          <SpendingChallengeWidget />
           <SpendingChart />
           
           <Card className="p-6 mb-6">
