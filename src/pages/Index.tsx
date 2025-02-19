@@ -1,29 +1,90 @@
-
 import TopNav from "@/components/navigation/TopNav";
 import BottomNav from "@/components/navigation/BottomNav";
 import { Card } from "@/components/ui/card";
-import { ChevronRight, Plus, Send, FileText } from "lucide-react";
+import { ChevronRight, Plus, Send, FileText, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useState } from "react";
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
 
-const AccountsCarousel = () => (
-  <Card className="p-6 mb-4 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground">
-    <div className="flex justify-between items-start mb-4">
-      <div>
-        <p className="text-sm opacity-80">Total Balance</p>
-        <h2 className="text-2xl font-semibold">$12,750.00</h2>
+const mockSpendingData = [
+  { day: "1", amount: 120 },
+  { day: "5", amount: 80 },
+  { day: "10", amount: 200 },
+  { day: "15", amount: 150 },
+  { day: "20", amount: 180 },
+  { day: "25", amount: 90 },
+  { day: "30", amount: 140 },
+];
+
+const accounts = [
+  { currency: "USD", balance: "12,750.00", symbol: "$" },
+  { currency: "GBP", balance: "9,840.00", symbol: "£" },
+  { currency: "PLN", balance: "42,500.00", symbol: "zł" },
+];
+
+const AccountsCarousel = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleSwipe = (direction: 'left' | 'right') => {
+    if (direction === 'left') {
+      setActiveIndex((prev) => (prev + 1) % accounts.length);
+    } else {
+      setActiveIndex((prev) => (prev - 1 + accounts.length) % accounts.length);
+    }
+  };
+
+  const account = accounts[activeIndex];
+
+  return (
+    <Card className="p-6 mb-4 bg-gradient-to-br from-primary to-primary/90 text-primary-foreground overflow-hidden">
+      <div 
+        className="transition-transform duration-300"
+        onTouchStart={(e) => {
+          const touch = e.touches[0];
+          const startX = touch.clientX;
+          
+          const handleTouchEnd = (e: TouchEvent) => {
+            const touch = e.changedTouches[0];
+            const endX = touch.clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+              handleSwipe(diff > 0 ? 'left' : 'right');
+            }
+          };
+          
+          document.addEventListener('touchend', handleTouchEnd, { once: true });
+        }}
+      >
+        <div className="flex justify-between items-start mb-4">
+          <div>
+            <p className="text-sm opacity-80">Total Balance</p>
+            <h2 className="text-2xl font-semibold">
+              {account.symbol}{account.balance}
+            </h2>
+            <p className="text-sm mt-1 opacity-80">{account.currency}</p>
+          </div>
+          <Button variant="ghost" size="sm" className="text-primary-foreground">
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </div>
       </div>
-      <Button variant="ghost" size="sm" className="text-primary-foreground">
-        <ChevronRight className="h-4 w-4" />
-      </Button>
-    </div>
-    <div className="flex -mx-1">
-      <div className="w-2 h-2 mx-1 rounded-full bg-primary-foreground opacity-90" />
-      <div className="w-2 h-2 mx-1 rounded-full bg-primary-foreground/30" />
-      <div className="w-2 h-2 mx-1 rounded-full bg-primary-foreground/30" />
-    </div>
-  </Card>
-);
+      <div className="flex -mx-1">
+        {accounts.map((_, index) => (
+          <div
+            key={index}
+            className={`w-2 h-2 mx-1 rounded-full transition-opacity ${
+              index === activeIndex
+                ? "bg-primary-foreground opacity-90"
+                : "bg-primary-foreground/30"
+            }`}
+          />
+        ))}
+      </div>
+    </Card>
+  );
+};
 
 const QuickActions = () => (
   <div className="grid grid-cols-3 gap-4 mb-6">
@@ -61,6 +122,72 @@ const TransactionItem = ({ merchant, amount, date }: any) => (
   </div>
 );
 
+const SpendingChart = () => (
+  <Card className="p-6 mb-6 bg-gradient-to-r from-blue-500/10 to-purple-500/10">
+    <h3 className="font-semibold mb-4">Spent This Month</h3>
+    <div className="h-[200px] w-full">
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart data={mockSpendingData}>
+          <XAxis dataKey="day" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+          <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `$${value}`} />
+          <Line
+            type="monotone"
+            dataKey="amount"
+            stroke="url(#gradient)"
+            strokeWidth={2}
+            dot={false}
+          />
+          <defs>
+            <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#3b82f6" stopOpacity={1} />
+              <stop offset="100%" stopColor="#8b5cf6" stopOpacity={1} />
+            </linearGradient>
+          </defs>
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  </Card>
+);
+
+const UpcomingTransactions = () => (
+  <Card className="p-6 mb-6">
+    <div className="flex justify-between items-center mb-4">
+      <h3 className="font-semibold">Upcoming Transactions</h3>
+      <Button variant="ghost" size="sm">
+        See all
+      </Button>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+        <div className="flex items-center">
+          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+            <Calendar className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <p className="font-medium">Netflix Subscription</p>
+            <p className="text-sm text-muted-foreground">Due in 3 days</p>
+          </div>
+        </div>
+        <span className="text-destructive font-medium">-$14.99</span>
+      </div>
+      
+      <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+        <div className="flex items-center">
+          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+            <Calendar className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <p className="font-medium">Gym Membership</p>
+            <p className="text-sm text-muted-foreground">Due in 5 days</p>
+          </div>
+        </div>
+        <span className="text-destructive font-medium">-$29.99</span>
+      </div>
+    </div>
+  </Card>
+);
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -70,6 +197,7 @@ const Index = () => {
         <main className="max-w-md mx-auto px-4 py-6">
           <AccountsCarousel />
           <QuickActions />
+          <SpendingChart />
           
           <Card className="p-6 mb-6">
             <div className="flex justify-between items-center mb-4">
@@ -97,6 +225,8 @@ const Index = () => {
               />
             </div>
           </Card>
+          
+          <UpcomingTransactions />
         </main>
       </ScrollArea>
       
