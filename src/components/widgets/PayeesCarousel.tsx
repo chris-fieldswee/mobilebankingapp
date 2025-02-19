@@ -1,13 +1,14 @@
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { User2, Coffee, ShoppingBag, Car } from "lucide-react";
+import { User2, Coffee, ShoppingBag, Car, Pizza, CreditCard } from "lucide-react";
 
 const recentPayees = [
   { id: 1, name: "John Doe", icon: User2 },
   { id: 2, name: "Starbucks", icon: Coffee },
   { id: 3, name: "Amazon", icon: ShoppingBag },
   { id: 4, name: "Uber", icon: Car },
-  { id: 5, name: "Sarah M.", icon: User2 },
+  { id: 5, name: "Domino's", icon: Pizza },
+  { id: 6, name: "Sarah M.", icon: CreditCard },
 ];
 
 const PayeesCarousel = () => {
@@ -15,9 +16,9 @@ const PayeesCarousel = () => {
     <div className="mb-6">
       <h3 className="font-semibold mb-4">Recent Payees</h3>
       <ScrollArea className="w-full">
-        <div className="flex gap-6 pb-4">
+        <div className="flex gap-6 pb-4 pl-4">
           {recentPayees.map((payee) => (
-            <div key={payee.id} className="flex flex-col items-center">
+            <div key={payee.id} className="flex flex-col items-center shrink-0 w-[calc(33.333%-1rem)] first:ml-0">
               <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center mb-2">
                 <payee.icon className="h-6 w-6 text-muted-foreground" />
               </div>
@@ -26,6 +27,7 @@ const PayeesCarousel = () => {
               </span>
             </div>
           ))}
+          <div className="w-8 shrink-0" aria-hidden="true" />
         </div>
       </ScrollArea>
     </div>

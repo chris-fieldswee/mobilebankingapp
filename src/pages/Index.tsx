@@ -18,12 +18,12 @@ const Index = () => {
         <div className="max-w-md mx-auto px-4 py-6">
           <AccountsCarousel />
           <QuickActions />
-          <TotalWealth />
           <SpendingChart />
           <SpendingChallengeWidget />
-          <PayeesCarousel />
           <RecentTransactions />
           <UpcomingTransactions />
+          <PayeesCarousel />
+          <TotalWealth />
         </div>
       </main>
       <BottomNav />
