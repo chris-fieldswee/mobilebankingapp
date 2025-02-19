@@ -11,19 +11,21 @@ import UpcomingTransactions from "@/components/transactions/UpcomingTransactions
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background pb-16">
+    <div className="min-h-screen bg-background">
       <TopNav />
       
-      <ScrollArea className="h-[calc(100vh-120px)] mt-14">
-        <main className="max-w-md mx-auto px-4 py-6">
-          <AccountsCarousel />
-          <QuickActions />
-          <SpendingChallengeWidget />
-          <SpendingChart />
-          <RecentTransactions />
-          <UpcomingTransactions />
-        </main>
-      </ScrollArea>
+      <main className="pt-14 pb-16">
+        <ScrollArea className="h-[calc(100vh-120px)]">
+          <div className="max-w-md mx-auto px-4 py-6">
+            <AccountsCarousel />
+            <QuickActions />
+            <SpendingChallengeWidget />
+            <SpendingChart />
+            <RecentTransactions />
+            <UpcomingTransactions />
+          </div>
+        </ScrollArea>
+      </main>
       
       <BottomNav />
     </div>

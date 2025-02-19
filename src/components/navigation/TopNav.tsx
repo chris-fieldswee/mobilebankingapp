@@ -1,5 +1,5 @@
 
-import { Search, Bell, Bolt, BarChart2, CircleUserRound } from "lucide-react";
+import { Search, Bell, Zap, BarChart2, CircleUserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
@@ -29,10 +29,12 @@ const TopNav = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <Button variant="ghost" size="icon" className="rounded-full relative">
-            <Bolt className="h-6 w-6" />
-            <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
-          </Button>
+          <Link to="/stories">
+            <Button variant="ghost" size="icon" className="rounded-full relative">
+              <Zap className="h-6 w-6" />
+              <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
+            </Button>
+          </Link>
           
           <Link to="/notifications">
             <Button variant="ghost" size="icon" className="rounded-full relative">
