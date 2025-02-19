@@ -5,11 +5,11 @@ import { ArrowDownIcon } from "lucide-react";
 
 const mockSpendingData = [
   { day: "1", amount: 2100 },
-  { day: "6", amount: 2450 },
-  { day: "11", amount: 2800 },
-  { day: "16", amount: 3100 },
-  { day: "21", amount: 3400 },
-  { day: "28", amount: 3680 },
+  { day: "6", amount: 2300 },
+  { day: "11", amount: 2600 },
+  { day: "16", amount: 2400 },
+  { day: "21", amount: 2800 },
+  { day: "28", amount: 3100 },
 ];
 
 const SpendingChart = () => {
@@ -18,8 +18,8 @@ const SpendingChart = () => {
 
   return (
     <Card className="p-6 mb-6 bg-gradient-to-br from-blue-500/5 to-purple-500/5">
-      <div className="mb-4">
-        <h3 className="font-semibold mb-2">Spent this month</h3>
+      <div className="mb-2">
+        <h3 className="font-semibold text-sm text-muted-foreground">Spent this month</h3>
         <div className="flex items-center gap-2">
           <span className="text-2xl font-semibold">zł {currentSpent}</span>
           <div className="flex items-center text-emerald-500 text-sm">
@@ -28,9 +28,15 @@ const SpendingChart = () => {
           </div>
         </div>
       </div>
-      <div className="h-[140px] w-full">
+      <div className="h-[100px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={mockSpendingData}>
+            <defs>
+              <linearGradient id="spendingLine" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#9333ea" stopOpacity={1} />
+                <stop offset="100%" stopColor="#3b82f6" stopOpacity={1} />
+              </linearGradient>
+            </defs>
             <XAxis 
               dataKey="day" 
               stroke="#888888" 
@@ -42,16 +48,13 @@ const SpendingChart = () => {
             <Line
               type="monotone"
               dataKey="amount"
-              stroke="#00b894"
-              strokeWidth={2}
+              stroke="url(#spendingLine)"
+              strokeWidth={2.5}
               dot={false}
               style={{ opacity: 0.8 }}
             />
           </LineChart>
         </ResponsiveContainer>
-      </div>
-      <div className="text-right text-sm text-muted-foreground mt-2">
-        zł 3.68k
       </div>
     </Card>
   );

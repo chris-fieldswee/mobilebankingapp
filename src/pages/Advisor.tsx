@@ -25,14 +25,20 @@ const Advisor = () => {
   const handleSend = () => {
     if (!input.trim()) return;
     
-    // Add user message
-    const userMessage = { id: Date.now(), text: input, sender: "user" };
+    const userMessage: Message = {
+      id: Date.now(),
+      text: input,
+      sender: "user"
+    };
     setMessages(prev => [...prev, userMessage]);
     setInput("");
 
-    // Simulate advisor response after a delay
     setTimeout(() => {
-      const advisorMessage = { id: Date.now() + 1, text: followUpMessage, sender: "advisor" };
+      const advisorMessage: Message = {
+        id: Date.now() + 1,
+        text: followUpMessage,
+        sender: "advisor"
+      };
       setMessages(prev => [...prev, advisorMessage]);
     }, 1000);
   };
@@ -58,7 +64,7 @@ const Advisor = () => {
         </div>
       </header>
 
-      <main className="flex-1 overflow-auto pt-16 pb-20">
+      <main className="flex-1 overflow-auto pt-20 pb-20">
         <div className="max-w-md mx-auto px-4 py-6 space-y-4">
           {messages.map((message) => (
             <div
