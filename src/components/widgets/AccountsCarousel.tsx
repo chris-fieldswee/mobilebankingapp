@@ -90,18 +90,18 @@ const AccountsCarousel = () => {
 
   return (
     <div className="mb-6">
-      <div className="relative">
+      <Card className="relative bg-primary text-primary-foreground p-6">
         <div 
           ref={scrollRef}
-          className="flex overflow-x-hidden snap-x snap-mandatory scroll-smooth touch-pan-x"
+          className="flex overflow-x-hidden snap-x snap-mandatory scroll-smooth touch-pan-x transition-transform duration-300"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
           {accounts.map((account) => (
-            <Card
+            <div
               key={account.id}
-              className="w-full flex-none snap-start p-6 bg-primary text-primary-foreground"
+              className="w-full flex-none snap-start"
             >
               <p className="text-sm text-primary-foreground/70">{account.title}</p>
               <h2 className="text-2xl font-semibold mt-1 text-primary-foreground">
@@ -110,7 +110,7 @@ const AccountsCarousel = () => {
               <p className="text-sm text-emerald-400 mt-1">
                 {account.change} this month
               </p>
-            </Card>
+            </div>
           ))}
         </div>
         <div className="flex justify-center gap-2 mt-4">
@@ -120,13 +120,13 @@ const AccountsCarousel = () => {
               variant="ghost"
               size="icon"
               className={`w-2 h-2 p-0 rounded-full ${
-                currentPage === index ? 'bg-primary' : 'bg-secondary'
+                currentPage === index ? 'bg-white' : 'bg-white/20'
               }`}
               onClick={() => scrollToPage(index)}
             />
           ))}
         </div>
-      </div>
+      </Card>
     </div>
   );
 };
