@@ -5,7 +5,6 @@ const SpendingChallengeWidget = () => {
   const spent = 1450;
   const goal = 2000;
   const progress = (spent / goal) * 100;
-  const remaining = goal - spent;
 
   return (
     <Card className="p-6 mb-6 bg-gradient-to-br from-green-500/10 to-yellow-500/10">
@@ -17,17 +16,9 @@ const SpendingChallengeWidget = () => {
             style={{ width: `${progress}%` }}
           />
         </div>
-        <div className="flex justify-between text-sm mb-2">
+        <div className="flex justify-between text-sm">
           <span className="text-muted-foreground">${spent.toLocaleString()} spent</span>
           <span className="text-muted-foreground">${goal.toLocaleString()} goal</span>
-        </div>
-        <div className="flex items-center justify-between">
-          <p className="text-sm text-green-600 font-medium">
-            You're {Math.round(progress)}% to your goal – keep it up!
-          </p>
-          <p className="text-sm text-muted-foreground">
-            ${remaining.toLocaleString()} left
-          </p>
         </div>
       </div>
     </Card>
