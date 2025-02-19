@@ -16,18 +16,21 @@ const PayeesCarousel = () => {
     <div className="mb-6">
       <h3 className="font-semibold mb-4">Recent Payees</h3>
       <ScrollArea className="w-full">
-        <div className="flex gap-6 pb-4 pl-4">
+        <div className="flex gap-4 pb-4 px-4">
           {recentPayees.map((payee) => (
-            <div key={payee.id} className="flex flex-col items-center shrink-0 w-[calc(33.333%-1rem)] first:ml-0">
+            <div 
+              key={payee.id} 
+              className="flex flex-col items-center shrink-0 w-[calc(33.333%-0.75rem)] first:ml-0"
+            >
               <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center mb-2">
                 <payee.icon className="h-6 w-6 text-muted-foreground" />
               </div>
-              <span className="text-sm text-muted-foreground whitespace-nowrap">
+              <span className="text-sm text-muted-foreground whitespace-nowrap text-center">
                 {payee.name}
               </span>
             </div>
           ))}
-          <div className="w-8 shrink-0" aria-hidden="true" />
+          <div className="w-6 shrink-0" aria-hidden="true" />
         </div>
       </ScrollArea>
     </div>
