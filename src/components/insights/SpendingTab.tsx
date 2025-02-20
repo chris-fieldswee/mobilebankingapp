@@ -7,19 +7,46 @@ import { BarChart, Bar, PieChart as RechartPie, Pie, Cell, ResponsiveContainer, 
 import { useNavigate } from "react-router-dom";
 
 const periodOptions = ["1W", "1M", "6M", "1Y"];
-const spendingData = [
-  { name: "1-7", amount: 450 },
-  { name: "8-14", amount: 1200 },
-  { name: "15-21", amount: 750 },
-  { name: "22-28", amount: 0 },
-];
+
+const periodData = {
+  "1W": [
+    { name: "Mon", amount: 75 },
+    { name: "Tue", amount: 85 },
+    { name: "Wed", amount: 65 },
+    { name: "Thu", amount: 45 },
+    { name: "Fri", amount: 30 },
+    { name: "Sat", amount: 0 },
+    { name: "Sun", amount: 0 }
+  ],
+  "1M": [
+    { name: "1-7", amount: 300 },
+    { name: "8-14", amount: 350 },
+    { name: "15-21", amount: 250 },
+    { name: "22-28", amount: 300 }
+  ],
+  "6M": [
+    { name: "Oct", amount: 1200 },
+    { name: "Nov", amount: 1300 },
+    { name: "Dec", amount: 1500 },
+    { name: "Jan", amount: 1200 },
+    { name: "Feb", amount: 1100 },
+    { name: "Mar", amount: 1400 }
+  ],
+  "1Y": [
+    { name: "Q2 23", amount: 3600 },
+    { name: "Q3 23", amount: 3400 },
+    { name: "Q4 23", amount: 4000 },
+    { name: "Q1 24", amount: 3400 }
+  ]
+};
 
 const categoryData = [
-  { name: "Health", amount: 929, transactions: 4, percentage: 36, color: "#00B8D9" },
-  { name: "Shopping", amount: 482, transactions: 9, percentage: 19, color: "#FF5630" },
-  { name: "Groceries", amount: 456, transactions: 22, percentage: 18, color: "#36B37E" },
-  { name: "Restaurants", amount: 319, transactions: 10, percentage: 12, color: "#FF8B00" },
-  { name: "Cash", amount: 220, transactions: 2, percentage: 9, color: "#00875A" },
+  { name: "Dining", amount: 1200, transactions: 28, percentage: 25, color: "#00B8D9" },
+  { name: "Shopping", amount: 800, transactions: 15, percentage: 16, color: "#FF5630" },
+  { name: "Transportation", amount: 300, transactions: 12, percentage: 6, color: "#36B37E" },
+  { name: "Entertainment", amount: 400, transactions: 8, percentage: 8, color: "#FF8B00" },
+  { name: "Groceries", amount: 850, transactions: 20, percentage: 17, color: "#6554C0" },
+  { name: "Bills", amount: 1400, transactions: 6, percentage: 28, color: "#00875A" }
 ];
 
 const SpendingTab = () => {
@@ -27,7 +54,8 @@ const SpendingTab = () => {
   const [chartType, setChartType] = useState<"bar" | "pie">("bar");
   const navigate = useNavigate();
 
-  const totalSpent = 2551;
+  const totalSpent = 2450;
+  const spendingData = periodData[selectedPeriod as keyof typeof periodData];
 
   return (
     <div className="space-y-6">
@@ -35,7 +63,7 @@ const SpendingTab = () => {
         <div className="flex justify-between items-start mb-4">
           <div>
             <p className="text-sm text-muted-foreground">Spent · This month</p>
-            <h2 className="text-3xl font-semibold">zł {totalSpent}</h2>
+            <h2 className="text-3xl font-semibold">$ {totalSpent}</h2>
           </div>
           <Button
             variant="outline"
@@ -135,7 +163,7 @@ const SpendingTab = () => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-right">
-                  <p className="font-medium">-zł {category.amount}</p>
+                  <p className="font-medium text-destructive">-$ {category.amount}</p>
                   <p className="text-sm text-muted-foreground">{category.percentage}%</p>
                 </div>
                 <ArrowRight className="h-4 w-4 text-muted-foreground" />

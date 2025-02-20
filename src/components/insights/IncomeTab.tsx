@@ -4,19 +4,48 @@ import { Button } from "@/components/ui/button";
 import { BarChart, Bar, XAxis, ResponsiveContainer } from "recharts";
 
 const periodOptions = ["1W", "1M", "6M", "1Y"];
-const incomeData = [
-  { name: "Jan", amount: 3500 },
-  { name: "Feb", amount: 3500 },
-  { name: "Mar", amount: 3500 },
-];
+
+const periodData = {
+  "1M": [
+    { name: "Jan", amount: 5000 },
+    { name: "Feb", amount: 5000 },
+    { name: "Mar", amount: 5000 },
+  ],
+  "6M": [
+    { name: "Oct", amount: 5000 },
+    { name: "Nov", amount: 5000 },
+    { name: "Dec", amount: 5000 },
+    { name: "Jan", amount: 5000 },
+    { name: "Feb", amount: 5000 },
+    { name: "Mar", amount: 5000 },
+  ],
+  "1Y": [
+    { name: "Q2 23", amount: 15000 },
+    { name: "Q3 23", amount: 15000 },
+    { name: "Q4 23", amount: 15000 },
+    { name: "Q1 24", amount: 15000 },
+  ],
+  "1W": [
+    { name: "Mon", amount: 0 },
+    { name: "Tue", amount: 0 },
+    { name: "Wed", amount: 5000 },
+    { name: "Thu", amount: 0 },
+    { name: "Fri", amount: 0 },
+    { name: "Sat", amount: 0 },
+    { name: "Sun", amount: 0 },
+  ]
+};
 
 const IncomeTab = () => {
+  const [selectedPeriod, setSelectedPeriod] = useState("1M");
+  const incomeData = periodData[selectedPeriod as keyof typeof periodData];
+
   return (
     <div className="space-y-6">
       <div>
         <div className="mb-4">
           <p className="text-sm text-muted-foreground">Income · This month</p>
-          <h2 className="text-3xl font-semibold text-emerald-500">zł 3,500</h2>
+          <h2 className="text-3xl font-semibold text-emerald-500">$ 5,000</h2>
         </div>
 
         <Card className="p-6">
@@ -43,7 +72,8 @@ const IncomeTab = () => {
             {periodOptions.map((period) => (
               <Button
                 key={period}
-                variant={period === "1M" ? "default" : "outline"}
+                variant={selectedPeriod === period ? "default" : "outline"}
+                onClick={() => setSelectedPeriod(period)}
                 className="flex-1"
               >
                 {period}
@@ -60,7 +90,7 @@ const IncomeTab = () => {
               <p className="font-medium">Salary</p>
               <p className="text-sm text-muted-foreground">Monthly income</p>
             </div>
-            <p className="font-medium text-emerald-500">+zł 3,500</p>
+            <p className="font-medium text-emerald-500">+$ 5,000</p>
           </div>
         </Card>
       </div>
