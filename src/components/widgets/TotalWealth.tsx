@@ -5,7 +5,7 @@ import { Wallet, Landmark, CreditCard, PiggyBank, Calculator } from "lucide-reac
 const accounts = [
   { 
     id: 1,
-    title: "Total Balance",
+    title: "Total Wealth",
     amount: "25,000",
     items: [
       { 
@@ -39,7 +39,7 @@ const TotalWealth = () => {
             <div className="text-2xl font-semibold mb-8">$ {account.amount}</div>
             
             {account.items.map((section, idx) => (
-              <div key={idx} className="space-y-4 first:mb-8">
+              <div key={idx} className="space-y-4 mb-12 last:mb-0">
                 <div className="flex items-center justify-between">
                   <h4 className="text-sm font-medium text-muted-foreground">{section.section}</h4>
                   <span className="font-medium text-[#222222]">$ {section.total}</span>

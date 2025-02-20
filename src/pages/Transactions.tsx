@@ -27,14 +27,14 @@ const Transactions = () => {
               <div className="space-y-6">
                 <div>
                   <h2 className="text-sm font-medium text-muted-foreground mb-3">Today</h2>
-                  <div className="divide-y">
+                  <div className="space-y-1">
                     <TransactionItem merchant="Starbucks" amount="-$4.50" date="8:15 AM" />
                   </div>
                 </div>
 
                 <div>
                   <h2 className="text-sm font-medium text-muted-foreground mb-3">Yesterday</h2>
-                  <div className="divide-y">
+                  <div className="space-y-1">
                     <TransactionItem merchant="Amazon" amount="-$150.99" date="3:45 PM" />
                     <TransactionItem merchant="Uber" amount="-$22.75" date="1:20 PM" />
                   </div>
@@ -42,7 +42,7 @@ const Transactions = () => {
 
                 <div>
                   <h2 className="text-sm font-medium text-muted-foreground mb-3">March 1</h2>
-                  <div className="divide-y">
+                  <div className="space-y-1">
                     <TransactionItem merchant="Monthly Salary" amount="+$5,000.00" date="9:00 AM" />
                     <TransactionItem merchant="Netflix" amount="-$15.99" date="8:30 AM" />
                     <TransactionItem merchant="Walmart" amount="-$56.00" date="8:15 AM" />

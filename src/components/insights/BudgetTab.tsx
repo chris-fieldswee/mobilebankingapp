@@ -14,23 +14,23 @@ const BudgetTab = () => {
     <div className="space-y-6">
       <Card className="p-6 text-center">
         <div className="flex justify-center">
-          <div className="relative w-72 h-72">
+          <div className="relative w-96 h-96">
             <CircularProgressBar
               percentage={Math.min(progress, 100)}
               strokeWidth={12}
               color={isOverBudget ? '#555555' : '#222222'}
             />
-            <div className="absolute inset-0 flex flex-col items-center justify-center space-y-2">
+            <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4">
               <p className="text-sm text-muted-foreground">Budget · This month</p>
-              <p className="text-2xl font-semibold">zł {budget}</p>
+              <p className="text-3xl font-semibold">zł {budget}</p>
               {isOverBudget ? (
                 <>
-                  <span className="text-4xl font-bold text-[#222222]">+zł {excess}</span>
+                  <span className="text-5xl font-bold text-[#222222]">+zł {excess}</span>
                   <span className="text-sm text-muted-foreground">over budget</span>
                 </>
               ) : (
                 <>
-                  <span className="text-4xl font-bold">zł {spent}</span>
+                  <span className="text-5xl font-bold">zł {spent}</span>
                   <span className="text-sm text-muted-foreground">of zł {budget}</span>
                 </>
               )}
