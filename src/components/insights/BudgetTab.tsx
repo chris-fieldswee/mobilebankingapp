@@ -12,51 +12,47 @@ const BudgetTab = () => {
 
   return (
     <div className="space-y-6">
-      <div>
-        <div className="mb-4">
-          <p className="text-sm text-muted-foreground">Budget · This month</p>
-          <h2 className="text-3xl font-semibold">zł {budget}</h2>
-        </div>
-
-        <Card className="p-6 text-center">
-          <div className="flex justify-center mb-4">
-            <div className="relative w-48 h-48">
-              <CircularProgressBar
-                percentage={Math.min(progress, 100)}
-                strokeWidth={12}
-                color={isOverBudget ? '#555555' : '#222222'}
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                {isOverBudget ? (
-                  <>
-                    <span className="text-3xl font-bold text-destructive">+zł {excess}</span>
-                    <span className="text-sm text-muted-foreground">over budget</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="text-3xl font-bold">zł {spent}</span>
-                    <span className="text-sm text-muted-foreground">of zł {budget}</span>
-                  </>
-                )}
-              </div>
+      <Card className="p-6 text-center">
+        <div className="flex justify-center">
+          <div className="relative w-72 h-72">
+            <CircularProgressBar
+              percentage={Math.min(progress, 100)}
+              strokeWidth={12}
+              color={isOverBudget ? '#555555' : '#222222'}
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center space-y-2">
+              <p className="text-sm text-muted-foreground">Budget · This month</p>
+              <p className="text-2xl font-semibold">zł {budget}</p>
+              {isOverBudget ? (
+                <>
+                  <span className="text-4xl font-bold text-[#222222]">+zł {excess}</span>
+                  <span className="text-sm text-muted-foreground">over budget</span>
+                </>
+              ) : (
+                <>
+                  <span className="text-4xl font-bold">zł {spent}</span>
+                  <span className="text-sm text-muted-foreground">of zł {budget}</span>
+                </>
+              )}
+              <p className="text-sm text-muted-foreground mt-2">9 days left</p>
             </div>
           </div>
-        </Card>
-      </div>
+        </div>
+      </Card>
 
       <div className="space-y-3">
-        <Card className="p-4 bg-destructive/5 border-destructive">
+        <Card className="p-4 bg-secondary border-[#222222]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-destructive/10 flex items-center justify-center">
-                <AlertTriangle className="h-5 w-5 text-destructive" />
+              <div className="w-10 h-10 rounded-full bg-[#222222]/10 flex items-center justify-center">
+                <AlertTriangle className="h-5 w-5 text-[#222222]" />
               </div>
               <div>
-                <p className="font-medium text-destructive">Overspent</p>
-                <p className="text-sm text-destructive/70">9 days left</p>
+                <p className="font-medium text-[#222222]">Overspent</p>
+                <p className="text-sm text-muted-foreground">9 days left</p>
               </div>
             </div>
-            <span className="font-medium text-destructive">zł {excess}</span>
+            <span className="font-medium text-[#222222]">zł {excess}</span>
           </div>
         </Card>
 
@@ -64,7 +60,7 @@ const BudgetTab = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                <Calendar className="h-5 w-5 text-foreground" />
+                <Calendar className="h-5 w-5 text-[#222222]" />
               </div>
               <div>
                 <p className="font-medium">Upcoming</p>
@@ -79,7 +75,7 @@ const BudgetTab = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                <Coins className="h-5 w-5 text-foreground" />
+                <Coins className="h-5 w-5 text-[#222222]" />
               </div>
               <div>
                 <p className="font-medium">Spent this month</p>

@@ -5,7 +5,7 @@ import { Wallet, Landmark, CreditCard, PiggyBank, Calculator } from "lucide-reac
 const accounts = [
   { 
     id: 1,
-    title: "Net Worth",
+    title: "Total Balance",
     amount: "25,000",
     items: [
       { 
@@ -36,24 +36,20 @@ const TotalWealth = () => {
         {accounts.map((account) => (
           <div key={account.id}>
             <h3 className="font-semibold">{account.title}</h3>
-            <div className="text-2xl font-semibold mb-6">$ {account.amount}</div>
+            <div className="text-2xl font-semibold mb-8">$ {account.amount}</div>
             
             {account.items.map((section, idx) => (
-              <div key={idx} className="space-y-4">
+              <div key={idx} className="space-y-4 first:mb-8">
                 <div className="flex items-center justify-between">
                   <h4 className="text-sm font-medium text-muted-foreground">{section.section}</h4>
-                  <span className={`font-medium ${
-                    section.section === "Liabilities" ? "text-destructive" : "text-emerald-500"
-                  }`}>
-                    $ {section.total}
-                  </span>
+                  <span className="font-medium text-[#222222]">$ {section.total}</span>
                 </div>
                 <div className="space-y-3">
                   {section.details.map((item, index) => (
                     <div key={index} className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
-                          <item.icon className="h-4 w-4 text-primary" />
+                          <item.icon className="h-4 w-4 text-[#222222]" />
                         </div>
                         <span>{item.label}</span>
                       </div>

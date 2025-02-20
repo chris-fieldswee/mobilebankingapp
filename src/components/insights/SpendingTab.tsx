@@ -41,12 +41,12 @@ const periodData = {
 };
 
 const categoryData = [
-  { name: "Dining", amount: 1200, transactions: 28, percentage: 25, color: "#00B8D9" },
-  { name: "Shopping", amount: 800, transactions: 15, percentage: 16, color: "#FF5630" },
-  { name: "Transportation", amount: 300, transactions: 12, percentage: 6, color: "#36B37E" },
-  { name: "Entertainment", amount: 400, transactions: 8, percentage: 8, color: "#FF8B00" },
-  { name: "Groceries", amount: 850, transactions: 20, percentage: 17, color: "#6554C0" },
-  { name: "Bills", amount: 1400, transactions: 6, percentage: 28, color: "#00875A" }
+  { name: "Dining", amount: 1200, transactions: 28, percentage: 25, color: "#222222" },
+  { name: "Shopping", amount: 800, transactions: 15, percentage: 16, color: "#333333" },
+  { name: "Transportation", amount: 300, transactions: 12, percentage: 6, color: "#444444" },
+  { name: "Entertainment", amount: 400, transactions: 8, percentage: 8, color: "#555555" },
+  { name: "Groceries", amount: 850, transactions: 20, percentage: 17, color: "#666666" },
+  { name: "Bills", amount: 1400, transactions: 6, percentage: 28, color: "#777777" }
 ];
 
 const SpendingTab = () => {
@@ -92,7 +92,7 @@ const SpendingTab = () => {
                   />
                   <Bar
                     dataKey="amount"
-                    fill="#FF5630"
+                    fill="#222222"
                     radius={[4, 4, 0, 0]}
                   />
                 </BarChart>

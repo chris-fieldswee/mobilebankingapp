@@ -40,7 +40,7 @@ const RecentTransactions = () => {
         </Button>
       </div>
       
-      <div className="divide-y">
+      <div className="space-y-1">
         {recentTransactions.map((transaction) => (
           <TransactionItem
             key={transaction.id}
