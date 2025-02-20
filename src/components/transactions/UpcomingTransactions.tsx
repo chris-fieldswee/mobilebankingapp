@@ -27,7 +27,7 @@ const UpcomingTransactions = () => {
               <p className="text-sm text-muted-foreground">Due in 3 days</p>
             </div>
           </div>
-          <span className="text-destructive font-medium">-$14.99</span>
+          <span className="text-destructive font-medium">-$15.99</span>
         </div>
         
         <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
@@ -36,11 +36,11 @@ const UpcomingTransactions = () => {
               <Calendar className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <p className="font-medium">Gym Membership</p>
+              <p className="font-medium">Spotify Premium</p>
               <p className="text-sm text-muted-foreground">Due in 5 days</p>
             </div>
           </div>
-          <span className="text-destructive font-medium">-$29.99</span>
+          <span className="text-destructive font-medium">-$9.99</span>
         </div>
       </div>
     </Card>

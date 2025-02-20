@@ -21,7 +21,7 @@ const UpcomingPayments = () => {
 
       <main className="h-full pt-14">
         <ScrollArea className="h-full">
-          <div className="max-w-md mx-auto p-4">
+          <div className="max-w-md mx-auto p-4 pb-24">
             <div className="space-y-6">
               <section>
                 <h3 className="font-semibold mb-4">Subscriptions</h3>
@@ -37,7 +37,7 @@ const UpcomingPayments = () => {
                           <p className="text-sm text-muted-foreground">Due in 3 days</p>
                         </div>
                       </div>
-                      <span className="text-destructive font-medium">-$14.99</span>
+                      <span className="text-destructive font-medium">-$15.99</span>
                     </div>
                     <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
                       <div className="flex items-center">

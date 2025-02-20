@@ -9,22 +9,22 @@ const mockSpendingData = [
   { day: "11", amount: 2600 },
   { day: "16", amount: 2400 },
   { day: "21", amount: 2800 },
-  { day: "28", amount: 3100 },
+  { day: "28", amount: 2450 },
 ];
 
 const SpendingChart = () => {
-  const currentSpent = 2540;
-  const totalReceived = 8497;
+  const currentSpent = 2450;
+  const totalReceived = 5000;
 
   return (
     <Card className="p-6 mb-6">
       <div className="mb-2">
         <h3 className="font-semibold text-sm text-muted-foreground">Spent this month</h3>
         <div className="flex items-center gap-2">
-          <span className="text-2xl font-semibold">zł {currentSpent}</span>
+          <span className="text-2xl font-semibold">$ {currentSpent}</span>
           <div className="flex items-center text-emerald-500 text-sm">
             <ArrowDownIcon className="h-4 w-4" />
-            <span>zł {totalReceived}</span>
+            <span>$ {totalReceived}</span>
           </div>
         </div>
       </div>
