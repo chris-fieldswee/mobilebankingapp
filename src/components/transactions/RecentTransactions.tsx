@@ -4,6 +4,30 @@ import { Button } from "@/components/ui/button";
 import TransactionItem from "./TransactionItem";
 import { useNavigate } from "react-router-dom";
 
+const recentTransactions = [
+  {
+    id: "1",
+    merchant: "Netflix",
+    amount: "-$15.99",
+    date: "Mar 18",
+    category: "Entertainment"
+  },
+  {
+    id: "2",
+    merchant: "Shell",
+    amount: "-$40.00",
+    date: "Mar 3",
+    category: "Fuel"
+  },
+  {
+    id: "3",
+    merchant: "Amazon",
+    amount: "-$150.99",
+    date: "Feb 15",
+    category: "Shopping"
+  }
+];
+
 const RecentTransactions = () => {
   const navigate = useNavigate();
 
@@ -17,21 +41,15 @@ const RecentTransactions = () => {
       </div>
       
       <div className="divide-y">
-        <TransactionItem
-          merchant="Spotify"
-          amount="-$9.99"
-          date="Today"
-        />
-        <TransactionItem
-          merchant="Amazon"
-          amount="-$25.50"
-          date="Yesterday"
-        />
-        <TransactionItem
-          merchant="Salary"
-          amount="+$3,500.00"
-          date="Mar 1"
-        />
+        {recentTransactions.map((transaction) => (
+          <TransactionItem
+            key={transaction.id}
+            merchant={transaction.merchant}
+            amount={transaction.amount}
+            date={transaction.date}
+            id={transaction.id}
+          />
+        ))}
       </div>
     </Card>
   );

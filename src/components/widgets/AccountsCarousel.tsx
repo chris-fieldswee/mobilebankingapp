@@ -6,31 +6,27 @@ import { Button } from "@/components/ui/button";
 const accounts = [
   {
     id: 1,
-    title: "Total Balance",
-    amount: "12,540",
-    change: "+2.3%",
-    currency: "PLN"
+    title: "USD Checking",
+    amount: "12,500.00",
+    currency: "USD",
+    symbol: "$",
+    change: "+2.3%"
   },
   {
     id: 2,
-    title: "Main Account",
-    amount: "8,250",
-    change: "+1.2%",
-    currency: "PLN"
+    title: "GBP Savings",
+    amount: "8,200.00",
+    currency: "GBP",
+    symbol: "£",
+    change: "+1.8%"
   },
   {
     id: 3,
-    title: "Savings",
-    amount: "3,290",
-    change: "+0.8%",
-    currency: "PLN"
-  },
-  {
-    id: 4,
-    title: "Investment Account",
-    amount: "1,000",
-    change: "+3.5%",
-    currency: "PLN"
+    title: "PLN Account",
+    amount: "45,000",
+    currency: "PLN",
+    symbol: "zł",
+    change: "+1.2%"
   }
 ];
 
@@ -68,7 +64,7 @@ const AccountsCarousel = () => {
     const currentTouch = e.touches[0].clientX;
     const diff = touchStart - currentTouch;
     
-    if (Math.abs(diff) > 50) { // Minimum swipe distance
+    if (Math.abs(diff) > 50) {
       const direction = diff > 0 ? 1 : -1;
       const newPage = Math.min(Math.max(currentPage + direction, 0), totalPages - 1);
       scrollToPage(newPage);
@@ -105,7 +101,7 @@ const AccountsCarousel = () => {
             >
               <p className="text-sm text-primary-foreground/70">{account.title}</p>
               <h2 className="text-2xl font-semibold mt-1 text-primary-foreground">
-                {account.currency} {account.amount}
+                {account.symbol}{account.amount}
               </h2>
               <p className="text-sm text-emerald-400 mt-1">
                 {account.change} this month
