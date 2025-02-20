@@ -11,6 +11,7 @@ import Stories from "./pages/Stories";
 import Advisor from "./pages/Advisor";
 import Transactions from "./pages/Transactions";
 import UpcomingPayments from "./pages/UpcomingPayments";
+import Insights from "./pages/Insights";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/advisor" element={<Advisor />} />
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/upcoming-payments" element={<UpcomingPayments />} />
+          <Route path="/insights" element={<Insights />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
