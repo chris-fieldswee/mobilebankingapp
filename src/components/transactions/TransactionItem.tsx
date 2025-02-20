@@ -1,25 +1,35 @@
 
+import { useNavigate } from "react-router-dom";
+
 interface TransactionItemProps {
   merchant: string;
   amount: string;
   date: string;
+  id?: string;
 }
 
-const TransactionItem = ({ merchant, amount, date }: TransactionItemProps) => (
-  <div className="flex items-center justify-between py-3">
-    <div className="flex items-center">
-      <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-3">
-        {merchant[0]}
+const TransactionItem = ({ merchant, amount, date, id = "1" }: TransactionItemProps) => {
+  const navigate = useNavigate();
+
+  return (
+    <div 
+      className="flex items-center justify-between py-3 cursor-pointer hover:bg-accent rounded-lg px-2"
+      onClick={() => navigate(`/transactions/${id}`)}
+    >
+      <div className="flex items-center">
+        <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-3">
+          {merchant[0]}
+        </div>
+        <div>
+          <p className="font-medium">{merchant}</p>
+          <p className="text-sm text-muted-foreground">{date}</p>
+        </div>
       </div>
-      <div>
-        <p className="font-medium">{merchant}</p>
-        <p className="text-sm text-muted-foreground">{date}</p>
-      </div>
+      <span className={amount.startsWith('-') ? 'text-destructive' : 'text-green-600'}>
+        {amount}
+      </span>
     </div>
-    <span className={amount.startsWith('-') ? 'text-destructive' : 'text-green-600'}>
-      {amount}
-    </span>
-  </div>
-);
+  );
+};
 
 export default TransactionItem;

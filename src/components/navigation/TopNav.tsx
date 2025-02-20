@@ -3,10 +3,11 @@ import { Search, Bell, Zap, BarChart2, CircleUserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const TopNav = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
@@ -43,9 +44,11 @@ const TopNav = () => {
             </Button>
           </Link>
 
-          <Button variant="ghost" size="icon" className="rounded-full">
-            <BarChart2 className="h-6 w-6" />
-          </Button>
+          <Link to="/insights">
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <BarChart2 className="h-6 w-6" />
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>

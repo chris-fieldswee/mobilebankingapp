@@ -10,6 +10,7 @@ import Notifications from "./pages/Notifications";
 import Stories from "./pages/Stories";
 import Advisor from "./pages/Advisor";
 import Transactions from "./pages/Transactions";
+import TransactionDetails from "./pages/TransactionDetails";
 import UpcomingPayments from "./pages/UpcomingPayments";
 import Insights from "./pages/Insights";
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/stories" element={<Stories />} />
           <Route path="/advisor" element={<Advisor />} />
           <Route path="/transactions" element={<Transactions />} />
+          <Route path="/transactions/:id" element={<TransactionDetails />} />
           <Route path="/upcoming-payments" element={<UpcomingPayments />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="*" element={<NotFound />} />
