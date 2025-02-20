@@ -25,14 +25,10 @@ const TransactionDetails = () => {
             <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
               <ShoppingCart className="h-6 w-6 text-primary-foreground" />
             </div>
-            <div className="flex-1">
+            <div>
               <h1 className="text-2xl font-bold">-zł 11.61</h1>
               <p className="text-primary-foreground/70">Lidl</p>
             </div>
-            <Card className="bg-white/10 border-0 p-3">
-              <p className="text-xs text-primary-foreground/70">This month at Lidl</p>
-              <p className="text-sm font-medium">zł 156.42</p>
-            </Card>
           </div>
         </div>
       </header>
@@ -98,6 +94,18 @@ const TransactionDetails = () => {
               </div>
               <Button variant="outline" className="gap-2">
                 🛒 Groceries
+              </Button>
+            </div>
+          </Card>
+
+          <Card className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground">This month at Lidl</p>
+                <p className="text-lg font-medium">zł 156.42</p>
+              </div>
+              <Button variant="ghost" size="sm" className="text-primary">
+                View all
               </Button>
             </div>
           </Card>
