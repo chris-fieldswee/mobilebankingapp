@@ -24,13 +24,30 @@ const Transactions = () => {
         <ScrollArea className="h-full">
           <div className="max-w-md mx-auto p-4">
             <Card className="p-6">
-              <div className="divide-y">
-                <TransactionItem merchant="Spotify" amount="-$9.99" date="Today" />
-                <TransactionItem merchant="Amazon" amount="-$25.50" date="Yesterday" />
-                <TransactionItem merchant="Salary" amount="+$3,500.00" date="Mar 1" />
-                <TransactionItem merchant="Netflix" amount="-$14.99" date="Feb 28" />
-                <TransactionItem merchant="Uber" amount="-$22.50" date="Feb 27" />
-                <TransactionItem merchant="Grocery Store" amount="-$85.75" date="Feb 26" />
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-sm font-medium text-muted-foreground mb-3">Today</h2>
+                  <div className="divide-y">
+                    <TransactionItem merchant="Spotify" amount="-$9.99" date="11:30 AM" />
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="text-sm font-medium text-muted-foreground mb-3">Yesterday</h2>
+                  <div className="divide-y">
+                    <TransactionItem merchant="Amazon" amount="-$25.50" date="3:45 PM" />
+                    <TransactionItem merchant="Uber" amount="-$22.50" date="1:20 PM" />
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="text-sm font-medium text-muted-foreground mb-3">March 1</h2>
+                  <div className="divide-y">
+                    <TransactionItem merchant="Salary" amount="+$3,500.00" date="9:00 AM" />
+                    <TransactionItem merchant="Netflix" amount="-$14.99" date="8:30 AM" />
+                    <TransactionItem merchant="Grocery Store" amount="-$85.75" date="8:15 AM" />
+                  </div>
+                </div>
               </div>
             </Card>
           </div>

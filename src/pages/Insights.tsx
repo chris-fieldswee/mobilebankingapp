@@ -13,8 +13,8 @@ const Insights = () => {
   const [activeTab, setActiveTab] = useState("spending");
 
   return (
-    <div className="fixed inset-0 bg-background flex flex-col">
-      <header className="flex-none fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
+    <div className="fixed inset-0 bg-background">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
         <div className="max-w-md mx-auto px-4 h-14 flex items-center">
           <Link to="/">
             <Button variant="ghost" size="icon" className="mr-2">
@@ -25,9 +25,9 @@ const Insights = () => {
         </div>
       </header>
 
-      <main className="flex-1 pt-14 overflow-hidden">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
-          <div className="flex-none sticky top-14 z-40 bg-background/80 backdrop-blur-lg border-b">
+      <main className="h-full pt-14">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <div className="sticky top-14 z-40 bg-background/80 backdrop-blur-lg border-b">
             <TabsList className="w-full h-12 bg-transparent">
               <TabsTrigger 
                 value="spending" 
@@ -56,21 +56,19 @@ const Insights = () => {
             </TabsList>
           </div>
 
-          <div className="flex-1 overflow-y-auto">
-            <div className="p-4">
-              <TabsContent value="spending" className="mt-0">
-                <SpendingTab />
-              </TabsContent>
-              <TabsContent value="income" className="mt-0">
-                <IncomeTab />
-              </TabsContent>
-              <TabsContent value="cashflow" className="mt-0">
-                <CashflowTab />
-              </TabsContent>
-              <TabsContent value="budget" className="mt-0">
-                <BudgetTab />
-              </TabsContent>
-            </div>
+          <div className="p-4">
+            <TabsContent value="spending" className="mt-0">
+              <SpendingTab />
+            </TabsContent>
+            <TabsContent value="income" className="mt-0">
+              <IncomeTab />
+            </TabsContent>
+            <TabsContent value="cashflow" className="mt-0">
+              <CashflowTab />
+            </TabsContent>
+            <TabsContent value="budget" className="mt-0">
+              <BudgetTab />
+            </TabsContent>
           </div>
         </Tabs>
       </main>

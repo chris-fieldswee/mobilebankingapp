@@ -1,6 +1,7 @@
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { X, Download, CreditCard, MapPin } from "lucide-react";
+import { X, Download, CreditCard, MapPin, ShoppingCart } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 
@@ -10,7 +11,7 @@ const TransactionDetails = () => {
   return (
     <div className="fixed inset-0 bg-background flex flex-col">
       <header className="flex-none fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground">
-        <div className="max-w-md mx-auto px-4 py-12">
+        <div className="max-w-md mx-auto px-4 py-8">
           <Button
             variant="ghost"
             size="icon"
@@ -21,22 +22,22 @@ const TransactionDetails = () => {
           </Button>
           
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center">
-              <img 
-                src="/lovable-uploads/93b3e387-dac1-4cf5-acb1-8cf6798bca46.png" 
-                alt="Lidl" 
-                className="w-12 h-12 rounded-full"
-              />
+            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+              <ShoppingCart className="h-6 w-6 text-primary-foreground" />
             </div>
-            <div>
-              <h1 className="text-3xl font-bold">-zł 11.61</h1>
+            <div className="flex-1">
+              <h1 className="text-2xl font-bold">-zł 11.61</h1>
               <p className="text-primary-foreground/70">Lidl</p>
             </div>
+            <Card className="bg-white/10 border-0 p-3">
+              <p className="text-xs text-primary-foreground/70">This month at Lidl</p>
+              <p className="text-sm font-medium">zł 156.42</p>
+            </Card>
           </div>
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto pt-48">
+      <main className="flex-1 overflow-y-auto pt-36">
         <div className="max-w-md mx-auto px-4 space-y-6 pb-6">
           <Card className="p-4">
             <div className="space-y-4">
