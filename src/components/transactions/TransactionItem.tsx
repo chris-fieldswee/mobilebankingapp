@@ -13,7 +13,7 @@ const TransactionItem = ({ merchant, amount, date, id = "1" }: TransactionItemPr
 
   return (
     <div 
-      className="flex items-center justify-between py-3 cursor-pointer hover:bg-accent rounded-lg px-2"
+      className="flex items-center justify-between py-3 cursor-pointer hover:bg-secondary rounded-lg px-2"
       onClick={() => navigate(`/transactions/${id}`)}
     >
       <div className="flex items-center">
@@ -25,7 +25,7 @@ const TransactionItem = ({ merchant, amount, date, id = "1" }: TransactionItemPr
           <p className="text-sm text-muted-foreground">{date}</p>
         </div>
       </div>
-      <span className={amount.startsWith('-') ? 'text-destructive' : 'text-green-600'}>
+      <span className={amount.startsWith('-') ? 'text-destructive' : 'text-[#222222]'}>
         {amount}
       </span>
     </div>
