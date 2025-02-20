@@ -13,8 +13,8 @@ const Insights = () => {
   const [activeTab, setActiveTab] = useState("spending");
 
   return (
-    <div className="fixed inset-0 bg-background">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
+    <div className="fixed inset-0 bg-background flex flex-col">
+      <header className="flex-none fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
         <div className="max-w-md mx-auto px-4 h-14 flex items-center">
           <Link to="/">
             <Button variant="ghost" size="icon" className="mr-2">
@@ -25,50 +25,52 @@ const Insights = () => {
         </div>
       </header>
 
-      <main className="h-full pt-14">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <div className="sticky top-14 z-40 bg-background/80 backdrop-blur-lg border-b">
-            <TabsList className="w-full justify-start p-0 h-12 bg-transparent space-x-6 overflow-x-auto flex-nowrap">
+      <main className="flex-1 pt-14 overflow-hidden">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
+          <div className="flex-none sticky top-14 z-40 bg-background/80 backdrop-blur-lg border-b">
+            <TabsList className="w-full h-12 bg-transparent">
               <TabsTrigger 
                 value="spending" 
-                className="data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none px-0"
+                className="flex-1 data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
               >
                 Spending
               </TabsTrigger>
               <TabsTrigger 
                 value="income"
-                className="data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none px-0"
+                className="flex-1 data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
               >
                 Income
               </TabsTrigger>
               <TabsTrigger 
                 value="cashflow"
-                className="data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none px-0"
+                className="flex-1 data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
               >
                 Cashflow
               </TabsTrigger>
               <TabsTrigger 
                 value="budget"
-                className="data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none px-0"
+                className="flex-1 data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
               >
                 Budget
               </TabsTrigger>
             </TabsList>
           </div>
 
-          <div className="p-4">
-            <TabsContent value="spending">
-              <SpendingTab />
-            </TabsContent>
-            <TabsContent value="income">
-              <IncomeTab />
-            </TabsContent>
-            <TabsContent value="cashflow">
-              <CashflowTab />
-            </TabsContent>
-            <TabsContent value="budget">
-              <BudgetTab />
-            </TabsContent>
+          <div className="flex-1 overflow-y-auto">
+            <div className="p-4">
+              <TabsContent value="spending" className="mt-0">
+                <SpendingTab />
+              </TabsContent>
+              <TabsContent value="income" className="mt-0">
+                <IncomeTab />
+              </TabsContent>
+              <TabsContent value="cashflow" className="mt-0">
+                <CashflowTab />
+              </TabsContent>
+              <TabsContent value="budget" className="mt-0">
+                <BudgetTab />
+              </TabsContent>
+            </div>
           </div>
         </Tabs>
       </main>

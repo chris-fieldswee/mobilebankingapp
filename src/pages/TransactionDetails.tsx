@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { X, Download, CreditCard, MapPin } from "lucide-react";
@@ -9,8 +8,8 @@ const TransactionDetails = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="fixed inset-0 bg-background">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground">
+    <div className="fixed inset-0 bg-background flex flex-col">
+      <header className="flex-none fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground">
         <div className="max-w-md mx-auto px-4 py-12">
           <Button
             variant="ghost"
@@ -24,7 +23,7 @@ const TransactionDetails = () => {
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center">
               <img 
-                src="/public/lovable-uploads/93b3e387-dac1-4cf5-acb1-8cf6798bca46.png" 
+                src="/lovable-uploads/93b3e387-dac1-4cf5-acb1-8cf6798bca46.png" 
                 alt="Lidl" 
                 className="w-12 h-12 rounded-full"
               />
@@ -37,8 +36,8 @@ const TransactionDetails = () => {
         </div>
       </header>
 
-      <main className="h-full pt-48">
-        <div className="max-w-md mx-auto px-4 space-y-6">
+      <main className="flex-1 overflow-y-auto pt-48">
+        <div className="max-w-md mx-auto px-4 space-y-6 pb-6">
           <Card className="p-4">
             <div className="space-y-4">
               <div className="flex justify-between items-center">
@@ -91,7 +90,7 @@ const TransactionDetails = () => {
           </Card>
 
           <Card className="p-4">
-            <div className="flex justify-between items-center">
+            <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium">Category</p>
                 <p className="text-sm text-muted-foreground">Helps you track spending</p>
