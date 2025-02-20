@@ -7,23 +7,27 @@ import { Button } from "@/components/ui/button";
 const stories = [
   {
     id: 1,
-    image: "https://source.unsplash.com/random/800x1200?finance",
+    video: "https://www.canva.com/design/DAGfrDnGMOk/8d6DN0YPAwoR4Zhxeuk54A/watch",
     title: "Save smarter",
+    type: "video"
   },
   {
     id: 2,
     image: "https://source.unsplash.com/random/800x1200?money",
     title: "Invest better",
+    type: "image"
   },
   {
     id: 3,
     image: "https://source.unsplash.com/random/800x1200?business",
     title: "Track expenses",
+    type: "image"
   },
   {
     id: 4,
     image: "https://source.unsplash.com/random/800x1200?banking",
     title: "Grow wealth",
+    type: "image"
   },
 ];
 
@@ -87,17 +91,32 @@ const Stories = () => {
     }
   };
 
+  const currentStory = stories[activeStory];
+
   return (
     <div className="fixed inset-0 bg-black">
       <div 
         className="h-full w-full relative"
-        style={{
-          backgroundImage: `url(${stories[activeStory].image})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
         onClick={handleTap}
       >
+        {currentStory.type === "video" ? (
+          <iframe
+            src={currentStory.video}
+            className="absolute inset-0 w-full h-full"
+            allow="autoplay"
+            frameBorder="0"
+          />
+        ) : (
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${currentStory.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
+        )}
+        
         <div className="absolute inset-0 bg-black/20" />
         
         <div className="absolute top-0 left-0 right-0 flex gap-1 p-4 z-10">
@@ -126,7 +145,7 @@ const Stories = () => {
 
         <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
           <h2 className="text-white text-2xl font-semibold">
-            {stories[activeStory].title}
+            {currentStory.title}
           </h2>
         </div>
       </div>
