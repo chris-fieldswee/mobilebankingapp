@@ -24,16 +24,16 @@ const Advisor = () => {
     },
     {
       id: 2,
-      text: "Did you know that your SAB Premier World Mastercard comes with exclusive travel benefits?\n\n• Discounted Foreign Exchange Rates for international transactions\n\n• Complimentary Travel Insurance including trip cancellations, medical coverage, and lost baggage protection",
+      text: "Did you know that your SAB Premier World Mastercard comes with exclusive travel benefits?\n\n• Complimentary Travel Insurance including trip cancellations, medical coverage, and lost baggage protection\n\n• Discounted Foreign Exchange Rates for international transactions",
       sender: "advisor",
       options: [
         {
-          text: "Explore discounted foreign exchange rates",
-          action: () => handleOptionSelect("exchange")
-        },
-        {
           text: "Tell me more about travel insurance",
           action: () => handleOptionSelect("insurance")
+        },
+        {
+          text: "Explore discounted foreign exchange rates",
+          action: () => handleOptionSelect("exchange")
         }
       ]
     }
