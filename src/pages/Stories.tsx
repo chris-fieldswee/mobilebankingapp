@@ -8,7 +8,6 @@ const stories = [
   {
     id: 1,
     image: "/story_1.gif",
-    title: "Save smarter",
     type: "image"
   },
   {
