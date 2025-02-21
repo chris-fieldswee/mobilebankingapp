@@ -55,8 +55,8 @@ const OffersCarousel = () => {
   };
 
   return (
-    <div className="mb-6">
-      <Card className="relative overflow-hidden">
+    <div className="mb-6 w-full">
+      <Card className="relative overflow-hidden w-full">
         <Button
           variant="ghost"
           size="icon"
@@ -67,19 +67,19 @@ const OffersCarousel = () => {
         </Button>
 
         <div 
-          className="flex overflow-x-hidden"
+          className="flex overflow-hidden w-full"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
           <div 
-            className="flex transition-transform duration-300 ease-out"
+            className="flex w-full transition-transform duration-300 ease-out"
             style={{ transform: `translateX(-${currentOffer * 100}%)` }}
           >
             {offers.map((offer) => (
               <div
                 key={offer.id}
-                className="w-full flex-shrink-0"
+                className="w-full flex-shrink-0 min-h-[200px]"
                 style={{ aspectRatio: "16/9" }}
               >
                 <div 
@@ -88,6 +88,7 @@ const OffersCarousel = () => {
                     backgroundImage: `url(${offer.image})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
+                    minHeight: '200px'
                   }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
