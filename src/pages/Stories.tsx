@@ -13,19 +13,16 @@ const stories = [
   {
     id: 2,
     image: "https://source.unsplash.com/random/800x1200?money",
-    title: "Invest better",
     type: "image"
   },
   {
     id: 3,
     image: "https://source.unsplash.com/random/800x1200?business",
-    title: "Track expenses",
     type: "image"
   },
   {
     id: 4,
     image: "https://source.unsplash.com/random/800x1200?banking",
-    title: "Grow wealth",
     type: "image"
   },
 ];
