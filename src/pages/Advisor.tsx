@@ -1,46 +1,81 @@
 
 import { useState } from "react";
 import { ArrowLeft, Send } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-
-const initialMessage = "Hi there, I'm Ana, your personal financial advisor. I've been reviewing your spending insights and noticed that your dining expenses last month were 30% above your average. This trend might be impacting your savings goals. Would you like some tailored recommendations based on your recent activity?";
-
-const followUpMessage = "Based on your recent insights, here's a personalized suggestion: consider setting a dedicated dining budget to help you control these costs. I've seen that by reducing your dining out by just a couple of times a month, you could potentially save around $100 per month. I can help you set up a dining budget alert in the app and provide you with meal planning tips that match your tastes. Would you like to set that up now?";
 
 type Message = {
   id: number;
   text: string;
   sender: "advisor" | "user";
+  options?: {
+    text: string;
+    action?: () => void;
+  }[];
 };
 
 const Advisor = () => {
   const [messages, setMessages] = useState<Message[]>([
-    { id: 1, text: initialMessage, sender: "advisor" }
+    {
+      id: 1,
+      text: "Exciting news, Ali Al-Faisal! We noticed you recently booked a flight with Riyadh Air. Let's make sure you're all set for a smooth journey!",
+      sender: "advisor"
+    },
+    {
+      id: 2,
+      text: "Did you know that your SAB Premier World Mastercard comes with exclusive travel benefits?\n\n• Discounted Foreign Exchange Rates for international transactions\n\n• Complimentary Travel Insurance including trip cancellations, medical coverage, and lost baggage protection",
+      sender: "advisor",
+      options: [
+        {
+          text: "Explore discounted foreign exchange rates",
+          action: () => handleOptionSelect("exchange")
+        },
+        {
+          text: "Tell me more about travel insurance",
+          action: () => handleOptionSelect("insurance")
+        }
+      ]
+    }
   ]);
-  const [input, setInput] = useState("");
 
-  const handleSend = () => {
-    if (!input.trim()) return;
-    
-    const userMessage: Message = {
-      id: Date.now(),
-      text: input,
-      sender: "user"
-    };
-    setMessages(prev => [...prev, userMessage]);
-    setInput("");
+  const navigate = useNavigate();
 
-    setTimeout(() => {
-      const advisorMessage: Message = {
-        id: Date.now() + 1,
-        text: followUpMessage,
+  const handleOptionSelect = (option: "exchange" | "insurance") => {
+    if (option === "insurance") {
+      const insuranceMessage: Message = {
+        id: Date.now(),
+        text: "Great choice! Your SAB Premier World Mastercard includes complimentary travel insurance when you book your trip using the card. Here's what's covered:\n\n• Baggage Loss: Up to SAR 11,250\n\n• Trip Cancellation: Up to SAR 28,125\n\n• Personal Accident Coverage: Up to SAR 1,875,000\n\n• Medical Emergency & Evacuation: Up to SAR 1,875,000",
         sender: "advisor"
       };
-      setMessages(prev => [...prev, advisorMessage]);
-    }, 1000);
+
+      const followUpMessage: Message = {
+        id: Date.now() + 1,
+        text: "Would you like to review your full travel insurance policy and activate coverage?",
+        sender: "advisor",
+        options: [
+          {
+            text: "Yes, show my coverage details",
+            action: () => navigate("/insurance")
+          },
+          {
+            text: "Not now, I'll deal with it later",
+            action: () => null
+          }
+        ]
+      };
+
+      setMessages(prev => [...prev, insuranceMessage, followUpMessage]);
+    } else {
+      const exchangeMessage: Message = {
+        id: Date.now(),
+        text: "With your SAB Premier World Mastercard, you get preferential exchange rates on all international transactions. This means you save on every purchase you make abroad!",
+        sender: "advisor"
+      };
+
+      setMessages(prev => [...prev, exchangeMessage]);
+    }
   };
 
   return (
@@ -64,38 +99,38 @@ const Advisor = () => {
         </div>
       </header>
 
-      <main className="h-full pt-14 pb-[72px] overflow-auto">
+      <main className="h-full pt-14 pb-4 overflow-auto">
         <div className="max-w-md mx-auto p-4 space-y-4">
           {messages.map((message) => (
-            <div
-              key={message.id}
-              className={cn(
-                "max-w-[85%] rounded-2xl p-4",
-                message.sender === "advisor" 
-                  ? "bg-secondary ml-0 mr-auto" 
-                  : "bg-primary text-primary-foreground ml-auto mr-0"
+            <div key={message.id}>
+              <div
+                className={cn(
+                  "max-w-[85%] rounded-2xl p-4",
+                  message.sender === "advisor" 
+                    ? "bg-secondary ml-0 mr-auto" 
+                    : "bg-primary text-primary-foreground ml-auto mr-0"
+                )}
+              >
+                <p className="whitespace-pre-line">{message.text}</p>
+              </div>
+              {message.options && (
+                <div className="mt-4 space-y-2 max-w-[85%]">
+                  {message.options.map((option, index) => (
+                    <Button
+                      key={index}
+                      variant="outline"
+                      className="w-full text-left justify-start h-auto py-3 px-4"
+                      onClick={option.action}
+                    >
+                      {option.text}
+                    </Button>
+                  ))}
+                </div>
               )}
-            >
-              {message.text}
             </div>
           ))}
         </div>
       </main>
-
-      <footer className="fixed bottom-0 left-0 right-0 bg-background border-t p-4">
-        <div className="max-w-md mx-auto flex gap-2">
-          <Input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
-            placeholder="Type a message..."
-            className="flex-1"
-          />
-          <Button onClick={handleSend} size="icon">
-            <Send className="h-5 w-5" />
-          </Button>
-        </div>
-      </footer>
     </div>
   );
 };
