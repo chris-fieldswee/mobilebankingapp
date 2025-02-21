@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 const stories = [
   {
     id: 1,
-    video: "https://www.canva.com/design/DAGfrDnGMOk/8d6DN0YPAwoR4Zhxeuk54A/watch",
+    image: "/story_1.gif",
     title: "Save smarter",
-    type: "video"
+    type: "image"
   },
   {
     id: 2,
