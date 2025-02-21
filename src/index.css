@@ -42,8 +42,48 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-slate-900 text-foreground flex items-center justify-center min-h-screen p-4;
   }
+}
+
+/* iPhone mockup styles */
+.iphone-mockup {
+  position: relative;
+  width: 375px;
+  height: 812px;
+  margin: 0 auto;
+  background: #1a1a1a;
+  border-radius: 60px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+}
+
+.iphone-mockup::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 30px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  z-index: 51;
+}
+
+.iphone-screen {
+  width: 100%;
+  height: 100%;
+  background: hsl(var(--background));
+  border-radius: 45px;
+  overflow: hidden;
+  position: relative;
+}
+
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .slide-up {
