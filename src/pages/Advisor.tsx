@@ -99,33 +99,35 @@ const Advisor = () => {
       </header>
 
       <main className="h-full pt-14 pb-4 overflow-auto">
-        <div className="max-w-md mx-auto p-4 space-y-4">
+        <div className="max-w-md mx-auto p-4">
           {messages.map((message) => (
-            <div key={message.id}>
-              <div
-                className={cn(
-                  "max-w-[85%] rounded-2xl p-4",
-                  message.sender === "advisor" 
-                    ? "bg-secondary ml-0 mr-auto" 
-                    : "bg-primary text-primary-foreground ml-auto mr-0"
-                )}
-              >
-                <p className="whitespace-pre-line">{message.text}</p>
-              </div>
-              {message.options && (
-                <div className="mt-4 space-y-2 max-w-[85%]">
-                  {message.options.map((option, index) => (
-                    <Button
-                      key={index}
-                      variant="outline"
-                      className="w-full text-left justify-start h-auto py-3 px-4"
-                      onClick={option.action}
-                    >
-                      {option.text}
-                    </Button>
-                  ))}
+            <div key={message.id} className="mb-6">
+              <div className="flex flex-col gap-3">
+                <div
+                  className={cn(
+                    "max-w-[85%] rounded-2xl p-4",
+                    message.sender === "advisor" 
+                      ? "bg-secondary ml-0 mr-auto rounded-bl-none" 
+                      : "bg-primary text-primary-foreground ml-auto mr-0 rounded-br-none"
+                  )}
+                >
+                  <p className="whitespace-pre-line">{message.text}</p>
                 </div>
-              )}
+                {message.options && (
+                  <div className="flex flex-col gap-2 items-end">
+                    {message.options.map((option, index) => (
+                      <Button
+                        key={index}
+                        variant="outline"
+                        className="text-left justify-start h-auto py-3 px-4 w-[85%] ml-auto hover:bg-primary hover:text-primary-foreground"
+                        onClick={option.action}
+                      >
+                        {option.text}
+                      </Button>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
