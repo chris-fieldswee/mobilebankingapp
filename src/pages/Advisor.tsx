@@ -98,7 +98,7 @@ const Advisor = () => {
                 <div className="w-full h-full rounded-full bg-purple-100" />
               </div>
               <div 
-                className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-500 animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]"
+                className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-500 pulse"
               />
               <div 
                 className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-500"
