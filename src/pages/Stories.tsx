@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Pause, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -37,30 +37,33 @@ const Stories = () => {
   const [activeStory, setActiveStory] = useState(0);
   const [progress, setProgress] = useState(0);
   const [intervalId, setIntervalId] = useState<number | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   const startTimer = () => {
     if (intervalId) clearInterval(intervalId);
     
-    const startTime = Date.now();
-    const newIntervalId = window.setInterval(() => {
-      const elapsedTime = Date.now() - startTime;
-      const newProgress = (elapsedTime / STORY_DURATION) * 100;
-      
-      if (newProgress >= 100) {
-        setProgress(0);
-        setActiveStory((prev) => {
-          if (prev === stories.length - 1) {
-            window.history.back();
-            return prev;
-          }
-          return prev + 1;
-        });
-      } else {
-        setProgress(newProgress);
-      }
-    }, 16);
+    if (!isPaused) {
+      const startTime = Date.now() - (progress / 100 * STORY_DURATION);
+      const newIntervalId = window.setInterval(() => {
+        const elapsedTime = Date.now() - startTime;
+        const newProgress = (elapsedTime / STORY_DURATION) * 100;
+        
+        if (newProgress >= 100) {
+          setProgress(0);
+          setActiveStory((prev) => {
+            if (prev === stories.length - 1) {
+              window.history.back();
+              return prev;
+            }
+            return prev + 1;
+          });
+        } else {
+          setProgress(newProgress);
+        }
+      }, 16);
 
-    setIntervalId(newIntervalId);
+      setIntervalId(newIntervalId);
+    }
   };
 
   useEffect(() => {
@@ -68,20 +71,27 @@ const Stories = () => {
     return () => {
       if (intervalId) clearInterval(intervalId);
     };
-  }, [activeStory]);
+  }, [activeStory, isPaused]);
+
+  const togglePause = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsPaused(!isPaused);
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+    }
+  };
 
   const handleTap = (e: React.MouseEvent) => {
     const x = e.clientX;
     const width = window.innerWidth;
     
     if (x < width / 2) {
-      // Tap left side
       if (activeStory > 0) {
         setProgress(0);
         setActiveStory(prev => prev - 1);
       }
     } else {
-      // Tap right side
       if (activeStory < stories.length - 1) {
         setProgress(0);
         setActiveStory(prev => prev + 1);
@@ -135,12 +145,24 @@ const Stories = () => {
           ))}
         </div>
 
-        <div className="absolute top-0 left-0 right-0 p-4 pt-8 z-10">
+        <div className="absolute top-0 left-0 right-0 p-4 pt-8 z-10 flex justify-between items-center">
           <Link to="/">
             <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
               <ArrowLeft className="h-6 w-6" />
             </Button>
           </Link>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-white hover:bg-white/20"
+            onClick={togglePause}
+          >
+            {isPaused ? (
+              <Play className="h-6 w-6" />
+            ) : (
+              <Pause className="h-6 w-6" />
+            )}
+          </Button>
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">

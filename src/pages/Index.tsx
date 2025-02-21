@@ -9,6 +9,7 @@ import RecentTransactions from "@/components/transactions/RecentTransactions";
 import UpcomingTransactions from "@/components/transactions/UpcomingTransactions";
 import PayeesCarousel from "@/components/widgets/PayeesCarousel";
 import TotalWealth from "@/components/widgets/TotalWealth";
+import OffersCarousel from "@/components/widgets/OffersCarousel";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
           <QuickActions />
           <SpendingChallengeWidget />
           <SpendingChart />
+          <OffersCarousel />
           <RecentTransactions />
           <PayeesCarousel />
           <UpcomingTransactions />
