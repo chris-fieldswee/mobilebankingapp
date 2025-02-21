@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
@@ -89,22 +88,19 @@ const Advisor = () => {
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center relative">
               <span className="text-lg font-semibold text-purple-600 z-10">A</span>
-              {/* Gradient stroke */}
               <div 
-                className="absolute inset-0 rounded-full"
+                className="absolute inset-0 rounded-full bg-gradient-to-br from-red-500 to-rose-400"
                 style={{
-                  background: 'linear-gradient(45deg, #ff0000, #ff6b6b)',
                   padding: '2px',
                 }}
               >
                 <div className="w-full h-full rounded-full bg-purple-100" />
               </div>
-              {/* Pulsing dot */}
+              <div 
+                className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-500 animate-[ping_1.5s_ease-in-out_infinite]"
+              />
               <div 
                 className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-500"
-                style={{
-                  animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-                }}
               />
             </div>
             <div>
