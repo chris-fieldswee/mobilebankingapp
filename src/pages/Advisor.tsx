@@ -88,17 +88,24 @@ const Advisor = () => {
           </Link>
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center relative">
-              <span className="text-lg font-semibold text-purple-600">A</span>
-              {/* Gradient stroke using pseudo-element */}
-              <div className="absolute inset-0 rounded-full border-2 border-transparent bg-clip-border" 
-                style={{ 
-                  background: 'linear-gradient(45deg, #ff0000, #ff6b6b) border-box'
-                }} 
-              />
-              {/* Pulsing red dot */}
-              <div className="absolute top-0 right-0 translate-x-1/3 -translate-y-1/3">
-                <div className="h-3 w-3 rounded-full bg-red-500 animate-pulse" />
+              <span className="text-lg font-semibold text-purple-600 z-10">A</span>
+              {/* Gradient stroke */}
+              <div 
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: 'linear-gradient(45deg, #ff0000, #ff6b6b)',
+                  padding: '2px',
+                }}
+              >
+                <div className="w-full h-full rounded-full bg-purple-100" />
               </div>
+              {/* Pulsing dot */}
+              <div 
+                className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-500"
+                style={{
+                  animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                }}
+              />
             </div>
             <div>
               <h2 className="font-semibold">Ana</h2>
