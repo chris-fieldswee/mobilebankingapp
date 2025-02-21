@@ -10,7 +10,7 @@ const TopNav = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-between gap-3">
         <Button variant="ghost" size="icon" className="rounded-full">
           <CircleUserRound className="h-7 w-7" />
