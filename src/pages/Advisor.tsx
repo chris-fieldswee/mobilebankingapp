@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
@@ -95,10 +96,6 @@ const Advisor = () => {
                 }}
               >
                 <div className="w-full h-full rounded-full bg-purple-100" />
-              </div>
-              <div className="absolute -top-1 -right-1 w-3 h-3">
-                <span className="absolute inline-flex w-full h-full rounded-full bg-red-400 opacity-75 animate-ping"></span>
-                <span className="absolute inline-flex w-full h-full rounded-full bg-red-500"></span>
               </div>
             </div>
             <div>

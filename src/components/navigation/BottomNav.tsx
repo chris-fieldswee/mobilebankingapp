@@ -23,16 +23,21 @@ const BottomNav = () => {
             <Button
               variant="ghost"
               className={cn(
-                "flex flex-col items-center py-1 px-3 rounded-lg hover:bg-transparent",
+                "flex flex-col items-center py-1 px-3 rounded-lg hover:bg-transparent relative",
                 active === index && "text-primary"
               )}
               onClick={() => setActive(index)}
             >
-              <item.icon className="h-5 w-5 mb-1" />
+              <div className="relative">
+                <item.icon className="h-5 w-5 mb-1" />
+                {item.hasNotification && (
+                  <div className="absolute -top-1 -right-1 w-2 h-2">
+                    <span className="absolute inline-flex w-full h-full rounded-full bg-red-400 opacity-75 animate-ping"></span>
+                    <span className="absolute inline-flex w-full h-full rounded-full bg-red-500"></span>
+                  </div>
+                )}
+              </div>
               <span className="text-xs">{item.label}</span>
-              {item.hasNotification && (
-                <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
-              )}
             </Button>
           </Link>
         ))}
