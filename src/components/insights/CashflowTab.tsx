@@ -139,18 +139,20 @@ const CashflowTab = () => {
             {charts[activeChart].chart}
           </div>
 
-          <div className="flex gap-2 mt-4">
-            {periodOptions.map((period) => (
-              <Button
-                key={period}
-                variant={selectedPeriod === period ? "default" : "outline"}
-                onClick={() => setSelectedPeriod(period)}
-                className="flex-1"
-              >
-                {period}
-              </Button>
-            ))}
-          </div>
+          {activeChart === 0 && (
+            <div className="flex gap-2 mt-4">
+              {periodOptions.map((period) => (
+                <Button
+                  key={period}
+                  variant={selectedPeriod === period ? "default" : "outline"}
+                  onClick={() => setSelectedPeriod(period)}
+                  className="flex-1"
+                >
+                  {period}
+                </Button>
+              ))}
+            </div>
+          )}
         </Card>
       </div>
 
@@ -222,6 +224,30 @@ const CashflowTab = () => {
                 <div className="text-right">
                   <p className="font-medium text-destructive">-$ {item.amount}</p>
                   <p className="text-sm text-muted-foreground">{item.percentage}</p>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="mb-4">
+          <div className="flex justify-between items-center">
+            <h3 className="font-semibold">Upcoming Transactions</h3>
+            <span className="text-sm font-medium">-$ {upcomingTotal.toFixed(2)}</span>
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          {upcomingTransactions.map((item) => (
+            <Card key={item.name} className="p-4">
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="font-medium">{item.name}</p>
+                </div>
+                <div className="text-right">
+                  <p className="font-medium text-destructive">-$ {item.amount.toFixed(2)}</p>
                 </div>
               </div>
             </Card>
