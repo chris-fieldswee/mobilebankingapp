@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BarChart, Bar, XAxis, ResponsiveContainer } from "recharts";
+import { TrendingUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const periodOptions = ["1W", "1M", "6M", "1Y"];
 
@@ -39,6 +41,7 @@ const periodData = {
 
 const IncomeTab = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("1M");
+  const navigate = useNavigate();
   const incomeData = periodData[selectedPeriod as keyof typeof periodData];
 
   return (
@@ -83,6 +86,26 @@ const IncomeTab = () => {
           </div>
         </Card>
       </div>
+
+      <Card className="p-4 bg-accent">
+        <div className="flex gap-4">
+          <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center flex-shrink-0">
+            <TrendingUp className="h-5 w-5 text-primary" />
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm">
+              Noticed a salary increase? Congratulations! How about enjoying extra flexibility with our Platinum Credit Card?
+            </p>
+            <Button 
+              variant="default" 
+              onClick={() => navigate('/platinum-card-offer')}
+              className="w-full sm:w-auto"
+            >
+              See Benefits
+            </Button>
+          </div>
+        </div>
+      </Card>
 
       <div className="space-y-3">
         <Card className="p-4">
