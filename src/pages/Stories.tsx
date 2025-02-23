@@ -1,7 +1,6 @@
-
 import { useEffect, useState } from "react";
 import { ArrowLeft, Pause, Play } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 interface Story {
@@ -69,6 +68,7 @@ const Stories = () => {
   const [activeStory, setActiveStory] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isControlsVisible, setIsControlsVisible] = useState(false);
 
   useEffect(() => {
     let animationFrameId: number;
@@ -138,7 +138,11 @@ const Stories = () => {
   const currentStory = stories[activeStory];
 
   return (
-    <div className="fixed inset-0 bg-black">
+    <div 
+      className="fixed inset-0 bg-black"
+      onMouseEnter={() => setIsControlsVisible(true)}
+      onMouseLeave={() => setIsControlsVisible(false)}
+    >
       <div 
         className="h-full w-full relative"
         onClick={handleTap}
@@ -156,7 +160,7 @@ const Stories = () => {
         </div>
 
         <div className="absolute inset-0 z-10 pointer-events-none">
-          <div className="absolute top-0 left-0 right-0 flex gap-1 p-4">
+          <div className={`absolute top-0 left-0 right-0 flex gap-1 p-4 transition-opacity duration-200 ${isControlsVisible ? 'opacity-100' : 'opacity-0'}`}>
             {stories.map((_, index) => (
               <div 
                 key={index}
@@ -172,7 +176,7 @@ const Stories = () => {
             ))}
           </div>
 
-          <div className="absolute top-0 left-0 right-0 p-4 pt-8 flex justify-between items-center pointer-events-auto">
+          <div className={`absolute top-0 left-0 right-0 p-4 pt-8 flex justify-between items-center pointer-events-auto transition-opacity duration-200 ${isControlsVisible ? 'opacity-100' : 'opacity-0'}`}>
             <Button 
               variant="ghost" 
               size="icon" 

@@ -1,7 +1,7 @@
 
 import { Home, Send, MessageSquare, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const menuItems = [
   { icon: Home, label: "Home", path: "/" },
@@ -12,14 +12,15 @@ const menuItems = [
 
 const BottomNav = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-around">
         {menuItems.map((item) => (
-          <Link 
-            key={item.label} 
-            to={item.path}
+          <button
+            key={item.label}
+            onClick={() => navigate(item.path)}
             className={cn(
               "flex flex-col items-center py-1 px-3 rounded-lg hover:bg-transparent relative",
               location.pathname === item.path && "text-primary"
@@ -35,7 +36,7 @@ const BottomNav = () => {
               )}
             </div>
             <span className="text-xs">{item.label}</span>
-          </Link>
+          </button>
         ))}
       </div>
     </nav>
