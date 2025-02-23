@@ -1,7 +1,8 @@
 
 import { Card } from "@/components/ui/card";
 import { CircularProgressBar } from "@/components/insights/CircularProgressBar";
-import { AlertTriangle, Calendar, Coins } from "lucide-react";
+import { AlertCircle, Calendar, Coins } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const BudgetTab = () => {
   const budget = 2000;
@@ -9,6 +10,8 @@ const BudgetTab = () => {
   const excess = spent - budget;
   const progress = (spent / budget) * 100;
   const isOverBudget = spent > budget;
+  const remainingBudget = Math.max(budget - spent, 0);
+  const utilizationPercentage = Math.min(Math.round((spent / budget) * 100), 100);
 
   return (
     <div className="space-y-6">
@@ -40,52 +43,55 @@ const BudgetTab = () => {
         </div>
       </Card>
 
-      <div className="space-y-3">
-        <Card className="p-4 bg-secondary border-[#222222]">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#222222]/10 flex items-center justify-center">
-                <AlertTriangle className="h-5 w-5 text-[#222222]" />
-              </div>
-              <div>
-                <p className="font-medium text-[#222222]">Overspent</p>
-                <p className="text-sm text-muted-foreground">9 days left</p>
-              </div>
-            </div>
-            <span className="font-medium text-[#222222]">zł {excess}</span>
+      <Card className="p-4 bg-accent">
+        <div className="flex gap-4">
+          <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center flex-shrink-0">
+            <AlertCircle className="h-5 w-5 text-primary" />
           </div>
-        </Card>
+          <div className="space-y-2">
+            <p className="text-sm">
+              Heads up! You've used {utilizationPercentage}% of your budget for this month. 
+              You have zł {remainingBudget} left to spend. Stay mindful of your spending to reach your budgeting target.
+            </p>
+            <Button 
+              variant="default" 
+              className="w-full sm:w-auto"
+            >
+              View Details
+            </Button>
+          </div>
+        </div>
+      </Card>
 
-        <Card className="p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                <Calendar className="h-5 w-5 text-[#222222]" />
-              </div>
-              <div>
-                <p className="font-medium">Upcoming</p>
-                <p className="text-sm text-muted-foreground">1 transaction</p>
-              </div>
+      <Card className="p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+              <Calendar className="h-5 w-5 text-[#222222]" />
             </div>
-            <span className="font-medium">zł 55.99</span>
+            <div>
+              <p className="font-medium">Upcoming</p>
+              <p className="text-sm text-muted-foreground">1 transaction</p>
+            </div>
           </div>
-        </Card>
+          <span className="font-medium">zł 55.99</span>
+        </div>
+      </Card>
 
-        <Card className="p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                <Coins className="h-5 w-5 text-[#222222]" />
-              </div>
-              <div>
-                <p className="font-medium">Spent this month</p>
-                <p className="text-sm text-muted-foreground">51 transactions</p>
-              </div>
+      <Card className="p-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+              <Coins className="h-5 w-5 text-[#222222]" />
             </div>
-            <span className="font-medium">zł {spent}</span>
+            <div>
+              <p className="font-medium">Spent this month</p>
+              <p className="text-sm text-muted-foreground">51 transactions</p>
+            </div>
           </div>
-        </Card>
-      </div>
+          <span className="font-medium">zł {spent}</span>
+        </div>
+      </Card>
     </div>
   );
 };
