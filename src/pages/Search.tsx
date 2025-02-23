@@ -9,12 +9,6 @@ import { Card } from "@/components/ui/card";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [showResults, setShowResults] = useState(false);
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    setShowResults(true);
-  };
 
   useEffect(() => {
     const input = document.getElementById("searchInput");
@@ -26,7 +20,7 @@ const Search = () => {
   return (
     <div className="fixed inset-0 bg-background z-50">
       <header className="border-b bg-background">
-        <form onSubmit={handleSearch} className="max-w-md mx-auto px-4 h-14 flex items-center gap-3">
+        <form className="max-w-md mx-auto px-4 h-14 flex items-center gap-3">
           <Link to="/">
             <Button variant="ghost" size="icon">
               <ArrowLeft className="h-6 w-6" />
@@ -41,6 +35,7 @@ const Search = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="bg-secondary"
               placeholder="How much have I spent on gas this month?"
+              autoComplete="off"
             />
             {searchQuery && (
               <Button
@@ -56,8 +51,8 @@ const Search = () => {
         </form>
       </header>
 
-      {showResults && (
-        <main className="max-w-md mx-auto p-4 overflow-auto h-[calc(100%-3.5rem)]">
+      <main className="max-w-md mx-auto p-4 overflow-auto h-[calc(100%-3.5rem)]">
+        {searchQuery && (
           <div className="space-y-6">
             {/* Insight Card */}
             <Card className="p-4 bg-secondary/50">
@@ -147,8 +142,8 @@ const Search = () => {
               </Card>
             </div>
           </div>
-        </main>
-      )}
+        )}
+      </main>
     </div>
   );
 };
