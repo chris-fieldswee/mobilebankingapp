@@ -110,6 +110,12 @@ const Stories = () => {
     setIsPaused(!isPaused);
   };
 
+  const handleNavigateHome = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate('/', { replace: true });
+  };
+
   const handleTap = (e: React.MouseEvent) => {
     const x = e.clientX;
     const width = window.innerWidth;
@@ -137,50 +143,57 @@ const Stories = () => {
         className="h-full w-full relative"
         onClick={handleTap}
       >
-        <div
-          className="absolute inset-0 bg-black"
-          style={{
-            backgroundImage: `url(${currentStory.image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}
-        />
-        
-        <div className="absolute top-0 left-0 right-0 flex gap-1 p-4 z-10">
-          {stories.map((_, index) => (
-            <div 
-              key={index}
-              className="h-1 flex-1 bg-white/30 rounded-full overflow-hidden"
-            >
-              <div 
-                className="h-full bg-white transition-all duration-[16ms] ease-linear origin-left"
-                style={{
-                  transform: `scaleX(${index === activeStory ? progress / 100 : index < activeStory ? 1 : 0})`,
-                }} 
-              />
-            </div>
-          ))}
+        <div className="absolute inset-0 z-0">
+          <div
+            className="absolute inset-0 bg-black"
+            style={{
+              backgroundImage: `url(${currentStory.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
         </div>
 
-        <div className="absolute top-0 left-0 right-0 p-4 pt-8 z-10 flex justify-between items-center">
-          <Link to="/" className="no-underline">
-            <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
+        <div className="absolute inset-0 z-10 pointer-events-none">
+          <div className="absolute top-0 left-0 right-0 flex gap-1 p-4">
+            {stories.map((_, index) => (
+              <div 
+                key={index}
+                className="h-1 flex-1 bg-white/30 rounded-full overflow-hidden"
+              >
+                <div 
+                  className="h-full bg-white transition-all duration-[16ms] ease-linear origin-left"
+                  style={{
+                    transform: `scaleX(${index === activeStory ? progress / 100 : index < activeStory ? 1 : 0})`,
+                  }} 
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="absolute top-0 left-0 right-0 p-4 pt-8 flex justify-between items-center pointer-events-auto">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="text-white hover:bg-white/20"
+              onClick={handleNavigateHome}
+            >
               <ArrowLeft className="h-6 w-6" />
             </Button>
-          </Link>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-white hover:bg-white/20"
-            onClick={togglePause}
-          >
-            {isPaused ? (
-              <Play className="h-6 w-6" />
-            ) : (
-              <Pause className="h-6 w-6" />
-            )}
-          </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-white hover:bg-white/20"
+              onClick={togglePause}
+            >
+              {isPaused ? (
+                <Play className="h-6 w-6" />
+              ) : (
+                <Pause className="h-6 w-6" />
+              )}
+            </Button>
+          </div>
         </div>
       </div>
     </div>
