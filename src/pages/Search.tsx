@@ -23,11 +23,15 @@ const Search = () => {
     navigate(-1);
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent form submission
+  };
+
   return (
     <div className="fixed inset-0 bg-background z-50">
       <header className="border-b bg-background">
-        <form className="max-w-md mx-auto px-4 h-14 flex items-center gap-3">
-          <Button variant="ghost" size="icon" onClick={handleBack}>
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto px-4 h-14 flex items-center gap-3">
+          <Button variant="ghost" size="icon" onClick={handleBack} type="button">
             <ArrowLeft className="h-6 w-6" />
           </Button>
           
@@ -47,6 +51,7 @@ const Search = () => {
                 size="icon"
                 className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8"
                 onClick={() => setSearchQuery("")}
+                type="button"
               >
                 <X className="h-4 w-4" />
               </Button>
