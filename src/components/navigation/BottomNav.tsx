@@ -3,7 +3,7 @@ import { Home, Send, MessageSquare, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const menuItems = [
   { icon: Home, label: "Home", path: "/" },
@@ -13,20 +13,26 @@ const menuItems = [
 ];
 
 const BottomNav = () => {
+  const location = useLocation();
   const [active, setActive] = useState(0);
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-around">
         {menuItems.map((item, index) => (
-          <Link key={item.label} to={item.path} className="relative">
+          <Link 
+            key={item.label} 
+            to={item.path} 
+            className="relative"
+            onClick={() => setActive(index)}
+          >
             <Button
               variant="ghost"
               className={cn(
                 "flex flex-col items-center py-1 px-3 rounded-lg hover:bg-transparent relative",
                 active === index && "text-primary"
               )}
-              onClick={() => setActive(index)}
+              type="button"
             >
               <div className="relative">
                 <item.icon className="h-5 w-5 mb-1" />

@@ -27,22 +27,22 @@ const TopNav = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <Link to="/stories">
-            <Button variant="ghost" size="icon" className="rounded-full relative">
+          <Link to="/stories" className="relative">
+            <Button variant="ghost" size="icon" className="rounded-full relative" type="button">
               <Zap className="h-6 w-6" />
               <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
             </Button>
           </Link>
           
-          <Link to="/notifications">
-            <Button variant="ghost" size="icon" className="rounded-full relative">
+          <Link to="/notifications" className="relative">
+            <Button variant="ghost" size="icon" className="rounded-full relative" type="button">
               <Bell className="h-6 w-6" />
               <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
             </Button>
           </Link>
 
-          <Link to="/insights">
-            <Button variant="ghost" size="icon" className="rounded-full">
+          <Link to="/insights" className="relative">
+            <Button variant="ghost" size="icon" className="rounded-full" type="button">
               <BarChart2 className="h-6 w-6" />
             </Button>
           </Link>

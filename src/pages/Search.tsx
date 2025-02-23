@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { ArrowLeft, X, LightbulbIcon, CreditCard, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -41,7 +40,6 @@ const Search = () => {
               className="bg-secondary"
               placeholder="How much have I spent on gas this month?"
               autoComplete="off"
-              autoFocus
             />
             {searchQuery && (
               <Button
