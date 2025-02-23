@@ -1,7 +1,7 @@
 
 import { Home, Send, MessageSquare, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const menuItems = [
   { icon: Home, label: "Home", path: "/" },
@@ -15,15 +15,10 @@ const BottomNav = () => {
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-around">
         {menuItems.map((item) => (
-          <NavLink
+          <Link
             key={item.label}
             to={item.path}
-            className={({ isActive }) =>
-              cn(
-                "flex flex-col items-center py-1 px-3 rounded-lg hover:bg-accent/50 relative no-underline",
-                isActive ? "text-primary" : "text-foreground"
-              )
-            }
+            className="flex flex-col items-center py-1 px-3 rounded-lg hover:bg-accent/50 relative no-underline text-foreground"
           >
             <div className="relative">
               <item.icon className="h-5 w-5 mb-1" />
@@ -35,7 +30,7 @@ const BottomNav = () => {
               )}
             </div>
             <span className="text-xs">{item.label}</span>
-          </NavLink>
+          </Link>
         ))}
       </div>
     </nav>

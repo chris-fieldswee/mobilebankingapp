@@ -1,6 +1,5 @@
 
 import { Search, Bell, Zap, BarChart2, CircleUserRound } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
 
@@ -8,7 +7,10 @@ const TopNav = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-between gap-3">
-        <Link to="/profile">
+        <Link 
+          to="/profile" 
+          className="rounded-full p-2 hover:bg-accent"
+        >
           <CircleUserRound className="h-7 w-7" />
         </Link>
         
@@ -28,30 +30,27 @@ const TopNav = () => {
         </Link>
         
         <div className="flex items-center space-x-3">
-          <Link to="/stories" className="no-underline">
-            <div
-              className="rounded-full relative p-2 hover:bg-accent"
-            >
-              <Zap className="h-6 w-6" />
-              <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
-            </div>
+          <Link 
+            to="/stories" 
+            className="rounded-full relative p-2 hover:bg-accent no-underline"
+          >
+            <Zap className="h-6 w-6" />
+            <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
           </Link>
           
-          <Link to="/notifications" className="no-underline">
-            <div
-              className="rounded-full relative p-2 hover:bg-accent"
-            >
-              <Bell className="h-6 w-6" />
-              <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
-            </div>
+          <Link 
+            to="/notifications" 
+            className="rounded-full relative p-2 hover:bg-accent no-underline"
+          >
+            <Bell className="h-6 w-6" />
+            <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
           </Link>
 
-          <Link to="/insights" className="no-underline">
-            <div
-              className="rounded-full p-2 hover:bg-accent"
-            >
-              <BarChart2 className="h-6 w-6" />
-            </div>
+          <Link 
+            to="/insights" 
+            className="rounded-full p-2 hover:bg-accent no-underline"
+          >
+            <BarChart2 className="h-6 w-6" />
           </Link>
         </div>
       </div>
