@@ -2,11 +2,9 @@
 import { Search, Bell, Zap, BarChart2, CircleUserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const TopNav = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   return (
@@ -16,15 +14,14 @@ const TopNav = () => {
           <CircleUserRound className="h-7 w-7" />
         </Button>
         
-        <div className="flex-1 max-w-[180px]">
-          <div className="relative">
+        <div className="flex-1 max-w-[180px]" onClick={() => navigate('/search')}>
+          <div className="relative cursor-pointer">
             <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               type="text"
               placeholder="Search..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-8 h-9 bg-secondary"
+              className="pl-8 h-9 bg-secondary pointer-events-none"
+              readOnly
             />
           </div>
         </div>
