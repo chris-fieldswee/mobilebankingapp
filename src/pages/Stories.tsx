@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { ArrowLeft, Pause, Play } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 interface Story {
@@ -65,51 +65,49 @@ const stories: Story[] = [
 const STORY_DURATION = 5000; // 5 seconds per story
 
 const Stories = () => {
+  const navigate = useNavigate();
   const [activeStory, setActiveStory] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [intervalId, setIntervalId] = useState<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
 
-  const startTimer = () => {
-    if (intervalId) clearInterval(intervalId);
-    
-    if (!isPaused) {
-      const startTime = Date.now() - (progress / 100 * STORY_DURATION);
-      const newIntervalId = window.setInterval(() => {
-        const elapsedTime = Date.now() - startTime;
-        const newProgress = (elapsedTime / STORY_DURATION) * 100;
-        
-        if (newProgress >= 100) {
-          setProgress(0);
-          setActiveStory((prev) => {
-            if (prev === stories.length - 1) {
-              return prev;
-            }
-            return prev + 1;
-          });
-        } else {
-          setProgress(newProgress);
-        }
-      }, 16);
-
-      setIntervalId(newIntervalId);
-    }
-  };
-
   useEffect(() => {
-    startTimer();
-    return () => {
-      if (intervalId) clearInterval(intervalId);
+    let animationFrameId: number;
+    let startTime: number;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      if (isPaused) return;
+
+      const elapsed = timestamp - startTime;
+      const newProgress = (elapsed / STORY_DURATION) * 100;
+
+      if (newProgress >= 100) {
+        if (activeStory === stories.length - 1) {
+          navigate('/', { replace: true });
+          return;
+        }
+        setActiveStory(prev => prev + 1);
+        setProgress(0);
+        startTime = timestamp;
+      } else {
+        setProgress(newProgress);
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
     };
-  }, [activeStory, isPaused]);
+
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [activeStory, isPaused, navigate]);
 
   const togglePause = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsPaused(!isPaused);
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-    }
   };
 
   const handleTap = (e: React.MouseEvent) => {
@@ -126,7 +124,7 @@ const Stories = () => {
         setProgress(0);
         setActiveStory(prev => prev + 1);
       } else {
-        window.history.back();
+        navigate('/', { replace: true });
       }
     }
   };
@@ -140,7 +138,7 @@ const Stories = () => {
         onClick={handleTap}
       >
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 bg-black"
           style={{
             backgroundImage: `url(${currentStory.image})`,
             backgroundSize: 'contain',
@@ -168,7 +166,7 @@ const Stories = () => {
         </div>
 
         <div className="absolute top-0 left-0 right-0 p-4 pt-8 z-10 flex justify-between items-center">
-          <Link to="/">
+          <Link to="/" className="no-underline">
             <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
               <ArrowLeft className="h-6 w-6" />
             </Button>
