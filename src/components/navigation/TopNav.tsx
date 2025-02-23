@@ -2,11 +2,9 @@
 import { Search, Bell, Zap, BarChart2, CircleUserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const TopNav = () => {
-  const navigate = useNavigate();
-
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-between gap-3">
@@ -14,9 +12,9 @@ const TopNav = () => {
           <CircleUserRound className="h-7 w-7" />
         </Button>
         
-        <div 
-          className="flex-1 max-w-[180px]" 
-          onClick={() => navigate('/search')}
+        <Link 
+          to="/search"
+          className="flex-1 max-w-[180px]"
         >
           <div className="relative cursor-pointer">
             <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -27,40 +25,43 @@ const TopNav = () => {
               readOnly
             />
           </div>
-        </div>
+        </Link>
         
         <div className="flex items-center space-x-3">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full relative"
-            onClick={() => navigate('/stories')}
-            type="button"
-          >
-            <Zap className="h-6 w-6" />
-            <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
-          </Button>
+          <Link to="/stories" className="no-underline">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full relative"
+              type="button"
+            >
+              <Zap className="h-6 w-6" />
+              <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
+            </Button>
+          </Link>
           
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full relative"
-            onClick={() => navigate('/notifications')}
-            type="button"
-          >
-            <Bell className="h-6 w-6" />
-            <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
-          </Button>
+          <Link to="/notifications" className="no-underline">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full relative"
+              type="button"
+            >
+              <Bell className="h-6 w-6" />
+              <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
+            </Button>
+          </Link>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full"
-            onClick={() => navigate('/insights')}
-            type="button"
-          >
-            <BarChart2 className="h-6 w-6" />
-          </Button>
+          <Link to="/insights" className="no-underline">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="rounded-full"
+              type="button"
+            >
+              <BarChart2 className="h-6 w-6" />
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>
