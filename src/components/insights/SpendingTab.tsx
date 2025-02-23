@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -57,10 +56,6 @@ const SpendingTab = () => {
 
   const totalSpent = 2450;
   const spendingData = periodData[selectedPeriod as keyof typeof periodData];
-
-  const handleSetBudget = () => {
-    setSearchParams({ tab: 'budget' });
-  };
 
   return (
     <div className="space-y-6">
@@ -145,7 +140,6 @@ const SpendingTab = () => {
             </p>
             <Button 
               variant="default" 
-              onClick={handleSetBudget}
               className="w-full sm:w-auto"
             >
               Set a Budget

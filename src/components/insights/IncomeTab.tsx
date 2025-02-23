@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -98,7 +97,6 @@ const IncomeTab = () => {
             </p>
             <Button 
               variant="default" 
-              onClick={() => navigate('/platinum-card-offer')}
               className="w-full sm:w-auto"
             >
               See Benefits
