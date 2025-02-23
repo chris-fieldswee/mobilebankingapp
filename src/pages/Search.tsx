@@ -3,29 +3,34 @@ import { useState, useEffect } from "react";
 import { ArrowLeft, X, LightbulbIcon, CreditCard, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TransactionItem from "@/components/transactions/TransactionItem";
 import { Card } from "@/components/ui/card";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // Focus input when component mounts
     const input = document.getElementById("searchInput");
     if (input) {
       input.focus();
     }
   }, []);
 
+  const handleBack = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate(-1);
+  };
+
   return (
     <div className="fixed inset-0 bg-background z-50">
       <header className="border-b bg-background">
         <form className="max-w-md mx-auto px-4 h-14 flex items-center gap-3">
-          <Link to="/">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="h-6 w-6" />
-            </Button>
-          </Link>
+          <Button variant="ghost" size="icon" onClick={handleBack}>
+            <ArrowLeft className="h-6 w-6" />
+          </Button>
           
           <div className="flex-1 relative">
             <Input
@@ -36,6 +41,7 @@ const Search = () => {
               className="bg-secondary"
               placeholder="How much have I spent on gas this month?"
               autoComplete="off"
+              autoFocus
             />
             {searchQuery && (
               <Button
@@ -52,7 +58,7 @@ const Search = () => {
       </header>
 
       <main className="max-w-md mx-auto p-4 overflow-auto h-[calc(100%-3.5rem)]">
-        {searchQuery && (
+        {searchQuery.length >= 4 && (
           <div className="space-y-6">
             {/* Insight Card */}
             <Card className="p-4 bg-secondary/50">
