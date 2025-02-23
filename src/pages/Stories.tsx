@@ -4,26 +4,38 @@ import { ArrowLeft, Pause, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-const stories = [
+interface Story {
+  id: number;
+  image: string;
+  type: "image" | "video";
+  video?: string;
+  title?: string;
+}
+
+const stories: Story[] = [
   {
     id: 1,
     image: "/story_1.gif",
-    type: "image"
+    type: "image",
+    title: "Morning Coffee Tips"
   },
   {
     id: 2,
     image: "https://source.unsplash.com/random/800x1200?money",
-    type: "image"
+    type: "image",
+    title: "Smart Money Moves"
   },
   {
     id: 3,
     image: "https://source.unsplash.com/random/800x1200?business",
-    type: "image"
+    type: "image",
+    title: "Business Insights"
   },
   {
     id: 4,
     image: "https://source.unsplash.com/random/800x1200?banking",
-    type: "image"
+    type: "image",
+    title: "Banking Updates"
   },
 ];
 
@@ -105,7 +117,7 @@ const Stories = () => {
         className="h-full w-full relative"
         onClick={handleTap}
       >
-        {currentStory.type === "video" ? (
+        {currentStory.type === "video" && currentStory.video ? (
           <iframe
             src={currentStory.video}
             className="absolute inset-0 w-full h-full"
@@ -163,7 +175,7 @@ const Stories = () => {
 
         <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
           <h2 className="text-white text-2xl font-semibold">
-            {currentStory.title}
+            {currentStory.title || ""}
           </h2>
         </div>
       </div>
