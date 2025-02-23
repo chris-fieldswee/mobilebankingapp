@@ -7,36 +7,59 @@ import { Button } from "@/components/ui/button";
 interface Story {
   id: number;
   image: string;
-  type: "image" | "video";
-  video?: string;
-  title?: string;
+  type: "image";
+  title: string;
 }
 
 const stories: Story[] = [
   {
     id: 1,
-    image: "/story_1.gif",
+    image: "/lovable-uploads/aead3ba0-f187-4bf1-a324-d92c56c716ae.png",
     type: "image",
-    title: "Morning Coffee Tips"
+    title: "Hi, Ali Al-Faisal!"
   },
   {
     id: 2,
-    image: "https://source.unsplash.com/random/800x1200?money",
+    image: "/lovable-uploads/55b8aacc-ac74-425b-a367-206ed860bdf7.png",
     type: "image",
-    title: "Smart Money Moves"
+    title: "Your Spending at a Glance"
   },
   {
     id: 3,
-    image: "https://source.unsplash.com/random/800x1200?business",
+    image: "/lovable-uploads/22d72c91-cf8e-41d4-9e9e-ad5fcc1669a5.png",
     type: "image",
-    title: "Business Insights"
+    title: "Your Savings"
   },
   {
     id: 4,
-    image: "https://source.unsplash.com/random/800x1200?banking",
+    image: "/lovable-uploads/be9f9fa5-58fc-4c6a-ba38-78811c4c749a.png",
     type: "image",
-    title: "Banking Updates"
+    title: "A Well-Deserved Reward?"
   },
+  {
+    id: 5,
+    image: "/lovable-uploads/2badca8c-d65a-490e-b0d7-ded319a801de.png",
+    type: "image",
+    title: "Strengthening Your Financial Safety Net"
+  },
+  {
+    id: 6,
+    image: "/lovable-uploads/67e2af54-4e6c-4843-97fd-115ed7d6d3f2.png",
+    type: "image",
+    title: "Your Financial Health Score"
+  },
+  {
+    id: 7,
+    image: "/lovable-uploads/397ff494-6c9d-4079-858b-d1a66bb3eeb2.png",
+    type: "image",
+    title: "Make Your Money Work Harder"
+  },
+  {
+    id: 8,
+    image: "/lovable-uploads/47f74f19-d2f1-4d99-ab82-8127025002e9.png",
+    type: "image",
+    title: "Wrapping Up & Looking Ahead"
+  }
 ];
 
 const STORY_DURATION = 5000; // 5 seconds per story
@@ -60,7 +83,6 @@ const Stories = () => {
           setProgress(0);
           setActiveStory((prev) => {
             if (prev === stories.length - 1) {
-              window.history.back();
               return prev;
             }
             return prev + 1;
@@ -117,23 +139,15 @@ const Stories = () => {
         className="h-full w-full relative"
         onClick={handleTap}
       >
-        {currentStory.type === "video" && currentStory.video ? (
-          <iframe
-            src={currentStory.video}
-            className="absolute inset-0 w-full h-full"
-            allow="autoplay"
-            frameBorder="0"
-          />
-        ) : (
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url(${currentStory.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          />
-        )}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${currentStory.image})`,
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
         
         <div className="absolute inset-0 bg-black/20" />
         
@@ -175,7 +189,7 @@ const Stories = () => {
 
         <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
           <h2 className="text-white text-2xl font-semibold">
-            {currentStory.title || ""}
+            {currentStory.title}
           </h2>
         </div>
       </div>
