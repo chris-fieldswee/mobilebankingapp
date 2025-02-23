@@ -18,9 +18,9 @@ import Search from "./pages/Search";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <BrowserRouter>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
+  <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
+      <TooltipProvider delayDuration={0}>
         <Toaster />
         <Sonner />
         <Routes>
@@ -36,8 +36,8 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </TooltipProvider>
-    </QueryClientProvider>
-  </BrowserRouter>
+    </BrowserRouter>
+  </QueryClientProvider>
 );
 
 export default App;
