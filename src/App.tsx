@@ -14,6 +14,7 @@ import TransactionDetails from "./pages/TransactionDetails";
 import UpcomingPayments from "./pages/UpcomingPayments";
 import Insights from "./pages/Insights";
 import Search from "./pages/Search";
+import PlatinumCardOffer from "./pages/PlatinumCardOffer";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/upcoming-payments" element={<UpcomingPayments />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/platinum-card-offer" element={<PlatinumCardOffer />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </TooltipProvider>

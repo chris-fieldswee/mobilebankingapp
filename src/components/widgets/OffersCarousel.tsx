@@ -3,25 +3,29 @@ import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const offers = [
   {
     id: 1,
     title: "Unlock Elite Benefits with the SAB Platinum Credit Card",
     image: "https://source.unsplash.com/random/800x600?creditcard",
-    subtitle: null
+    subtitle: null,
+    link: "/platinum-card-offer"
   },
   {
     id: 2,
     title: "Dine at Partner Restaurant",
     subtitle: "Get 15% cashback when you pay with your SAB Credit Card",
-    image: "https://source.unsplash.com/random/800x600?restaurant"
+    image: "https://source.unsplash.com/random/800x600?restaurant",
+    link: null
   },
   {
     id: 3,
     title: "Loans at competitive rates",
     subtitle: "Put your plans into action with Loans",
-    image: "https://source.unsplash.com/random/800x600?stairs"
+    image: "https://source.unsplash.com/random/800x600?stairs",
+    link: null
   }
 ];
 
@@ -54,6 +58,41 @@ const OffersCarousel = () => {
     setTouchStart(null);
   };
 
+  const renderOfferContent = (offer: typeof offers[0]) => {
+    const content = (
+      <div
+        className="relative w-full h-full"
+        style={{
+          backgroundImage: `url(${offer.image})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          minHeight: '200px'
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
+          <h3 className="text-white text-lg font-semibold mb-1">
+            {offer.title}
+          </h3>
+          {offer.subtitle && (
+            <p className="text-white/80 text-sm">
+              {offer.subtitle}
+            </p>
+          )}
+        </div>
+      </div>
+    );
+
+    if (offer.link) {
+      return (
+        <Link to={offer.link} className="block w-full h-full">
+          {content}
+        </Link>
+      );
+    }
+
+    return content;
+  };
+
   return (
     <div className="mb-6 w-full">
       <Card className="relative overflow-hidden w-full">
@@ -82,26 +121,7 @@ const OffersCarousel = () => {
                 className="w-full flex-shrink-0 min-h-[200px]"
                 style={{ aspectRatio: "16/9" }}
               >
-                <div 
-                  className="relative w-full h-full"
-                  style={{
-                    backgroundImage: `url(${offer.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    minHeight: '200px'
-                  }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
-                    <h3 className="text-white text-lg font-semibold mb-1">
-                      {offer.title}
-                    </h3>
-                    {offer.subtitle && (
-                      <p className="text-white/80 text-sm">
-                        {offer.subtitle}
-                      </p>
-                    )}
-                  </div>
-                </div>
+                {renderOfferContent(offer)}
               </div>
             ))}
           </div>
