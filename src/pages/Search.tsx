@@ -2,25 +2,22 @@ import { useState } from "react";
 import { ArrowLeft, X, LightbulbIcon, CreditCard, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import TransactionItem from "@/components/transactions/TransactionItem";
 import { Card } from "@/components/ui/card";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
-
-  const handleBack = () => {
-    navigate("/");
-  };
 
   return (
     <div className="fixed inset-0 bg-background z-50">
       <header className="border-b bg-background">
         <div className="max-w-md mx-auto px-4 h-14 flex items-center gap-3">
-          <Button variant="ghost" size="icon" onClick={handleBack}>
-            <ArrowLeft className="h-6 w-6" />
-          </Button>
+          <Link to="/">
+            <Button variant="ghost" size="icon">
+              <ArrowLeft className="h-6 w-6" />
+            </Button>
+          </Link>
           
           <div className="flex-1 relative">
             <Input
