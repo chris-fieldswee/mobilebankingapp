@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { ArrowLeft, X, LightbulbIcon, CreditCard, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,20 +17,15 @@ const Search = () => {
     }
   }, []);
 
-  const handleBack = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigate(-1);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent form submission
+  const handleBack = () => {
+    navigate("/");
   };
 
   return (
     <div className="fixed inset-0 bg-background z-50">
       <header className="border-b bg-background">
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto px-4 h-14 flex items-center gap-3">
-          <Button variant="ghost" size="icon" onClick={handleBack} type="button">
+        <div className="max-w-md mx-auto px-4 h-14 flex items-center gap-3">
+          <Button variant="ghost" size="icon" onClick={handleBack}>
             <ArrowLeft className="h-6 w-6" />
           </Button>
           
@@ -51,13 +45,12 @@ const Search = () => {
                 size="icon"
                 className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8"
                 onClick={() => setSearchQuery("")}
-                type="button"
               >
                 <X className="h-4 w-4" />
               </Button>
             )}
           </div>
-        </form>
+        </div>
       </header>
 
       <main className="max-w-md mx-auto p-4 overflow-auto h-[calc(100%-3.5rem)]">
