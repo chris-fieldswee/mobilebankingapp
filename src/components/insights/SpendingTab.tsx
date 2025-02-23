@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BarChart2, PieChart, ArrowRight, TrendingUp } from "lucide-react";
 import { BarChart, Bar, PieChart as RechartPie, Pie, Cell, ResponsiveContainer, XAxis } from "recharts";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const periodOptions = ["1W", "1M", "6M", "1Y"];
 
@@ -53,9 +53,14 @@ const SpendingTab = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("1M");
   const [chartType, setChartType] = useState<"bar" | "pie">("bar");
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const totalSpent = 2450;
   const spendingData = periodData[selectedPeriod as keyof typeof periodData];
+
+  const handleSetBudget = () => {
+    setSearchParams({ tab: 'budget' });
+  };
 
   return (
     <div className="space-y-6">
@@ -140,7 +145,7 @@ const SpendingTab = () => {
             </p>
             <Button 
               variant="default" 
-              onClick={() => navigate('/insights?tab=budget')}
+              onClick={handleSetBudget}
               className="w-full sm:w-auto"
             >
               Set a Budget
