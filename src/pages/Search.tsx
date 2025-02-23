@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ArrowLeft, X, LightbulbIcon, CreditCard, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,13 +9,6 @@ import { Card } from "@/components/ui/card";
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const input = document.getElementById("searchInput");
-    if (input) {
-      input.focus();
-    }
-  }, []);
 
   const handleBack = () => {
     navigate("/");
@@ -36,7 +29,7 @@ const Search = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="bg-secondary"
-              placeholder="How much have I spent on gas this month?"
+              placeholder="Search transactions or insights..."
               autoComplete="off"
             />
             {searchQuery && (
