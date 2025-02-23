@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BarChart, Bar, XAxis, ResponsiveContainer } from "recharts";
@@ -161,16 +160,10 @@ const CashflowTab = () => {
           <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center flex-shrink-0">
             <TrendingUp className="h-5 w-5 text-primary" />
           </div>
-          <div className="space-y-2">
+          <div>
             <p className="text-sm">
               Three consecutive months of exceptionally high balance!
             </p>
-            <Button 
-              variant="default" 
-              className="w-full sm:w-auto"
-            >
-              View Details
-            </Button>
           </div>
         </div>
       </Card>

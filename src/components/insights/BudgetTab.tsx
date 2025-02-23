@@ -1,8 +1,6 @@
-
 import { Card } from "@/components/ui/card";
 import { CircularProgressBar } from "@/components/insights/CircularProgressBar";
 import { AlertCircle, Calendar, Coins } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const BudgetTab = () => {
   const budget = 2000;
@@ -48,17 +46,11 @@ const BudgetTab = () => {
           <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center flex-shrink-0">
             <AlertCircle className="h-5 w-5 text-primary" />
           </div>
-          <div className="space-y-2">
+          <div>
             <p className="text-sm">
               Heads up! You've used {utilizationPercentage}% of your budget for this month. 
               You have zł {remainingBudget} left to spend. Stay mindful of your spending to reach your budgeting target.
             </p>
-            <Button 
-              variant="default" 
-              className="w-full sm:w-auto"
-            >
-              View Details
-            </Button>
           </div>
         </div>
       </Card>

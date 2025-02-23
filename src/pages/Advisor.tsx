@@ -127,7 +127,7 @@ const Advisor = () => {
                       <Button
                         key={index}
                         variant="outline"
-                        className="text-left justify-start h-auto py-3 px-4 w-[85%] ml-auto hover:bg-primary hover:text-primary-foreground"
+                        className="text-left justify-start h-auto py-3 px-4 w-[85%] ml-auto hover:bg-primary hover:text-primary-foreground whitespace-normal"
                         onClick={option.action}
                       >
                         {option.text}
