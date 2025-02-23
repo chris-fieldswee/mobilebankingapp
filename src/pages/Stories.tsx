@@ -141,13 +141,11 @@ const Stories = () => {
           className="absolute inset-0 bg-black"
           style={{
             backgroundImage: `url(${currentStory.image})`,
-            backgroundSize: 'contain',
+            backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
           }}
         />
-        
-        <div className="absolute inset-0 bg-black/20" />
         
         <div className="absolute top-0 left-0 right-0 flex gap-1 p-4 z-10">
           {stories.map((_, index) => (
@@ -183,12 +181,6 @@ const Stories = () => {
               <Pause className="h-6 w-6" />
             )}
           </Button>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-          <h2 className="text-white text-2xl font-semibold">
-            {currentStory.title}
-          </h2>
         </div>
       </div>
     </div>
