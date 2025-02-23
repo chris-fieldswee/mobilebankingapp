@@ -16,9 +16,7 @@ const TopNav = () => {
         
         <div 
           className="flex-1 max-w-[180px]" 
-          onClick={() => {
-            navigate('/search');
-          }}
+          onClick={() => navigate('/search')}
         >
           <div className="relative cursor-pointer">
             <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -32,25 +30,37 @@ const TopNav = () => {
         </div>
         
         <div className="flex items-center space-x-3">
-          <Link to="/stories">
-            <Button variant="ghost" size="icon" className="rounded-full relative" type="button">
-              <Zap className="h-6 w-6" />
-              <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
-            </Button>
-          </Link>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full relative"
+            onClick={() => navigate('/stories')}
+            type="button"
+          >
+            <Zap className="h-6 w-6" />
+            <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
+          </Button>
           
-          <Link to="/notifications">
-            <Button variant="ghost" size="icon" className="rounded-full relative" type="button">
-              <Bell className="h-6 w-6" />
-              <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
-            </Button>
-          </Link>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full relative"
+            onClick={() => navigate('/notifications')}
+            type="button"
+          >
+            <Bell className="h-6 w-6" />
+            <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
+          </Button>
 
-          <Link to="/insights">
-            <Button variant="ghost" size="icon" className="rounded-full" type="button">
-              <BarChart2 className="h-6 w-6" />
-            </Button>
-          </Link>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full"
+            onClick={() => navigate('/insights')}
+            type="button"
+          >
+            <BarChart2 className="h-6 w-6" />
+          </Button>
         </div>
       </div>
     </nav>
