@@ -18,18 +18,15 @@ const Search = () => {
     }
   }, []);
 
-  const handleBack = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigate(-1);
-  };
-
   return (
     <div className="fixed inset-0 bg-background z-50">
       <header className="border-b bg-background">
-        <form className="max-w-md mx-auto px-4 h-14 flex items-center gap-3">
-          <Button variant="ghost" size="icon" onClick={handleBack}>
-            <ArrowLeft className="h-6 w-6" />
-          </Button>
+        <form className="max-w-md mx-auto px-4 h-14 flex items-center gap-3" onSubmit={(e) => e.preventDefault()}>
+          <Link to="/">
+            <Button variant="ghost" size="icon" type="button">
+              <ArrowLeft className="h-6 w-6" />
+            </Button>
+          </Link>
           
           <div className="flex-1 relative">
             <Input
@@ -47,6 +44,7 @@ const Search = () => {
                 size="icon"
                 className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8"
                 onClick={() => setSearchQuery("")}
+                type="button"
               >
                 <X className="h-4 w-4" />
               </Button>
