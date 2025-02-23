@@ -1,23 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowLeft, X, LightbulbIcon, CreditCard, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TransactionItem from "@/components/transactions/TransactionItem";
 import { Card } from "@/components/ui/card";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const input = document.getElementById("searchInput");
+    if (input) {
+      input.focus();
+    }
+  }, []);
+
+  const handleBack = () => {
+    navigate("/");
+  };
 
   return (
     <div className="fixed inset-0 bg-background z-50">
       <header className="border-b bg-background">
         <div className="max-w-md mx-auto px-4 h-14 flex items-center gap-3">
-          <Link to="/">
-            <Button variant="ghost" size="icon">
-              <ArrowLeft className="h-6 w-6" />
-            </Button>
-          </Link>
+          <Button variant="ghost" size="icon" onClick={handleBack}>
+            <ArrowLeft className="h-6 w-6" />
+          </Button>
           
           <div className="flex-1 relative">
             <Input
@@ -26,7 +36,7 @@ const Search = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="bg-secondary"
-              placeholder="Search transactions or insights..."
+              placeholder="How much have I spent on gas this month?"
               autoComplete="off"
             />
             {searchQuery && (
