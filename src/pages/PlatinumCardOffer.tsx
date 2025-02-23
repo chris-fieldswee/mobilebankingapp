@@ -3,10 +3,16 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
+import { useEffect } from "react";
 
 const PlatinumCardOffer = () => {
+  // Reset scroll position when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-safe">
       <header className="border-b bg-background fixed top-0 left-0 right-0 z-10">
         <div className="max-w-md mx-auto px-4 h-14 flex items-center gap-3">
           <Link to="/">
