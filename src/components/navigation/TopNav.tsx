@@ -9,9 +9,7 @@ const TopNav = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-between gap-3">
         <Link to="/profile">
-          <Button variant="ghost" size="icon" className="rounded-full" type="button">
-            <CircleUserRound className="h-7 w-7" />
-          </Button>
+          <CircleUserRound className="h-7 w-7" />
         </Link>
         
         <Link 

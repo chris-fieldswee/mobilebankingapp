@@ -1,18 +1,16 @@
 
 import { Home, Send, MessageSquare, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const menuItems = [
   { icon: Home, label: "Home", path: "/" },
   { icon: Send, label: "Payments", path: "/transactions" },
   { icon: MessageSquare, label: "Advisor", path: "/advisor", hasNotification: true },
-  { icon: CreditCard, label: "Card", path: "/" },
+  { icon: CreditCard, label: "Card", path: "/platinum-card-offer" },
 ];
 
 const BottomNav = () => {
-  const location = useLocation();
-
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-around">
