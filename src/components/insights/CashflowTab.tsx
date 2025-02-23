@@ -1,9 +1,9 @@
+
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BarChart, Bar, XAxis, ResponsiveContainer } from "recharts";
 import { useState } from "react";
-import { TrendingUp } from "lucide-react";
-import { CaretLeft, CaretRight } from "lucide-react";
+import { TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
 
 const periodOptions = ["1W", "1M", "6M", "1Y"];
 
@@ -123,14 +123,14 @@ const CashflowTab = () => {
                 size="icon"
                 onClick={() => setActiveChart(prev => (prev === 0 ? charts.length - 1 : prev - 1))}
               >
-                <CaretLeft className="h-4 w-4" />
+                <ChevronLeft className="h-4 w-4" />
               </Button>
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setActiveChart(prev => (prev === charts.length - 1 ? 0 : prev + 1))}
               >
-                <CaretRight className="h-4 w-4" />
+                <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
           </div>
