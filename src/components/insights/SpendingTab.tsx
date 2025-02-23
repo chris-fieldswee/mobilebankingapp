@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { BarChart2, PieChart, ArrowRight } from "lucide-react";
+import { BarChart2, PieChart, ArrowRight, TrendingUp } from "lucide-react";
 import { BarChart, Bar, PieChart as RechartPie, Pie, Cell, ResponsiveContainer, XAxis } from "recharts";
 import { useNavigate } from "react-router-dom";
 
@@ -128,6 +128,26 @@ const SpendingTab = () => {
           </div>
         </Card>
       </div>
+
+      <Card className="p-4 bg-accent">
+        <div className="flex gap-4">
+          <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center flex-shrink-0">
+            <TrendingUp className="h-5 w-5 text-primary" />
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm">
+              Noticed a trend? Your restaurant spending has increased by 20% over the last 3 months. Want to stay on top of your dining budget?
+            </p>
+            <Button 
+              variant="default" 
+              onClick={() => navigate('/insights?tab=budget')}
+              className="w-full sm:w-auto"
+            >
+              Set a Budget
+            </Button>
+          </div>
+        </div>
+      </Card>
 
       <div>
         <div className="flex justify-between items-center mb-4">
