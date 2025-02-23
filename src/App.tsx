@@ -13,6 +13,7 @@ import Transactions from "./pages/Transactions";
 import TransactionDetails from "./pages/TransactionDetails";
 import UpcomingPayments from "./pages/UpcomingPayments";
 import Insights from "./pages/Insights";
+import Search from "./pages/Search";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/transactions/:id" element={<TransactionDetails />} />
           <Route path="/upcoming-payments" element={<UpcomingPayments />} />
           <Route path="/insights" element={<Insights />} />
+          <Route path="/search" element={<Search />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
