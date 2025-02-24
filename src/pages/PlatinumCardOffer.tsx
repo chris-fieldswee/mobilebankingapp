@@ -1,4 +1,3 @@
-
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -6,7 +5,6 @@ import { Card } from "@/components/ui/card";
 import { useEffect } from "react";
 
 const PlatinumCardOffer = () => {
-  // Reset scroll position when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -28,7 +26,7 @@ const PlatinumCardOffer = () => {
         <div className="space-y-6">
           <div className="flex justify-center p-6">
             <img
-              src="https://source.unsplash.com/random/800x500?creditcard"
+              src="/lovable-uploads/fb8acaf7-de28-4c12-b507-3aeb663b02e9.png"
               alt="SAB Platinum Credit Card"
               className="w-full max-w-[300px] rounded-xl shadow-lg"
             />

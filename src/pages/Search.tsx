@@ -1,14 +1,37 @@
+
 import { useState, useEffect } from "react";
-import { ArrowLeft, X, LightbulbIcon, CreditCard, ChevronRight } from "lucide-react";
+import { ArrowLeft, X, LightbulbIcon, CreditCard, ChevronRight, Calendar, Play, Music } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
 import TransactionItem from "@/components/transactions/TransactionItem";
 import { Card } from "@/components/ui/card";
 
+const upcomingTransactions = [
+  {
+    icon: Calendar,
+    title: "Tuition Fee",
+    dueIn: "Due on Feb 25, 2025",
+    amount: "-﷼80,000"
+  },
+  {
+    icon: Play,
+    title: "Netflix Subscription",
+    dueIn: "Due in 3 days",
+    amount: "-﷼45"
+  },
+  {
+    icon: Music,
+    title: "Spotify Premium",
+    dueIn: "Due in 7 days",
+    amount: "-﷼20"
+  }
+];
+
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const showResults = searchQuery.toLowerCase().includes('upcoming');
 
   useEffect(() => {
     const input = document.getElementById("searchInput");
@@ -54,7 +77,7 @@ const Search = () => {
       </header>
 
       <main className="max-w-md mx-auto p-4 overflow-auto h-[calc(100%-3.5rem)]">
-        {searchQuery.length >= 4 && (
+        {showResults && (
           <div className="space-y-6">
             {/* Insight Card */}
             <Card className="p-4 bg-secondary/50">
@@ -63,9 +86,9 @@ const Search = () => {
                   <LightbulbIcon className="h-5 w-5 text-primary" />
                 </div>
                 <p className="text-sm">
-                  You have spent <span className="font-semibold">$201.37</span> on fuel this month, most of it at{" "}
-                  <span className="text-primary">Shell</span> in your zipcode, followed by{" "}
-                  <span className="text-primary">Chevron</span>.
+                  Your tuition fee of <span className="font-semibold">80,000 ﷼</span> to{" "}
+                  <span className="text-primary">MBSC</span> is due on{" "}
+                  <span className="text-primary">Feb 25, 2025</span>. Making the payment on time can help avoid any late fees.
                 </p>
               </div>
             </Card>
@@ -78,68 +101,35 @@ const Search = () => {
                 </div>
                 <div className="flex-1">
                   <p className="text-sm mb-1">
-                    Earn points on every fill-up! Check out our premium card in partnership with Chevron.
+                    Loans at competitive rates. Put your plans into action with Loans.
                   </p>
                   <Button variant="link" className="text-primary px-0 h-auto font-normal">
-                    Start earning points
+                    Learn more
                   </Button>
                 </div>
                 <ChevronRight className="h-5 w-5 text-muted-foreground self-center" />
               </div>
             </Card>
 
-            {/* Businesses */}
+            {/* Upcoming Transactions */}
             <div>
-              <h3 className="font-semibold mb-4">Businesses</h3>
-              <div className="space-y-1">
-                <Card className="p-4 hover:bg-accent transition-colors cursor-pointer">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                        S
-                      </div>
-                      <div>
-                        <p className="font-medium">Shell</p>
-                        <p className="text-sm text-muted-foreground">Gas</p>
-                      </div>
-                    </div>
-                    <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                  </div>
-                </Card>
-                <Card className="p-4 hover:bg-accent transition-colors cursor-pointer">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                        C
-                      </div>
-                      <div>
-                        <p className="font-medium">Chevron</p>
-                        <p className="text-sm text-muted-foreground">Gas</p>
-                      </div>
-                    </div>
-                    <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                  </div>
-                </Card>
-              </div>
-            </div>
-
-            {/* Transactions */}
-            <div>
-              <h3 className="font-semibold mb-4">Transactions</h3>
+              <h3 className="font-semibold mb-4">Upcoming Transactions</h3>
               <Card className="p-4">
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="text-sm text-muted-foreground mb-2">Today</h4>
-                    <TransactionItem merchant="Shell" amount="$54.47" date="Today" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm text-muted-foreground mb-2">Dec 13, 2024</h4>
-                    <TransactionItem merchant="Shell" amount="$60.01" date="Dec 13" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm text-muted-foreground mb-2">Dec 05, 2024</h4>
-                    <TransactionItem merchant="Shell" amount="$55.00" date="Dec 05" />
-                  </div>
+                <div className="space-y-4">
+                  {upcomingTransactions.map((transaction, index) => (
+                    <div key={index} className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                          <transaction.icon className="h-5 w-5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="font-medium">{transaction.title}</p>
+                          <p className="text-sm text-muted-foreground">{transaction.dueIn}</p>
+                        </div>
+                      </div>
+                      <span className="text-[#F44336] font-medium">{transaction.amount}</span>
+                    </div>
+                  ))}
                 </div>
               </Card>
             </div>

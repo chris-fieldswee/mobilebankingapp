@@ -14,7 +14,7 @@ const BottomNav = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-t">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-around">
         {menuItems.map((item) => (
           <Link
