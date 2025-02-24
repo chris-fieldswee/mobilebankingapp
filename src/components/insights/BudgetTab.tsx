@@ -20,8 +20,8 @@ const BudgetTab = () => {
   const totalUpcoming = upcomingTransactions.reduce((sum, tx) => sum + tx.amount, 0);
 
   return (
-    <div className="space-y-6">
-      <Card className="p-6 text-center">
+    <div className="space-y-4">
+      <Card className="p-4 text-center">
         <div className="flex justify-center">
           <div className="relative w-[850px] h-[850px]">
             <CircularProgressBar
@@ -52,6 +52,19 @@ const BudgetTab = () => {
               <span className="font-bold">{utilizationPercentage}%</span>
               {!isOverBudget && ` of your ﷼${budget.toLocaleString()} budget. 
                    You have ﷼${remainingBudget.toLocaleString()} left to spend this month.`}
+            </p>
+          </div>
+        </div>
+      </Card>
+
+      <Card className="p-4 bg-accent">
+        <div className="flex gap-4">
+          <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center flex-shrink-0">
+            <AlertCircle className="h-5 w-5 text-primary" />
+          </div>
+          <div>
+            <p className="text-sm">
+              Your upcoming transactions (﷼{totalUpcoming.toLocaleString()}) significantly exceed your remaining budget for this month (﷼{remainingBudget.toLocaleString()}). To ensure these payments go through, consider taking a loan or transferring funds from your savings account.
             </p>
           </div>
         </div>
