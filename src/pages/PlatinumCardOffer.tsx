@@ -1,3 +1,4 @@
+
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -22,13 +23,13 @@ const PlatinumCardOffer = () => {
         </div>
       </header>
 
-      <main className="max-w-md mx-auto px-4 pt-20 pb-8">
+      <main className="max-w-md mx-auto pt-20 pb-8">
         <div className="space-y-6">
-          <div className="flex justify-center p-6">
+          <div>
             <img
               src="/lovable-uploads/1b0cef9c-0b62-4186-8303-8505724fa8c3.png"
               alt="SAB Platinum Credit Card"
-              className="w-full max-w-[300px] rounded-xl shadow-lg"
+              className="w-full"
             />
           </div>
 

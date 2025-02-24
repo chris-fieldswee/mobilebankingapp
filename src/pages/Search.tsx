@@ -82,7 +82,7 @@ const Search = () => {
             {/* Insight Card */}
             <Card className="p-4 bg-secondary/50">
               <div className="flex gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <div className="h-40 w-40 rounded-full bg-primary/10 flex items-center justify-center">
                   <LightbulbIcon className="h-5 w-5 text-primary" />
                 </div>
                 <p className="text-sm">
