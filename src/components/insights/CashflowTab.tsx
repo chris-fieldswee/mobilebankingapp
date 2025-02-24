@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BarChart, Bar, XAxis, ResponsiveContainer, ReferenceLine } from "recharts";
@@ -85,7 +86,7 @@ const CashflowTab = () => {
               axisLine={false}
             />
             <Bar dataKey="moneyIn" fill="#3366FF" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="moneyOut" fill="#f0f5fd" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="moneyOut" fill="#FF5630" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       )
@@ -102,7 +103,11 @@ const CashflowTab = () => {
               tickLine={false}
               axisLine={false}
             />
-            <Bar dataKey="amount" fill="#3366FF" radius={[4, 4, 0, 0]} />
+            <Bar 
+              dataKey="amount" 
+              fill={(data) => data.amount < 0 ? "#f0f5fd" : "#3366FF"}
+              radius={[4, 4, 0, 0]} 
+            />
           </BarChart>
         </ResponsiveContainer>
       )
@@ -156,7 +161,7 @@ const CashflowTab = () => {
                     axisLine={false}
                   />
                   <Bar dataKey="moneyIn" fill="url(#moneyInGradient)" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="moneyOut" fill="#f0f5fd" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="moneyOut" fill="#FF5630" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             ) : (
@@ -176,7 +181,11 @@ const CashflowTab = () => {
                     axisLine={false}
                   />
                   <ReferenceLine y={0} stroke="#E5E7EB" />
-                  <Bar dataKey="amount" fill="url(#moneyInGradient)" radius={[4, 4, 0, 0]} />
+                  <Bar 
+                    dataKey="amount" 
+                    fill={(data) => data.amount < 0 ? "#f0f5fd" : "url(#moneyInGradient)"}
+                    radius={[4, 4, 0, 0]} 
+                  />
                 </BarChart>
               </ResponsiveContainer>
             )}
