@@ -26,14 +26,24 @@ const periodData = {
   ]
 };
 
+const blueShades = [
+  "#0F4C81", // Darkest blue
+  "#2B6CA3",
+  "#478DC5",
+  "#63AEE7",
+  "#7FCFF9",
+  "#9BE0FB",
+  "#B7F1FD"  // Lightest blue
+];
+
 const categoryData = [
-  { name: "Dining", amount: 2040, transactions: 4, percentage: 7, color: "#888888", icon: Utensils },
-  { name: "Shopping", amount: 11300, transactions: 2, percentage: 40, color: "#888888", icon: ShoppingBag },
-  { name: "Transportation", amount: 4150, transactions: 3, percentage: 15, color: "#888888", icon: Car },
-  { name: "Entertainment", amount: 3750, transactions: 3, percentage: 13, color: "#888888", icon: Popcorn },
-  { name: "Groceries", amount: 2650, transactions: 4, percentage: 9, color: "#888888", icon: ShoppingCart },
-  { name: "Bills", amount: 3300, transactions: 4, percentage: 12, color: "#888888", icon: Receipt },
-  { name: "Spa", amount: 1210, transactions: 1, percentage: 4, color: "#888888", icon: Heart }
+  { name: "Dining", amount: 2040, transactions: 4, percentage: 19, color: blueShades[0], icon: Utensils },
+  { name: "Shopping", amount: 11300, transactions: 2, percentage: 9.5, color: blueShades[1], icon: ShoppingBag },
+  { name: "Transportation", amount: 4150, transactions: 3, percentage: 14.3, color: blueShades[2], icon: Car },
+  { name: "Entertainment", amount: 3750, transactions: 3, percentage: 14.3, color: blueShades[3], icon: Popcorn },
+  { name: "Groceries", amount: 2650, transactions: 4, percentage: 19, color: blueShades[4], icon: ShoppingCart },
+  { name: "Bills", amount: 3300, transactions: 4, percentage: 19, color: blueShades[5], icon: Receipt },
+  { name: "Spa", amount: 1210, transactions: 1, percentage: 4.9, color: blueShades[6], icon: Heart }
 ];
 
 const SpendingTab = () => {
@@ -93,7 +103,7 @@ const SpendingTab = () => {
                 <RechartPie>
                   <Pie
                     data={categoryData}
-                    dataKey="amount"
+                    dataKey="percentage"
                     nameKey="name"
                     innerRadius={60}
                     outerRadius={80}
