@@ -12,12 +12,18 @@ export const CircularProgressBar = ({
   availableColor, 
   spentColor 
 }: CircularProgressBarProps) => {
-  const radius = 50 - strokeWidth / 2;
+  const radius = 125 - strokeWidth / 2; // Increased radius for larger circle
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (percentage / 100) * circumference;
 
   return (
     <svg className="w-full h-full -rotate-90">
+      <defs>
+        <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style={{ stopColor: "#60A5FA" }} />
+          <stop offset="100%" style={{ stopColor: "#3B82F6" }} />
+        </linearGradient>
+      </defs>
       <circle
         className="stroke-current"
         strokeWidth={strokeWidth}

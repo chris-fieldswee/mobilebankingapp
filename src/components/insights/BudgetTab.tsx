@@ -11,7 +11,6 @@ const BudgetTab = () => {
   const isOverBudget = spent > budget;
   const utilizationPercentage = Math.min(Math.round((spent / budget) * 100), 100);
 
-  // Upcoming transactions
   const upcomingTransactions = [
     { name: "Tuition Fee", dueIn: 5, amount: 80000 },
     { name: "Netflix Subscription", dueIn: 3, amount: 45 },
@@ -24,16 +23,16 @@ const BudgetTab = () => {
     <div className="space-y-6">
       <Card className="p-6 text-center">
         <div className="flex justify-center">
-          <div className="relative w-[340px] h-[340px]">
+          <div className="relative w-[850px] h-[850px]">
             <CircularProgressBar
               percentage={Math.min(progress, 100)}
-              strokeWidth={12}
+              strokeWidth={24}
               availableColor="#F4F4F5"
-              spentColor="#0064fa"
+              spentColor="url(#blueGradient)"
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4">
-              <p className="text-lg text-muted-foreground">Available</p>
-              <span className="text-5xl font-bold">﷼ {remainingBudget.toLocaleString()}</span>
+              <p className="text-sm text-muted-foreground">Available</p>
+              <span className="text-3xl font-bold">﷼ {remainingBudget.toLocaleString()}</span>
               <p className="text-sm text-muted-foreground mt-2">9 days left</p>
             </div>
           </div>
@@ -49,9 +48,10 @@ const BudgetTab = () => {
             <p className="text-sm">
               {isOverBudget 
                 ? `You've exceeded your budget by ﷼${(spent - budget).toLocaleString()}. Consider reviewing your spending to get back on track.`
-                : `You've used ${utilizationPercentage}% of your ﷼${budget.toLocaleString()} budget. 
-                   You have ﷼${remainingBudget.toLocaleString()} left to spend this month.`
-              }
+                : `You've used `}
+              <span className="font-bold">{utilizationPercentage}%</span>
+              {!isOverBudget && ` of your ﷼${budget.toLocaleString()} budget. 
+                   You have ﷼${remainingBudget.toLocaleString()} left to spend this month.`}
             </p>
           </div>
         </div>
