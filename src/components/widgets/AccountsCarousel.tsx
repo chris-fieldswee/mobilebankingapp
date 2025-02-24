@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -6,27 +5,19 @@ import { Button } from "@/components/ui/button";
 const accounts = [
   {
     id: 1,
-    title: "USD Checking",
-    amount: "12,500.00",
-    currency: "USD",
-    symbol: "$",
+    title: "Current Account",
+    amount: "36,500",
+    currency: "SAR",
+    symbol: "﷼",
     change: "+2.3%"
   },
   {
     id: 2,
-    title: "GBP Savings",
-    amount: "8,200.00",
-    currency: "GBP",
-    symbol: "£",
+    title: "Savings Account",
+    amount: "890,000",
+    currency: "SAR",
+    symbol: "﷼",
     change: "+1.8%"
-  },
-  {
-    id: 3,
-    title: "PLN Account",
-    amount: "45,000",
-    currency: "PLN",
-    symbol: "zł",
-    change: "+1.2%"
   }
 ];
 

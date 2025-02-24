@@ -7,24 +7,24 @@ import { useNavigate } from "react-router-dom";
 const recentTransactions = [
   {
     id: "1",
-    merchant: "Netflix",
-    amount: "-$15.99",
-    date: "Mar 18",
-    category: "Entertainment"
+    merchant: "Harvey Nichols",
+    amount: "-﷼8,800",
+    date: "Today",
+    category: "Shopping"
   },
   {
     id: "2",
-    merchant: "Shell",
-    amount: "-$40.00",
-    date: "Mar 3",
-    category: "Fuel"
+    merchant: "Nusr-Et Steakhouse",
+    amount: "-﷼1,200",
+    date: "Yesterday",
+    category: "Dining"
   },
   {
     id: "3",
-    merchant: "Amazon",
-    amount: "-$150.99",
-    date: "Feb 15",
-    category: "Shopping"
+    merchant: "Four Seasons Spa",
+    amount: "-﷼1,210",
+    date: "Mar 15",
+    category: "Wellness"
   }
 ];
 

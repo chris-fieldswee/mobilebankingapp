@@ -23,24 +23,11 @@ const UpcomingTransactions = () => {
               <Calendar className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <p className="font-medium">Netflix Subscription</p>
-              <p className="text-sm text-muted-foreground">Due in 3 days</p>
-            </div>
-          </div>
-          <span className="text-destructive font-medium">-$15.99</span>
-        </div>
-        
-        <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
-          <div className="flex items-center">
-            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
-              <Calendar className="h-5 w-5 text-primary" />
-            </div>
-            <div>
-              <p className="font-medium">Spotify Premium</p>
+              <p className="font-medium">Tuition Fee</p>
               <p className="text-sm text-muted-foreground">Due in 5 days</p>
             </div>
           </div>
-          <span className="text-destructive font-medium">-$9.99</span>
+          <span className="text-destructive font-medium">-﷼80,000</span>
         </div>
       </div>
     </Card>

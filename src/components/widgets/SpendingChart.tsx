@@ -1,30 +1,29 @@
 
 import { Card } from "@/components/ui/card";
 import { LineChart, Line, XAxis, ResponsiveContainer } from "recharts";
-import { ArrowDownIcon } from "lucide-react";
+import { ArrowUpIcon } from "lucide-react";
 
 const mockSpendingData = [
-  { day: "1", amount: 2100 },
-  { day: "6", amount: 2300 },
-  { day: "11", amount: 2600 },
-  { day: "16", amount: 2400 },
-  { day: "21", amount: 2800 },
-  { day: "28", amount: 2450 },
+  { day: "1", amount: 15000 },
+  { day: "6", amount: 18000 },
+  { day: "11", amount: 22000 },
+  { day: "16", amount: 24000 },
+  { day: "21", amount: 26000 },
+  { day: "28", amount: 28400 },
 ];
 
 const SpendingChart = () => {
-  const currentSpent = 2450;
-  const totalReceived = 5000;
+  const currentSpent = 28400;
 
   return (
     <Card className="p-6 mb-6">
       <div className="mb-2">
         <h3 className="font-semibold text-sm text-muted-foreground">Spent this month</h3>
         <div className="flex items-center gap-2">
-          <span className="text-2xl font-semibold">$ {currentSpent}</span>
+          <span className="text-2xl font-semibold">﷼ {currentSpent}</span>
           <div className="flex items-center text-emerald-500 text-sm">
-            <ArrowDownIcon className="h-4 w-4" />
-            <span>$ {totalReceived}</span>
+            <ArrowUpIcon className="h-4 w-4" />
+            <span>2.3%</span>
           </div>
         </div>
       </div>

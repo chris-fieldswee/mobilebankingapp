@@ -2,8 +2,8 @@
 import { Card } from "@/components/ui/card";
 
 const SpendingChallengeWidget = () => {
-  const spent = 2450;
-  const goal = 2000;
+  const spent = 28400;
+  const goal = 35000;
   const progress = Math.min((spent / goal) * 100, 100);
   const isOverBudget = spent > goal;
 
@@ -21,13 +21,13 @@ const SpendingChallengeWidget = () => {
         </div>
         <div className="flex justify-between text-sm">
           <span className={isOverBudget ? 'text-destructive' : 'text-muted-foreground'}>
-            ${spent.toLocaleString()} spent
+            ﷼{spent.toLocaleString()} spent
           </span>
-          <span className="text-muted-foreground">${goal.toLocaleString()} goal</span>
+          <span className="text-muted-foreground">﷼{goal.toLocaleString()} goal</span>
         </div>
         {isOverBudget && (
           <p className="text-sm text-destructive mt-2">
-            ${(spent - goal).toLocaleString()} over budget
+            ﷼{(spent - goal).toLocaleString()} over budget
           </p>
         )}
       </div>
