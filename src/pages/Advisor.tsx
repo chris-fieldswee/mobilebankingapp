@@ -87,19 +87,19 @@ const Advisor = () => {
             </Button>
           </Link>
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center relative">
-              <span className="text-lg font-semibold text-purple-600 z-10">A</span>
+            <div className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center relative">
+              <span className="text-lg font-semibold text-primary z-10">Z</span>
               <div 
-                className="absolute inset-0 rounded-full bg-gradient-to-br from-red-500 to-rose-400"
+                className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 to-blue-600"
                 style={{
                   padding: '2px',
                 }}
               >
-                <div className="w-full h-full rounded-full bg-purple-100" />
+                <div className="w-full h-full rounded-full bg-secondary" />
               </div>
             </div>
             <div>
-              <h2 className="font-semibold">Ana</h2>
+              <h2 className="font-semibold">Zaid</h2>
               <p className="text-sm text-muted-foreground">Financial Advisor</p>
             </div>
           </div>

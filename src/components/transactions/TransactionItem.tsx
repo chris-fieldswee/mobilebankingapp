@@ -25,7 +25,7 @@ const TransactionItem = ({ merchant, amount, date, id = "1" }: TransactionItemPr
           <p className="text-sm text-muted-foreground">{date}</p>
         </div>
       </div>
-      <span className={`text-[0.95rem] ${amount.startsWith('-') ? 'text-[#222222]' : 'text-[#222222]'}`}>
+      <span className="text-[0.95rem] text-[#222222]">
         {amount}
       </span>
     </div>
