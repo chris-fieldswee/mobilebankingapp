@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -170,8 +169,7 @@ const SpendingTab = () => {
             >
               <div className="flex items-center gap-3">
                 <div 
-                  className="w-10 h-10 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: `${category.color}20` }}
+                  className="w-10 h-10 rounded-full bg-[#f4f4f5] flex items-center justify-center"
                 >
                   <category.icon className="h-5 w-5 text-[#888888]" />
                 </div>

@@ -26,7 +26,7 @@ const periodData = {
     { name: "Q2 24", amount: 156000 }, // 3 x 52,000
     { name: "Q3 24", amount: 156000 }, // 3 x 52,000
     { name: "Q4 24", amount: 156000 }, // 3 x 52,000
-    { name: "Q1 25", amount: 164000 }, // 2 x 52,000 + 60,000
+    { name: "Q1 25", amount: 104000 }, // 2 x 52,000 (no March data yet)
   ]
 };
 

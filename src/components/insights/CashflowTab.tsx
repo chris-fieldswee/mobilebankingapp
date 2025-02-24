@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BarChart, Bar, XAxis, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, ResponsiveContainer, ReferenceLine } from "recharts";
 import { useState } from "react";
 import { TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -13,12 +13,12 @@ const periodData = {
     { month: "Mar", moneyIn: 5000, moneyOut: 2450 }
   ],
   "6M": [
-    { month: "Oct", moneyIn: 5000, moneyOut: 2200 },
-    { month: "Nov", moneyIn: 5000, moneyOut: 2400 },
-    { month: "Dec", moneyIn: 5000, moneyOut: 2600 },
-    { month: "Jan", moneyIn: 5000, moneyOut: 2100 },
-    { month: "Feb", moneyIn: 5000, moneyOut: 2300 },
-    { month: "Mar", moneyIn: 5000, moneyOut: 2450 }
+    { month: "Sep", moneyIn: 52000, moneyOut: 26500 },
+    { month: "Oct", moneyIn: 52000, moneyOut: 27800 },
+    { month: "Nov", moneyIn: 52000, moneyOut: 25900 },
+    { month: "Dec", moneyIn: 52000, moneyOut: 29600 },
+    { month: "Jan", moneyIn: 52000, moneyOut: 27200 },
+    { month: "Feb", moneyIn: 60000, moneyOut: 28400 }
   ],
   "1Y": [
     { month: "Q2 23", moneyIn: 15000, moneyOut: 7200 },
@@ -139,7 +139,47 @@ const CashflowTab = () => {
           </div>
 
           <div className="h-[200px] w-full">
-            {charts[activeChart].chart}
+            {charts[activeChart].title === "Monthly Cashflow" ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={cashflowData}>
+                  <defs>
+                    <linearGradient id="moneyInGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#60A5FA" />
+                      <stop offset="100%" stopColor="#3B82F6" />
+                    </linearGradient>
+                  </defs>
+                  <XAxis 
+                    dataKey="month" 
+                    stroke="#888888"
+                    fontSize={12}
+                    tickLine={false}
+                    axisLine={false}
+                  />
+                  <Bar dataKey="moneyIn" fill="url(#moneyInGradient)" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="moneyOut" fill="#f0f5fd" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={predictionData}>
+                  <defs>
+                    <linearGradient id="moneyInGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#60A5FA" />
+                      <stop offset="100%" stopColor="#3B82F6" />
+                    </linearGradient>
+                  </defs>
+                  <XAxis 
+                    dataKey="name" 
+                    stroke="#888888"
+                    fontSize={12}
+                    tickLine={false}
+                    axisLine={false}
+                  />
+                  <ReferenceLine y={0} stroke="#E5E7EB" />
+                  <Bar dataKey="amount" fill="url(#moneyInGradient)" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            )}
           </div>
 
           {activeChart === 0 && (
