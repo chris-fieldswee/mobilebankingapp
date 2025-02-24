@@ -27,7 +27,7 @@ const UpcomingTransactions = () => {
               <p className="text-sm text-muted-foreground">Due in 5 days</p>
             </div>
           </div>
-          <span className="text-destructive font-medium">-﷼80,000</span>
+          <span className="text-[#222222] text-[0.95rem] font-medium">-﷼80,000</span>
         </div>
 
         <div className="flex items-center justify-between">
@@ -40,7 +40,7 @@ const UpcomingTransactions = () => {
               <p className="text-sm text-muted-foreground">Due in 3 days</p>
             </div>
           </div>
-          <span className="text-destructive font-medium">-﷼45</span>
+          <span className="text-[#222222] text-[0.95rem] font-medium">-﷼45</span>
         </div>
 
         <div className="flex items-center justify-between">
@@ -53,7 +53,7 @@ const UpcomingTransactions = () => {
               <p className="text-sm text-muted-foreground">Due in 7 days</p>
             </div>
           </div>
-          <span className="text-destructive font-medium">-﷼20</span>
+          <span className="text-[#222222] text-[0.95rem] font-medium">-﷼20</span>
         </div>
       </div>
     </Card>

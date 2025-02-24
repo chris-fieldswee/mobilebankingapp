@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import TransactionItem from "@/components/transactions/TransactionItem";
@@ -25,6 +24,7 @@ const Transactions = () => {
           <div className="max-w-md mx-auto p-4 pb-24">
             <Card className="p-6">
               <div className="space-y-6">
+                {/* Categories */}
                 <div>
                   <h2 className="text-sm font-medium text-muted-foreground mb-3">Dining (Total: ﷼2,040)</h2>
                   <div className="space-y-1">

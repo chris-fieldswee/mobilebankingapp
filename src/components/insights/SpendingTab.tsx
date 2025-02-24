@@ -182,7 +182,7 @@ const SpendingTab = () => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-right">
-                  <p className="font-medium text-destructive">-$ {category.amount}</p>
+                  <p className="font-medium text-[#222222] text-[0.95rem]">-$ {category.amount}</p>
                   <p className="text-sm text-muted-foreground">{category.percentage}%</p>
                 </div>
                 <ArrowRight className="h-4 w-4 text-muted-foreground" />
