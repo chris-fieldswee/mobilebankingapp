@@ -127,7 +127,7 @@ const Search = () => {
                           <p className="text-sm text-muted-foreground">{transaction.dueIn}</p>
                         </div>
                       </div>
-                      <span className="text-[#F44336] font-medium">{transaction.amount}</span>
+                      <span className="text-[0.95rem] text-[#222222]">{transaction.amount}</span>
                     </div>
                   ))}
                 </div>

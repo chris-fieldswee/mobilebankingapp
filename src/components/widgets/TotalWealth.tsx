@@ -27,7 +27,7 @@ const TotalWealth = () => {
         {accounts.map((account) => (
           <div key={account.id}>
             <h3 className="font-semibold">{account.title}</h3>
-            <div className="text-4xl font-semibold mb-8">﷼ {account.amount}</div>
+            <div className="text-2xl font-semibold mb-8">﷼ {account.amount}</div>
             
             {account.items.map((section, idx) => (
               <div key={idx} className="space-y-4 mb-12 last:mb-0">
