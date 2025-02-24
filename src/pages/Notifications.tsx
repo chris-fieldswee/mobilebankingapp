@@ -1,18 +1,148 @@
 
-import { Bell } from "lucide-react";
+import { Bell, DollarSign, CreditCard, Calendar, AlertCircle, XCircle, ShieldCheck, UserCheck, FileText, AlertOctagon, TrendingDown, Gift, Star, Send } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-const NotificationItem = ({ title, description, time }: { title: string; description: string; time: string }) => (
-  <div className="p-4 border-b last:border-b-0">
-    <div className="flex justify-between items-start mb-1">
-      <h3 className="font-medium">{title}</h3>
-      <span className="text-xs text-muted-foreground">{time}</span>
+const NotificationItem = ({ 
+  title, 
+  description, 
+  time, 
+  icon: Icon,
+  type = "default" 
+}: { 
+  title: string; 
+  description: string; 
+  time: string; 
+  icon: any;
+  type?: "default" | "warning" | "success" | "error";
+}) => {
+  const getIconColor = () => {
+    switch (type) {
+      case "warning":
+        return "text-yellow-500";
+      case "success":
+        return "text-green-500";
+      case "error":
+        return "text-red-500";
+      default:
+        return "text-primary";
+    }
+  };
+
+  return (
+    <div className="p-4 border-b last:border-b-0 hover:bg-secondary/50 transition-colors">
+      <div className="flex gap-3">
+        <div className={`h-10 w-10 rounded-full bg-secondary flex items-center justify-center shrink-0 ${getIconColor()}`}>
+          <Icon className="h-5 w-5" />
+        </div>
+        <div className="flex-1">
+          <div className="flex justify-between items-start mb-1">
+            <h3 className="font-medium">{title}</h3>
+            <span className="text-xs text-muted-foreground whitespace-nowrap ml-2">{time}</span>
+          </div>
+          <p className="text-sm text-muted-foreground">{description}</p>
+        </div>
+      </div>
     </div>
-    <p className="text-sm text-muted-foreground">{description}</p>
-  </div>
-);
+  );
+};
+
+const notifications = [
+  {
+    icon: DollarSign,
+    title: "Payment Received",
+    description: "You received 2,500﷼ from Ahmed Al-Fasal.",
+    time: "Just now",
+    type: "success"
+  },
+  {
+    icon: CreditCard,
+    title: "Harvey Nichols Purchase",
+    description: "Purchase at Harvey Nichols for 8,800﷼.",
+    time: "5 mins ago"
+  },
+  {
+    icon: CreditCard,
+    title: "Danube Gourmet Purchase",
+    description: "Purchase at Danube Gourmet for 1,200﷼.",
+    time: "15 mins ago"
+  },
+  {
+    icon: AlertOctagon,
+    title: "Low Balance Alert",
+    description: "Your account balance is below 5,000﷼. Consider adding funds.",
+    time: "30 mins ago",
+    type: "warning"
+  },
+  {
+    icon: XCircle,
+    title: "Payment Failed",
+    description: "Your payment of 800﷼ to Helpling failed. Please update your payment method.",
+    time: "45 mins ago",
+    type: "error"
+  },
+  {
+    icon: ShieldCheck,
+    title: "Security Update",
+    description: "Your password was changed successfully.",
+    time: "1 hour ago",
+    type: "success"
+  },
+  {
+    icon: UserCheck,
+    title: "New Device Login",
+    description: "New login detected from iPhone 16 in Riyadh. Verify it's you.",
+    time: "2 hours ago",
+    type: "warning"
+  },
+  {
+    icon: FileText,
+    title: "Statement Available",
+    description: "Your February statement is now available.",
+    time: "3 hours ago"
+  },
+  {
+    icon: AlertCircle,
+    title: "Budget Alert",
+    description: "You're nearing your Entertainment budget. You have 500﷼ remaining.",
+    time: "4 hours ago",
+    type: "warning"
+  },
+  {
+    icon: AlertOctagon,
+    title: "Over Budget",
+    description: "You've exceeded your Dining budget for this month.",
+    time: "5 hours ago",
+    type: "error"
+  },
+  {
+    icon: TrendingDown,
+    title: "Spending Change",
+    description: "Spent 2,000﷼ less on dining this month",
+    time: "6 hours ago",
+    type: "success"
+  },
+  {
+    icon: Gift,
+    title: "New Offer",
+    description: "A new offer is available at VOX Cinemas. View details.",
+    time: "7 hours ago"
+  },
+  {
+    icon: Star,
+    title: "Rewards Points",
+    description: "You have 15,000 rewards points. Redeem them now!",
+    time: "8 hours ago"
+  },
+  {
+    icon: Send,
+    title: "Payment Sent",
+    description: "Your scheduled payment of 3,500﷼ to Mercedes-Benz has been sent.",
+    time: "9 hours ago",
+    type: "success"
+  }
+];
 
 const Notifications = () => {
   return (
@@ -42,26 +172,16 @@ const Notifications = () => {
 
       <ScrollArea className="h-[calc(100vh-56px)] mt-14">
         <main className="max-w-md mx-auto">
-          <NotificationItem
-            title="New Payment Received"
-            description="You received $50.00 from John Doe"
-            time="2 mins ago"
-          />
-          <NotificationItem
-            title="Card Transaction Alert"
-            description="Purchase at Amazon.com for $25.50"
-            time="1 hour ago"
-          />
-          <NotificationItem
-            title="Security Update"
-            description="Your password was changed successfully"
-            time="2 hours ago"
-          />
-          <NotificationItem
-            title="Account Statement"
-            description="Your February statement is now available"
-            time="1 day ago"
-          />
+          {notifications.map((notification, index) => (
+            <NotificationItem
+              key={index}
+              icon={notification.icon}
+              title={notification.title}
+              description={notification.description}
+              time={notification.time}
+              type={notification.type as "default" | "warning" | "success" | "error"}
+            />
+          ))}
         </main>
       </ScrollArea>
     </div>
