@@ -82,10 +82,10 @@ const Search = () => {
             {/* Insight Card */}
             <Card className="p-4 bg-secondary/50">
               <div className="flex gap-3">
-                <div className="h-40 w-40 rounded-full bg-primary/10 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                   <LightbulbIcon className="h-5 w-5 text-primary" />
                 </div>
-                <p className="text-sm">
+                <p className="text-sm flex-1">
                   Your tuition fee of <span className="font-semibold">80,000 ﷼</span> to{" "}
                   <span className="text-primary">MBSC</span> is due on{" "}
                   <span className="text-primary">Feb 25, 2025</span>. Making the payment on time can help avoid any late fees.
@@ -96,7 +96,7 @@ const Search = () => {
             {/* Promotion Card */}
             <Card className="p-4 hover:bg-accent transition-colors cursor-pointer">
               <div className="flex gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                   <CreditCard className="h-5 w-5 text-primary" />
                 </div>
                 <div className="flex-1">
