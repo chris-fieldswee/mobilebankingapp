@@ -1,14 +1,15 @@
+
 import { User2, Coffee, ShoppingBag, Car, Pizza, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
 
 const recentPayees = [
-  { id: 1, name: "John Doe", icon: User2 },
-  { id: 2, name: "Starbucks", icon: Coffee },
-  { id: 3, name: "Amazon", icon: ShoppingBag },
-  { id: 4, name: "Uber", icon: Car },
-  { id: 5, name: "Domino's", icon: Pizza },
-  { id: 6, name: "Sarah M.", icon: CreditCard },
+  { id: 1, name: "Fatima Al-Fasal", icon: User2 },
+  { id: 2, name: "Ahmed Al-Fasal", icon: User2 },
+  { id: 3, name: "Saeed Al-Fasal", icon: User2 },
+  { id: 4, name: "Noura Al-Fasa", icon: User2 },
+  { id: 5, name: "Khalid Al-Rashid", icon: User2 },
+  { id: 6, name: "Layla Al-Qahtani", icon: User2 },
 ];
 
 const PayeesCarousel = () => {

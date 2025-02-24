@@ -26,26 +26,65 @@ const Transactions = () => {
             <Card className="p-6">
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-sm font-medium text-muted-foreground mb-3">Today</h2>
+                  <h2 className="text-sm font-medium text-muted-foreground mb-3">Dining (Total: ﷼2,040)</h2>
                   <div className="space-y-1">
-                    <TransactionItem merchant="Starbucks" amount="-$4.50" date="8:15 AM" />
+                    <TransactionItem merchant="Nusr-Et Steakhouse" amount="-﷼1,200" date="Mar 15" />
+                    <TransactionItem merchant="Okku" amount="-﷼450" date="Mar 14" />
+                    <TransactionItem merchant="Elements at Four Seasons" amount="-﷼350" date="Mar 13" />
+                    <TransactionItem merchant="Five Elephants Coffee Roasters" amount="-﷼40" date="Mar 12" />
                   </div>
                 </div>
 
                 <div>
-                  <h2 className="text-sm font-medium text-muted-foreground mb-3">Yesterday</h2>
+                  <h2 className="text-sm font-medium text-muted-foreground mb-3">Shopping (Total: ﷼11,300)</h2>
                   <div className="space-y-1">
-                    <TransactionItem merchant="Amazon" amount="-$150.99" date="3:45 PM" />
-                    <TransactionItem merchant="Uber" amount="-$22.75" date="1:20 PM" />
+                    <TransactionItem merchant="Harvey Nichols" amount="-﷼8,800" date="Mar 15" />
+                    <TransactionItem merchant="Balenciaga at Harvey Nichols" amount="-﷼2,500" date="Mar 14" />
                   </div>
                 </div>
 
                 <div>
-                  <h2 className="text-sm font-medium text-muted-foreground mb-3">March 1</h2>
+                  <h2 className="text-sm font-medium text-muted-foreground mb-3">Transportation (Total: ﷼4,150)</h2>
                   <div className="space-y-1">
-                    <TransactionItem merchant="Monthly Salary" amount="+$5,000.00" date="9:00 AM" />
-                    <TransactionItem merchant="Netflix" amount="-$15.99" date="8:30 AM" />
-                    <TransactionItem merchant="Walmart" amount="-$56.00" date="8:15 AM" />
+                    <TransactionItem merchant="Mercedes-Benz" amount="-﷼3,500" date="Mar 10" />
+                    <TransactionItem merchant="Saudi Aramco" amount="-﷼500" date="Mar 9" />
+                    <TransactionItem merchant="Uber Black" amount="-﷼150" date="Mar 8" />
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="text-sm font-medium text-muted-foreground mb-3">Entertainment (Total: ﷼3,750)</h2>
+                  <div className="space-y-1">
+                    <TransactionItem merchant="Fitness First Platinum" amount="-﷼1,500" date="Mar 7" />
+                    <TransactionItem merchant="Riyadh Season events" amount="-﷼2,000" date="Mar 6" />
+                    <TransactionItem merchant="VOX Cinemas Gold" amount="-﷼250" date="Mar 5" />
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="text-sm font-medium text-muted-foreground mb-3">Groceries (Total: ﷼2,650)</h2>
+                  <div className="space-y-1">
+                    <TransactionItem merchant="Danube Gourmet" amount="-﷼1,200" date="Mar 4" />
+                    <TransactionItem merchant="Organic Foods and Café" amount="-﷼500" date="Mar 3" />
+                    <TransactionItem merchant="Manuel Market" amount="-﷼800" date="Mar 2" />
+                    <TransactionItem merchant="Tamimi Markets" amount="-﷼150" date="Mar 1" />
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="text-sm font-medium text-muted-foreground mb-3">Bills (Total: ﷼3,300)</h2>
+                  <div className="space-y-1">
+                    <TransactionItem merchant="Saudi Electricity Company" amount="-﷼1,500" date="Mar 1" />
+                    <TransactionItem merchant="STC Fiber" amount="-﷼500" date="Mar 1" />
+                    <TransactionItem merchant="STC Platinum" amount="-﷼500" date="Mar 1" />
+                    <TransactionItem merchant="Helpling" amount="-﷼800" date="Mar 1" />
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="text-sm font-medium text-muted-foreground mb-3">Wellness</h2>
+                  <div className="space-y-1">
+                    <TransactionItem merchant="Four Seasons Spa" amount="-﷼1,210" date="Mar 1" />
                   </div>
                 </div>
               </div>
