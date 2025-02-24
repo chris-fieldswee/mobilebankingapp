@@ -117,18 +117,20 @@ const SpendingTab = () => {
             </ResponsiveContainer>
           </div>
 
-          <div className="flex gap-2 mt-4">
-            {periodOptions.map((period) => (
-              <Button
-                key={period}
-                variant={selectedPeriod === period ? "default" : "outline"}
-                onClick={() => setSelectedPeriod(period)}
-                className="flex-1"
-              >
-                {period}
-              </Button>
-            ))}
-          </div>
+          {chartType === "bar" && (
+            <div className="flex gap-2 mt-4">
+              {periodOptions.map((period) => (
+                <Button
+                  key={period}
+                  variant={selectedPeriod === period ? "default" : "outline"}
+                  onClick={() => setSelectedPeriod(period)}
+                  className="flex-1"
+                >
+                  {period}
+                </Button>
+              ))}
+            </div>
+          )}
         </Card>
       </div>
 

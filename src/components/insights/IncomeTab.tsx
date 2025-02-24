@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -5,36 +6,27 @@ import { BarChart, Bar, XAxis, ResponsiveContainer } from "recharts";
 import { TrendingUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const periodOptions = ["1W", "1M", "6M", "1Y"];
+const periodOptions = ["1M", "6M", "1Y"];
 
 const periodData = {
   "1M": [
-    { name: "Jan", amount: 5000 },
-    { name: "Feb", amount: 5000 },
-    { name: "Mar", amount: 5000 },
+    { name: "Dec", amount: 52000 },
+    { name: "Jan", amount: 52000 },
+    { name: "Feb", amount: 60000 },
   ],
   "6M": [
-    { name: "Oct", amount: 5000 },
-    { name: "Nov", amount: 5000 },
-    { name: "Dec", amount: 5000 },
-    { name: "Jan", amount: 5000 },
-    { name: "Feb", amount: 5000 },
-    { name: "Mar", amount: 5000 },
+    { name: "Sep", amount: 52000 },
+    { name: "Oct", amount: 52000 },
+    { name: "Nov", amount: 52000 },
+    { name: "Dec", amount: 52000 },
+    { name: "Jan", amount: 52000 },
+    { name: "Feb", amount: 60000 },
   ],
   "1Y": [
-    { name: "Q2 23", amount: 15000 },
-    { name: "Q3 23", amount: 15000 },
-    { name: "Q4 23", amount: 15000 },
-    { name: "Q1 24", amount: 15000 },
-  ],
-  "1W": [
-    { name: "Mon", amount: 0 },
-    { name: "Tue", amount: 0 },
-    { name: "Wed", amount: 5000 },
-    { name: "Thu", amount: 0 },
-    { name: "Fri", amount: 0 },
-    { name: "Sat", amount: 0 },
-    { name: "Sun", amount: 0 },
+    { name: "Q1 23", amount: 156000 },
+    { name: "Q2 23", amount: 156000 },
+    { name: "Q3 23", amount: 156000 },
+    { name: "Q4 23", amount: 156000 },
   ]
 };
 
@@ -48,13 +40,19 @@ const IncomeTab = () => {
       <div>
         <div className="mb-4">
           <p className="text-sm text-muted-foreground">Income · This month</p>
-          <h2 className="text-3xl font-semibold text-emerald-500">$ 5,000</h2>
+          <h2 className="text-3xl font-semibold text-[#222222]">﷼ 60,000</h2>
         </div>
 
         <Card className="p-6">
           <div className="h-[200px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={incomeData}>
+                <defs>
+                  <linearGradient id="incomeGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#60A5FA" />
+                    <stop offset="100%" stopColor="#3B82F6" />
+                  </linearGradient>
+                </defs>
                 <XAxis 
                   dataKey="name" 
                   stroke="#888888"
@@ -64,7 +62,7 @@ const IncomeTab = () => {
                 />
                 <Bar
                   dataKey="amount"
-                  fill="#36B37E"
+                  fill="url(#incomeGradient)"
                   radius={[4, 4, 0, 0]}
                 />
               </BarChart>
@@ -112,7 +110,7 @@ const IncomeTab = () => {
               <p className="font-medium">Salary</p>
               <p className="text-sm text-muted-foreground">Monthly income</p>
             </div>
-            <p className="font-medium text-emerald-500">+$ 5,000</p>
+            <p className="font-medium text-[#222222]">+﷼ 60,000</p>
           </div>
         </Card>
       </div>
