@@ -1,7 +1,7 @@
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BarChart, Bar, XAxis, ResponsiveContainer, ReferenceLine } from "recharts";
+import { BarChart, Bar, XAxis, ResponsiveContainer, ReferenceLine, Cell } from "recharts";
 import { useState } from "react";
 import { TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -103,11 +103,11 @@ const CashflowTab = () => {
               tickLine={false}
               axisLine={false}
             />
-            <Bar 
-              dataKey="amount" 
-              fill={(data) => data.amount < 0 ? "#f0f5fd" : "#3366FF"}
-              radius={[4, 4, 0, 0]} 
-            />
+            <Bar dataKey="amount" fill="#3366FF" radius={[4, 4, 0, 0]}>
+              {predictionData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.amount < 0 ? "#f0f5fd" : "#3366FF"} />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       )
@@ -181,11 +181,11 @@ const CashflowTab = () => {
                     axisLine={false}
                   />
                   <ReferenceLine y={0} stroke="#E5E7EB" />
-                  <Bar 
-                    dataKey="amount" 
-                    fill={(data) => data.amount < 0 ? "#f0f5fd" : "url(#moneyInGradient)"}
-                    radius={[4, 4, 0, 0]} 
-                  />
+                  <Bar dataKey="amount" fill="url(#moneyInGradient)" radius={[4, 4, 0, 0]}>
+                    {predictionData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.amount < 0 ? "#f0f5fd" : "url(#moneyInGradient)"} />
+                    ))}
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             )}
