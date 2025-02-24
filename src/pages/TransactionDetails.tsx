@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { X, Download, CreditCard, MapPin, ShoppingCart } from "lucide-react";
+import { X, Download, CreditCard, MapPin, ShoppingBag } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 
@@ -23,11 +23,11 @@ const TransactionDetails = () => {
           
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-              <ShoppingCart className="h-6 w-6 text-primary-foreground" />
+              <ShoppingBag className="h-6 w-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold">-zł 11.61</h1>
-              <p className="text-primary-foreground/70">Lidl</p>
+              <h1 className="text-2xl font-bold text-[0.95rem]">-﷼8,800</h1>
+              <p className="text-primary-foreground/70">Harvey Nichols</p>
             </div>
           </div>
         </div>
@@ -39,12 +39,12 @@ const TransactionDetails = () => {
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-sm text-muted-foreground">Date & Time</span>
-                <span>Yesterday, 22:19</span>
+                <span>February 24, 15:35</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-muted-foreground">Status</span>
-                <Badge variant="outline" className="bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20">
-                  Pending
+                <Badge variant="outline" className="bg-green-500/10 text-green-500 hover:bg-green-500/20">
+                  Completed
                 </Badge>
               </div>
               <div className="flex justify-between items-center">
@@ -63,16 +63,23 @@ const TransactionDetails = () => {
                 <MapPin className="h-5 w-5 text-primary" />
                 <span className="font-medium">Location</span>
               </div>
-              <Button variant="ghost" className="text-primary px-0">Open in Maps</Button>
+              <Button 
+                variant="ghost" 
+                className="text-primary px-0"
+                onClick={() => window.open('https://maps.google.com/?q=Harvey+Nichols+Riyadh', '_blank')}
+              >
+                Open in Maps
+              </Button>
             </div>
-            <div className="aspect-video w-full rounded-lg bg-muted">
-              {/* Map integration would go here */}
-              <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                Map View
-              </div>
+            <div className="aspect-video w-full rounded-lg overflow-hidden">
+              <img 
+                src="/lovable-uploads/f57989a2-ebdd-4203-af38-d49a8058ef06.png" 
+                alt="Map location" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <p className="text-sm text-muted-foreground">
-              Plastyczna 12, 02-449 Warsaw, Poland
+              Prince Muhammad Bin Abdulaziz Rd, Al Olaya, Riyadh 12214, Saudi Arabia
             </p>
           </Card>
 
@@ -93,7 +100,7 @@ const TransactionDetails = () => {
                 <p className="text-sm text-muted-foreground">Helps you track spending</p>
               </div>
               <Button variant="outline" className="gap-2">
-                🛒 Groceries
+                👕 Apparel
               </Button>
             </div>
           </Card>
@@ -101,8 +108,8 @@ const TransactionDetails = () => {
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">This month at Lidl</p>
-                <p className="text-lg font-medium">zł 156.42</p>
+                <p className="text-sm text-muted-foreground">This month at Harvey Nichols</p>
+                <p className="text-lg font-medium">﷼8,800</p>
               </div>
               <Button variant="ghost" size="sm" className="text-primary">
                 View all
