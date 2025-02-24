@@ -14,49 +14,55 @@ interface Story {
 const stories: Story[] = [
   {
     id: 1,
-    image: "/lovable-uploads/09127187-7909-428d-a29c-f80f661375ef.png",
+    image: "/lovable-uploads/9112fc0b-1d3f-4271-ab1e-4de2046968c2.png",
+    type: "image",
+    title: "Mobile Banking Solution"
+  },
+  {
+    id: 2,
+    image: "/lovable-uploads/465fa1d0-73ba-47b7-912f-64812527538b.png",
     type: "image",
     title: "Hi, Ali Al-Faisal!"
   },
   {
-    id: 2,
-    image: "/lovable-uploads/ffcd4cbe-0680-441f-a800-bbe3bad6681b.png",
+    id: 3,
+    image: "/lovable-uploads/8342dfdb-910b-4b82-aede-2eceef007430.png",
     type: "image",
     title: "Your Spending at a Glance"
   },
   {
-    id: 3,
-    image: "/lovable-uploads/fa21669f-751d-432d-8309-21ffe2e0accc.png",
+    id: 4,
+    image: "/lovable-uploads/a358809d-f137-4bce-a97a-718d46ff89b0.png",
     type: "image",
     title: "Your Savings"
   },
   {
-    id: 4,
-    image: "/lovable-uploads/6a84698a-f3cd-4219-a036-7860a06a6d5c.png",
+    id: 5,
+    image: "/lovable-uploads/ebe98650-0af4-43e2-b0c7-59130b2e7a49.png",
     type: "image",
     title: "A Well-Deserved Reward?"
   },
   {
-    id: 5,
-    image: "/lovable-uploads/894a2c5c-a09b-4e58-a9f7-de4e81435bdb.png",
+    id: 6,
+    image: "/lovable-uploads/c1b45f54-193e-4aa1-96ef-72ec7412115e.png",
     type: "image",
     title: "Strengthening Your Financial Safety Net"
   },
   {
-    id: 6,
-    image: "/lovable-uploads/0805a7ed-7e6c-469e-9b95-034e621c9ec4.png",
+    id: 7,
+    image: "/lovable-uploads/600984e4-8ee0-40c4-99e8-86958bba7a06.png",
     type: "image",
     title: "Your Financial Health Score"
   },
   {
-    id: 7,
-    image: "/lovable-uploads/a6a7d1a2-32c6-49ba-bf12-b20bb082464e.png",
+    id: 8,
+    image: "/lovable-uploads/c53108ce-da87-43cd-a2c1-443b027f4c5c.png",
     type: "image",
     title: "Make Your Money Work Harder"
   },
   {
-    id: 8,
-    image: "/lovable-uploads/cf3b12e8-e3ec-400f-9277-e6c2721f8731.png",
+    id: 9,
+    image: "/lovable-uploads/59ae121a-329d-400d-92ce-4eb382ddc6a8.png",
     type: "image",
     title: "Wrapping Up & Looking Ahead"
   }
