@@ -81,6 +81,21 @@
         border: none;
       }
 
+      /* Ensure navigation bars appear above the notch */
+      nav {
+        position: relative;
+        z-index: 3;
+      }
+
+      /* Adjust main content area to account for navigation */
+      main {
+        padding-top: 64px; /* Height of top nav */
+        padding-bottom: 64px; /* Height of bottom nav */
+        min-height: calc(100vh - 128px); /* Viewport height minus combined nav heights */
+        position: relative;
+        z-index: 0;
+      }
+
       @media (max-width: 480px) {
         .iphone-frame {
           width: 100%;
@@ -96,6 +111,10 @@
         .iphone-frame::before,
         .iphone-notch {
           display: none;
+        }
+
+        main {
+          min-height: calc(100vh - 128px);
         }
       }
     </style>
