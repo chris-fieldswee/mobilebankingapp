@@ -26,7 +26,7 @@ const PlatinumCardOffer = () => {
         <div className="space-y-6">
           <div className="flex justify-center p-6">
             <img
-              src="/lovable-uploads/fb8acaf7-de28-4c12-b507-3aeb663b02e9.png"
+              src="/lovable-uploads/1b0cef9c-0b62-4186-8303-8505724fa8c3.png"
               alt="SAB Platinum Credit Card"
               className="w-full max-w-[300px] rounded-xl shadow-lg"
             />

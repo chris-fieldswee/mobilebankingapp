@@ -59,7 +59,7 @@ const Search = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="bg-secondary"
-              placeholder="How much have I spent on gas this month?"
+              placeholder="Search insights and transactions..."
               autoComplete="off"
             />
             {searchQuery && (
