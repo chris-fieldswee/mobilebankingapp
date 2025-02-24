@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 import { Wallet, Landmark, CreditCard, PiggyBank, Calculator } from "lucide-react";
 
@@ -26,13 +27,13 @@ const TotalWealth = () => {
         {accounts.map((account) => (
           <div key={account.id}>
             <h3 className="font-semibold">{account.title}</h3>
-            <div className="text-2xl font-semibold mb-8">﷼ {account.amount}</div>
+            <div className="text-2xl font-semibold mb-8 text-[0.95rem]">﷼ {account.amount}</div>
             
             {account.items.map((section, idx) => (
               <div key={idx} className="space-y-4 mb-12 last:mb-0">
                 <div className="flex items-center justify-between">
                   <h4 className="text-sm font-medium text-muted-foreground">{section.section}</h4>
-                  <span className="font-medium text-[#222222]">﷼ {section.total}</span>
+                  <span className="font-medium text-[0.95rem]">﷼ {section.total}</span>
                 </div>
                 <div className="space-y-3">
                   {section.details.map((item, index) => (
@@ -43,7 +44,7 @@ const TotalWealth = () => {
                         </div>
                         <span>{item.label}</span>
                       </div>
-                      <span className="font-medium">﷼ {item.amount}</span>
+                      <span className="font-medium text-[0.95rem]">﷼ {item.amount}</span>
                     </div>
                   ))}
                 </div>

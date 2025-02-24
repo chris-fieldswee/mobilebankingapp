@@ -14,7 +14,7 @@ const Insights = () => {
 
   return (
     <div className="fixed inset-0 bg-background">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg">
         <div className="max-w-md mx-auto px-4 h-14 flex items-center">
           <Link to="/">
             <Button variant="ghost" size="icon" className="mr-2">
@@ -27,7 +27,7 @@ const Insights = () => {
 
       <main className="h-full pt-14 overflow-hidden">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
-          <div className="flex-none bg-background/80 backdrop-blur-lg border-b">
+          <div className="flex-none bg-background/80 backdrop-blur-lg">
             <div className="max-w-md mx-auto">
               <TabsList className="w-full h-12 bg-transparent">
                 <TabsTrigger 

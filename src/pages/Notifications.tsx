@@ -1,4 +1,3 @@
-
 import { Bell, DollarSign, CreditCard, Calendar, AlertCircle, XCircle, ShieldCheck, UserCheck, FileText, AlertOctagon, TrendingDown, Gift, Star, Send } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
@@ -17,24 +16,11 @@ const NotificationItem = ({
   icon: any;
   type?: "default" | "warning" | "success" | "error";
 }) => {
-  const getIconColor = () => {
-    switch (type) {
-      case "warning":
-        return "text-yellow-500";
-      case "success":
-        return "text-green-500";
-      case "error":
-        return "text-red-500";
-      default:
-        return "text-primary";
-    }
-  };
-
   return (
     <div className="p-4 border-b last:border-b-0 hover:bg-secondary/50 transition-colors">
       <div className="flex gap-3">
-        <div className={`h-10 w-10 rounded-full bg-secondary flex items-center justify-center shrink-0 ${getIconColor()}`}>
-          <Icon className="h-5 w-5" />
+        <div className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center shrink-0">
+          <Icon className="h-5 w-5 text-muted-foreground" />
         </div>
         <div className="flex-1">
           <div className="flex justify-between items-start mb-1">

@@ -23,7 +23,7 @@ const PlatinumCardOffer = () => {
         </div>
       </header>
 
-      <main className="max-w-md mx-auto pt-20 pb-8">
+      <main className="max-w-md mx-auto pt-20 pb-8 px-4">
         <div className="space-y-6">
           <div>
             <img
