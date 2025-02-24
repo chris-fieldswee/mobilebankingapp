@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { ArrowLeft, Pause, Play } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -13,49 +14,49 @@ interface Story {
 const stories: Story[] = [
   {
     id: 1,
-    image: "/lovable-uploads/aead3ba0-f187-4bf1-a324-d92c56c716ae.png",
+    image: "/lovable-uploads/09127187-7909-428d-a29c-f80f661375ef.png",
     type: "image",
     title: "Hi, Ali Al-Faisal!"
   },
   {
     id: 2,
-    image: "/lovable-uploads/55b8aacc-ac74-425b-a367-206ed860bdf7.png",
+    image: "/lovable-uploads/ffcd4cbe-0680-441f-a800-bbe3bad6681b.png",
     type: "image",
     title: "Your Spending at a Glance"
   },
   {
     id: 3,
-    image: "/lovable-uploads/22d72c91-cf8e-41d4-9e9e-ad5fcc1669a5.png",
+    image: "/lovable-uploads/fa21669f-751d-432d-8309-21ffe2e0accc.png",
     type: "image",
     title: "Your Savings"
   },
   {
     id: 4,
-    image: "/lovable-uploads/be9f9fa5-58fc-4c6a-ba38-78811c4c749a.png",
+    image: "/lovable-uploads/6a84698a-f3cd-4219-a036-7860a06a6d5c.png",
     type: "image",
     title: "A Well-Deserved Reward?"
   },
   {
     id: 5,
-    image: "/lovable-uploads/2badca8c-d65a-490e-b0d7-ded319a801de.png",
+    image: "/lovable-uploads/894a2c5c-a09b-4e58-a9f7-de4e81435bdb.png",
     type: "image",
     title: "Strengthening Your Financial Safety Net"
   },
   {
     id: 6,
-    image: "/lovable-uploads/67e2af54-4e6c-4843-97fd-115ed7d6d3f2.png",
+    image: "/lovable-uploads/0805a7ed-7e6c-469e-9b95-034e621c9ec4.png",
     type: "image",
     title: "Your Financial Health Score"
   },
   {
     id: 7,
-    image: "/lovable-uploads/397ff494-6c9d-4079-858b-d1a66bb3eeb2.png",
+    image: "/lovable-uploads/a6a7d1a2-32c6-49ba-bf12-b20bb082464e.png",
     type: "image",
     title: "Make Your Money Work Harder"
   },
   {
     id: 8,
-    image: "/lovable-uploads/47f74f19-d2f1-4d99-ab82-8127025002e9.png",
+    image: "/lovable-uploads/cf3b12e8-e3ec-400f-9277-e6c2721f8731.png",
     type: "image",
     title: "Wrapping Up & Looking Ahead"
   }
@@ -137,14 +138,14 @@ const Stories = () => {
   const currentStory = stories[activeStory];
 
   return (
-    <div className="fixed inset-0 bg-black">
+    <div className="fixed inset-0 bg-white">
       <div 
         className="h-full w-full relative"
         onClick={handleTap}
       >
         <div className="absolute inset-0 z-0">
           <div
-            className="absolute inset-0 bg-black"
+            className="absolute inset-0 bg-white"
             style={{
               backgroundImage: `url(${currentStory.image})`,
               backgroundSize: 'cover',
@@ -159,10 +160,10 @@ const Stories = () => {
             {stories.map((_, index) => (
               <div 
                 key={index}
-                className="h-1 flex-1 bg-white/30 rounded-full overflow-hidden"
+                className="h-1 flex-1 bg-black/10 rounded-full overflow-hidden"
               >
                 <div 
-                  className="h-full bg-white transition-all duration-[16ms] ease-linear origin-left"
+                  className="h-full bg-black/60 transition-all duration-[16ms] ease-linear origin-left"
                   style={{
                     transform: `scaleX(${index === activeStory ? progress / 100 : index < activeStory ? 1 : 0})`,
                   }} 
@@ -175,7 +176,7 @@ const Stories = () => {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="text-white hover:bg-white/20"
+              className="text-black hover:bg-black/10"
               onClick={handleNavigateHome}
             >
               <ArrowLeft className="h-6 w-6" />
@@ -183,7 +184,7 @@ const Stories = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="text-white hover:bg-white/20"
+              className="text-black hover:bg-black/10"
               onClick={togglePause}
             >
               {isPaused ? (
