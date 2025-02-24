@@ -12,7 +12,7 @@ const QuickActions = () => (
       <Button
         key={action.label}
         variant="outline"
-        className="flex flex-col h-auto py-4 hover:bg-secondary"
+        className="flex flex-col h-auto py-4 hover:bg-secondary dark:hover:bg-blue-800/20 transition-colors"
       >
         <action.icon className="h-5 w-5 mb-2" />
         <span className="text-xs">{action.label}</span>

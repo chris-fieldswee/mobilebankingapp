@@ -14,7 +14,7 @@ const SpendingChallengeWidget = () => {
         <div className="h-2 w-full bg-secondary rounded-full mb-3">
           <div 
             className={`h-full rounded-full transition-all duration-500 ${
-              isOverBudget ? 'bg-destructive' : 'bg-[#222222]'
+              isOverBudget ? 'bg-destructive' : 'progress-bar-gradient'
             }`}
             style={{ width: `${progress}%` }}
           />
