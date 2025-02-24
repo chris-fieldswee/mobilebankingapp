@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { X, Download, CreditCard, MapPin, ShoppingBag } from "lucide-react";
+import { X, Download, CreditCard, MapPin } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 
@@ -10,7 +10,7 @@ const TransactionDetails = () => {
 
   return (
     <div className="fixed inset-0 bg-background flex flex-col">
-      <header className="flex-none fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground">
+      <header className="flex-none fixed top-0 left-0 right-0 z-50 progress-bar-gradient text-primary-foreground">
         <div className="max-w-md mx-auto px-4 py-8">
           <Button
             variant="ghost"
@@ -23,7 +23,11 @@ const TransactionDetails = () => {
           
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-              <ShoppingBag className="h-6 w-6 text-primary-foreground" />
+              <img 
+                src="/lovable-uploads/7bbc784f-1a77-4f49-8015-2218ad508d44.png" 
+                alt="Harvey Nichols" 
+                className="h-6 w-6 invert"
+              />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-[0.95rem]">-﷼8,800</h1>
