@@ -13,10 +13,12 @@ import OffersCarousel from "@/components/widgets/OffersCarousel";
 
 const Index = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-background">
-      <TopNav />
-      <main className="flex-1 overflow-auto pt-20 pb-20">
-        <div className="max-w-md mx-auto px-4 py-6">
+    <div className="flex flex-col h-full bg-background relative">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <TopNav />
+      </div>
+      <main className="flex-1 overflow-y-auto pt-16 pb-20 relative">
+        <div className="max-w-md mx-auto px-4">
           <AccountsCarousel />
           <QuickActions />
           <SpendingChallengeWidget />
@@ -28,7 +30,9 @@ const Index = () => {
           <TotalWealth />
         </div>
       </main>
-      <BottomNav />
+      <div className="fixed bottom-0 left-0 right-0 z-50">
+        <BottomNav />
+      </div>
     </div>
   );
 };
