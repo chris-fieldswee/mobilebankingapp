@@ -14,13 +14,6 @@ const offers = [
   },
   {
     id: 2,
-    title: "Loans at competitive rates",
-    subtitle: "Put your plans into action with Loans",
-    image: "/lovable-uploads/a0a19c7f-e795-4754-af10-e27a43a5d0d9.png",
-    link: null
-  },
-  {
-    id: 3,
     title: "Dine at Partner Restaurant",
     subtitle: "Get 15% cashback when you pay with your SAB Credit Card",
     image: "/lovable-uploads/0ea319fc-0d71-4e22-9bfe-2fd798760224.png",

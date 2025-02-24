@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ArrowLeft, X, LightbulbIcon, CreditCard, ChevronRight, Calendar, Play, Music } from "lucide-react";
+import { ArrowLeft, X, LightbulbIcon, Calendar, Play, Music } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
@@ -90,24 +90,6 @@ const Search = () => {
                   <span className="text-primary">MBSC</span> is due on{" "}
                   <span className="text-primary">Feb 25, 2025</span>. Making the payment on time can help avoid any late fees.
                 </p>
-              </div>
-            </Card>
-
-            {/* Promotion Card */}
-            <Card className="p-4 hover:bg-accent transition-colors cursor-pointer">
-              <div className="flex gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <CreditCard className="h-5 w-5 text-primary" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm mb-1">
-                    Loans at competitive rates. Put your plans into action with Loans.
-                  </p>
-                  <Button variant="link" className="text-primary px-0 h-auto font-normal">
-                    Learn more
-                  </Button>
-                </div>
-                <ChevronRight className="h-5 w-5 text-muted-foreground self-center" />
               </div>
             </Card>
 

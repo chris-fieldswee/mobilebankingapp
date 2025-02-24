@@ -64,7 +64,7 @@ const BudgetTab = () => {
           </div>
           <div>
             <p className="text-sm">
-              Your upcoming transactions (﷼{totalUpcoming.toLocaleString()}) significantly exceed your remaining budget for this month (﷼{remainingBudget.toLocaleString()}). To ensure these payments go through, consider taking a loan or transferring funds from your savings account.
+              Your upcoming transactions (﷼{totalUpcoming.toLocaleString()}) significantly exceed your remaining budget for this month (﷼{remainingBudget.toLocaleString()}). To ensure these payments go through, consider transferring funds from your savings account.
             </p>
           </div>
         </div>
