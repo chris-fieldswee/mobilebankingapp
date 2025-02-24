@@ -23,17 +23,17 @@ const BudgetTab = () => {
     <div className="space-y-4">
       <Card className="p-4 text-center">
         <div className="flex justify-center">
-          <div className="relative w-[850px] h-[850px]">
+          <div className="relative w-[280px] h-[280px]">
             <CircularProgressBar
               percentage={Math.min(progress, 100)}
               strokeWidth={24}
               availableColor="#F4F4F5"
               spentColor="url(#blueGradient)"
             />
-            <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4">
+            <div className="absolute inset-0 flex flex-col items-center justify-center space-y-2">
               <p className="text-sm text-muted-foreground">Available</p>
               <span className="text-3xl font-bold">﷼ {remainingBudget.toLocaleString()}</span>
-              <p className="text-sm text-muted-foreground mt-2">9 days left</p>
+              <p className="text-sm text-muted-foreground">9 days left</p>
             </div>
           </div>
         </div>
