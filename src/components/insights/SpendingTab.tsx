@@ -1,11 +1,12 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { BarChart2, PieChart, ArrowRight, TrendingUp } from "lucide-react";
+import { BarChart2, PieChart, ArrowRight, TrendingUp, Utensils, ShoppingBag, Car, Popcorn, ShoppingCart, Receipt, Spa } from "lucide-react";
 import { BarChart, Bar, PieChart as RechartPie, Pie, Cell, ResponsiveContainer, XAxis } from "recharts";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const periodOptions = ["1W", "1M", "6M", "1Y"];
+const periodOptions = ["1W", "1M"];
 
 const periodData = {
   "1W": [
@@ -22,39 +23,25 @@ const periodData = {
     { name: "8-14", amount: 350 },
     { name: "15-21", amount: 250 },
     { name: "22-28", amount: 300 }
-  ],
-  "6M": [
-    { name: "Oct", amount: 1200 },
-    { name: "Nov", amount: 1300 },
-    { name: "Dec", amount: 1500 },
-    { name: "Jan", amount: 1200 },
-    { name: "Feb", amount: 1100 },
-    { name: "Mar", amount: 1400 }
-  ],
-  "1Y": [
-    { name: "Q2 23", amount: 3600 },
-    { name: "Q3 23", amount: 3400 },
-    { name: "Q4 23", amount: 4000 },
-    { name: "Q1 24", amount: 3400 }
   ]
 };
 
 const categoryData = [
-  { name: "Dining", amount: 1200, transactions: 28, percentage: 25, color: "#222222" },
-  { name: "Shopping", amount: 800, transactions: 15, percentage: 16, color: "#333333" },
-  { name: "Transportation", amount: 300, transactions: 12, percentage: 6, color: "#444444" },
-  { name: "Entertainment", amount: 400, transactions: 8, percentage: 8, color: "#555555" },
-  { name: "Groceries", amount: 850, transactions: 20, percentage: 17, color: "#666666" },
-  { name: "Bills", amount: 1400, transactions: 6, percentage: 28, color: "#777777" }
+  { name: "Dining", amount: 2040, transactions: 4, percentage: 7, color: "#888888", icon: Utensils },
+  { name: "Shopping", amount: 11300, transactions: 2, percentage: 40, color: "#888888", icon: ShoppingBag },
+  { name: "Transportation", amount: 4150, transactions: 3, percentage: 15, color: "#888888", icon: Car },
+  { name: "Entertainment", amount: 3750, transactions: 3, percentage: 13, color: "#888888", icon: Popcorn },
+  { name: "Groceries", amount: 2650, transactions: 4, percentage: 9, color: "#888888", icon: ShoppingCart },
+  { name: "Bills", amount: 3300, transactions: 4, percentage: 12, color: "#888888", icon: Receipt },
+  { name: "Spa", amount: 1210, transactions: 1, percentage: 4, color: "#888888", icon: Spa }
 ];
 
 const SpendingTab = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("1M");
   const [chartType, setChartType] = useState<"bar" | "pie">("bar");
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
 
-  const totalSpent = 2450;
+  const totalSpent = 28400;
   const spendingData = periodData[selectedPeriod as keyof typeof periodData];
 
   return (
@@ -63,7 +50,7 @@ const SpendingTab = () => {
         <div className="flex justify-between items-start mb-4">
           <div>
             <p className="text-sm text-muted-foreground">Spent · This month</p>
-            <h2 className="text-3xl font-semibold">$ {totalSpent}</h2>
+            <h2 className="text-3xl font-semibold">﷼ {totalSpent.toLocaleString()}</h2>
           </div>
           <Button
             variant="outline"
@@ -83,6 +70,12 @@ const SpendingTab = () => {
             <ResponsiveContainer width="100%" height="100%">
               {chartType === "bar" ? (
                 <BarChart data={spendingData}>
+                  <defs>
+                    <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#60A5FA" />
+                      <stop offset="100%" stopColor="#3B82F6" />
+                    </linearGradient>
+                  </defs>
                   <XAxis 
                     dataKey="name" 
                     stroke="#888888"
@@ -92,7 +85,7 @@ const SpendingTab = () => {
                   />
                   <Bar
                     dataKey="amount"
-                    fill="#222222"
+                    fill="url(#barGradient)"
                     radius={[4, 4, 0, 0]}
                   />
                 </BarChart>
@@ -136,7 +129,7 @@ const SpendingTab = () => {
           </div>
           <div className="space-y-2">
             <p className="text-sm">
-              Noticed a trend? Your restaurant spending has increased by 20% over the last 3 months. Want to stay on top of your dining budget?
+              Noticed a trend? Your restaurant spending has increased by <span className="font-bold">20% over the last 3 months</span>. Want to stay on top of your dining budget?
             </p>
             <Button 
               variant="default" 
@@ -168,10 +161,7 @@ const SpendingTab = () => {
                   className="w-10 h-10 rounded-full flex items-center justify-center"
                   style={{ backgroundColor: `${category.color}20` }}
                 >
-                  <div 
-                    className="w-5 h-5 rounded-full"
-                    style={{ backgroundColor: category.color }}
-                  />
+                  <category.icon className="h-5 w-5 text-[#888888]" />
                 </div>
                 <div>
                   <p className="font-medium">{category.name}</p>
@@ -182,7 +172,7 @@ const SpendingTab = () => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="text-right">
-                  <p className="font-medium text-[#222222] text-[0.95rem]">-$ {category.amount}</p>
+                  <p className="font-medium text-[#222222] text-[0.95rem]">-﷼ {category.amount.toLocaleString()}</p>
                   <p className="text-sm text-muted-foreground">{category.percentage}%</p>
                 </div>
                 <ArrowRight className="h-4 w-4 text-muted-foreground" />
