@@ -23,10 +23,10 @@ const periodData = {
     { name: "Feb", amount: 60000 },
   ],
   "1Y": [
-    { name: "Q1 23", amount: 156000 },
-    { name: "Q2 23", amount: 156000 },
-    { name: "Q3 23", amount: 156000 },
-    { name: "Q4 23", amount: 156000 },
+    { name: "Q2 24", amount: 156000 }, // 3 x 52,000
+    { name: "Q3 24", amount: 156000 }, // 3 x 52,000
+    { name: "Q4 24", amount: 156000 }, // 3 x 52,000
+    { name: "Q1 25", amount: 164000 }, // 2 x 52,000 + 60,000
   ]
 };
 

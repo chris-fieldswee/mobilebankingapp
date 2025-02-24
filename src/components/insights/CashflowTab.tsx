@@ -38,22 +38,26 @@ const periodData = {
 };
 
 const moneyInData = [
-  { name: "Salary", amount: 5000, transactions: 1, percentage: "100%" }
+  { name: "Salary", amount: 60000, transactions: 1, percentage: "100%" }
 ];
 
 const moneyOutData = [
-  { name: "Dining", amount: 1200, transactions: 28, percentage: "25%" },
-  { name: "Shopping", amount: 800, transactions: 15, percentage: "16%" }
+  { name: "Dining", amount: 2040, transactions: 4, percentage: "7%" },
+  { name: "Shopping", amount: 11300, transactions: 2, percentage: "40%" },
+  { name: "Transportation", amount: 4150, transactions: 3, percentage: "15%" },
+  { name: "Entertainment", amount: 3750, transactions: 3, percentage: "13%" },
+  { name: "Groceries", amount: 2650, transactions: 4, percentage: "9%" },
+  { name: "Bills", amount: 3300, transactions: 4, percentage: "12%" },
+  { name: "Spa", amount: 1210, transactions: 1, percentage: "4%" }
 ];
 
 const upcomingTransactions = [
-  { name: "Netflix", amount: 15.99 },
-  { name: "Spotify", amount: 9.99 },
-  { name: "Electricity Bill", amount: 85 },
-  { name: "Internet Bill", amount: 45 }
+  { name: "Tuition Fee", amount: 80000, dueIn: "5 days" },
+  { name: "Netflix Subscription", amount: 45, dueIn: "3 days" },
+  { name: "Spotify Premium", amount: 20, dueIn: "7 days" }
 ];
 
-const currentBalance = 5000 - 2450;
+const currentBalance = 60000 - moneyOutData.reduce((sum, item) => sum + item.amount, 0);
 const upcomingTotal = upcomingTransactions.reduce((sum, tx) => sum + tx.amount, 0);
 const predictedBalance = currentBalance - upcomingTotal;
 
@@ -110,7 +114,7 @@ const CashflowTab = () => {
       <div>
         <div className="mb-4">
           <p className="text-sm text-muted-foreground">Net Cashflow · This month</p>
-          <h2 className="text-3xl font-semibold">$ {currentBalance}</h2>
+          <h2 className="text-3xl font-semibold text-[#222222]">﷼ {currentBalance.toLocaleString()}</h2>
         </div>
 
         <Card className="p-6">
@@ -172,7 +176,7 @@ const CashflowTab = () => {
         <div className="mb-4">
           <div className="flex justify-between items-center">
             <h3 className="font-semibold">Money In</h3>
-            <span className="text-sm font-medium">$ 5,000</span>
+            <span className="text-sm font-medium text-[#222222]">﷼ {moneyInData[0].amount.toLocaleString()}</span>
           </div>
         </div>
 
@@ -187,7 +191,7 @@ const CashflowTab = () => {
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="font-medium text-emerald-500">+$ {item.amount}</p>
+                  <p className="font-medium text-[#222222]">+﷼ {item.amount.toLocaleString()}</p>
                   <p className="text-sm text-muted-foreground">{item.percentage}</p>
                 </div>
               </div>
@@ -200,7 +204,7 @@ const CashflowTab = () => {
         <div className="mb-4">
           <div className="flex justify-between items-center">
             <h3 className="font-semibold">Money Out</h3>
-            <span className="text-sm font-medium">-$ 2,450</span>
+            <span className="text-sm font-medium text-[#222222]">-﷼ {moneyOutData.reduce((sum, item) => sum + item.amount, 0).toLocaleString()}</span>
           </div>
         </div>
 
@@ -215,7 +219,7 @@ const CashflowTab = () => {
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="font-medium text-destructive">-$ {item.amount}</p>
+                  <p className="font-medium text-[#222222]">-﷼ {item.amount.toLocaleString()}</p>
                   <p className="text-sm text-muted-foreground">{item.percentage}</p>
                 </div>
               </div>
@@ -228,7 +232,7 @@ const CashflowTab = () => {
         <div className="mb-4">
           <div className="flex justify-between items-center">
             <h3 className="font-semibold">Upcoming Transactions</h3>
-            <span className="text-sm font-medium">-$ {upcomingTotal.toFixed(2)}</span>
+            <span className="text-sm font-medium text-[#222222]">-﷼ {upcomingTotal.toLocaleString()}</span>
           </div>
         </div>
 
@@ -238,9 +242,10 @@ const CashflowTab = () => {
               <div className="flex justify-between items-center">
                 <div>
                   <p className="font-medium">{item.name}</p>
+                  <p className="text-sm text-muted-foreground">Due in {item.dueIn}</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-medium text-destructive">-$ {item.amount.toFixed(2)}</p>
+                  <p className="font-medium text-[#222222]">-﷼ {item.amount.toLocaleString()}</p>
                 </div>
               </div>
             </Card>
