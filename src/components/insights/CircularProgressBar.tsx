@@ -2,10 +2,16 @@
 interface CircularProgressBarProps {
   percentage: number;
   strokeWidth: number;
-  color: string;
+  availableColor: string;
+  spentColor: string;
 }
 
-export const CircularProgressBar = ({ percentage, strokeWidth, color }: CircularProgressBarProps) => {
+export const CircularProgressBar = ({ 
+  percentage, 
+  strokeWidth, 
+  availableColor, 
+  spentColor 
+}: CircularProgressBarProps) => {
   const radius = 50 - strokeWidth / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (percentage / 100) * circumference;
@@ -13,12 +19,13 @@ export const CircularProgressBar = ({ percentage, strokeWidth, color }: Circular
   return (
     <svg className="w-full h-full -rotate-90">
       <circle
-        className="text-muted stroke-current"
+        className="stroke-current"
         strokeWidth={strokeWidth}
         fill="transparent"
         r={radius}
         cx="50%"
         cy="50%"
+        style={{ stroke: availableColor }}
       />
       <circle
         className="stroke-current transition-all duration-500 ease-in-out"
@@ -30,7 +37,7 @@ export const CircularProgressBar = ({ percentage, strokeWidth, color }: Circular
         r={radius}
         cx="50%"
         cy="50%"
-        style={{ stroke: color }}
+        style={{ stroke: spentColor }}
       />
     </svg>
   );

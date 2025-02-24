@@ -1,40 +1,39 @@
+
 import { Card } from "@/components/ui/card";
 import { CircularProgressBar } from "@/components/insights/CircularProgressBar";
 import { AlertCircle, Calendar, Coins } from "lucide-react";
 
 const BudgetTab = () => {
-  const budget = 2000;
-  const spent = 2450;
-  const excess = spent - budget;
+  const budget = 35000;
+  const spent = 31600;
+  const remainingBudget = Math.max(budget - spent, 0);
   const progress = (spent / budget) * 100;
   const isOverBudget = spent > budget;
-  const remainingBudget = Math.max(budget - spent, 0);
   const utilizationPercentage = Math.min(Math.round((spent / budget) * 100), 100);
+
+  // Upcoming transactions
+  const upcomingTransactions = [
+    { name: "Tuition Fee", dueIn: 5, amount: 80000 },
+    { name: "Netflix Subscription", dueIn: 3, amount: 45 },
+    { name: "Spotify Premium", dueIn: 7, amount: 20 }
+  ];
+  
+  const totalUpcoming = upcomingTransactions.reduce((sum, tx) => sum + tx.amount, 0);
 
   return (
     <div className="space-y-6">
       <Card className="p-6 text-center">
         <div className="flex justify-center">
-          <div className="relative w-96 h-96">
+          <div className="relative w-[340px] h-[340px]">
             <CircularProgressBar
               percentage={Math.min(progress, 100)}
               strokeWidth={12}
-              color={isOverBudget ? '#555555' : '#222222'}
+              availableColor="#F4F4F5"
+              spentColor="#0064fa"
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4">
-              <p className="text-sm text-muted-foreground">Budget · This month</p>
-              <p className="text-3xl font-semibold">zł {budget}</p>
-              {isOverBudget ? (
-                <>
-                  <span className="text-5xl font-bold text-[#222222]">+zł {excess}</span>
-                  <span className="text-sm text-muted-foreground">over budget</span>
-                </>
-              ) : (
-                <>
-                  <span className="text-5xl font-bold">zł {spent}</span>
-                  <span className="text-sm text-muted-foreground">of zł {budget}</span>
-                </>
-              )}
+              <p className="text-lg text-muted-foreground">Available</p>
+              <span className="text-5xl font-bold">﷼ {remainingBudget.toLocaleString()}</span>
               <p className="text-sm text-muted-foreground mt-2">9 days left</p>
             </div>
           </div>
@@ -48,8 +47,11 @@ const BudgetTab = () => {
           </div>
           <div>
             <p className="text-sm">
-              Heads up! You've used {utilizationPercentage}% of your budget for this month. 
-              You have zł {remainingBudget} left to spend. Stay mindful of your spending to reach your budgeting target.
+              {isOverBudget 
+                ? `You've exceeded your budget by ﷼${(spent - budget).toLocaleString()}. Consider reviewing your spending to get back on track.`
+                : `You've used ${utilizationPercentage}% of your ﷼${budget.toLocaleString()} budget. 
+                   You have ﷼${remainingBudget.toLocaleString()} left to spend this month.`
+              }
             </p>
           </div>
         </div>
@@ -63,10 +65,10 @@ const BudgetTab = () => {
             </div>
             <div>
               <p className="font-medium">Upcoming</p>
-              <p className="text-sm text-muted-foreground">1 transaction</p>
+              <p className="text-sm text-muted-foreground">{upcomingTransactions.length} transactions</p>
             </div>
           </div>
-          <span className="font-medium">zł 55.99</span>
+          <span className="font-medium">﷼ {totalUpcoming.toLocaleString()}</span>
         </div>
       </Card>
 
@@ -81,7 +83,7 @@ const BudgetTab = () => {
               <p className="text-sm text-muted-foreground">51 transactions</p>
             </div>
           </div>
-          <span className="font-medium">zł {spent}</span>
+          <span className="font-medium">﷼ {spent.toLocaleString()}</span>
         </div>
       </Card>
     </div>
