@@ -1,18 +1,14 @@
 
-import { Search, Bell, Zap, BarChart2, CircleUserRound } from "lucide-react";
+import { Search, Bell, Zap, BarChart2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
+import ProfileMenu from "@/components/ProfileMenu";
 
 const TopNav = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-between gap-3">
-        <Link 
-          to="/profile" 
-          className="rounded-full p-2 hover:bg-accent"
-        >
-          <CircleUserRound className="h-7 w-7" />
-        </Link>
+        <ProfileMenu />
         
         <Link 
           to="/search"
