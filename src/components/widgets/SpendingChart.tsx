@@ -20,7 +20,7 @@ const SpendingChart = () => {
       <div className="mb-2">
         <h3 className="font-semibold text-sm text-muted-foreground">Spent this month</h3>
         <div className="flex items-center gap-2">
-          <span className="text-2xl font-semibold">﷼ {currentSpent}</span>
+          <span className="text-2xl font-semibold">﷼ {currentSpent.toLocaleString()}</span>
           <div className="flex items-center text-emerald-500 text-sm">
             <ArrowUpIcon className="h-4 w-4" />
             <span>2.3%</span>

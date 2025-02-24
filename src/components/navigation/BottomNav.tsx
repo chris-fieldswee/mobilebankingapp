@@ -1,7 +1,7 @@
 
 import { Home, Send, MessageSquare, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const menuItems = [
   { icon: Home, label: "Home", path: "/" },
@@ -11,6 +11,8 @@ const menuItems = [
 ];
 
 const BottomNav = () => {
+  const location = useLocation();
+
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-around">
@@ -18,7 +20,10 @@ const BottomNav = () => {
           <Link
             key={item.label}
             to={item.path}
-            className="flex flex-col items-center py-1 px-3 rounded-lg hover:bg-accent/50 relative no-underline text-foreground"
+            className={cn(
+              "flex flex-col items-center py-1 px-3 rounded-lg hover:bg-accent/50 relative no-underline text-foreground",
+              location.pathname === item.path && "text-primary"
+            )}
           >
             <div className="relative">
               <item.icon className="h-5 w-5 mb-1" />
