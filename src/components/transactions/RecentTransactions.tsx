@@ -32,7 +32,7 @@ const RecentTransactions = () => {
   const navigate = useNavigate();
 
   return (
-    <Card className="p-6 mb-6">
+    <Card className="p-6 mb-6 bg-blue-50/50 border-blue-100/50">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold">Recent Transactions</h3>
         <Button variant="ghost" size="sm" onClick={() => navigate('/transactions')}>

@@ -22,7 +22,7 @@ const accounts = [
 
 const TotalWealth = () => {
   return (
-    <Card className="p-6 mb-6">
+    <Card className="p-6 mb-6 bg-blue-50/50 border-blue-100/50">
       <div className="space-y-6">
         {accounts.map((account) => (
           <div key={account.id}>

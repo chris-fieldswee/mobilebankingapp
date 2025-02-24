@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -77,7 +78,7 @@ const AccountsCarousel = () => {
 
   return (
     <div className="mb-6">
-      <Card className="relative bg-primary text-primary-foreground p-6">
+      <Card className="relative progress-bar-gradient text-white p-6">
         <div 
           ref={scrollRef}
           className="flex overflow-x-hidden snap-x snap-mandatory scroll-smooth touch-pan-x transition-transform duration-300"
@@ -90,8 +91,8 @@ const AccountsCarousel = () => {
               key={account.id}
               className="w-full flex-none snap-start"
             >
-              <p className="text-sm text-primary-foreground/70">{account.title}</p>
-              <h2 className="text-2xl font-semibold mt-1 text-primary-foreground">
+              <p className="text-sm text-white/70">{account.title}</p>
+              <h2 className="text-2xl font-semibold mt-1">
                 {account.symbol}{account.amount}
               </h2>
               <p className="text-sm text-emerald-400 mt-1">
