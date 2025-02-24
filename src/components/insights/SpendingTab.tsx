@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { BarChart2, PieChart, ArrowRight, TrendingUp, Utensils, ShoppingBag, Car, Popcorn, ShoppingCart, Receipt, Spa } from "lucide-react";
+import { BarChart2, PieChart, ArrowRight, TrendingUp, Utensils, ShoppingBag, Car, Popcorn, ShoppingCart, Receipt, Heart } from "lucide-react";
 import { BarChart, Bar, PieChart as RechartPie, Pie, Cell, ResponsiveContainer, XAxis } from "recharts";
 import { useNavigate } from "react-router-dom";
 
@@ -33,7 +33,7 @@ const categoryData = [
   { name: "Entertainment", amount: 3750, transactions: 3, percentage: 13, color: "#888888", icon: Popcorn },
   { name: "Groceries", amount: 2650, transactions: 4, percentage: 9, color: "#888888", icon: ShoppingCart },
   { name: "Bills", amount: 3300, transactions: 4, percentage: 12, color: "#888888", icon: Receipt },
-  { name: "Spa", amount: 1210, transactions: 1, percentage: 4, color: "#888888", icon: Spa }
+  { name: "Spa", amount: 1210, transactions: 1, percentage: 4, color: "#888888", icon: Heart }
 ];
 
 const SpendingTab = () => {
