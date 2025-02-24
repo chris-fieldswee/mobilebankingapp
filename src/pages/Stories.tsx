@@ -1,65 +1,9 @@
+
 import { useEffect, useState } from "react";
-import { ArrowLeft, Pause, Play } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-
-interface Story {
-  id: number;
-  image: string;
-  type: "image";
-  title: string;
-}
-
-const stories: Story[] = [
-  {
-    id: 1,
-    image: "/lovable-uploads/465fa1d0-73ba-47b7-912f-64812527538b.png",
-    type: "image",
-    title: "Hi, Ali Al-Faisal!"
-  },
-  {
-    id: 2,
-    image: "/lovable-uploads/8342dfdb-910b-4b82-aede-2eceef007430.png",
-    type: "image",
-    title: "Your Spending at a Glance"
-  },
-  {
-    id: 3,
-    image: "/lovable-uploads/a358809d-f137-4bce-a97a-718d46ff89b0.png",
-    type: "image",
-    title: "Your Savings"
-  },
-  {
-    id: 4,
-    image: "/lovable-uploads/ebe98650-0af4-43e2-b0c7-59130b2e7a49.png",
-    type: "image",
-    title: "A Well-Deserved Reward?"
-  },
-  {
-    id: 5,
-    image: "/lovable-uploads/c1b45f54-193e-4aa1-96ef-72ec7412115e.png",
-    type: "image",
-    title: "Strengthening Your Financial Safety Net"
-  },
-  {
-    id: 6,
-    image: "/lovable-uploads/600984e4-8ee0-40c4-99e8-86958bba7a06.png",
-    type: "image",
-    title: "Your Financial Health Score"
-  },
-  {
-    id: 7,
-    image: "/lovable-uploads/c53108ce-da87-43cd-a2c1-443b027f4c5c.png",
-    type: "image",
-    title: "Make Your Money Work Harder"
-  },
-  {
-    id: 8,
-    image: "/lovable-uploads/59ae121a-329d-400d-92ce-4eb382ddc6a8.png",
-    type: "image",
-    title: "Wrapping Up & Looking Ahead"
-  }
-];
+import { StoryProgress } from "@/components/stories/StoryProgress";
+import { StoryControls } from "@/components/stories/StoryControls";
+import { stories } from "@/components/stories/StoryData";
 
 const STORY_DURATION = 5000; // 5 seconds per story
 
@@ -155,44 +99,16 @@ const Stories = () => {
         </div>
 
         <div className="absolute inset-0 z-10 pointer-events-none">
-          <div className="absolute top-0 left-0 right-0 flex gap-1 p-4">
-            {stories.map((_, index) => (
-              <div 
-                key={index}
-                className="h-1 flex-1 bg-black/10 rounded-full overflow-hidden"
-              >
-                <div 
-                  className="h-full bg-black/60 transition-all duration-[16ms] ease-linear origin-left"
-                  style={{
-                    transform: `scaleX(${index === activeStory ? progress / 100 : index < activeStory ? 1 : 0})`,
-                  }} 
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className="absolute top-0 left-0 right-0 p-4 pt-8 flex justify-between items-center pointer-events-auto">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="text-black hover:bg-black/10"
-              onClick={handleNavigateHome}
-            >
-              <ArrowLeft className="h-6 w-6" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="text-black hover:bg-black/10"
-              onClick={togglePause}
-            >
-              {isPaused ? (
-                <Play className="h-6 w-6" />
-              ) : (
-                <Pause className="h-6 w-6" />
-              )}
-            </Button>
-          </div>
+          <StoryProgress
+            totalStories={stories.length}
+            activeStory={activeStory}
+            progress={progress}
+          />
+          <StoryControls
+            isPaused={isPaused}
+            onNavigateHome={handleNavigateHome}
+            onTogglePause={togglePause}
+          />
         </div>
       </div>
     </div>
