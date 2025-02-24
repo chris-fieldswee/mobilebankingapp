@@ -85,7 +85,7 @@ const CashflowTab = () => {
               axisLine={false}
             />
             <Bar dataKey="moneyIn" fill="#3366FF" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="moneyOut" fill="#FF5630" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="moneyOut" fill="#f0f5fd" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       )
