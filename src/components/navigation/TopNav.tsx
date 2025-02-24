@@ -28,23 +28,23 @@ const TopNav = () => {
         <div className="flex items-center space-x-3">
           <Link 
             to="/stories" 
-            className="rounded-full relative p-2 hover:bg-accent no-underline"
+            className="rounded-full relative p-2"
           >
             <Zap className="h-6 w-6" />
-            <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
+            <span className="absolute top-1 right-1 h-2 w-2 bg-blue-600 rounded-full" />
           </Link>
           
           <Link 
             to="/notifications" 
-            className="rounded-full relative p-2 hover:bg-accent no-underline"
+            className="rounded-full relative p-2"
           >
             <Bell className="h-6 w-6" />
-            <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
+            <span className="absolute top-1 right-1 h-2 w-2 bg-blue-600 rounded-full" />
           </Link>
 
           <Link 
             to="/insights" 
-            className="rounded-full p-2 hover:bg-accent no-underline"
+            className="rounded-full p-2"
           >
             <BarChart2 className="h-6 w-6" />
           </Link>

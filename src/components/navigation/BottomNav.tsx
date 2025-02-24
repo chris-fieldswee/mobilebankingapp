@@ -21,7 +21,7 @@ const BottomNav = () => {
             key={item.label}
             to={item.path}
             className={cn(
-              "flex flex-col items-center py-1 px-3 rounded-lg hover:bg-accent/50 relative no-underline text-foreground",
+              "flex flex-col items-center py-1 px-3 rounded-lg relative no-underline text-foreground",
               location.pathname === item.path && "text-primary"
             )}
           >
@@ -29,8 +29,8 @@ const BottomNav = () => {
               <item.icon className="h-5 w-5 mb-1" />
               {item.hasNotification && (
                 <div className="absolute -top-1 -right-1 w-2 h-2">
-                  <span className="absolute inline-flex w-full h-full rounded-full bg-red-400 opacity-75 animate-ping" />
-                  <span className="absolute inline-flex w-full h-full rounded-full bg-red-500" />
+                  <span className="absolute inline-flex w-full h-full rounded-full bg-blue-600 opacity-75 animate-ping" />
+                  <span className="absolute inline-flex w-full h-full rounded-full bg-blue-600" />
                 </div>
               )}
             </div>

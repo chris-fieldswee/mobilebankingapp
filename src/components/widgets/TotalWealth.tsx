@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Wallet, Landmark, CreditCard, PiggyBank, Calculator } from "lucide-react";
 
@@ -22,7 +21,7 @@ const accounts = [
 
 const TotalWealth = () => {
   return (
-    <Card className="p-6 mb-6 bg-blue-50/50 border-blue-100/50">
+    <Card className="p-6 mb-6 bg-white">
       <div className="space-y-6">
         {accounts.map((account) => (
           <div key={account.id}>

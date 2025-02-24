@@ -8,7 +8,7 @@ const UpcomingTransactions = () => {
   const navigate = useNavigate();
 
   return (
-    <Card className="p-6 mb-6 bg-blue-50/50 border-blue-100/50">
+    <Card className="p-6 mb-6 bg-white">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold">Upcoming Transactions</h3>
         <Button variant="ghost" size="sm" onClick={() => navigate('/upcoming-payments')}>
@@ -17,7 +17,7 @@ const UpcomingTransactions = () => {
       </div>
       
       <div className="space-y-4">
-        <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+        <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
               <Calendar className="h-5 w-5 text-primary" />
@@ -30,7 +30,7 @@ const UpcomingTransactions = () => {
           <span className="text-destructive font-medium">-﷼80,000</span>
         </div>
 
-        <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+        <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
               <Play className="h-5 w-5 text-primary" />
@@ -43,7 +43,7 @@ const UpcomingTransactions = () => {
           <span className="text-destructive font-medium">-﷼45</span>
         </div>
 
-        <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+        <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
               <Music className="h-5 w-5 text-primary" />

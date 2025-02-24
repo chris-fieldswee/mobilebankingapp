@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { X } from "lucide-react";
@@ -9,7 +8,7 @@ const offers = [
   {
     id: 1,
     title: "Unlock Elite Benefits with the SAB Platinum Credit Card",
-    image: "https://source.unsplash.com/random/800x600?creditcard",
+    image: "/lovable-uploads/fb8acaf7-de28-4c12-b507-3aeb663b02e9.png",
     subtitle: null,
     link: "/platinum-card-offer"
   },
@@ -17,14 +16,14 @@ const offers = [
     id: 2,
     title: "Dine at Partner Restaurant",
     subtitle: "Get 15% cashback when you pay with your SAB Credit Card",
-    image: "https://source.unsplash.com/random/800x600?restaurant",
+    image: "/lovable-uploads/a0a19c7f-e795-4754-af10-e27a43a5d0d9.png",
     link: null
   },
   {
     id: 3,
     title: "Loans at competitive rates",
     subtitle: "Put your plans into action with Loans",
-    image: "https://source.unsplash.com/random/800x600?stairs",
+    image: "/lovable-uploads/0ea319fc-0d71-4e22-9bfe-2fd798760224.png",
     link: null
   }
 ];
@@ -69,7 +68,7 @@ const OffersCarousel = () => {
           minHeight: '200px'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-6">
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent flex flex-col justify-end p-6">
           <h3 className="text-white text-lg font-semibold mb-1">
             {offer.title}
           </h3>
