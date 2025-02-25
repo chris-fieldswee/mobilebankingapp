@@ -1,7 +1,7 @@
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, Calendar, CreditCard } from "lucide-react";
+import { ChevronLeft, Calendar, Music, Play, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -27,29 +27,30 @@ const UpcomingPayments = () => {
                 <h3 className="font-semibold mb-4">Subscriptions</h3>
                 <Card className="p-6">
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+                    <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
-                          <Calendar className="h-5 w-5 text-primary" />
+                          <Play className="h-5 w-5 text-primary" />
                         </div>
                         <div>
                           <p className="font-medium">Netflix Subscription</p>
                           <p className="text-sm text-muted-foreground">Due in 3 days</p>
                         </div>
                       </div>
-                      <span className="text-destructive font-medium">-$15.99</span>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">-﷼45</span>
                     </div>
-                    <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+
+                    <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
-                          <Calendar className="h-5 w-5 text-primary" />
+                          <Music className="h-5 w-5 text-primary" />
                         </div>
                         <div>
                           <p className="font-medium">Spotify Premium</p>
-                          <p className="text-sm text-muted-foreground">Due in 5 days</p>
+                          <p className="text-sm text-muted-foreground">Due in 7 days</p>
                         </div>
                       </div>
-                      <span className="text-destructive font-medium">-$9.99</span>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">-﷼20</span>
                     </div>
                   </div>
                 </Card>
@@ -59,7 +60,20 @@ const UpcomingPayments = () => {
                 <h3 className="font-semibold mb-4">Anticipated Payments</h3>
                 <Card className="p-6">
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                          <Calendar className="h-5 w-5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="font-medium">Tuition Fee</p>
+                          <p className="text-sm text-muted-foreground">Due in 5 days</p>
+                        </div>
+                      </div>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">-﷼80,000</span>
+                    </div>
+
+                    <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                           <CreditCard className="h-5 w-5 text-primary" />
@@ -69,9 +83,10 @@ const UpcomingPayments = () => {
                           <p className="text-sm text-muted-foreground">Expected next week</p>
                         </div>
                       </div>
-                      <span className="text-destructive font-medium">~$85.00</span>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">~﷼85</span>
                     </div>
-                    <div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
+
+                    <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                           <CreditCard className="h-5 w-5 text-primary" />
@@ -81,7 +96,7 @@ const UpcomingPayments = () => {
                           <p className="text-sm text-muted-foreground">Expected in 2 weeks</p>
                         </div>
                       </div>
-                      <span className="text-destructive font-medium">~$45.00</span>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">~﷼45</span>
                     </div>
                   </div>
                 </Card>
