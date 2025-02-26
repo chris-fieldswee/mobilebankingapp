@@ -13,9 +13,9 @@ import OffersCarousel from "@/components/widgets/OffersCarousel";
 
 const Index = () => {
   return (
-    <div className="flex flex-col h-full bg-background">
+    <div className="flex flex-col min-h-screen bg-background">
       <TopNav />
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 overflow-auto pt-20 pb-20">
         <div className="max-w-md mx-auto px-4 py-6">
           <AccountsCarousel />
           <QuickActions />
