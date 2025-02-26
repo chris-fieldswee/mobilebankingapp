@@ -11,7 +11,13 @@
     "addMoney": "Add Money",
     "transfer": "Transfer",
     "details": "Details",
-    "seeAll": "See all"
+    "seeAll": "See all",
+    "back": "Back",
+    "continue": "Continue",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "upgrade": "Upgrade Now",
+    "explore": "Explore Full Benefits"
   },
   "budget": {
     "monthlyBudget": "Monthly Budget",
@@ -21,7 +27,10 @@
   },
   "spending": {
     "spentThisMonth": "Spent this month",
-    "percentChange": "2.3%"
+    "percentChange": "2.3%",
+    "byCategory": "Spending by Category",
+    "monthlySpending": "Monthly Spending",
+    "overview": "Spending Overview"
   },
   "payees": {
     "title": "Recent Payees",
@@ -37,11 +46,86 @@
     "recent": "Recent Transactions",
     "upcoming": "Upcoming Transactions",
     "dueIn": "Due in {{days}} days",
-    "dueOn": "Due on {{date}}"
+    "dueOn": "Due on {{date}}",
+    "details": "Transaction Details",
+    "amount": "Amount",
+    "date": "Date",
+    "status": "Status",
+    "category": "Category",
+    "merchant": "Merchant",
+    "reference": "Reference",
+    "type": "Type"
   },
   "offers": {
     "cardOffer": "Unlock Elite Benefits with the SAB Platinum Credit Card",
     "dineOffer": "Dine at Partner Restaurant",
     "dineSubtitle": "Get 15% cashback when you pay with your SAB Credit Card"
+  },
+  "insights": {
+    "title": "Insights",
+    "spending": "Spending",
+    "income": "Income",
+    "cashflow": "Cashflow",
+    "budget": "Budget",
+    "thisMonth": "This month",
+    "lastMonth": "Last month",
+    "monthlyIncome": "Monthly income",
+    "salary": "Salary",
+    "savings": "Savings",
+    "expenses": "Expenses"
+  },
+  "advisor": {
+    "title": "Financial Advisor",
+    "welcome": "Welcome to your personal financial advisor",
+    "message": "How can I help you today?",
+    "suggestions": {
+      "budget": "Help me create a budget",
+      "invest": "Investment advice",
+      "save": "Savings tips",
+      "spend": "Spending analysis"
+    }
+  },
+  "search": {
+    "placeholder": "Search transactions, payees...",
+    "recent": "Recent searches",
+    "noResults": "No results found",
+    "categories": {
+      "transactions": "Transactions",
+      "payees": "Payees",
+      "services": "Services"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "noNotifications": "No new notifications",
+    "types": {
+      "transaction": "Transaction",
+      "security": "Security",
+      "offer": "Offer",
+      "system": "System"
+    }
+  },
+  "platinum": {
+    "title": "Platinum Card Offer",
+    "header": "SAB Platinum Credit Card",
+    "benefits": {
+      "lounge": {
+        "title": "Complimentary Airport Lounge Access",
+        "description": "Enjoy exclusive access to 1,200+ airport lounges worldwide."
+      },
+      "cashback": {
+        "title": "Up to 3% Cashback on International Spending",
+        "description": "Earn more on travel, dining, and shopping abroad."
+      },
+      "apr": {
+        "title": "Personalized APR: 1.5% Monthly",
+        "description": "A tailored rate based on your financial profile."
+      },
+      "travel": {
+        "title": "Special Travel Perks",
+        "description": "Discounted hotel bookings, car rentals, and premium concierge services."
+      }
+    }
   }
 }

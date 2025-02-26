@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const PlatinumCardOffer = () => {
+  const { t } = useTranslation();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -19,7 +22,7 @@ const PlatinumCardOffer = () => {
               <ArrowLeft className="h-6 w-6" />
             </Button>
           </Link>
-          <h1 className="text-lg font-semibold">Platinum Card Offer</h1>
+          <h1 className="text-lg font-semibold">{t('platinum.title')}</h1>
         </div>
       </header>
 
@@ -28,52 +31,52 @@ const PlatinumCardOffer = () => {
           <div>
             <img
               src="/lovable-uploads/1b0cef9c-0b62-4186-8303-8505724fa8c3.png"
-              alt="SAB Platinum Credit Card"
+              alt={t('platinum.header')}
               className="w-full"
             />
           </div>
 
           <Card className="p-6 space-y-6">
             <p className="text-lg">
-              Based on your spending and banking profile, we're offering you an exclusive upgrade to the SAB Platinum Credit Card, with a first-year annual fee waiver just for you!
+              {t('offers.cardOffer')}
             </p>
 
             <div className="space-y-4">
               <div className="space-y-1">
-                <h3 className="font-semibold">Complimentary Airport Lounge Access</h3>
+                <h3 className="font-semibold">{t('platinum.benefits.lounge.title')}</h3>
                 <p className="text-muted-foreground">
-                  Enjoy exclusive access to 1,200+ airport lounges worldwide.
+                  {t('platinum.benefits.lounge.description')}
                 </p>
               </div>
 
               <div className="space-y-1">
-                <h3 className="font-semibold">Up to 3% Cashback on International Spending</h3>
+                <h3 className="font-semibold">{t('platinum.benefits.cashback.title')}</h3>
                 <p className="text-muted-foreground">
-                  Earn more on travel, dining, and shopping abroad.
+                  {t('platinum.benefits.cashback.description')}
                 </p>
               </div>
 
               <div className="space-y-1">
-                <h3 className="font-semibold">Personalized APR: 1.5% Monthly</h3>
+                <h3 className="font-semibold">{t('platinum.benefits.apr.title')}</h3>
                 <p className="text-muted-foreground">
-                  A tailored rate based on your financial profile.
+                  {t('platinum.benefits.apr.description')}
                 </p>
               </div>
 
               <div className="space-y-1">
-                <h3 className="font-semibold">Special Travel Perks</h3>
+                <h3 className="font-semibold">{t('platinum.benefits.travel.title')}</h3>
                 <p className="text-muted-foreground">
-                  Discounted hotel bookings, car rentals, and premium concierge services.
+                  {t('platinum.benefits.travel.description')}
                 </p>
               </div>
             </div>
 
             <div className="pt-4 space-y-3">
               <Button className="w-full" size="lg">
-                Upgrade Now
+                {t('actions.upgrade')}
               </Button>
               <Button variant="outline" className="w-full" size="lg">
-                Explore Full Benefits
+                {t('actions.explore')}
               </Button>
             </div>
           </Card>

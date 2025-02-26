@@ -11,7 +11,13 @@
     "addMoney": "Agregar Dinero",
     "transfer": "Transferir",
     "details": "Detalles",
-    "seeAll": "Ver todo"
+    "seeAll": "Ver todo",
+    "back": "Volver",
+    "continue": "Continuar",
+    "cancel": "Cancelar",
+    "submit": "Enviar",
+    "upgrade": "Mejorar Ahora",
+    "explore": "Explorar Todos los Beneficios"
   },
   "budget": {
     "monthlyBudget": "Presupuesto Mensual",
@@ -21,7 +27,10 @@
   },
   "spending": {
     "spentThisMonth": "Gastado este mes",
-    "percentChange": "2.3%"
+    "percentChange": "2.3%",
+    "byCategory": "Gastos por Categoría",
+    "monthlySpending": "Gastos Mensuales",
+    "overview": "Resumen de Gastos"
   },
   "payees": {
     "title": "Beneficiarios Recientes",
@@ -37,11 +46,86 @@
     "recent": "Transacciones Recientes",
     "upcoming": "Próximas Transacciones",
     "dueIn": "Vence en {{days}} días",
-    "dueOn": "Vence el {{date}}"
+    "dueOn": "Vence el {{date}}",
+    "details": "Detalles de la Transacción",
+    "amount": "Monto",
+    "date": "Fecha",
+    "status": "Estado",
+    "category": "Categoría",
+    "merchant": "Comerciante",
+    "reference": "Referencia",
+    "type": "Tipo"
   },
   "offers": {
     "cardOffer": "Desbloquea Beneficios Elite con la Tarjeta de Crédito Platinum SAB",
     "dineOffer": "Cena en Restaurantes Asociados",
     "dineSubtitle": "Obtén 15% de reembolso al pagar con tu Tarjeta de Crédito SAB"
+  },
+  "insights": {
+    "title": "Análisis",
+    "spending": "Gastos",
+    "income": "Ingresos",
+    "cashflow": "Flujo de Caja",
+    "budget": "Presupuesto",
+    "thisMonth": "Este mes",
+    "lastMonth": "Mes anterior",
+    "monthlyIncome": "Ingreso mensual",
+    "salary": "Salario",
+    "savings": "Ahorros",
+    "expenses": "Gastos"
+  },
+  "advisor": {
+    "title": "Asesor Financiero",
+    "welcome": "Bienvenido a tu asesor financiero personal",
+    "message": "¿Cómo puedo ayudarte hoy?",
+    "suggestions": {
+      "budget": "Ayúdame a crear un presupuesto",
+      "invest": "Consejos de inversión",
+      "save": "Consejos de ahorro",
+      "spend": "Análisis de gastos"
+    }
+  },
+  "search": {
+    "placeholder": "Buscar transacciones, beneficiarios...",
+    "recent": "Búsquedas recientes",
+    "noResults": "No se encontraron resultados",
+    "categories": {
+      "transactions": "Transacciones",
+      "payees": "Beneficiarios",
+      "services": "Servicios"
+    }
+  },
+  "notifications": {
+    "title": "Notificaciones",
+    "markAllRead": "Marcar todo como leído",
+    "noNotifications": "No hay nuevas notificaciones",
+    "types": {
+      "transaction": "Transacción",
+      "security": "Seguridad",
+      "offer": "Oferta",
+      "system": "Sistema"
+    }
+  },
+  "platinum": {
+    "title": "Oferta de Tarjeta Platinum",
+    "header": "Tarjeta de Crédito SAB Platinum",
+    "benefits": {
+      "lounge": {
+        "title": "Acceso Gratuito a Salas VIP",
+        "description": "Disfruta de acceso exclusivo a más de 1,200 salas VIP en aeropuertos de todo el mundo."
+      },
+      "cashback": {
+        "title": "Hasta 3% de Reembolso en Gastos Internacionales",
+        "description": "Gana más en viajes, restaurantes y compras en el extranjero."
+      },
+      "apr": {
+        "title": "APR Personalizado: 1.5% Mensual",
+        "description": "Una tasa personalizada basada en tu perfil financiero."
+      },
+      "travel": {
+        "title": "Beneficios Especiales de Viaje",
+        "description": "Descuentos en reservas de hoteles, alquiler de autos y servicios de conserjería premium."
+      }
+    }
   }
 }
