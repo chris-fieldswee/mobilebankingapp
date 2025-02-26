@@ -44,7 +44,7 @@ const Transactions = () => {
 
   const categories = [
     {
-      name: "Dining",
+      name: t('categories.dining'),
       total: "﷼2,040",
       items: [
         { merchant: t('merchants.nusret'), amount: "-﷼1,200", date: "Mar 15" },
@@ -54,7 +54,7 @@ const Transactions = () => {
       ]
     },
     {
-      name: "Shopping",
+      name: t('categories.shopping'),
       total: "﷼11,300",
       items: [
         { merchant: t('merchants.harveyNichols'), amount: "-﷼8,800", date: "Mar 15" },
@@ -62,7 +62,7 @@ const Transactions = () => {
       ]
     },
     {
-      name: "Transportation",
+      name: t('categories.transportation'),
       total: "﷼4,150",
       items: [
         { merchant: t('merchants.mercedes'), amount: "-﷼3,500", date: "Mar 10" },
@@ -71,7 +71,7 @@ const Transactions = () => {
       ]
     },
     {
-      name: "Entertainment",
+      name: t('categories.entertainment'),
       total: "﷼3,750",
       items: [
         { merchant: t('merchants.fitnessFirst'), amount: "-﷼1,500", date: "Mar 7" },
@@ -80,7 +80,7 @@ const Transactions = () => {
       ]
     },
     {
-      name: "Groceries",
+      name: t('categories.groceries'),
       total: "﷼2,650",
       items: [
         { merchant: t('merchants.danube'), amount: "-﷼1,200", date: "Mar 4" },
@@ -90,7 +90,7 @@ const Transactions = () => {
       ]
     },
     {
-      name: "Bills",
+      name: t('categories.bills'),
       total: "﷼3,300",
       items: [
         { merchant: t('merchants.sec'), amount: "-﷼1,500", date: "Mar 1" },
@@ -100,7 +100,7 @@ const Transactions = () => {
       ]
     },
     {
-      name: "Wellness",
+      name: t('categories.wellness'),
       total: "",
       items: [
         { merchant: t('merchants.fourSeasonsSpa'), amount: "-﷼1,210", date: "Mar 1" }
@@ -110,12 +110,12 @@ const Transactions = () => {
 
   const processedCategories = categories.map(category => ({
     ...category,
-    total: category.total ? formatCurrency(category.total) : "",
     items: category.items.map(item => ({
       ...item,
       amount: formatCurrency(item.amount),
       date: formatDate(item.date)
-    }))
+    })),
+    total: category.total ? formatCurrency(category.total) : ""
   }));
 
   return (
@@ -139,7 +139,7 @@ const Transactions = () => {
                 {processedCategories.map((category, index) => (
                   <div key={index}>
                     <h2 className="text-sm font-medium text-muted-foreground mb-3">
-                      {t(`categories.${category.name.toLowerCase()}`)}
+                      {category.name}
                       {category.total && ` (${t('transactions.total')}: ${category.total})`}
                     </h2>
                     <div className="space-y-1">
