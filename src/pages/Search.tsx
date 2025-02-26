@@ -7,32 +7,42 @@ import { Link, useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
 
-const upcomingTransactions = [
-  {
-    icon: Calendar,
-    title: "Tuition Fee",
-    dueIn: "Due on Feb 25, 2025",
-    amount: "-﷼80,000"
-  },
-  {
-    icon: Play,
-    title: "Netflix Subscription",
-    dueIn: "Due in 3 days",
-    amount: "-﷼45"
-  },
-  {
-    icon: Music,
-    title: "Spotify Premium",
-    dueIn: "Due in 7 days",
-    amount: "-﷼20"
-  }
-];
-
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-  const { t } = useTranslation();
-  const showResults = searchQuery.toLowerCase().includes('upcoming');
+  const { t, i18n } = useTranslation();
+
+  // Check for "upcoming" in different languages
+  const upcomingTranslations = {
+    en: "upcoming",
+    es: "próximas",
+    ar: "القادمة"
+  };
+  
+  const showResults = Object.values(upcomingTranslations).some(
+    translation => searchQuery.toLowerCase().includes(translation.toLowerCase())
+  );
+
+  const upcomingTransactions = [
+    {
+      icon: Calendar,
+      title: "Tuition Fee",
+      dueDate: "Feb 25, 2025",
+      amount: "-﷼80,000"
+    },
+    {
+      icon: Play,
+      title: "Netflix Subscription",
+      days: "3",
+      amount: "-﷼45"
+    },
+    {
+      icon: Music,
+      title: "Spotify Premium",
+      days: "7",
+      amount: "-﷼20"
+    }
+  ];
 
   useEffect(() => {
     const input = document.getElementById("searchInput");
@@ -43,6 +53,16 @@ const Search = () => {
 
   const handleBack = () => {
     navigate("/");
+  };
+
+  const formatDueDate = (transaction: { dueDate?: string, days?: string }) => {
+    if (transaction.dueDate) {
+      return t('transactions.dueOn', { date: transaction.dueDate });
+    }
+    if (transaction.days) {
+      return t('transactions.dueIn', { days: transaction.days });
+    }
+    return "";
   };
 
   return (
@@ -107,7 +127,9 @@ const Search = () => {
                         </div>
                         <div>
                           <p className="font-medium">{transaction.title}</p>
-                          <p className="text-sm text-muted-foreground">{transaction.dueIn}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {formatDueDate(transaction)}
+                          </p>
                         </div>
                       </div>
                       <span className="text-[0.95rem] text-[#222222]">{transaction.amount}</span>
