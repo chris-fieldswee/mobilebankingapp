@@ -1,7 +1,9 @@
+
 import { Bell, DollarSign, CreditCard, Calendar, AlertCircle, XCircle, ShieldCheck, UserCheck, FileText, AlertOctagon, TrendingDown, Gift, Star, Send } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const NotificationItem = ({ 
   title, 
@@ -34,103 +36,118 @@ const NotificationItem = ({
   );
 };
 
-const notifications = [
-  {
-    icon: DollarSign,
-    title: "Payment Received",
-    description: "You received 2,500﷼ from Ahmed Al-Fasal.",
-    time: "Just now",
-    type: "success"
-  },
-  {
-    icon: CreditCard,
-    title: "Harvey Nichols Purchase",
-    description: "Purchase at Harvey Nichols for 8,800﷼.",
-    time: "5 mins ago"
-  },
-  {
-    icon: CreditCard,
-    title: "Danube Gourmet Purchase",
-    description: "Purchase at Danube Gourmet for 1,200﷼.",
-    time: "15 mins ago"
-  },
-  {
-    icon: AlertOctagon,
-    title: "Low Balance Alert",
-    description: "Your account balance is below 5,000﷼. Consider adding funds.",
-    time: "30 mins ago",
-    type: "warning"
-  },
-  {
-    icon: XCircle,
-    title: "Payment Failed",
-    description: "Your payment of 800﷼ to Helpling failed. Please update your payment method.",
-    time: "45 mins ago",
-    type: "error"
-  },
-  {
-    icon: ShieldCheck,
-    title: "Security Update",
-    description: "Your password was changed successfully.",
-    time: "1 hour ago",
-    type: "success"
-  },
-  {
-    icon: UserCheck,
-    title: "New Device Login",
-    description: "New login detected from iPhone 16 in Riyadh. Verify it's you.",
-    time: "2 hours ago",
-    type: "warning"
-  },
-  {
-    icon: FileText,
-    title: "Statement Available",
-    description: "Your February statement is now available.",
-    time: "3 hours ago"
-  },
-  {
-    icon: AlertCircle,
-    title: "Budget Alert",
-    description: "You're nearing your Entertainment budget. You have 500﷼ remaining.",
-    time: "4 hours ago",
-    type: "warning"
-  },
-  {
-    icon: AlertOctagon,
-    title: "Over Budget",
-    description: "You've exceeded your Dining budget for this month.",
-    time: "5 hours ago",
-    type: "error"
-  },
-  {
-    icon: TrendingDown,
-    title: "Spending Change",
-    description: "Spent 2,000﷼ less on dining this month",
-    time: "6 hours ago",
-    type: "success"
-  },
-  {
-    icon: Gift,
-    title: "New Offer",
-    description: "A new offer is available at VOX Cinemas. View details.",
-    time: "7 hours ago"
-  },
-  {
-    icon: Star,
-    title: "Rewards Points",
-    description: "You have 15,000 rewards points. Redeem them now!",
-    time: "8 hours ago"
-  },
-  {
-    icon: Send,
-    title: "Payment Sent",
-    description: "Your scheduled payment of 3,500﷼ to Mercedes-Benz has been sent.",
-    time: "9 hours ago",
-    type: "success"
+const getTimeTranslation = (time: string, t: any) => {
+  if (time.includes("mins")) {
+    return time.replace("mins", t('time.mins')).replace("ago", t('time.ago'));
   }
-];
+  if (time.includes("hour")) {
+    return time.replace("hour", t('time.hour')).replace("ago", t('time.ago'));
+  }
+  if (time.includes("Just now")) {
+    return t('time.justNow');
+  }
+  return time;
+};
 
 const Notifications = () => {
+  const { t } = useTranslation();
+
+  const notifications = [
+    {
+      icon: DollarSign,
+      title: t('notifications.transactions.paymentReceived'),
+      description: t('notifications.transactions.receivedAmount', { amount: '2,500' }),
+      time: t('time.justNow'),
+      type: "success"
+    },
+    {
+      icon: CreditCard,
+      title: t('notifications.transactions.harveyPurchase'),
+      description: t('notifications.transactions.purchaseAt', { store: 'Harvey Nichols', amount: '8,800' }),
+      time: "5 mins ago"
+    },
+    {
+      icon: CreditCard,
+      title: t('notifications.transactions.danubePurchase'),
+      description: t('notifications.transactions.purchaseAt', { store: 'Danube Gourmet', amount: '1,200' }),
+      time: "15 mins ago"
+    },
+    {
+      icon: AlertOctagon,
+      title: t('notifications.alerts.lowBalance'),
+      description: t('notifications.alerts.lowBalanceDesc', { amount: '5,000' }),
+      time: "30 mins ago",
+      type: "warning"
+    },
+    {
+      icon: XCircle,
+      title: t('notifications.alerts.paymentFailed'),
+      description: t('notifications.alerts.paymentFailedDesc', { amount: '800', service: 'Helpling' }),
+      time: "45 mins ago",
+      type: "error"
+    },
+    {
+      icon: ShieldCheck,
+      title: t('notifications.security.passwordChanged'),
+      description: t('notifications.security.passwordChangedDesc'),
+      time: "1 hour ago",
+      type: "success"
+    },
+    {
+      icon: UserCheck,
+      title: t('notifications.security.newLogin'),
+      description: t('notifications.security.newLoginDesc'),
+      time: "2 hours ago",
+      type: "warning"
+    },
+    {
+      icon: FileText,
+      title: t('notifications.statements.available'),
+      description: t('notifications.statements.availableDesc'),
+      time: "3 hours ago"
+    },
+    {
+      icon: AlertCircle,
+      title: t('notifications.budget.alert'),
+      description: t('notifications.budget.alertDesc', { amount: '500' }),
+      time: "4 hours ago",
+      type: "warning"
+    },
+    {
+      icon: AlertOctagon,
+      title: t('notifications.budget.overBudget'),
+      description: t('notifications.budget.overBudgetDesc'),
+      time: "5 hours ago",
+      type: "error"
+    },
+    {
+      icon: TrendingDown,
+      title: t('notifications.spending.change'),
+      description: t('notifications.spending.changeDesc', { amount: '2,000' }),
+      time: "6 hours ago",
+      type: "success"
+    },
+    {
+      icon: Gift,
+      title: t('notifications.offers.new'),
+      description: t('notifications.offers.newDesc'),
+      time: "7 hours ago"
+    },
+    {
+      icon: Star,
+      title: t('notifications.rewards.points'),
+      description: t('notifications.rewards.pointsDesc', { points: '15,000' }),
+      time: "8 hours ago"
+    },
+    {
+      icon: Send,
+      title: t('notifications.transactions.paymentSent'),
+      description: t('notifications.transactions.paymentSentDesc', { amount: '3,500', recipient: 'Mercedes-Benz' }),
+      time: "9 hours ago",
+      type: "success"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
@@ -152,7 +169,7 @@ const Notifications = () => {
               </svg>
             </Button>
           </Link>
-          <h1 className="text-lg font-semibold">Notifications</h1>
+          <h1 className="text-lg font-semibold">{t('notifications.title')}</h1>
         </div>
       </header>
 
@@ -164,7 +181,7 @@ const Notifications = () => {
               icon={notification.icon}
               title={notification.title}
               description={notification.description}
-              time={notification.time}
+              time={getTimeTranslation(notification.time, t)}
               type={notification.type as "default" | "warning" | "success" | "error"}
             />
           ))}

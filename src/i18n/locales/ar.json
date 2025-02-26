@@ -1,4 +1,3 @@
-
 {
   "nav": {
     "home": "الرئيسية",
@@ -120,6 +119,49 @@
       "security": "الأمان",
       "offer": "عرض",
       "system": "النظام"
+    },
+    "transactions": {
+      "paymentReceived": "تم استلام الدفعة",
+      "receivedAmount": "استلمت {{amount}}﷼ من أحمد الفيصل",
+      "harveyPurchase": "مشتريات من هارفي نيكلز",
+      "danubePurchase": "مشتريات من دانوب جورميه",
+      "purchaseAt": "مشتريات من {{store}} بقيمة {{amount}}﷼",
+      "paymentSent": "تم إرسال الدفعة",
+      "paymentSentDesc": "تم إرسال دفعتك المجدولة البالغة {{amount}}﷼ إلى {{recipient}}"
+    },
+    "alerts": {
+      "lowBalance": "تنبيه رصيد منخفض",
+      "lowBalanceDesc": "رصيد حسابك أقل من {{amount}}﷼. يرجى النظر في إضافة أموال",
+      "paymentFailed": "فشل الدفع",
+      "paymentFailedDesc": "فشل دفع {{amount}}﷼ إلى {{service}}. يرجى تحديث طريقة الدفع الخاصة بك"
+    },
+    "security": {
+      "passwordChanged": "تحديث الأمان",
+      "passwordChangedDesc": "تم تغيير كلمة المرور بنجاح",
+      "newLogin": "تسجيل دخول جديد",
+      "newLoginDesc": "تم اكتشاف تسجيل دخول جديد من iPhone 16 في الرياض. تحقق من أنه أنت"
+    },
+    "statements": {
+      "available": "كشف الحساب متاح",
+      "availableDesc": "كشف حساب فبراير متاح الآن"
+    },
+    "budget": {
+      "alert": "تنبيه الميزانية",
+      "alertDesc": "أنت تقترب من ميزانية الترفيه. لديك {{amount}}﷼ متبقية",
+      "overBudget": "تجاوز الميزانية",
+      "overBudgetDesc": "لقد تجاوزت ميزانية الطعام لهذا الشهر"
+    },
+    "spending": {
+      "change": "تغيير في الإنفاق",
+      "changeDesc": "أنفقت {{amount}}﷼ أقل على الطعام هذا الشهر"
+    },
+    "offers": {
+      "new": "عرض جديد",
+      "newDesc": "يتوفر عرض جديد في ڤوكس سينما. عرض التفاصيل"
+    },
+    "rewards": {
+      "points": "نقاط المكافآت",
+      "pointsDesc": "لديك {{points}} نقطة مكافآت. استبدلها الآن!"
     }
   },
   "platinum": {
@@ -143,5 +185,11 @@
         "description": "خصومات على حجوزات الفنادق، وتأجير السيارات، وخدمات الكونسيرج المتميزة."
       }
     }
+  },
+  "time": {
+    "justNow": "الآن",
+    "mins": "دقائق",
+    "hour": "ساعة",
+    "ago": "مضت"
   }
 }

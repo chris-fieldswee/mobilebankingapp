@@ -1,4 +1,3 @@
-
 {
   "nav": {
     "home": "Inicio",
@@ -120,6 +119,49 @@
       "security": "Seguridad",
       "offer": "Oferta",
       "system": "Sistema"
+    },
+    "transactions": {
+      "paymentReceived": "Pago Recibido",
+      "receivedAmount": "Recibiste {{amount}}﷼ de Ahmed Al-Fasal",
+      "harveyPurchase": "Compra en Harvey Nichols",
+      "danubePurchase": "Compra en Danube Gourmet",
+      "purchaseAt": "Compra en {{store}} por {{amount}}﷼",
+      "paymentSent": "Pago Enviado",
+      "paymentSentDesc": "Tu pago programado de {{amount}}﷼ a {{recipient}} ha sido enviado"
+    },
+    "alerts": {
+      "lowBalance": "Alerta de Saldo Bajo",
+      "lowBalanceDesc": "Tu saldo está por debajo de {{amount}}﷼. Considera agregar fondos",
+      "paymentFailed": "Pago Fallido",
+      "paymentFailedDesc": "Tu pago de {{amount}}﷼ a {{service}} falló. Por favor actualiza tu método de pago"
+    },
+    "security": {
+      "passwordChanged": "Actualización de Seguridad",
+      "passwordChangedDesc": "Tu contraseña fue cambiada exitosamente",
+      "newLogin": "Nuevo Inicio de Sesión",
+      "newLoginDesc": "Nuevo inicio de sesión detectado desde iPhone 16 en Riyadh. Verifica que seas tú"
+    },
+    "statements": {
+      "available": "Estado de Cuenta Disponible",
+      "availableDesc": "Tu estado de cuenta de febrero está disponible"
+    },
+    "budget": {
+      "alert": "Alerta de Presupuesto",
+      "alertDesc": "Estás cerca del límite de tu presupuesto de Entretenimiento. Te quedan {{amount}}﷼",
+      "overBudget": "Presupuesto Excedido",
+      "overBudgetDesc": "Has excedido tu presupuesto de Comidas para este mes"
+    },
+    "spending": {
+      "change": "Cambio en Gastos",
+      "changeDesc": "Gastaste {{amount}}﷼ menos en comidas este mes"
+    },
+    "offers": {
+      "new": "Nueva Oferta",
+      "newDesc": "Hay una nueva oferta disponible en VOX Cinemas. Ver detalles"
+    },
+    "rewards": {
+      "points": "Puntos de Recompensas",
+      "pointsDesc": "¡Tienes {{points}} puntos de recompensa. ¡Canjéalos ahora!"
     }
   },
   "platinum": {
@@ -143,5 +185,11 @@
         "description": "Descuentos en reservas de hoteles, alquiler de autos y servicios de conserjería premium."
       }
     }
+  },
+  "time": {
+    "justNow": "Ahora mismo",
+    "mins": "mins",
+    "hour": "hora",
+    "ago": "atrás"
   }
 }

@@ -1,4 +1,3 @@
-
 {
   "nav": {
     "home": "Home",
@@ -120,6 +119,49 @@
       "security": "Security",
       "offer": "Offer",
       "system": "System"
+    },
+    "transactions": {
+      "paymentReceived": "Payment Received",
+      "receivedAmount": "You received {{amount}}﷼ from Ahmed Al-Fasal",
+      "harveyPurchase": "Harvey Nichols Purchase",
+      "danubePurchase": "Danube Gourmet Purchase",
+      "purchaseAt": "Purchase at {{store}} for {{amount}}﷼",
+      "paymentSent": "Payment Sent",
+      "paymentSentDesc": "Your scheduled payment of {{amount}}﷼ to {{recipient}} has been sent"
+    },
+    "alerts": {
+      "lowBalance": "Low Balance Alert",
+      "lowBalanceDesc": "Your account balance is below {{amount}}﷼. Consider adding funds",
+      "paymentFailed": "Payment Failed",
+      "paymentFailedDesc": "Your payment of {{amount}}﷼ to {{service}} failed. Please update your payment method"
+    },
+    "security": {
+      "passwordChanged": "Security Update",
+      "passwordChangedDesc": "Your password was changed successfully",
+      "newLogin": "New Device Login",
+      "newLoginDesc": "New login detected from iPhone 16 in Riyadh. Verify it's you"
+    },
+    "statements": {
+      "available": "Statement Available",
+      "availableDesc": "Your February statement is now available"
+    },
+    "budget": {
+      "alert": "Budget Alert",
+      "alertDesc": "You're nearing your Entertainment budget. You have {{amount}}﷼ remaining",
+      "overBudget": "Over Budget",
+      "overBudgetDesc": "You've exceeded your Dining budget for this month"
+    },
+    "spending": {
+      "change": "Spending Change",
+      "changeDesc": "Spent {{amount}}﷼ less on dining this month"
+    },
+    "offers": {
+      "new": "New Offer",
+      "newDesc": "A new offer is available at VOX Cinemas. View details"
+    },
+    "rewards": {
+      "points": "Rewards Points",
+      "pointsDesc": "You have {{points}} rewards points. Redeem them now!"
     }
   },
   "platinum": {
@@ -143,5 +185,11 @@
         "description": "Discounted hotel bookings, car rentals, and premium concierge services."
       }
     }
+  },
+  "time": {
+    "justNow": "Just now",
+    "mins": "mins",
+    "hour": "hour",
+    "ago": "ago"
   }
 }
