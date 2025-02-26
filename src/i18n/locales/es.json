@@ -37,5 +37,10 @@
     "upcoming": "Próximas Transacciones",
     "dueIn": "Vence en {{days}} días",
     "dueOn": "Vence el {{date}}"
+  },
+  "offers": {
+    "cardOffer": "Desbloquea Beneficios Elite con la Tarjeta de Crédito Platinum SAB",
+    "dineOffer": "Cena en Restaurantes Asociados",
+    "dineSubtitle": "Obtén 15% de reembolso al pagar con tu Tarjeta de Crédito SAB"
   }
 }

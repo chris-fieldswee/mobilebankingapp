@@ -37,5 +37,10 @@
     "upcoming": "Upcoming Transactions",
     "dueIn": "Due in {{days}} days",
     "dueOn": "Due on {{date}}"
+  },
+  "offers": {
+    "cardOffer": "Unlock Elite Benefits with the SAB Platinum Credit Card",
+    "dineOffer": "Dine at Partner Restaurant",
+    "dineSubtitle": "Get 15% cashback when you pay with your SAB Credit Card"
   }
 }

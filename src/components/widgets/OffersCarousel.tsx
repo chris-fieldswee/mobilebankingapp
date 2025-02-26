@@ -1,32 +1,71 @@
+
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-const offers = [
-  {
-    id: 1,
-    title: "Unlock Elite Benefits with the SAB Platinum Credit Card",
-    image: "/lovable-uploads/fb8acaf7-de28-4c12-b507-3aeb663b02e9.png",
-    subtitle: null,
-    link: "/platinum-card-offer"
-  },
-  {
-    id: 2,
-    title: "Dine at Partner Restaurant",
-    subtitle: "Get 15% cashback when you pay with your SAB Credit Card",
-    image: "/lovable-uploads/0ea319fc-0d71-4e22-9bfe-2fd798760224.png",
-    link: null
-  }
-];
+const offers = {
+  en: [
+    {
+      id: 1,
+      title: "Unlock Elite Benefits with the SAB Platinum Credit Card",
+      image: "/lovable-uploads/fb8acaf7-de28-4c12-b507-3aeb663b02e9.png",
+      subtitle: null,
+      link: "/platinum-card-offer"
+    },
+    {
+      id: 2,
+      title: "Dine at Partner Restaurant",
+      subtitle: "Get 15% cashback when you pay with your SAB Credit Card",
+      image: "/lovable-uploads/0ea319fc-0d71-4e22-9bfe-2fd798760224.png",
+      link: null
+    }
+  ],
+  ar: [
+    {
+      id: 1,
+      title: "احصل على مزايا النخبة مع بطاقة البنك السعودي البلاتينية",
+      image: "/lovable-uploads/fb8acaf7-de28-4c12-b507-3aeb663b02e9.png",
+      subtitle: null,
+      link: "/platinum-card-offer"
+    },
+    {
+      id: 2,
+      title: "تناول الطعام في المطاعم الشريكة",
+      subtitle: "احصل على استرداد نقدي 15% عند الدفع ببطاقة البنك السعودي",
+      image: "/lovable-uploads/0ea319fc-0d71-4e22-9bfe-2fd798760224.png",
+      link: null
+    }
+  ],
+  es: [
+    {
+      id: 1,
+      title: "Desbloquea Beneficios Elite con la Tarjeta de Crédito Platinum SAB",
+      image: "/lovable-uploads/fb8acaf7-de28-4c12-b507-3aeb663b02e9.png",
+      subtitle: null,
+      link: "/platinum-card-offer"
+    },
+    {
+      id: 2,
+      title: "Cena en Restaurantes Asociados",
+      subtitle: "Obtén 15% de reembolso al pagar con tu Tarjeta de Crédito SAB",
+      image: "/lovable-uploads/0ea319fc-0d71-4e22-9bfe-2fd798760224.png",
+      link: null
+    }
+  ]
+};
 
 const OffersCarousel = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [currentOffer, setCurrentOffer] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
+  const { i18n } = useTranslation();
 
   if (!isVisible) return null;
+
+  const currentOffers = offers[i18n.language as keyof typeof offers] || offers.en;
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.touches[0].clientX);
@@ -40,7 +79,7 @@ const OffersCarousel = () => {
     
     if (Math.abs(diff) > 50) {
       const direction = diff > 0 ? 1 : -1;
-      const newOffer = Math.min(Math.max(currentOffer + direction, 0), offers.length - 1);
+      const newOffer = Math.min(Math.max(currentOffer + direction, 0), currentOffers.length - 1);
       setCurrentOffer(newOffer);
       setTouchStart(null);
     }
@@ -50,7 +89,7 @@ const OffersCarousel = () => {
     setTouchStart(null);
   };
 
-  const renderOfferContent = (offer: typeof offers[0]) => {
+  const renderOfferContent = (offer: typeof currentOffers[0]) => {
     const content = (
       <div
         className="relative w-full h-full"
@@ -107,7 +146,7 @@ const OffersCarousel = () => {
             className="flex w-full transition-transform duration-300 ease-out"
             style={{ transform: `translateX(-${currentOffer * 100}%)` }}
           >
-            {offers.map((offer) => (
+            {currentOffers.map((offer) => (
               <div
                 key={offer.id}
                 className="w-full flex-shrink-0 min-h-[200px]"
@@ -120,7 +159,7 @@ const OffersCarousel = () => {
         </div>
 
         <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
-          {offers.map((_, index) => (
+          {currentOffers.map((_, index) => (
             <button
               key={index}
               className={`w-2 h-2 rounded-full ${
