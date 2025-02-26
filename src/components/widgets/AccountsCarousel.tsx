@@ -2,30 +2,71 @@
 import { Card } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
-const accounts = [
-  {
-    id: 1,
-    title: "Current Account",
-    amount: "36,500",
-    currency: "SAR",
-    symbol: "﷼",
-    change: "+2.3%"
-  },
-  {
-    id: 2,
-    title: "Savings Account",
-    amount: "890,000",
-    currency: "SAR",
-    symbol: "﷼",
-    change: "+1.8%"
-  }
-];
+const accounts = {
+  en: [
+    {
+      id: 1,
+      title: "Current Account",
+      amount: "24,000",
+      currency: "EUR",
+      symbol: "€",
+      change: "+2.3%"
+    },
+    {
+      id: 2,
+      title: "Savings Account",
+      amount: "590,000",
+      currency: "EUR",
+      symbol: "€",
+      change: "+1.8%"
+    }
+  ],
+  ar: [
+    {
+      id: 1,
+      title: "الحساب الجاري",
+      amount: "36,500",
+      currency: "SAR",
+      symbol: "﷼",
+      change: "+2.3%"
+    },
+    {
+      id: 2,
+      title: "حساب التوفير",
+      amount: "890,000",
+      currency: "SAR",
+      symbol: "﷼",
+      change: "+1.8%"
+    }
+  ],
+  es: [
+    {
+      id: 1,
+      title: "Cuenta Corriente",
+      amount: "22,000",
+      currency: "EUR",
+      symbol: "€",
+      change: "+2.3%"
+    },
+    {
+      id: 2,
+      title: "Cuenta de Ahorro",
+      amount: "540,000",
+      currency: "EUR",
+      symbol: "€",
+      change: "+1.8%"
+    }
+  ]
+};
 
 const AccountsCarousel = () => {
+  const { i18n } = useTranslation();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = accounts.length;
+  const currentAccounts = accounts[i18n.language as keyof typeof accounts] || accounts.en;
+  const totalPages = currentAccounts.length;
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const scrollToPage = (pageIndex: number) => {
@@ -86,7 +127,7 @@ const AccountsCarousel = () => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {accounts.map((account) => (
+          {currentAccounts.map((account) => (
             <div
               key={account.id}
               className="w-full flex-none snap-start"
