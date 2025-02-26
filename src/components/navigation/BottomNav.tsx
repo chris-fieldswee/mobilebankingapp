@@ -2,19 +2,21 @@
 import { Home, Send, MessageSquare, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
-
-const menuItems = [
-  { icon: Home, label: "Home", path: "/" },
-  { icon: Send, label: "Payments", path: "/transactions" },
-  { icon: MessageSquare, label: "Advisor", path: "/advisor", hasNotification: true },
-  { icon: CreditCard, label: "Card", path: "/platinum-card-offer" },
-];
+import { useTranslation } from "react-i18next";
 
 const BottomNav = () => {
   const location = useLocation();
+  const { t } = useTranslation();
+
+  const menuItems = [
+    { icon: Home, label: t('nav.home'), path: "/" },
+    { icon: Send, label: t('nav.payments'), path: "/transactions" },
+    { icon: MessageSquare, label: t('nav.advisor'), path: "/advisor", hasNotification: true },
+    { icon: CreditCard, label: t('nav.card'), path: "/platinum-card-offer" },
+  ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-t">
+    <nav className="sticky bottom-0 z-50 bg-background/80 backdrop-blur-lg border-t">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-around">
         {menuItems.map((item) => (
           <Link

@@ -2,6 +2,7 @@
 import { Card } from "@/components/ui/card";
 import { LineChart, Line, XAxis, ResponsiveContainer } from "recharts";
 import { ArrowUpIcon } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const mockSpendingData = [
   { day: "1", amount: 15000 },
@@ -13,17 +14,18 @@ const mockSpendingData = [
 ];
 
 const SpendingChart = () => {
+  const { t } = useTranslation();
   const currentSpent = 28400;
 
   return (
     <Card className="p-6 mb-6">
       <div className="mb-2">
-        <h3 className="font-semibold text-sm text-muted-foreground">Spent this month</h3>
+        <h3 className="font-semibold text-sm text-muted-foreground">{t('spending.spentThisMonth')}</h3>
         <div className="flex items-center gap-2">
           <span className="text-2xl font-semibold">﷼ {currentSpent.toLocaleString()}</span>
           <div className="flex items-center text-emerald-500 text-sm">
             <ArrowUpIcon className="h-4 w-4" />
-            <span>2.3%</span>
+            <span>{t('spending.percentChange')}</span>
           </div>
         </div>
       </div>

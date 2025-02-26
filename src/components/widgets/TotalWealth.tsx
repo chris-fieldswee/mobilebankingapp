@@ -1,26 +1,29 @@
 
 import { Card } from "@/components/ui/card";
 import { Wallet, Landmark, CreditCard, PiggyBank, Calculator } from "lucide-react";
-
-const accounts = [
-  { 
-    id: 1,
-    title: "Total Wealth",
-    amount: "926,500",
-    items: [
-      { 
-        section: "Assets",
-        total: "926,500",
-        details: [
-          { icon: Wallet, label: "Current Account", amount: "36,500" },
-          { icon: Landmark, label: "Savings", amount: "890,000" }
-        ]
-      }
-    ]
-  }
-];
+import { useTranslation } from "react-i18next";
 
 const TotalWealth = () => {
+  const { t } = useTranslation();
+
+  const accounts = [
+    { 
+      id: 1,
+      title: t('wealth.totalWealth'),
+      amount: "926,500",
+      items: [
+        { 
+          section: t('wealth.assets'),
+          total: "926,500",
+          details: [
+            { icon: Wallet, label: t('wealth.currentAccount'), amount: "36,500" },
+            { icon: Landmark, label: t('wealth.savings'), amount: "890,000" }
+          ]
+        }
+      ]
+    }
+  ];
+
   return (
     <Card className="p-6 mb-6 bg-white">
       <div className="space-y-6">
