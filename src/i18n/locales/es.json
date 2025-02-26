@@ -199,5 +199,28 @@
     "mins": "mins",
     "hour": "hora",
     "ago": "atrás"
+  },
+  "merchants": {
+    "nusret": "Nusr-Et Steakhouse",
+    "okku": "Okku",
+    "elements": "Elements en Four Seasons",
+    "fiveElephants": "Five Elephants Coffee Roasters",
+    "harveyNichols": "Harvey Nichols",
+    "balenciaga": "Balenciaga en Harvey Nichols",
+    "mercedes": "Mercedes-Benz",
+    "aramco": "Saudi Aramco",
+    "uber": "Uber Black",
+    "fitnessFirst": "Fitness First Platinum",
+    "riyadhSeason": "Eventos Riyadh Season",
+    "voxCinemas": "VOX Cinemas Gold",
+    "danube": "Danube Gourmet",
+    "organicFoods": "Organic Foods y Café",
+    "manuel": "Manuel Market",
+    "tamimi": "Tamimi Markets",
+    "sec": "Compañía Eléctrica Saudí",
+    "stcFiber": "STC Fibra",
+    "stcPlatinum": "STC Platinum",
+    "helpling": "Helpling",
+    "fourSeasonsSpa": "Spa Four Seasons"
   }
 }

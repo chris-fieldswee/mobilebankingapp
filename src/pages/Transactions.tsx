@@ -8,73 +8,115 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useTranslation } from "react-i18next";
 
 const Transactions = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  // Helper function to format currency
+  const formatCurrency = (amount: string) => {
+    const numericAmount = amount.replace(/[^0-9.-]/g, '');
+    const isNegative = amount.startsWith('-');
+    
+    // Format based on language
+    const formattedAmount = new Intl.NumberFormat(i18n.language, {
+      style: 'currency',
+      currency: 'SAR',
+      currencyDisplay: 'symbol'
+    }).format(Math.abs(Number(numericAmount)));
+
+    // Replace standard currency symbol with ﷼
+    const finalAmount = formattedAmount.replace(/SAR|SR|\$|€/g, '﷼');
+    return isNegative ? `-${finalAmount}` : finalAmount;
+  };
+
+  // Helper function to format date
+  const formatDate = (dateStr: string) => {
+    const [month, day] = dateStr.split(" ");
+    const monthNumber = {
+      "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
+      "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12
+    }[month as keyof typeof monthNumber] || 1;
+
+    const date = new Date(2024, monthNumber - 1, parseInt(day));
+    return new Intl.DateTimeFormat(i18n.language, {
+      month: 'short',
+      day: 'numeric'
+    }).format(date);
+  };
 
   const categories = [
     {
       name: "Dining",
       total: "﷼2,040",
       items: [
-        { merchant: "Nusr-Et Steakhouse", amount: "-﷼1,200", date: "Mar 15" },
-        { merchant: "Okku", amount: "-﷼450", date: "Mar 14" },
-        { merchant: "Elements at Four Seasons", amount: "-﷼350", date: "Mar 13" },
-        { merchant: "Five Elephants Coffee Roasters", amount: "-﷼40", date: "Mar 12" }
+        { merchant: t('merchants.nusret'), amount: "-﷼1,200", date: "Mar 15" },
+        { merchant: t('merchants.okku'), amount: "-﷼450", date: "Mar 14" },
+        { merchant: t('merchants.elements'), amount: "-﷼350", date: "Mar 13" },
+        { merchant: t('merchants.fiveElephants'), amount: "-﷼40", date: "Mar 12" }
       ]
     },
     {
       name: "Shopping",
       total: "﷼11,300",
       items: [
-        { merchant: "Harvey Nichols", amount: "-﷼8,800", date: "Mar 15" },
-        { merchant: "Balenciaga at Harvey Nichols", amount: "-﷼2,500", date: "Mar 14" }
+        { merchant: t('merchants.harveyNichols'), amount: "-﷼8,800", date: "Mar 15" },
+        { merchant: t('merchants.balenciaga'), amount: "-﷼2,500", date: "Mar 14" }
       ]
     },
     {
       name: "Transportation",
       total: "﷼4,150",
       items: [
-        { merchant: "Mercedes-Benz", amount: "-﷼3,500", date: "Mar 10" },
-        { merchant: "Saudi Aramco", amount: "-﷼500", date: "Mar 9" },
-        { merchant: "Uber Black", amount: "-﷼150", date: "Mar 8" }
+        { merchant: t('merchants.mercedes'), amount: "-﷼3,500", date: "Mar 10" },
+        { merchant: t('merchants.aramco'), amount: "-﷼500", date: "Mar 9" },
+        { merchant: t('merchants.uber'), amount: "-﷼150", date: "Mar 8" }
       ]
     },
     {
       name: "Entertainment",
       total: "﷼3,750",
       items: [
-        { merchant: "Fitness First Platinum", amount: "-﷼1,500", date: "Mar 7" },
-        { merchant: "Riyadh Season events", amount: "-﷼2,000", date: "Mar 6" },
-        { merchant: "VOX Cinemas Gold", amount: "-﷼250", date: "Mar 5" }
+        { merchant: t('merchants.fitnessFirst'), amount: "-﷼1,500", date: "Mar 7" },
+        { merchant: t('merchants.riyadhSeason'), amount: "-﷼2,000", date: "Mar 6" },
+        { merchant: t('merchants.voxCinemas'), amount: "-﷼250", date: "Mar 5" }
       ]
     },
     {
       name: "Groceries",
       total: "﷼2,650",
       items: [
-        { merchant: "Danube Gourmet", amount: "-﷼1,200", date: "Mar 4" },
-        { merchant: "Organic Foods and Café", amount: "-﷼500", date: "Mar 3" },
-        { merchant: "Manuel Market", amount: "-﷼800", date: "Mar 2" },
-        { merchant: "Tamimi Markets", amount: "-﷼150", date: "Mar 1" }
+        { merchant: t('merchants.danube'), amount: "-﷼1,200", date: "Mar 4" },
+        { merchant: t('merchants.organicFoods'), amount: "-﷼500", date: "Mar 3" },
+        { merchant: t('merchants.manuel'), amount: "-﷼800", date: "Mar 2" },
+        { merchant: t('merchants.tamimi'), amount: "-﷼150", date: "Mar 1" }
       ]
     },
     {
       name: "Bills",
       total: "﷼3,300",
       items: [
-        { merchant: "Saudi Electricity Company", amount: "-﷼1,500", date: "Mar 1" },
-        { merchant: "STC Fiber", amount: "-﷼500", date: "Mar 1" },
-        { merchant: "STC Platinum", amount: "-﷼500", date: "Mar 1" },
-        { merchant: "Helpling", amount: "-﷼800", date: "Mar 1" }
+        { merchant: t('merchants.sec'), amount: "-﷼1,500", date: "Mar 1" },
+        { merchant: t('merchants.stcFiber'), amount: "-﷼500", date: "Mar 1" },
+        { merchant: t('merchants.stcPlatinum'), amount: "-﷼500", date: "Mar 1" },
+        { merchant: t('merchants.helpling'), amount: "-﷼800", date: "Mar 1" }
       ]
     },
     {
       name: "Wellness",
       total: "",
       items: [
-        { merchant: "Four Seasons Spa", amount: "-﷼1,210", date: "Mar 1" }
+        { merchant: t('merchants.fourSeasonsSpa'), amount: "-﷼1,210", date: "Mar 1" }
       ]
     }
   ];
+
+  const processedCategories = categories.map(category => ({
+    ...category,
+    total: category.total ? formatCurrency(category.total) : "",
+    items: category.items.map(item => ({
+      ...item,
+      amount: formatCurrency(item.amount),
+      date: formatDate(item.date)
+    }))
+  }));
 
   return (
     <div className="fixed inset-0 bg-background">
@@ -94,7 +136,7 @@ const Transactions = () => {
           <div className="max-w-md mx-auto p-4 pb-24">
             <Card className="p-6">
               <div className="space-y-6">
-                {categories.map((category, index) => (
+                {processedCategories.map((category, index) => (
                   <div key={index}>
                     <h2 className="text-sm font-medium text-muted-foreground mb-3">
                       {t(`categories.${category.name.toLowerCase()}`)}
