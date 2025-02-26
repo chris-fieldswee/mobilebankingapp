@@ -101,6 +101,9 @@
     "placeholder": "البحث عن المعاملات، المستفيدين...",
     "recent": "عمليات البحث الأخيرة",
     "noResults": "لم يتم العثور على نتائج",
+    "insights": {
+      "tuitionDue": "رسوم دراسية مستحقة بقيمة ﷼{{amount}} لـ {{institution}} في {{date}}"
+    },
     "categories": {
       "transactions": "المعاملات",
       "payees": "المستفيدون",

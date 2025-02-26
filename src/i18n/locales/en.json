@@ -101,6 +101,9 @@
     "placeholder": "Search transactions, payees...",
     "recent": "Recent searches",
     "noResults": "No results found",
+    "insights": {
+      "tuitionDue": "Your tuition fee of ﷼{{amount}} for {{institution}} is due on {{date}}"
+    },
     "categories": {
       "transactions": "Transactions",
       "payees": "Payees",
