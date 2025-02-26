@@ -53,7 +53,8 @@
     "category": "Category",
     "merchant": "Merchant",
     "reference": "Reference",
-    "type": "Type"
+    "type": "Type",
+    "total": "Total"
   },
   "offers": {
     "cardOffer": "Unlock Elite Benefits with the SAB Platinum Credit Card",
@@ -191,5 +192,14 @@
     "mins": "mins",
     "hour": "hour",
     "ago": "ago"
+  },
+  "categories": {
+    "dining": "Dining",
+    "shopping": "Shopping",
+    "transportation": "Transportation",
+    "entertainment": "Entertainment",
+    "groceries": "Groceries",
+    "bills": "Bills",
+    "wellness": "Wellness"
   }
 }

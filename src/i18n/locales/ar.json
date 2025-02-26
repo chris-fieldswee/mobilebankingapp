@@ -191,5 +191,29 @@
     "mins": "دقائق",
     "hour": "ساعة",
     "ago": "مضت"
+  },
+  "categories": {
+    "dining": "المطاعم",
+    "shopping": "التسوق",
+    "transportation": "المواصلات",
+    "entertainment": "الترفيه",
+    "groceries": "البقالة",
+    "bills": "الفواتير",
+    "wellness": "الصحة والعافية"
+  },
+  "transactions": {
+    "recent": "المعاملات الأخيرة",
+    "upcoming": "المعاملات القادمة",
+    "dueIn": "مستحق خلال {{days}} أيام",
+    "dueOn": "مستحق في {{date}}",
+    "details": "تفاصيل المعاملة",
+    "amount": "المبلغ",
+    "date": "التاريخ",
+    "status": "الحالة",
+    "category": "الفئة",
+    "merchant": "التاجر",
+    "reference": "الرقم المرجعي",
+    "type": "النوع",
+    "total": "المجموع"
   }
 }

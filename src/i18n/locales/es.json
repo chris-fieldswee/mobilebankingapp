@@ -53,7 +53,8 @@
     "category": "Categoría",
     "merchant": "Comerciante",
     "reference": "Referencia",
-    "type": "Tipo"
+    "type": "Tipo",
+    "total": "Total"
   },
   "offers": {
     "cardOffer": "Desbloquea Beneficios Elite con la Tarjeta de Crédito Platinum SAB",
@@ -107,7 +108,14 @@
     "categories": {
       "transactions": "Transacciones",
       "payees": "Beneficiarios",
-      "services": "Servicios"
+      "services": "Servicios",
+      "dining": "Restaurantes",
+      "shopping": "Compras",
+      "transportation": "Transporte",
+      "entertainment": "Entretenimiento",
+      "groceries": "Comestibles",
+      "bills": "Facturas",
+      "wellness": "Bienestar"
     }
   },
   "notifications": {
