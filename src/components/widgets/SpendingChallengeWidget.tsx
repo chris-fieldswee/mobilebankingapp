@@ -2,10 +2,16 @@
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
 
+const budgetData = {
+  en: { spent: 28400, goal: 35000, symbol: "€" },
+  ar: { spent: 42600, goal: 52500, symbol: "﷼" },
+  es: { spent: 26000, goal: 32000, symbol: "€" }
+};
+
 const SpendingChallengeWidget = () => {
-  const { t } = useTranslation();
-  const spent = 28400;
-  const goal = 35000;
+  const { t, i18n } = useTranslation();
+  const currentBudget = budgetData[i18n.language as keyof typeof budgetData] || budgetData.en;
+  const { spent, goal, symbol } = currentBudget;
   const progress = Math.min((spent / goal) * 100, 100);
   const isOverBudget = spent > goal;
 
@@ -23,13 +29,13 @@ const SpendingChallengeWidget = () => {
         </div>
         <div className="flex justify-between text-sm">
           <span className={isOverBudget ? 'text-destructive' : 'text-muted-foreground'}>
-            ﷼{spent.toLocaleString()} {t('budget.spent')}
+            {symbol}{spent.toLocaleString()} {t('budget.spent')}
           </span>
-          <span className="text-muted-foreground">﷼{goal.toLocaleString()} {t('budget.goal')}</span>
+          <span className="text-muted-foreground">{symbol}{goal.toLocaleString()} {t('budget.goal')}</span>
         </div>
         {isOverBudget && (
           <p className="text-sm text-destructive mt-2">
-            ﷼{(spent - goal).toLocaleString()} {t('budget.overBudget')}
+            {symbol}{(spent - goal).toLocaleString()} {t('budget.overBudget')}
           </p>
         )}
       </div>

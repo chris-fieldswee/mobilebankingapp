@@ -4,25 +4,50 @@ import { LineChart, Line, XAxis, ResponsiveContainer } from "recharts";
 import { ArrowUpIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-const mockSpendingData = [
-  { day: "1", amount: 15000 },
-  { day: "6", amount: 18000 },
-  { day: "11", amount: 22000 },
-  { day: "16", amount: 24000 },
-  { day: "21", amount: 26000 },
-  { day: "28", amount: 28400 },
-];
+const mockSpendingData = {
+  en: [
+    { day: "1", amount: 15000 },
+    { day: "6", amount: 18000 },
+    { day: "11", amount: 22000 },
+    { day: "16", amount: 24000 },
+    { day: "21", amount: 26000 },
+    { day: "28", amount: 28400 },
+  ],
+  ar: [
+    { day: "١", amount: 22500 },
+    { day: "٦", amount: 27000 },
+    { day: "١١", amount: 33000 },
+    { day: "١٦", amount: 36000 },
+    { day: "٢١", amount: 39000 },
+    { day: "٢٨", amount: 42600 },
+  ],
+  es: [
+    { day: "1", amount: 13800 },
+    { day: "6", amount: 16500 },
+    { day: "11", amount: 20200 },
+    { day: "16", amount: 22000 },
+    { day: "21", amount: 23800 },
+    { day: "28", amount: 26000 },
+  ]
+};
+
+const currencies = {
+  en: { symbol: "€", amount: 28400 },
+  ar: { symbol: "﷼", amount: 42600 },
+  es: { symbol: "€", amount: 26000 }
+};
 
 const SpendingChart = () => {
-  const { t } = useTranslation();
-  const currentSpent = 28400;
+  const { t, i18n } = useTranslation();
+  const currentSpendingData = mockSpendingData[i18n.language as keyof typeof mockSpendingData] || mockSpendingData.en;
+  const currency = currencies[i18n.language as keyof typeof currencies] || currencies.en;
 
   return (
     <Card className="p-6 mb-6">
       <div className="mb-2">
         <h3 className="font-semibold text-sm text-muted-foreground">{t('spending.spentThisMonth')}</h3>
         <div className="flex items-center gap-2">
-          <span className="text-2xl font-semibold">﷼ {currentSpent.toLocaleString()}</span>
+          <span className="text-2xl font-semibold">{currency.symbol} {currency.amount.toLocaleString()}</span>
           <div className="flex items-center text-emerald-500 text-sm">
             <ArrowUpIcon className="h-4 w-4" />
             <span>{t('spending.percentChange')}</span>
@@ -31,7 +56,7 @@ const SpendingChart = () => {
       </div>
       <div className="h-[100px] w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={mockSpendingData}>
+          <LineChart data={currentSpendingData}>
             <defs>
               <linearGradient id="spendingLine" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#3b82f6" stopOpacity={1} />
