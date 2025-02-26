@@ -6,14 +6,14 @@ import { ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const Transactions = () => {
   const { t, i18n } = useTranslation();
   const [processedCategories, setProcessedCategories] = useState<any[]>([]);
 
-  // Helper function to format currency
-  const formatCurrency = (amount: string) => {
+  // Helper function to format currency - moved to useCallback
+  const formatCurrency = useCallback((amount: string) => {
     const numericAmount = amount.replace(/[^0-9.-]/g, '');
     const isNegative = amount.startsWith('-');
     
@@ -27,10 +27,10 @@ const Transactions = () => {
     // Replace standard currency symbol with ﷼
     const finalAmount = formattedAmount.replace(/SAR|SR|\$|€/g, '﷼');
     return isNegative ? `-${finalAmount}` : finalAmount;
-  };
+  }, [i18n.language]);
 
-  // Helper function to format date
-  const formatDate = (dateStr: string) => {
+  // Helper function to format date - moved to useCallback
+  const formatDate = useCallback((dateStr: string) => {
     const [month, day] = dateStr.split(" ");
     const monthNumber = {
       "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
@@ -42,10 +42,12 @@ const Transactions = () => {
       month: 'short',
       day: 'numeric'
     }).format(date);
-  };
+  }, [i18n.language]);
 
-  // Update processed categories whenever language changes
+  // Process categories - moved to a separate useEffect
   useEffect(() => {
+    console.log('Language changed:', i18n.language); // Debug log
+    
     const categoriesData = [
       {
         name: 'dining',
@@ -122,11 +124,12 @@ const Transactions = () => {
       }))
     }));
 
+    console.log('Processed categories:', processed); // Debug log
     setProcessedCategories(processed);
-  }, [t, i18n.language, formatCurrency, formatDate]); // Added formatCurrency and formatDate as dependencies
+  }, [i18n.language, t, formatCurrency, formatDate]);
 
   return (
-    <div className="fixed inset-0 bg-background">
+    <div className="fixed inset-0 bg-background" key={i18n.language}>
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
         <div className="max-w-md mx-auto px-4 h-14 flex items-center">
           <Link to="/">
@@ -144,7 +147,7 @@ const Transactions = () => {
             <Card className="p-6">
               <div className="space-y-6">
                 {processedCategories.map((category, index) => (
-                  <div key={index}>
+                  <div key={`${index}-${i18n.language}`}>
                     <h2 className="text-sm font-medium text-muted-foreground mb-3">
                       {category.name}
                       {category.total && ` (${t('transactions.total')}: ${category.total})`}
@@ -152,7 +155,7 @@ const Transactions = () => {
                     <div className="space-y-1">
                       {category.items.map((item, itemIndex) => (
                         <TransactionItem
-                          key={itemIndex}
+                          key={`${itemIndex}-${i18n.language}`}
                           merchant={item.merchant}
                           amount={item.amount}
                           date={item.date}
