@@ -20,7 +20,7 @@ i18n
         translation: esTranslations
       }
     },
-    lng: 'en',
+    lng: 'en', // default language
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false
