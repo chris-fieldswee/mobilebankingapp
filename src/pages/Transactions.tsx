@@ -123,7 +123,7 @@ const Transactions = () => {
     }));
 
     setProcessedCategories(processed);
-  }, [t, i18n.language]); // Re-run when language changes or translation function updates
+  }, [t, i18n.language, formatCurrency, formatDate]); // Added formatCurrency and formatDate as dependencies
 
   return (
     <div className="fixed inset-0 bg-background">
