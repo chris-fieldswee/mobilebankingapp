@@ -24,6 +24,7 @@
     "percentChange": "2.3%"
   },
   "payees": {
+    "title": "المستفيدون الأخيرون",
     "recentPayees": "المستفيدون الأخيرون"
   },
   "wealth": {

@@ -24,6 +24,7 @@
     "percentChange": "2.3%"
   },
   "payees": {
+    "title": "Beneficiarios Recientes",
     "recentPayees": "Beneficiarios Recientes"
   },
   "wealth": {

@@ -89,7 +89,7 @@ const PayeesCarousel = () => {
 
   return (
     <div className="mb-6">
-      <h3 className="font-semibold mb-4">{t("payees.recentPayees")}</h3>
+      <h3 className="font-semibold mb-4">{t("payees.title")}</h3>
       <div className="relative">
         <div 
           ref={scrollRef}
