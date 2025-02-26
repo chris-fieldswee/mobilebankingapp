@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ChevronLeft } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import SpendingTab from "@/components/insights/SpendingTab";
 import IncomeTab from "@/components/insights/IncomeTab";
 import CashflowTab from "@/components/insights/CashflowTab";
@@ -11,6 +12,7 @@ import BudgetTab from "@/components/insights/BudgetTab";
 
 const Insights = () => {
   const [activeTab, setActiveTab] = useState("spending");
+  const { t } = useTranslation();
 
   return (
     <div className="fixed inset-0 bg-background">
@@ -21,7 +23,7 @@ const Insights = () => {
               <ChevronLeft className="h-6 w-6" />
             </Button>
           </Link>
-          <h1 className="text-lg font-semibold">Insights</h1>
+          <h1 className="text-lg font-semibold">{t('insights.title')}</h1>
         </div>
       </header>
 
@@ -34,25 +36,25 @@ const Insights = () => {
                   value="spending" 
                   className="flex-1 data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
                 >
-                  Spending
+                  {t('insights.spending')}
                 </TabsTrigger>
                 <TabsTrigger 
                   value="income"
                   className="flex-1 data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
                 >
-                  Income
+                  {t('insights.income')}
                 </TabsTrigger>
                 <TabsTrigger 
                   value="cashflow"
                   className="flex-1 data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
                 >
-                  Cashflow
+                  {t('insights.cashflow')}
                 </TabsTrigger>
                 <TabsTrigger 
                   value="budget"
                   className="flex-1 data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
                 >
-                  Budget
+                  {t('insights.budget')}
                 </TabsTrigger>
               </TabsList>
             </div>

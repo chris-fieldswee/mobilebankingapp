@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { BarChart2, PieChart, ArrowRight, TrendingUp, Utensils, ShoppingBag, Car, Popcorn, ShoppingCart, Receipt, Heart } from "lucide-react";
 import { BarChart, Bar, PieChart as RechartPie, Pie, Cell, ResponsiveContainer, XAxis } from "recharts";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const periodOptions = ["1W", "1M"];
 
@@ -49,6 +50,7 @@ const SpendingTab = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("1M");
   const [chartType, setChartType] = useState<"bar" | "pie">("bar");
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const totalSpent = 28400;
   const spendingData = periodData[selectedPeriod as keyof typeof periodData];
@@ -58,7 +60,7 @@ const SpendingTab = () => {
       <div>
         <div className="flex justify-between items-start mb-4">
           <div>
-            <p className="text-sm text-muted-foreground">Spent · This month</p>
+            <p className="text-sm text-muted-foreground">{t('spending.spentThisMonth')} · {t('insights.thisMonth')}</p>
             <h2 className="text-3xl font-semibold">﷼ {totalSpent.toLocaleString()}</h2>
           </div>
           <Button
@@ -154,9 +156,9 @@ const SpendingTab = () => {
 
       <div>
         <div className="flex justify-between items-center mb-4">
-          <h3 className="font-semibold">By Category</h3>
+          <h3 className="font-semibold">{t('spending.byCategory')}</h3>
           <Button variant="ghost" className="text-primary text-sm px-0">
-            Manage
+            {t('actions.seeAll')}
           </Button>
         </div>
 

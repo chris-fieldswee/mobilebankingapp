@@ -1,9 +1,9 @@
-
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BarChart, Bar, XAxis, ResponsiveContainer, ReferenceLine, Cell } from "recharts";
-import { useState } from "react";
+import { BarChart, Bar, XAxis, ResponsiveContainer, ReferenceLine } from "recharts";
 import { TrendingUp, ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const periodOptions = ["1W", "1M", "6M", "1Y"];
 
@@ -70,11 +70,12 @@ const predictionData = [
 const CashflowTab = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("1M");
   const [activeChart, setActiveChart] = useState(0);
+  const { t } = useTranslation();
   const cashflowData = periodData[selectedPeriod as keyof typeof periodData];
 
   const charts = [
     {
-      title: "Monthly Cashflow",
+      title: t('insights.monthlyChart'),
       chart: (
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={cashflowData}>
@@ -92,7 +93,7 @@ const CashflowTab = () => {
       )
     },
     {
-      title: "Projected Balance",
+      title: t('insights.projectedBalance'),
       chart: (
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={predictionData}>
@@ -118,7 +119,7 @@ const CashflowTab = () => {
     <div className="space-y-6">
       <div>
         <div className="mb-4">
-          <p className="text-sm text-muted-foreground">Net Cashflow · This month</p>
+          <p className="text-sm text-muted-foreground">{t('insights.netCashflow')} · {t('insights.thisMonth')}</p>
           <h2 className="text-3xl font-semibold text-[#222222]">﷼ {currentBalance.toLocaleString()}</h2>
         </div>
 

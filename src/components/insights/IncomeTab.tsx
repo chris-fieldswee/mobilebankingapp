@@ -1,10 +1,9 @@
-
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BarChart, Bar, XAxis, ResponsiveContainer } from "recharts";
 import { TrendingUp } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const periodOptions = ["1M", "6M", "1Y"];
 
@@ -32,14 +31,14 @@ const periodData = {
 
 const IncomeTab = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("1M");
-  const navigate = useNavigate();
+  const { t } = useTranslation();
   const incomeData = periodData[selectedPeriod as keyof typeof periodData];
 
   return (
     <div className="space-y-6">
       <div>
         <div className="mb-4">
-          <p className="text-sm text-muted-foreground">Income · This month</p>
+          <p className="text-sm text-muted-foreground">{t('insights.income')} · {t('insights.thisMonth')}</p>
           <h2 className="text-3xl font-semibold text-[#222222]">﷼ 60,000</h2>
         </div>
 
@@ -107,8 +106,8 @@ const IncomeTab = () => {
         <Card className="p-4">
           <div className="flex justify-between items-center">
             <div>
-              <p className="font-medium">Salary</p>
-              <p className="text-sm text-muted-foreground">Monthly income</p>
+              <p className="font-medium">{t('insights.salary')}</p>
+              <p className="text-sm text-muted-foreground">{t('insights.monthlyIncome')}</p>
             </div>
             <p className="font-medium text-[#222222]">+﷼ 60,000</p>
           </div>
