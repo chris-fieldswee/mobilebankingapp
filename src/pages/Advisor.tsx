@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 type Message = {
   id: number;
@@ -16,6 +17,9 @@ type Message = {
 };
 
 const Advisor = () => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
@@ -24,42 +28,40 @@ const Advisor = () => {
     },
     {
       id: 2,
-      text: "Did you know that your SAB Premier World Mastercard comes with exclusive travel benefits?\n\n• Complimentary Travel Insurance including trip cancellations, medical coverage, and lost baggage protection\n\n• Discounted Foreign Exchange Rates for international transactions",
+      text: t('advisor.suggestions.travel'),
       sender: "advisor",
       options: [
         {
-          text: "Tell me more about travel insurance",
+          text: t('advisor.suggestions.insurance'),
           action: () => handleOptionSelect("insurance")
         },
         {
-          text: "Explore discounted foreign exchange rates",
+          text: t('advisor.suggestions.exchange'),
           action: () => handleOptionSelect("exchange")
         }
       ]
     }
   ]);
 
-  const navigate = useNavigate();
-
   const handleOptionSelect = (option: "exchange" | "insurance") => {
     if (option === "insurance") {
       const insuranceMessage: Message = {
         id: Date.now(),
-        text: "Great choice! Your SAB Premier World Mastercard includes complimentary travel insurance when you book your trip using the card. Here's what's covered:\n\n• Baggage Loss: Up to SAR 11,250\n\n• Trip Cancellation: Up to SAR 28,125\n\n• Personal Accident Coverage: Up to SAR 1,875,000\n\n• Medical Emergency & Evacuation: Up to SAR 1,875,000",
+        text: t('advisor.messages.insurance'),
         sender: "advisor"
       };
 
       const followUpMessage: Message = {
         id: Date.now() + 1,
-        text: "Would you like to review your full travel insurance policy and activate coverage?",
+        text: t('advisor.messages.insuranceFollowUp'),
         sender: "advisor",
         options: [
           {
-            text: "Yes, show my coverage details",
+            text: t('advisor.actions.showCoverage'),
             action: () => navigate("/insurance")
           },
           {
-            text: "Not now, I'll deal with it later",
+            text: t('advisor.actions.later'),
             action: () => null
           }
         ]
@@ -69,7 +71,7 @@ const Advisor = () => {
     } else {
       const exchangeMessage: Message = {
         id: Date.now(),
-        text: "With your SAB Premier World Mastercard, you get preferential exchange rates on all international transactions. This means you save on every purchase you make abroad!",
+        text: t('advisor.messages.exchange'),
         sender: "advisor"
       };
 
@@ -99,8 +101,8 @@ const Advisor = () => {
               </div>
             </div>
             <div>
-              <h2 className="font-semibold">Zaid</h2>
-              <p className="text-sm text-muted-foreground">Financial Advisor</p>
+              <h2 className="font-semibold">{t('advisor.name')}</h2>
+              <p className="text-sm text-muted-foreground">{t('advisor.title')}</p>
             </div>
           </div>
         </div>
