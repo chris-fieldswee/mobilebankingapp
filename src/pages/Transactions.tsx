@@ -6,9 +6,11 @@ import { ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
 
 const Transactions = () => {
   const { t, i18n } = useTranslation();
+  const [processedCategories, setProcessedCategories] = useState<any[]>([]);
 
   // Helper function to format currency
   const formatCurrency = (amount: string) => {
@@ -42,81 +44,86 @@ const Transactions = () => {
     }).format(date);
   };
 
-  const categories = [
-    {
-      name: t('categories.dining'),
-      total: "﷼2,040",
-      items: [
-        { merchant: t('merchants.nusret'), amount: "-﷼1,200", date: "Mar 15" },
-        { merchant: t('merchants.okku'), amount: "-﷼450", date: "Mar 14" },
-        { merchant: t('merchants.elements'), amount: "-﷼350", date: "Mar 13" },
-        { merchant: t('merchants.fiveElephants'), amount: "-﷼40", date: "Mar 12" }
-      ]
-    },
-    {
-      name: t('categories.shopping'),
-      total: "﷼11,300",
-      items: [
-        { merchant: t('merchants.harveyNichols'), amount: "-﷼8,800", date: "Mar 15" },
-        { merchant: t('merchants.balenciaga'), amount: "-﷼2,500", date: "Mar 14" }
-      ]
-    },
-    {
-      name: t('categories.transportation'),
-      total: "﷼4,150",
-      items: [
-        { merchant: t('merchants.mercedes'), amount: "-﷼3,500", date: "Mar 10" },
-        { merchant: t('merchants.aramco'), amount: "-﷼500", date: "Mar 9" },
-        { merchant: t('merchants.uber'), amount: "-﷼150", date: "Mar 8" }
-      ]
-    },
-    {
-      name: t('categories.entertainment'),
-      total: "﷼3,750",
-      items: [
-        { merchant: t('merchants.fitnessFirst'), amount: "-﷼1,500", date: "Mar 7" },
-        { merchant: t('merchants.riyadhSeason'), amount: "-﷼2,000", date: "Mar 6" },
-        { merchant: t('merchants.voxCinemas'), amount: "-﷼250", date: "Mar 5" }
-      ]
-    },
-    {
-      name: t('categories.groceries'),
-      total: "﷼2,650",
-      items: [
-        { merchant: t('merchants.danube'), amount: "-﷼1,200", date: "Mar 4" },
-        { merchant: t('merchants.organicFoods'), amount: "-﷼500", date: "Mar 3" },
-        { merchant: t('merchants.manuel'), amount: "-﷼800", date: "Mar 2" },
-        { merchant: t('merchants.tamimi'), amount: "-﷼150", date: "Mar 1" }
-      ]
-    },
-    {
-      name: t('categories.bills'),
-      total: "﷼3,300",
-      items: [
-        { merchant: t('merchants.sec'), amount: "-﷼1,500", date: "Mar 1" },
-        { merchant: t('merchants.stcFiber'), amount: "-﷼500", date: "Mar 1" },
-        { merchant: t('merchants.stcPlatinum'), amount: "-﷼500", date: "Mar 1" },
-        { merchant: t('merchants.helpling'), amount: "-﷼800", date: "Mar 1" }
-      ]
-    },
-    {
-      name: t('categories.wellness'),
-      total: "",
-      items: [
-        { merchant: t('merchants.fourSeasonsSpa'), amount: "-﷼1,210", date: "Mar 1" }
-      ]
-    }
-  ];
+  // Update processed categories whenever language changes
+  useEffect(() => {
+    const categoriesData = [
+      {
+        name: 'dining',
+        total: "﷼2,040",
+        items: [
+          { merchant: 'nusret', amount: "-﷼1,200", date: "Mar 15" },
+          { merchant: 'okku', amount: "-﷼450", date: "Mar 14" },
+          { merchant: 'elements', amount: "-﷼350", date: "Mar 13" },
+          { merchant: 'fiveElephants', amount: "-﷼40", date: "Mar 12" }
+        ]
+      },
+      {
+        name: 'shopping',
+        total: "﷼11,300",
+        items: [
+          { merchant: 'harveyNichols', amount: "-﷼8,800", date: "Mar 15" },
+          { merchant: 'balenciaga', amount: "-﷼2,500", date: "Mar 14" }
+        ]
+      },
+      {
+        name: 'transportation',
+        total: "﷼4,150",
+        items: [
+          { merchant: 'mercedes', amount: "-﷼3,500", date: "Mar 10" },
+          { merchant: 'aramco', amount: "-﷼500", date: "Mar 9" },
+          { merchant: 'uber', amount: "-﷼150", date: "Mar 8" }
+        ]
+      },
+      {
+        name: 'entertainment',
+        total: "﷼3,750",
+        items: [
+          { merchant: 'fitnessFirst', amount: "-﷼1,500", date: "Mar 7" },
+          { merchant: 'riyadhSeason', amount: "-﷼2,000", date: "Mar 6" },
+          { merchant: 'voxCinemas', amount: "-﷼250", date: "Mar 5" }
+        ]
+      },
+      {
+        name: 'groceries',
+        total: "﷼2,650",
+        items: [
+          { merchant: 'danube', amount: "-﷼1,200", date: "Mar 4" },
+          { merchant: 'organicFoods', amount: "-﷼500", date: "Mar 3" },
+          { merchant: 'manuel', amount: "-﷼800", date: "Mar 2" },
+          { merchant: 'tamimi', amount: "-﷼150", date: "Mar 1" }
+        ]
+      },
+      {
+        name: 'bills',
+        total: "﷼3,300",
+        items: [
+          { merchant: 'sec', amount: "-﷼1,500", date: "Mar 1" },
+          { merchant: 'stcFiber', amount: "-﷼500", date: "Mar 1" },
+          { merchant: 'stcPlatinum', amount: "-﷼500", date: "Mar 1" },
+          { merchant: 'helpling', amount: "-﷼800", date: "Mar 1" }
+        ]
+      },
+      {
+        name: 'wellness',
+        total: "",
+        items: [
+          { merchant: 'fourSeasonsSpa', amount: "-﷼1,210", date: "Mar 1" }
+        ]
+      }
+    ];
 
-  const processedCategories = categories.map(category => ({
-    ...category,
-    items: category.items.map(item => ({
-      ...item,
-      amount: formatCurrency(item.amount),
-      date: formatDate(item.date)
-    })),
-    total: category.total ? formatCurrency(category.total) : ""
-  }));
+    const processed = categoriesData.map(category => ({
+      name: t(`categories.${category.name}`),
+      total: category.total ? formatCurrency(category.total) : "",
+      items: category.items.map(item => ({
+        merchant: t(`merchants.${item.merchant}`),
+        amount: formatCurrency(item.amount),
+        date: formatDate(item.date)
+      }))
+    }));
+
+    setProcessedCategories(processed);
+  }, [t, i18n.language]); // Re-run when language changes or translation function updates
 
   return (
     <div className="fixed inset-0 bg-background">
