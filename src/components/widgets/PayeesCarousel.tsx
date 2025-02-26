@@ -1,5 +1,5 @@
 
-import { User2, Coffee, ShoppingBag, Car, Pizza, CreditCard } from "lucide-react";
+import { User2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -89,7 +89,7 @@ const PayeesCarousel = () => {
 
   return (
     <div className="mb-6">
-      <h3 className="font-semibold mb-4">{t('payees.recentPayees')}</h3>
+      <h3 className="font-semibold mb-4">{t("payees.recentPayees")}</h3>
       <div className="relative">
         <div 
           ref={scrollRef}
