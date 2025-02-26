@@ -1,4 +1,3 @@
-
 {
   "nav": {
     "home": "Inicio",
@@ -75,6 +74,7 @@
     "expenses": "Gastos"
   },
   "advisor": {
+    "name": "Ziad",
     "title": "Asesor Financiero",
     "welcome": "Bienvenido a tu asesor financiero personal",
     "message": "¿Cómo puedo ayudarte hoy?",
@@ -82,7 +82,19 @@
       "budget": "Ayúdame a crear un presupuesto",
       "invest": "Consejos de inversión",
       "save": "Consejos de ahorro",
-      "spend": "Análisis de gastos"
+      "spend": "Análisis de gastos",
+      "travel": "¡Veo que viajarás pronto! Aquí hay algunas sugerencias para ayudarte a prepararte:",
+      "insurance": "Obtener Seguro de Viaje",
+      "exchange": "Cambiar Moneda"
+    },
+    "messages": {
+      "insurance": "¡Excelente elección! El seguro de viaje puede protegerte contra eventos inesperados durante tu viaje. Tenemos tarifas especiales para nuestros clientes premium.",
+      "insuranceFollowUp": "¿Te gustaría ver nuestras opciones de cobertura?",
+      "exchange": "Puedo ayudarte a obtener las mejores tasas de cambio para tu destino. ¿Cuándo te gustaría cambiar moneda?"
+    },
+    "actions": {
+      "showCoverage": "Mostrar Opciones de Cobertura",
+      "later": "Quizás Más Tarde"
     }
   },
   "search": {

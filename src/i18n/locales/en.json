@@ -1,4 +1,3 @@
-
 {
   "nav": {
     "home": "Home",
@@ -75,6 +74,7 @@
     "expenses": "Expenses"
   },
   "advisor": {
+    "name": "Ziad",
     "title": "Financial Advisor",
     "welcome": "Welcome to your personal financial advisor",
     "message": "How can I help you today?",
@@ -82,7 +82,19 @@
       "budget": "Help me create a budget",
       "invest": "Investment advice",
       "save": "Savings tips",
-      "spend": "Spending analysis"
+      "spend": "Spending analysis",
+      "travel": "I see you're traveling soon! Here are some suggestions to help you prepare:",
+      "insurance": "Get Travel Insurance",
+      "exchange": "Exchange Currency"
+    },
+    "messages": {
+      "insurance": "Great choice! Travel insurance can protect you against unexpected events during your journey. We have special rates for our premium customers.",
+      "insuranceFollowUp": "Would you like to see our coverage options?",
+      "exchange": "I can help you get the best exchange rates for your destination. When would you like to exchange currency?"
+    },
+    "actions": {
+      "showCoverage": "Show Coverage Options",
+      "later": "Maybe Later"
     }
   },
   "search": {
