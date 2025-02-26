@@ -23,11 +23,8 @@
     "spentThisMonth": "Gastado este mes",
     "percentChange": "2.3%"
   },
-  "transactions": {
-    "recent": "Transacciones Recientes",
-    "upcoming": "Próximas Transacciones",
-    "dueIn": "Vence en {{days}} días",
-    "dueOn": "Vence el {{date}}"
+  "payees": {
+    "recentPayees": "Beneficiarios Recientes"
   },
   "wealth": {
     "totalWealth": "Riqueza Total",
@@ -35,32 +32,10 @@
     "currentAccount": "Cuenta Corriente",
     "savings": "Ahorros"
   },
-  "card": {
-    "platinumOffer": {
-      "title": "Oferta Tarjeta Platinum",
-      "description": "Basado en sus gastos y perfil bancario, le ofrecemos una actualización exclusiva a la Tarjeta de Crédito SAB Platinum, ¡con exención de la cuota anual del primer año solo para usted!",
-      "benefits": {
-        "lounge": {
-          "title": "Acceso Gratuito a Salas VIP",
-          "description": "Disfrute de acceso exclusivo a más de 1,200 salas VIP de aeropuertos en todo el mundo."
-        },
-        "cashback": {
-          "title": "Hasta 3% de Reembolso en Gastos Internacionales",
-          "description": "Gane más en viajes, restaurantes y compras en el extranjero."
-        },
-        "apr": {
-          "title": "APR Personalizado: 1.5% Mensual",
-          "description": "Una tasa personalizada basada en su perfil financiero."
-        },
-        "travel": {
-          "title": "Beneficios Especiales de Viaje",
-          "description": "Descuentos en reservas de hoteles, alquiler de autos y servicios de conserjería premium."
-        }
-      },
-      "actions": {
-        "upgrade": "Actualizar Ahora",
-        "explore": "Explorar Todos los Beneficios"
-      }
-    }
+  "transactions": {
+    "recent": "Transacciones Recientes",
+    "upcoming": "Próximas Transacciones",
+    "dueIn": "Vence en {{days}} días",
+    "dueOn": "Vence el {{date}}"
   }
 }

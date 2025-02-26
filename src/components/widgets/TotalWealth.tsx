@@ -3,21 +3,43 @@ import { Card } from "@/components/ui/card";
 import { Wallet, Landmark, CreditCard, PiggyBank, Calculator } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+const wealthData = {
+  en: {
+    totalWealth: "615,000",
+    currentAccount: "24,000",
+    savings: "591,000",
+    symbol: "€"
+  },
+  ar: {
+    totalWealth: "926,500",
+    currentAccount: "36,500",
+    savings: "890,000",
+    symbol: "﷼"
+  },
+  es: {
+    totalWealth: "562,000",
+    currentAccount: "22,000",
+    savings: "540,000",
+    symbol: "€"
+  }
+};
+
 const TotalWealth = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentWealth = wealthData[i18n.language as keyof typeof wealthData] || wealthData.en;
 
   const accounts = [
     { 
       id: 1,
       title: t('wealth.totalWealth'),
-      amount: "926,500",
+      amount: currentWealth.totalWealth,
       items: [
         { 
           section: t('wealth.assets'),
-          total: "926,500",
+          total: currentWealth.totalWealth,
           details: [
-            { icon: Wallet, label: t('wealth.currentAccount'), amount: "36,500" },
-            { icon: Landmark, label: t('wealth.savings'), amount: "890,000" }
+            { icon: Wallet, label: t('wealth.currentAccount'), amount: currentWealth.currentAccount },
+            { icon: Landmark, label: t('wealth.savings'), amount: currentWealth.savings }
           ]
         }
       ]
@@ -30,13 +52,13 @@ const TotalWealth = () => {
         {accounts.map((account) => (
           <div key={account.id}>
             <h3 className="font-semibold">{account.title}</h3>
-            <div className="text-2xl font-semibold mb-8">﷼ {account.amount}</div>
+            <div className="text-2xl font-semibold mb-8">{currentWealth.symbol} {account.amount}</div>
             
             {account.items.map((section, idx) => (
               <div key={idx} className="space-y-4 mb-12 last:mb-0">
                 <div className="flex items-center justify-between">
                   <h4 className="text-sm font-medium text-muted-foreground">{section.section}</h4>
-                  <span className="font-medium text-[0.95rem]">﷼ {section.total}</span>
+                  <span className="font-medium text-[0.95rem]">{currentWealth.symbol} {section.total}</span>
                 </div>
                 <div className="space-y-3">
                   {section.details.map((item, index) => (
@@ -47,7 +69,7 @@ const TotalWealth = () => {
                         </div>
                         <span>{item.label}</span>
                       </div>
-                      <span className="font-medium text-[0.95rem]">﷼ {item.amount}</span>
+                      <span className="font-medium text-[0.95rem]">{currentWealth.symbol} {item.amount}</span>
                     </div>
                   ))}
                 </div>

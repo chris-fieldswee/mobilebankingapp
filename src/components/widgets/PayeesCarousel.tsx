@@ -2,20 +2,41 @@
 import { User2, Coffee, ShoppingBag, Car, Pizza, CreditCard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-const recentPayees = [
-  { id: 1, name: "Fatima Al-Fasal", icon: User2 },
-  { id: 2, name: "Ahmed Al-Fasal", icon: User2 },
-  { id: 3, name: "Saeed Al-Fasal", icon: User2 },
-  { id: 4, name: "Noura Al-Fasa", icon: User2 },
-  { id: 5, name: "Khalid Al-Rashid", icon: User2 },
-  { id: 6, name: "Layla Al-Qahtani", icon: User2 },
-];
+const recentPayees = {
+  en: [
+    { id: 1, name: "John Smith", icon: User2 },
+    { id: 2, name: "Mary Johnson", icon: User2 },
+    { id: 3, name: "David Wilson", icon: User2 },
+    { id: 4, name: "Sarah Brown", icon: User2 },
+    { id: 5, name: "Michael Davis", icon: User2 },
+    { id: 6, name: "Emma Taylor", icon: User2 },
+  ],
+  ar: [
+    { id: 1, name: "فاطمة الفيصل", icon: User2 },
+    { id: 2, name: "أحمد الفيصل", icon: User2 },
+    { id: 3, name: "سعيد الفيصل", icon: User2 },
+    { id: 4, name: "نورة الفيصل", icon: User2 },
+    { id: 5, name: "خالد الراشد", icon: User2 },
+    { id: 6, name: "ليلى القحطاني", icon: User2 },
+  ],
+  es: [
+    { id: 1, name: "Juan García", icon: User2 },
+    { id: 2, name: "María Rodríguez", icon: User2 },
+    { id: 3, name: "Carlos López", icon: User2 },
+    { id: 4, name: "Ana Martínez", icon: User2 },
+    { id: 5, name: "José Sánchez", icon: User2 },
+    { id: 6, name: "Laura Torres", icon: User2 },
+  ]
+};
 
 const PayeesCarousel = () => {
+  const { t, i18n } = useTranslation();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = Math.ceil(recentPayees.length / 3);
+  const currentPayees = recentPayees[i18n.language as keyof typeof recentPayees] || recentPayees.en;
+  const totalPages = Math.ceil(currentPayees.length / 3);
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
   const scrollToPage = (pageIndex: number) => {
@@ -68,7 +89,7 @@ const PayeesCarousel = () => {
 
   return (
     <div className="mb-6">
-      <h3 className="font-semibold mb-4">Recent Payees</h3>
+      <h3 className="font-semibold mb-4">{t('payees.recentPayees')}</h3>
       <div className="relative">
         <div 
           ref={scrollRef}
@@ -77,7 +98,7 @@ const PayeesCarousel = () => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {recentPayees.map((payee) => (
+          {currentPayees.map((payee) => (
             <div 
               key={payee.id} 
               className="flex flex-col items-center shrink-0 w-[calc(33.333%-0.75rem)] snap-start first:ml-0"

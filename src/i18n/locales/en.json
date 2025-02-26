@@ -23,11 +23,8 @@
     "spentThisMonth": "Spent this month",
     "percentChange": "2.3%"
   },
-  "transactions": {
-    "recent": "Recent Transactions",
-    "upcoming": "Upcoming Transactions",
-    "dueIn": "Due in {{days}} days",
-    "dueOn": "Due on {{date}}"
+  "payees": {
+    "recentPayees": "Recent Payees"
   },
   "wealth": {
     "totalWealth": "Total Wealth",
@@ -35,32 +32,10 @@
     "currentAccount": "Current Account",
     "savings": "Savings"
   },
-  "card": {
-    "platinumOffer": {
-      "title": "Platinum Card Offer",
-      "description": "Based on your spending and banking profile, we're offering you an exclusive upgrade to the SAB Platinum Credit Card, with a first-year annual fee waiver just for you!",
-      "benefits": {
-        "lounge": {
-          "title": "Complimentary Airport Lounge Access",
-          "description": "Enjoy exclusive access to 1,200+ airport lounges worldwide."
-        },
-        "cashback": {
-          "title": "Up to 3% Cashback on International Spending",
-          "description": "Earn more on travel, dining, and shopping abroad."
-        },
-        "apr": {
-          "title": "Personalized APR: 1.5% Monthly",
-          "description": "A tailored rate based on your financial profile."
-        },
-        "travel": {
-          "title": "Special Travel Perks",
-          "description": "Discounted hotel bookings, car rentals, and premium concierge services."
-        }
-      },
-      "actions": {
-        "upgrade": "Upgrade Now",
-        "explore": "Explore Full Benefits"
-      }
-    }
+  "transactions": {
+    "recent": "Recent Transactions",
+    "upcoming": "Upcoming Transactions",
+    "dueIn": "Due in {{days}} days",
+    "dueOn": "Due on {{date}}"
   }
 }
