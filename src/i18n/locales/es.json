@@ -29,7 +29,8 @@
     "percentChange": "2.3%",
     "byCategory": "Gastos por Categoría",
     "monthlySpending": "Gastos Mensuales",
-    "overview": "Resumen de Gastos"
+    "overview": "Resumen de Gastos",
+    "insight": "¿Notaste una tendencia? Tu gasto en restaurantes ha aumentado un 20% en los últimos 3 meses. ¿Quieres mantener el control de tu presupuesto para comidas"
   },
   "payees": {
     "title": "Beneficiarios Recientes",
