@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Music, Play } from "lucide-react";
@@ -61,7 +60,9 @@ const UpcomingTransactions = () => {
                 </p>
               </div>
             </div>
-            <span className="text-[#222222] text-[0.95rem] font-medium">{transaction.amount}</span>
+            <span className="text-[#222222] text-[0.95rem] font-medium">
+              {transaction.amount}
+            </span>
           </div>
         ))}
       </div>
