@@ -107,7 +107,7 @@
     "recent": "Búsquedas recientes",
     "noResults": "No se encontraron resultados",
     "insights": {
-      "tuitionDue": "Tu matrícula de ﷼{{amount}} para {{institution}} vence el {{date}}"
+      "tuitionDue": "Tu matrícula de €{{amount}} para {{institution}} vence el {{date}}"
     },
     "categories": {
       "transactions": "Transacciones",
