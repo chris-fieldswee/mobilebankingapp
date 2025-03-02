@@ -37,7 +37,7 @@ const UpcomingPayments = () => {
                           <p className="text-sm text-muted-foreground">Due in 3 days</p>
                         </div>
                       </div>
-                      <span className="text-[#222222] text-[0.95rem] font-medium">-﷼45</span>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">-€15</span>
                     </div>
 
                     <div className="flex items-center justify-between">
@@ -50,7 +50,7 @@ const UpcomingPayments = () => {
                           <p className="text-sm text-muted-foreground">Due in 7 days</p>
                         </div>
                       </div>
-                      <span className="text-[#222222] text-[0.95rem] font-medium">-﷼20</span>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">-€10</span>
                     </div>
                   </div>
                 </Card>
@@ -70,7 +70,7 @@ const UpcomingPayments = () => {
                           <p className="text-sm text-muted-foreground">Due in 5 days</p>
                         </div>
                       </div>
-                      <span className="text-[#222222] text-[0.95rem] font-medium">-﷼80,000</span>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">-€8,000/span>
                     </div>
 
                     <div className="flex items-center justify-between">
@@ -83,7 +83,7 @@ const UpcomingPayments = () => {
                           <p className="text-sm text-muted-foreground">Expected next week</p>
                         </div>
                       </div>
-                      <span className="text-[#222222] text-[0.95rem] font-medium">~﷼85</span>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">~€85/span>
                     </div>
 
                     <div className="flex items-center justify-between">
@@ -96,7 +96,7 @@ const UpcomingPayments = () => {
                           <p className="text-sm text-muted-foreground">Expected in 2 weeks</p>
                         </div>
                       </div>
-                      <span className="text-[#222222] text-[0.95rem] font-medium">~﷼45</span>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">~€45/span>
                     </div>
                   </div>
                 </Card>
