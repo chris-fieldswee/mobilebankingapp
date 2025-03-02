@@ -3,47 +3,64 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import TransactionItem from "./TransactionItem";
 import { useNavigate } from "react-router-dom";
-
-const recentTransactions = [
-  {
-    id: "1",
-    merchant: "Harvey Nichols",
-    amount: "-﷼8,800",
-    date: "Today",
-    category: "Shopping"
-  },
-  {
-    id: "2",
-    merchant: "Nusr-Et Steakhouse",
-    amount: "-﷼1,200",
-    date: "Yesterday",
-    category: "Dining"
-  },
-  {
-    id: "3",
-    merchant: "Four Seasons Spa",
-    amount: "-﷼1,210",
-    date: "Mar 15",
-    category: "Wellness"
-  }
-];
+import { useTranslation } from "react-i18next";
+import { useCallback } from "react";
 
 const RecentTransactions = () => {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+
+  const formatCurrency = useCallback((amount: string) => {
+    const numericAmount = amount.replace(/[^0-9.-]/g, '');
+    const isNegative = amount.startsWith('-');
+    
+    // Format based on language
+    const formattedAmount = new Intl.NumberFormat(i18n.language, {
+      style: 'currency',
+      currency: 'EUR',
+      currencyDisplay: 'symbol'
+    }).format(Math.abs(Number(numericAmount)));
+
+    return isNegative ? `-${formattedAmount}` : formattedAmount;
+  }, [i18n.language]);
+
+  const recentTransactions = [
+    {
+      id: "1",
+      merchant: t("merchants.harveyNichols"),
+      amount: formatCurrency("-8800"),
+      date: t("time.today"),
+      category: t("categories.shopping")
+    },
+    {
+      id: "2",
+      merchant: t("merchants.nusret"),
+      amount: formatCurrency("-1200"),
+      date: t("time.yesterday"),
+      category: t("categories.dining")
+    },
+    {
+      id: "3",
+      merchant: t("merchants.fourSeasonsSpa"),
+      amount: formatCurrency("-1210"),
+      date: t("time.date", { date: "Mar 15" }),
+      category: t("categories.wellness")
+    }
+  ];
 
   return (
-    <Card className="p-6 mb-6 bg-white">
+    <Card className="p-6 mb-6 bg-white" key={i18n.language}>
       <div className="flex justify-between items-center mb-4">
-        <h3 className="font-semibold">Recent Transactions</h3>
+        <h3 className="font-semibold">{t('transactions.recent')}</h3>
         <Button variant="ghost" size="sm" onClick={() => navigate('/transactions')}>
-          See all
+          {t('common.seeAll')}
         </Button>
       </div>
       
       <div className="space-y-1">
         {recentTransactions.map((transaction) => (
           <TransactionItem
-            key={transaction.id}
+            key={`${transaction.id}-${i18n.language}`}
             merchant={transaction.merchant}
             amount={transaction.amount}
             date={transaction.date}

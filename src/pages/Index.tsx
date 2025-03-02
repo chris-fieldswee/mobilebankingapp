@@ -8,6 +8,7 @@ import SpendingChallengeWidget from "@/components/widgets/SpendingChallengeWidge
 import TotalWealth from "@/components/widgets/TotalWealth";
 import OffersCarousel from "@/components/widgets/OffersCarousel";
 import PayeesCarousel from "@/components/widgets/PayeesCarousel";
+import RecentTransactions from "@/components/transactions/RecentTransactions";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <main className="container max-w-md mx-auto px-4 pb-20 pt-4">
         <AccountsCarousel />
         <QuickActions />
+        <RecentTransactions />
         <SpendingChart />
         <SpendingChallengeWidget />
         <PayeesCarousel />
