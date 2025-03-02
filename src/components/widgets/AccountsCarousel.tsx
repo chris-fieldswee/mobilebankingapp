@@ -9,7 +9,7 @@ const accounts = {
     {
       id: 1,
       title: "Current Account",
-      amount: "24,000",
+      amount: "6,000",
       currency: "EUR",
       symbol: "€",
       change: "+2.3%"
@@ -17,7 +17,7 @@ const accounts = {
     {
       id: 2,
       title: "Savings Account",
-      amount: "590,000",
+      amount: "190,000",
       currency: "EUR",
       symbol: "€",
       change: "+1.8%"
@@ -45,7 +45,7 @@ const accounts = {
     {
       id: 1,
       title: "Cuenta Corriente",
-      amount: "22,000",
+      amount: "6,000",
       currency: "EUR",
       symbol: "€",
       change: "+2.3%"
@@ -53,7 +53,7 @@ const accounts = {
     {
       id: 2,
       title: "Cuenta de Ahorro",
-      amount: "540,000",
+      amount: "190,000",
       currency: "EUR",
       symbol: "€",
       change: "+1.8%"
