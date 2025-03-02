@@ -17,9 +17,9 @@ const wealthData = {
     symbol: "﷼"
   },
   es: {
-    totalWealth: "562,000",
-    currentAccount: "22,000",
-    savings: "540,000",
+    totalWealth: "196,000",
+    currentAccount: "6,000",
+    savings: "190,000",
     symbol: "€"
   }
 };
