@@ -28,21 +28,21 @@ const RecentTransactions = () => {
     {
       id: "1",
       merchant: t("merchants.harveyNichols"),
-      amount: formatCurrency("-8800"),
+      amount: formatCurrency("-450"),
       date: t("time.today"),
       category: t("categories.shopping")
     },
     {
       id: "2",
       merchant: t("merchants.nusret"),
-      amount: formatCurrency("-1200"),
+      amount: formatCurrency("-200"),
       date: t("time.yesterday"),
       category: t("categories.dining")
     },
     {
       id: "3",
       merchant: t("merchants.fourSeasonsSpa"),
-      amount: formatCurrency("-1210"),
+      amount: formatCurrency("-210"),
       date: t("time.date", { date: "Mar 15" }),
       category: t("categories.wellness")
     }
