@@ -20,13 +20,11 @@ const Transactions = () => {
     // Format based on language
     const formattedAmount = new Intl.NumberFormat(i18n.language, {
       style: 'currency',
-      currency: 'SAR',
+      currency: 'EUR',
       currencyDisplay: 'symbol'
     }).format(Math.abs(Number(numericAmount)));
 
-    // Replace standard currency symbol with €
-    const finalAmount = formattedAmount.replace(/SAR|SR|\$|€/g, '€');
-    return isNegative ? `-${finalAmount}` : finalAmount;
+    return isNegative ? `-${formattedAmount}` : formattedAmount;
   }, [i18n.language]);
 
   // Helper function to format date - moved to useCallback
@@ -107,7 +105,7 @@ const Transactions = () => {
       },
       {
         name: 'wellness',
-        total: "",
+        total: "€1,210",
         items: [
           { merchant: 'fourSeasonsSpa', amount: "-€1,210", date: "Mar 1" }
         ]

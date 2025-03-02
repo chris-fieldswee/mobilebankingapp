@@ -1,3 +1,4 @@
+
 {
   "nav": {
     "home": "Home",
@@ -29,7 +30,10 @@
     "percentChange": "2.3%",
     "byCategory": "Spending by Category",
     "monthlySpending": "Monthly Spending",
-    "overview": "Spending Overview"
+    "overview": "Spending Overview",
+    "setBudget": "Set a Budget",
+    "transactions": "transactions",
+    "insight": "Noticed a trend? Your restaurant spending has increased by 20% over the last 3 months. Want to stay on top of your dining budget?"
   },
   "payees": {
     "title": "Recent Payees",
@@ -195,7 +199,14 @@
     "justNow": "Just now",
     "mins": "mins",
     "hour": "hour",
-    "ago": "ago"
+    "ago": "ago",
+    "monday": "Mon",
+    "tuesday": "Tue",
+    "wednesday": "Wed",
+    "thursday": "Thu",
+    "friday": "Fri",
+    "saturday": "Sat",
+    "sunday": "Sun"
   },
   "categories": {
     "dining": "Dining",
