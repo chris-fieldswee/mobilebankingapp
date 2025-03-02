@@ -54,12 +54,15 @@
     "merchant": "Comerciante",
     "reference": "Referencia",
     "type": "Tipo",
-    "total": "Total"
+    "total": "Total",
+    "tuitionFee": "Matrícula Universitaria",
+    "netflixSubscription": "Suscripción a Netflix",
+    "spotifyPremium": "Spotify Premium"
   },
   "offers": {
-    "cardOffer": "Desbloquea Beneficios Elite con la Tarjeta de Crédito Platinum SAB",
+    "cardOffer": "Desbloquea Beneficios Elite con la Tarjeta de Crédito Platinum Ibercaja Banco",
     "dineOffer": "Cena en Restaurantes Asociados",
-    "dineSubtitle": "Obtén 15% de reembolso al pagar con tu Tarjeta de Crédito SAB"
+    "dineSubtitle": "Obtén 15% de reembolso al pagar con tu Tarjeta de Crédito Ibercaja Banco"
   },
   "insights": {
     "title": "Análisis",
@@ -75,10 +78,11 @@
     "expenses": "Gastos"
   },
   "advisor": {
-    "name": "Ziad",
+    "name": "Maria",
     "title": "Asesor Financiero",
     "welcome": "Bienvenido a tu asesor financiero personal",
     "message": "¿Cómo puedo ayudarte hoy?",
+    "flightMessage": "¡Noticias emocionantes, {{name}}! Notamos que recientemente reservaste un vuelo con {{airline}}. ¡Asegurémonos de que estés listo para un viaje sin problemas!",
     "suggestions": {
       "budget": "Ayúdame a crear un presupuesto",
       "invest": "Consejos de inversión",
@@ -174,7 +178,7 @@
   },
   "platinum": {
     "title": "Oferta de Tarjeta Platinum",
-    "header": "Tarjeta de Crédito SAB Platinum",
+    "header": "Tarjeta de Crédito Ibercaja Banco Platinum",
     "benefits": {
       "lounge": {
         "title": "Acceso Gratuito a Salas VIP",
@@ -201,26 +205,26 @@
     "ago": "atrás"
   },
   "merchants": {
-    "nusret": "Nusr-Et Steakhouse",
-    "okku": "Okku",
-    "elements": "Elements en Four Seasons",
-    "fiveElephants": "Five Elephants Coffee Roasters",
-    "harveyNichols": "Harvey Nichols",
-    "balenciaga": "Balenciaga en Harvey Nichols",
-    "mercedes": "Mercedes-Benz",
-    "aramco": "Saudi Aramco",
-    "uber": "Uber Black",
-    "fitnessFirst": "Fitness First Platinum",
-    "riyadhSeason": "Eventos Riyadh Season",
-    "voxCinemas": "VOX Cinemas Gold",
-    "danube": "Danube Gourmet",
-    "organicFoods": "Organic Foods y Café",
-    "manuel": "Manuel Market",
-    "tamimi": "Tamimi Markets",
-    "sec": "Compañía Eléctrica Saudí",
-    "stcFiber": "STC Fibra",
-    "stcPlatinum": "STC Platinum",
-    "helpling": "Helpling",
-    "fourSeasonsSpa": "Spa Four Seasons"
+  "nusret": "El Corte Inglés",
+  "okku": "Zara",
+  "elements": "Mercadona",
+  "fiveElephants": "Starbucks",
+  "harveyNichols": "El Corte Inglés",
+  "balenciaga": "Zara",
+  "mercedes": "SEAT",
+  "aramco": "Repsol",
+  "uber": "Cabify",
+  "fitnessFirst": "Metropolitan",
+  "riyadhSeason": "Feria de Abril",
+  "voxCinemas": "Cinesa",
+  "danube": "Carrefour",
+  "organicFoods": "Veritas",
+  "manuel": "Dia",
+  "tamimi": "Alcampo",
+  "sec": "Iberdrola",
+  "stcFiber": "Movistar Fibra",
+  "stcPlatinum": "Vodafone One",
+  "helpling": "Clintu",
+  "fourSeasonsSpa": "Spa Meliá"
   }
 }
