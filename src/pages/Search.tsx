@@ -28,19 +28,19 @@ const Search = () => {
       icon: Calendar,
       title: "Tuition Fee",
       dueDate: "Feb 25, 2025",
-      amount: "-﷼80,000"
+      amount: "-€2000"
     },
     {
       icon: Play,
       title: "Netflix Subscription",
       days: "3",
-      amount: "-﷼45"
+      amount: "-€15"
     },
     {
       icon: Music,
       title: "Spotify Premium",
       days: "7",
-      amount: "-﷼20"
+      amount: "-€10"
     }
   ];
 
@@ -107,7 +107,7 @@ const Search = () => {
                 </div>
                 <p className="text-sm flex-1">
                   {t('search.insights.tuitionDue', {
-                    amount: '80,000',
+                    amount: '8,000',
                     institution: 'MBSC',
                     date: 'Feb 25, 2025'
                   })}
