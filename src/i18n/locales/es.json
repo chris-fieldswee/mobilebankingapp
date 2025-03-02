@@ -202,7 +202,10 @@
     "justNow": "Ahora mismo",
     "mins": "mins",
     "hour": "hora",
-    "ago": "atrás"
+    "ago": "atrás",
+    "today": "Hoy",
+    "yesterday": "Ayer",
+    "date": "Feb 25"
   },
   "merchants": {
   "nusret": "El Corte Inglés",
