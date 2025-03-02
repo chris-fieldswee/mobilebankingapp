@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, Calendar, Music, Play, CreditCard } from "lucide-react";
@@ -83,7 +82,7 @@ const UpcomingPayments = () => {
                           <p className="text-sm text-muted-foreground">Expected next week</p>
                         </div>
                       </div>
-                      <span className="text-[#222222] text-[0.95rem] font-medium">~€85/span>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">~€85</span>
                     </div>
 
                     <div className="flex items-center justify-between">
@@ -96,7 +95,7 @@ const UpcomingPayments = () => {
                           <p className="text-sm text-muted-foreground">Expected in 2 weeks</p>
                         </div>
                       </div>
-                      <span className="text-[#222222] text-[0.95rem] font-medium">~€45/span>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">~€45</span>
                     </div>
                   </div>
                 </Card>
