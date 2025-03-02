@@ -22,12 +22,12 @@ const mockSpendingData = {
     { day: "٢٨", amount: 42600 },
   ],
   es: [
-    { day: "1", amount: 13800 },
-    { day: "6", amount: 16500 },
-    { day: "11", amount: 20200 },
-    { day: "16", amount: 22000 },
-    { day: "21", amount: 23800 },
-    { day: "28", amount: 26000 },
+    { day: "1", amount: 1800 },
+    { day: "6", amount: 1850 },
+    { day: "11", amount: 2020 },
+    { day: "16", amount: 2200 },
+    { day: "21", amount: 2800 },
+    { day: "28", amount: 3600 },
   ]
 };
 
