@@ -54,7 +54,10 @@
     "merchant": "Merchant",
     "reference": "Reference",
     "type": "Type",
-    "total": "Total"
+    "total": "Total",
+    "tuitionFee": "Tuition Fee",
+    "netflixSubscription": "Netflix Subscription",
+    "spotifyPremium": "Spotify Premium"
   },
   "offers": {
     "cardOffer": "Unlock Elite Benefits with the SAB Platinum Credit Card",
@@ -75,10 +78,11 @@
     "expenses": "Expenses"
   },
   "advisor": {
-    "name": "Ziad",
+    "name": "John",
     "title": "Financial Advisor",
     "welcome": "Welcome to your personal financial advisor",
     "message": "How can I help you today?",
+    "flightMessage": "Exciting news, {{name}}! We noticed you recently booked a flight with {{airline}}. Let's make sure you're all set for a smooth journey!",
     "suggestions": {
       "budget": "Help me create a budget",
       "invest": "Investment advice",
