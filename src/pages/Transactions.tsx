@@ -24,8 +24,8 @@ const Transactions = () => {
       currencyDisplay: 'symbol'
     }).format(Math.abs(Number(numericAmount)));
 
-    // Replace standard currency symbol with ﷼
-    const finalAmount = formattedAmount.replace(/SAR|SR|\$|€/g, '﷼');
+    // Replace standard currency symbol with €
+    const finalAmount = formattedAmount.replace(/SAR|SR|\$|€/g, '€');
     return isNegative ? `-${finalAmount}` : finalAmount;
   }, [i18n.language]);
 
@@ -51,65 +51,65 @@ const Transactions = () => {
     const categoriesData = [
       {
         name: 'dining',
-        total: "﷼2,040",
+        total: "€2,040",
         items: [
-          { merchant: 'nusret', amount: "-﷼1,200", date: "Mar 15" },
-          { merchant: 'okku', amount: "-﷼450", date: "Mar 14" },
-          { merchant: 'elements', amount: "-﷼350", date: "Mar 13" },
-          { merchant: 'fiveElephants', amount: "-﷼40", date: "Mar 12" }
+          { merchant: 'nusret', amount: "-€1,200", date: "Mar 15" },
+          { merchant: 'okku', amount: "-€450", date: "Mar 14" },
+          { merchant: 'elements', amount: "-€350", date: "Mar 13" },
+          { merchant: 'fiveElephants', amount: "-€40", date: "Mar 12" }
         ]
       },
       {
         name: 'shopping',
-        total: "﷼11,300",
+        total: "€11,300",
         items: [
-          { merchant: 'harveyNichols', amount: "-﷼8,800", date: "Mar 15" },
-          { merchant: 'balenciaga', amount: "-﷼2,500", date: "Mar 14" }
+          { merchant: 'harveyNichols', amount: "-€8,800", date: "Mar 15" },
+          { merchant: 'balenciaga', amount: "-€2,500", date: "Mar 14" }
         ]
       },
       {
         name: 'transportation',
-        total: "﷼4,150",
+        total: "€4,150",
         items: [
-          { merchant: 'mercedes', amount: "-﷼3,500", date: "Mar 10" },
-          { merchant: 'aramco', amount: "-﷼500", date: "Mar 9" },
-          { merchant: 'uber', amount: "-﷼150", date: "Mar 8" }
+          { merchant: 'mercedes', amount: "-€3,500", date: "Mar 10" },
+          { merchant: 'aramco', amount: "-€500", date: "Mar 9" },
+          { merchant: 'uber', amount: "-€150", date: "Mar 8" }
         ]
       },
       {
         name: 'entertainment',
-        total: "﷼3,750",
+        total: "€3,750",
         items: [
-          { merchant: 'fitnessFirst', amount: "-﷼1,500", date: "Mar 7" },
-          { merchant: 'riyadhSeason', amount: "-﷼2,000", date: "Mar 6" },
-          { merchant: 'voxCinemas', amount: "-﷼250", date: "Mar 5" }
+          { merchant: 'fitnessFirst', amount: "-€1,500", date: "Mar 7" },
+          { merchant: 'riyadhSeason', amount: "-€2,000", date: "Mar 6" },
+          { merchant: 'voxCinemas', amount: "-€250", date: "Mar 5" }
         ]
       },
       {
         name: 'groceries',
-        total: "﷼2,650",
+        total: "€2,650",
         items: [
-          { merchant: 'danube', amount: "-﷼1,200", date: "Mar 4" },
-          { merchant: 'organicFoods', amount: "-﷼500", date: "Mar 3" },
-          { merchant: 'manuel', amount: "-﷼800", date: "Mar 2" },
-          { merchant: 'tamimi', amount: "-﷼150", date: "Mar 1" }
+          { merchant: 'danube', amount: "-€1,200", date: "Mar 4" },
+          { merchant: 'organicFoods', amount: "-€500", date: "Mar 3" },
+          { merchant: 'manuel', amount: "-€800", date: "Mar 2" },
+          { merchant: 'tamimi', amount: "-€150", date: "Mar 1" }
         ]
       },
       {
         name: 'bills',
-        total: "﷼3,300",
+        total: "€3,300",
         items: [
-          { merchant: 'sec', amount: "-﷼1,500", date: "Mar 1" },
-          { merchant: 'stcFiber', amount: "-﷼500", date: "Mar 1" },
-          { merchant: 'stcPlatinum', amount: "-﷼500", date: "Mar 1" },
-          { merchant: 'helpling', amount: "-﷼800", date: "Mar 1" }
+          { merchant: 'sec', amount: "-€1,500", date: "Mar 1" },
+          { merchant: 'stcFiber', amount: "-€500", date: "Mar 1" },
+          { merchant: 'stcPlatinum', amount: "-€500", date: "Mar 1" },
+          { merchant: 'helpling', amount: "-€800", date: "Mar 1" }
         ]
       },
       {
         name: 'wellness',
         total: "",
         items: [
-          { merchant: 'fourSeasonsSpa', amount: "-﷼1,210", date: "Mar 1" }
+          { merchant: 'fourSeasonsSpa', amount: "-€1,210", date: "Mar 1" }
         ]
       }
     ];
