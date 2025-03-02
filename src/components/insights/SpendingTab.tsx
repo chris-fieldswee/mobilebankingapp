@@ -7,8 +7,6 @@ import { BarChart, Bar, PieChart as RechartPie, Pie, Cell, ResponsiveContainer, 
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const periodOptions = ["1W", "1M"];
-
 const SpendingTab = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("1M");
   const [chartType, setChartType] = useState<"bar" | "pie">("bar");
@@ -23,6 +21,12 @@ const SpendingTab = () => {
       currencyDisplay: 'symbol'
     }).format(amount);
   }, [i18n.language]);
+
+  // Translate period options
+  const periodOptions = [
+    { value: "1W", label: t("time.oneWeek") },
+    { value: "1M", label: t("time.oneMonth") }
+  ];
 
   const periodData = {
     "1W": [
@@ -126,12 +130,12 @@ const SpendingTab = () => {
             <div className="flex gap-2 mt-4">
               {periodOptions.map((period) => (
                 <Button
-                  key={`${period}-${i18n.language}`}
-                  variant={selectedPeriod === period ? "default" : "outline"}
-                  onClick={() => setSelectedPeriod(period)}
+                  key={`${period.value}-${i18n.language}`}
+                  variant={selectedPeriod === period.value ? "default" : "outline"}
+                  onClick={() => setSelectedPeriod(period.value)}
                   className="flex-1"
                 >
-                  {period}
+                  {period.label}
                 </Button>
               ))}
             </div>

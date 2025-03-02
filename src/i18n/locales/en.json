@@ -206,7 +206,9 @@
     "thursday": "Thu",
     "friday": "Fri",
     "saturday": "Sat",
-    "sunday": "Sun"
+    "sunday": "Sun",
+    "oneWeek": "1W",
+    "oneMonth": "1M"
   },
   "categories": {
     "dining": "Dining",

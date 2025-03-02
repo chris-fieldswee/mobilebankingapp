@@ -12,10 +12,10 @@ import BudgetTab from "@/components/insights/BudgetTab";
 
 const Insights = () => {
   const [activeTab, setActiveTab] = useState("spending");
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
-    <div className="fixed inset-0 bg-background">
+    <div className="fixed inset-0 bg-background" key={i18n.language}>
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg">
         <div className="max-w-md mx-auto px-4 h-14 flex items-center">
           <Link to="/">
@@ -62,16 +62,16 @@ const Insights = () => {
 
           <div className="flex-1 overflow-y-auto">
             <div className="max-w-md mx-auto px-4 py-4 pb-24">
-              <TabsContent value="spending" className="mt-0">
+              <TabsContent value="spending" className="mt-0" key={`spending-${i18n.language}`}>
                 <SpendingTab />
               </TabsContent>
-              <TabsContent value="income" className="mt-0">
+              <TabsContent value="income" className="mt-0" key={`income-${i18n.language}`}>
                 <IncomeTab />
               </TabsContent>
-              <TabsContent value="cashflow" className="mt-0">
+              <TabsContent value="cashflow" className="mt-0" key={`cashflow-${i18n.language}`}>
                 <CashflowTab />
               </TabsContent>
-              <TabsContent value="budget" className="mt-0">
+              <TabsContent value="budget" className="mt-0" key={`budget-${i18n.language}`}>
                 <BudgetTab />
               </TabsContent>
             </div>
