@@ -53,7 +53,7 @@ const RecentTransactions = () => {
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold">{t('transactions.recent')}</h3>
         <Button variant="ghost" size="sm" onClick={() => navigate('/transactions')}>
-          {t('common.seeAll')}
+          {t('actions.seeAll')}
         </Button>
       </div>
       
