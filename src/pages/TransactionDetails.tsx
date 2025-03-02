@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { X, Download, CreditCard, MapPin } from "lucide-react";
@@ -25,13 +24,13 @@ const TransactionDetails = () => {
             <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
               <img 
                 src="/lovable-uploads/7bbc784f-1a77-4f49-8015-2218ad508d44.png" 
-                alt="Harvey Nichols" 
+                alt="Zara" 
                 className="h-6 w-6 invert"
               />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-[0.95rem]">-﷼8,800</h1>
-              <p className="text-primary-foreground/70">Harvey Nichols</p>
+              <h1 className="text-2xl font-bold text-[0.95rem]">-€450</h1>
+              <p className="text-primary-foreground/70">Zara</p>
             </div>
           </div>
         </div>
@@ -42,17 +41,17 @@ const TransactionDetails = () => {
           <Card className="p-4">
             <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <span className="text-sm text-muted-foreground">Date & Time</span>
-                <span>February 24, 15:35</span>
+                <span className="text-sm text-muted-foreground">Fecha y Hora</span>
+                <span>24 de febrero, 15:35</span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm text-muted-foreground">Status</span>
+                <span className="text-sm text-muted-foreground">Estado</span>
                 <Badge variant="outline" className="bg-green-500/10 text-green-500 hover:bg-green-500/20">
-                  Completed
+                  Completado
                 </Badge>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm text-muted-foreground">Card</span>
+                <span className="text-sm text-muted-foreground">Tarjeta</span>
                 <div className="flex items-center gap-2">
                   <CreditCard className="h-4 w-4" />
                   <span>General ··1018</span>
@@ -65,34 +64,34 @@ const TransactionDetails = () => {
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <MapPin className="h-5 w-5 text-primary" />
-                <span className="font-medium">Location</span>
+                <span className="font-medium">Ubicación</span>
               </div>
               <Button 
                 variant="ghost" 
                 className="text-primary px-0"
-                onClick={() => window.open('https://maps.google.com/?q=Harvey+Nichols+Riyadh', '_blank')}
+                onClick={() => window.open('https://maps.google.com/?q=Zara+Zaragoza', '_blank')}
               >
-                Open in Maps
+                Abrir en Mapas
               </Button>
             </div>
             <div className="aspect-video w-full rounded-lg overflow-hidden">
               <img 
                 src="/lovable-uploads/f57989a2-ebdd-4203-af38-d49a8058ef06.png" 
-                alt="Map location" 
+                alt="Ubicación en el mapa" 
                 className="w-full h-full object-cover"
               />
             </div>
             <p className="text-sm text-muted-foreground">
-              Prince Muhammad Bin Abdulaziz Rd, Al Olaya, Riyadh 12214, Saudi Arabia
+              Calle Alfonso I, 50003 Zaragoza, España
             </p>
           </Card>
 
           <Card className="p-4 space-y-4">
             <div className="flex items-center justify-between">
-              <span className="font-medium">Statement</span>
+              <span className="font-medium">Estado de Cuenta</span>
               <Button variant="ghost" className="text-primary px-0">
                 <Download className="h-4 w-4 mr-2" />
-                Download
+                Descargar
               </Button>
             </div>
           </Card>
@@ -100,11 +99,11 @@ const TransactionDetails = () => {
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium">Category</p>
-                <p className="text-sm text-muted-foreground">Helps you track spending</p>
+                <p className="font-medium">Categoría</p>
+                <p className="text-sm text-muted-foreground">Te ayuda a seguir tus gastos</p>
               </div>
               <Button variant="outline" className="gap-2">
-                👕 Apparel
+                👕 Ropa
               </Button>
             </div>
           </Card>
@@ -112,18 +111,18 @@ const TransactionDetails = () => {
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">This month at Harvey Nichols</p>
-                <p className="text-lg font-medium">﷼8,800</p>
+                <p className="text-sm text-muted-foreground">Este mes en Zara</p>
+                <p className="text-lg font-medium">€8,800</p>
               </div>
               <Button variant="ghost" size="sm" className="text-primary">
-                View all
+                Ver todo
               </Button>
             </div>
           </Card>
 
           <div className="text-center p-4">
             <Button variant="ghost" className="text-muted-foreground">
-              Exclude from analytics
+              Excluir de análisis
             </Button>
           </div>
         </div>
