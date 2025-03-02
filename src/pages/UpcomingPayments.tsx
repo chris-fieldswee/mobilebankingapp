@@ -70,7 +70,7 @@ const UpcomingPayments = () => {
                           <p className="text-sm text-muted-foreground">Due in 5 days</p>
                         </div>
                       </div>
-                      <span className="text-[#222222] text-[0.95rem] font-medium">-€8,000/span>
+                      <span className="text-[#222222] text-[0.95rem] font-medium">-€8,000</span>
                     </div>
 
                     <div className="flex items-center justify-between">
