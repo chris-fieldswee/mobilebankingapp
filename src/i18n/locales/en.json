@@ -208,7 +208,10 @@
     "saturday": "Sat",
     "sunday": "Sun",
     "oneWeek": "1W",
-    "oneMonth": "1M"
+    "oneMonth": "1M",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "date": "Feb 24"
   },
   "categories": {
     "dining": "Dining",
