@@ -108,7 +108,7 @@ const Search = () => {
                 <p className="text-sm flex-1">
                   {t('search.insights.tuitionDue', {
                     amount: '8,000',
-                    institution: 'MBSC',
+                    institution: 'Universidad de Zaragoza',
                     date: 'Feb 25, 2025'
                   })}
                 </p>
