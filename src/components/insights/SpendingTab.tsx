@@ -51,16 +51,16 @@ const SpendingTab = () => {
   ];
 
   const categoryData = [
-    { name: t("categories.dining"), amount: 2040, transactions: 4, percentage: 19, color: blueShades[0], icon: Utensils },
-    { name: t("categories.shopping"), amount: 11300, transactions: 2, percentage: 9.5, color: blueShades[1], icon: ShoppingBag },
-    { name: t("categories.transportation"), amount: 4150, transactions: 3, percentage: 14.3, color: blueShades[2], icon: Car },
-    { name: t("categories.entertainment"), amount: 3750, transactions: 3, percentage: 14.3, color: blueShades[3], icon: Popcorn },
-    { name: t("categories.groceries"), amount: 2650, transactions: 4, percentage: 19, color: blueShades[4], icon: ShoppingCart },
-    { name: t("categories.bills"), amount: 3300, transactions: 4, percentage: 19, color: blueShades[5], icon: Receipt },
-    { name: t("categories.wellness"), amount: 1210, transactions: 1, percentage: 4.9, color: blueShades[6], icon: Heart }
-  ];
+  { name: t("categories.dining"), amount: 700, transactions: 6, percentage: 19.4, color: blueShades[0], icon: Utensils },
+  { name: t("categories.shopping"), amount: 450, transactions: 3, percentage: 12.5, color: blueShades[1], icon: ShoppingBag },
+  { name: t("categories.transportation"), amount: 500, transactions: 8, percentage: 13.9, color: blueShades[2], icon: Car },
+  { name: t("categories.entertainment"), amount: 350, transactions: 2, percentage: 9.7, color: blueShades[3], icon: Popcorn },
+  { name: t("categories.groceries"), amount: 800, transactions: 5, percentage: 22.2, color: blueShades[4], icon: ShoppingCart },
+  { name: t("categories.bills"), amount: 600, transactions: 3, percentage: 16.7, color: blueShades[5], icon: Receipt },
+  { name: t("categories.wellness"), amount: 200, transactions: 2, percentage: 5.6, color: blueShades[6], icon: Heart }
+];
 
-  const totalSpent = 28400;
+  const totalSpent = 3600;
   const spendingData = periodData[selectedPeriod as keyof typeof periodData];
 
   return (
