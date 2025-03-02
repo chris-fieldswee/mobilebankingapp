@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
@@ -23,7 +22,7 @@ const Advisor = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Exciting news, Ali Al-Faisal! We noticed you recently booked a flight with Riyadh Air. Let's make sure you're all set for a smooth journey!",
+      text: t('advisor.flightMessage', { name: "Juan", airline: "Ryanair" }),
       sender: "advisor"
     },
     {
