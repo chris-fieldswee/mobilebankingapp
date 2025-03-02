@@ -3,9 +3,9 @@ import { Card } from "@/components/ui/card";
 import { useTranslation } from "react-i18next";
 
 const budgetData = {
-  en: { spent: 28400, goal: 35000, symbol: "€" },
+  en: { spent: 3600, goal: 4000, symbol: "€" },
   ar: { spent: 42600, goal: 52500, symbol: "﷼" },
-  es: { spent: 26000, goal: 32000, symbol: "€" }
+  es: { spent: 3600, goal: 4000, symbol: "€" }
 };
 
 const SpendingChallengeWidget = () => {
