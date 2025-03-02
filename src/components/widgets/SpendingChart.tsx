@@ -34,7 +34,7 @@ const mockSpendingData = {
 const currencies = {
   en: { symbol: "€", amount: 28400 },
   ar: { symbol: "﷼", amount: 42600 },
-  es: { symbol: "€", amount: 26000 }
+  es: { symbol: "€", amount: 3600 }
 };
 
 const SpendingChart = () => {
