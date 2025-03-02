@@ -22,19 +22,19 @@ const UpcomingTransactions = () => {
       icon: Calendar,
       title: t("transactions.tuitionFee"),
       days: "5",
-      amount: formatCurrency(-80000)
+      amount: formatCurrency(-8000)
     },
     {
       icon: Play,
       title: t("transactions.netflixSubscription"),
       days: "3",
-      amount: formatCurrency(-45)
+      amount: formatCurrency(-15)
     },
     {
       icon: Music,
       title: t("transactions.spotifyPremium"),
       days: "7",
-      amount: formatCurrency(-20)
+      amount: formatCurrency(-10)
     }
   ];
 
