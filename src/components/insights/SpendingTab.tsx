@@ -6,6 +6,7 @@ import { BarChart2, PieChart, ArrowRight, TrendingUp, Utensils, ShoppingBag, Car
 import { BarChart, Bar, PieChart as RechartPie, Pie, Cell, ResponsiveContainer, XAxis } from "recharts";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useMemo } from "react";
 
 const SpendingTab = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("1M");
@@ -51,7 +52,7 @@ const SpendingTab = () => {
     "#0F4C81", "#2B6CA3", "#478DC5", "#63AEE7", "#7FCFF9", "#9BE0FB", "#B7F1FD"
   ];
 
-  const categoryData = [
+  const categoryData = useMemo(() => [
   { name: t("categories.dining"), amount: 700, transactions: 6, percentage: 19.4, color: blueShades[0], icon: Utensils },
   { name: t("categories.shopping"), amount: 450, transactions: 3, percentage: 12.5, color: blueShades[1], icon: ShoppingBag },
   { name: t("categories.transportation"), amount: 500, transactions: 8, percentage: 13.9, color: blueShades[2], icon: Car },
@@ -59,7 +60,7 @@ const SpendingTab = () => {
   { name: t("categories.groceries"), amount: 800, transactions: 5, percentage: 22.2, color: blueShades[4], icon: ShoppingCart },
   { name: t("categories.bills"), amount: 600, transactions: 3, percentage: 16.7, color: blueShades[5], icon: Receipt },
   { name: t("categories.wellness"), amount: 200, transactions: 2, percentage: 5.6, color: blueShades[6], icon: Heart }
-];
+], [t, i18n.language]);
 
   const totalSpent = 3600;
   const spendingData = periodData[selectedPeriod as keyof typeof periodData];
