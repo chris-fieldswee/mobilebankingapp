@@ -109,7 +109,7 @@ const IncomeTab = () => {
               <p className="font-medium">{t('insights.salary')}</p>
               <p className="text-sm text-muted-foreground">{t('insights.monthlyIncome')}</p>
             </div>
-            <p className="font-medium text-[#222222]">+5200,00€/p>
+            <p className="font-medium text-[#222222]">+5200,00€</p>
           </div>
         </Card>
       </div>
