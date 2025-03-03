@@ -31,7 +31,8 @@
     "monthlySpending": "Gastos Mensuales",
     "overview": "Resumen de Gastos",
     "insight": "¿Notaste una tendencia? Tu gasto en restaurantes ha aumentado un 20% en los últimos 3 meses. ¿Quieres mantener el control de tu presupuesto para comidas?",
-    "setBudget": "Establecer un Presupuesto"  
+    "setBudget": "Establecer un Presupuesto",
+    "transactions": "transacciones"
   },
   "payees": {
     "title": "Beneficiarios Recientes",
@@ -208,6 +209,8 @@
     "today": "Hoy",
     "yesterday": "Ayer",
     "date": "Feb 25"
+    "oneWeek": "1W",
+    "oneMonth": "1M"
   },
   "merchants": {
   "nusret": "El Corte Inglés",
