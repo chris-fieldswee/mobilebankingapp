@@ -80,7 +80,8 @@
     "savings": "Ahorros",
     "expenses": "Gastos",
     "projectedBalance": "Saldo proyectado",
-    "monthlyChart": "Gráfico mensual"
+    "monthlyChart": "Gráfico mensual",
+    "netCashflow": "Flujo de caja neto"
   },
   "advisor": {
     "name": "Maria",
