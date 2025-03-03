@@ -39,18 +39,54 @@ const periodData = {
 };
 
 const moneyInData = [
-  { name: "Salario", amount: 60000, transactions: 1, percentage: "100%" }
+  { name: "Salario", amount: 5200, transactions: 1, percentage: "100%" }
 ];
 
-const moneyOutData = [
-  { name: "Restaurantes", amount: 2040, transactions: 4, percentage: "7%" },
-  { name: "Compras", amount: 11300, transactions: 2, percentage: "40%" },
-  { name: "Transporte", amount: 4150, transactions: 3, percentage: "15%" },
-  { name: "Entretenimiento", amount: 3750, transactions: 3, percentage: "13%" },
-  { name: "Comestibles", amount: 2650, transactions: 4, percentage: "9%" },
-  { name: "Facturas", amount: 3300, transactions: 4, percentage: "12%" },
-  { name: "Spa", amount: 1210, transactions: 1, percentage: "4%" }
+const moneyOutData =
+  {
+    name: "Restaurantes",
+    amount: 700,
+    transactions: 6,
+    percentage: 19.4,
+  },
+  {
+    name: "Compras",
+    amount: 450,
+    transactions: 3,
+    percentage: 12.5,
+  },
+  {
+    name: "Transporte",
+    amount: 500,
+    transactions: 8,
+    percentage: 13.9,
+  },
+  {
+    name: "Entretenimiento",
+    amount: 350,
+    transactions: 2,
+    percentage: 9.7,
+  },
+  {
+    name: "Comestibles",
+    amount: 800,
+    transactions: 5,
+    percentage: 22.2,
+  },
+  {
+    name: "Facturas",
+    amount: 600,
+    transactions: 3,
+    percentage: 16.7,
+  },
+  {
+    name: "Bienestar",
+    amount: 200,
+    transactions: 2,
+    percentage: 5.6,
+  },
 ];
+
 
 const upcomingTransactions = [
   { name: "Matrícula Universitaria", amount: 8000, dueIn: "5 días" },
