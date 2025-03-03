@@ -39,7 +39,7 @@ const IncomeTab = () => {
       <div>
         <div className="mb-4">
           <p className="text-sm text-muted-foreground">{t('insights.income')} · {t('insights.thisMonth')}</p>
-          <h2 className="text-3xl font-semibold text-[#222222]">€3000</h2>
+          <h2 className="text-3xl font-semibold text-[#222222]">5200,00€</h2>
         </div>
 
         <Card className="p-6">
@@ -90,13 +90,13 @@ const IncomeTab = () => {
           </div>
           <div className="space-y-2">
             <p className="text-sm">
-              Noticed a salary increase? Congratulations! How about enjoying extra flexibility with our Platinum Credit Card?
+              ¿Notaste un aumento de salario? ¡Felicidades! ¿Qué tal disfrutar de mayor flexibilidad con nuestra Tarjeta de Crédito Platinum?
             </p>
             <Button 
               variant="default" 
               className="w-full sm:w-auto"
             >
-              See Benefits
+              Ver Beneficios
             </Button>
           </div>
         </div>
@@ -109,7 +109,7 @@ const IncomeTab = () => {
               <p className="font-medium">{t('insights.salary')}</p>
               <p className="text-sm text-muted-foreground">{t('insights.monthlyIncome')}</p>
             </div>
-            <p className="font-medium text-[#222222]">+﷼ 60,000</p>
+            <p className="font-medium text-[#222222]">+5200,00€/p>
           </div>
         </Card>
       </div>
