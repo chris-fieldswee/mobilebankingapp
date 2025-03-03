@@ -18,7 +18,8 @@ const SpendingTab = () => {
     return new Intl.NumberFormat(i18n.language, {
       style: 'currency',
       currency: 'EUR',
-      currencyDisplay: 'symbol'
+      currencyDisplay: 'symbol',
+      currencySign: "standard",
     }).format(amount);
   }, [i18n.language]);
 
