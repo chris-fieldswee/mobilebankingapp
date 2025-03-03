@@ -78,7 +78,9 @@
     "monthlyIncome": "Ingreso mensual",
     "salary": "Salario",
     "savings": "Ahorros",
-    "expenses": "Gastos"
+    "expenses": "Gastos",
+    "projectedBalance": "Saldo proyectado",
+    "monthlyChart": "Gráfico mensual"
   },
   "advisor": {
     "name": "Maria",
