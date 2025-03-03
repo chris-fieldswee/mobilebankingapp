@@ -16,9 +16,9 @@ const BudgetTab = () => {
 
   // Updated upcoming transactions in Spanish, adjusted to exceed the remaining budget
   const upcomingTransactions = [
-    { name: "Matrícula Universitaria", dueIn: 5, amount: 300 },
-    { name: "Suscripción a Netflix", dueIn: 3, amount: 50 },
-    { name: "Spotify Premium", dueIn: 7, amount: 100 }
+    { name: "Matrícula Universitaria", dueIn: 5, amount: 8000 },
+    { name: "Suscripción a Netflix", dueIn: 3, amount: 15 },
+    { name: "Spotify Premium", dueIn: 7, amount: 10 }
   ];
   
   const totalUpcoming = upcomingTransactions.reduce((sum, tx) => sum + tx.amount, 0);
