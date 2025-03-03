@@ -22,7 +22,9 @@
     "monthlyBudget": "Presupuesto Mensual",
     "spent": "gastado",
     "goal": "objetivo",
-    "overBudget": "sobre presupuesto"
+    "overBudget": "sobre presupuesto",
+    "budget.utilizationMessage": "Has utilizado 90% de tu presupuesto de €4000. Te quedan €400 para gastar este mes.",
+    "daysLeft": "días restantes"
   },
   "spending": {
     "spentThisMonth": "Gastado este mes",
