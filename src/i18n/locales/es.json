@@ -235,4 +235,16 @@
   "helpling": "Clintu",
   "fourSeasonsSpa": "Spa Meliá"
   }
+  "categories": {
+    "transactions": "Transacciones",
+    "payees": "Beneficiarios",
+    "services": "Servicios",
+    "dining": "Restaurantes",
+    "shopping": "Compras",
+    "transportation": "Transporte",
+    "entertainment": "Entretenimiento",
+    "groceries": "Comestibles",
+    "bills": "Facturas",
+    "wellness": "Bienestar"
+  }
 }
