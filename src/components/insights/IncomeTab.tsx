@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -90,13 +91,13 @@ const IncomeTab = () => {
           </div>
           <div className="space-y-2">
             <p className="text-sm">
-              ¿Notaste un aumento de salario? ¡Felicidades! ¿Qué tal disfrutar de mayor flexibilidad con nuestra Tarjeta de Crédito Platinum?
+              {t('insights.salaryIncreaseNotice')}
             </p>
             <Button 
               variant="default" 
               className="w-full sm:w-auto"
             >
-              Ver Beneficios
+              {t('insights.viewBenefits')}
             </Button>
           </div>
         </div>

@@ -51,7 +51,7 @@
   "transactions": {
     "recent": "Recent Transactions",
     "upcoming": "Upcoming Transactions",
-    "dueIn": "Due in {{days}} days",
+    "dueIn": "Due in {{days}}",
     "dueOn": "Due on {{date}}",
     "details": "Transaction Details",
     "amount": "Amount",
@@ -61,10 +61,13 @@
     "merchant": "Merchant",
     "reference": "Reference",
     "type": "Type",
-    "total": "Total",
+    "total": "transaction",
     "tuitionFee": "Tuition Fee",
     "netflixSubscription": "Netflix Subscription",
-    "spotifyPremium": "Spotify Premium"
+    "spotifyPremium": "Spotify Premium",
+    "matrículauniversitaria": "University Tuition",
+    "suscripciónanetflix": "Netflix Subscription",
+    "spotifypremium": "Spotify Premium"
   },
   "offers": {
     "cardOffer": "Unlock Elite Benefits with the SAB Platinum Credit Card",
@@ -82,7 +85,13 @@
     "monthlyIncome": "Monthly income",
     "salary": "Salary",
     "savings": "Savings",
-    "expenses": "Expenses"
+    "expenses": "Expenses",
+    "netCashflow": "Net Cashflow",
+    "monthlyCashflow": "Monthly Cashflow",
+    "projectedBalance": "Projected Balance",
+    "salaryIncreaseNotice": "Notice a salary increase? Congratulations! How about enjoying more flexibility with our Platinum Credit Card?",
+    "viewBenefits": "View Benefits",
+    "highBalanceNotice": "Three consecutive months of exceptionally high balance!"
   },
   "advisor": {
     "name": "John",
@@ -223,7 +232,14 @@
     "entertainment": "Entertainment",
     "groceries": "Groceries",
     "bills": "Bills",
-    "wellness": "Wellness"
+    "wellness": "Wellness",
+    "restaurantes": "Restaurants",
+    "compras": "Shopping",
+    "transporte": "Transportation",
+    "entretenimiento": "Entertainment",
+    "comestibles": "Groceries",
+    "facturas": "Bills",
+    "bienestar": "Wellness"
   },
   "merchants": {
     "nusret": "Nusr-Et Steakhouse",

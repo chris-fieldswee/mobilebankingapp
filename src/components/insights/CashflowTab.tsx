@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -87,7 +88,7 @@ function CashflowTab() {
   // Two different charts: Flujo de Caja Mensual & Saldo Proyectado
   const charts = [
     {
-      title: "Flujo de Caja Mensual",
+      title: t("insights.monthlyCashflow"),
       chart: (
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={cashflowData}>
@@ -105,7 +106,7 @@ function CashflowTab() {
       ),
     },
     {
-      title: "Saldo Proyectado",
+      title: t("insights.projectedBalance"),
       chart: (
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={predictionData}>
@@ -199,7 +200,7 @@ function CashflowTab() {
           </div>
           <div>
             <p className="text-sm">
-              ¡Tres meses consecutivos de saldo excepcionalmente alto!
+              {t("insights.highBalanceNotice")}
             </p>
           </div>
         </div>
@@ -208,7 +209,7 @@ function CashflowTab() {
       {/* Ingresos */}
       <div>
         <div className="mb-4 flex justify-between items-center">
-          <h3 className="font-semibold">Ingresos</h3>
+          <h3 className="font-semibold">{t("insights.income")}</h3>
           <span className="text-sm font-medium text-[#222222]">
             € {moneyInData[0].amount.toLocaleString()}
           </span>
@@ -219,10 +220,9 @@ function CashflowTab() {
             <Card key={item.name} className="p-4">
               <div className="flex justify-between items-center">
                 <div>
-                  <p className="font-medium">{item.name}</p>
+                  <p className="font-medium">{t("insights.salary")}</p>
                   <p className="text-sm text-muted-foreground">
-                    {item.transactions} transacción
-                    {item.transactions !== 1 && "es"}
+                    {item.transactions} {t("transactions.total", { count: item.transactions })}
                   </p>
                 </div>
                 <div className="text-right">
@@ -242,7 +242,7 @@ function CashflowTab() {
       {/* Gastos */}
       <div>
         <div className="mb-4 flex justify-between items-center">
-          <h3 className="font-semibold">Gastos</h3>
+          <h3 className="font-semibold">{t("insights.expenses")}</h3>
           <span className="text-sm font-medium text-[#222222]">
             -€{" "}
             {moneyOutData
@@ -256,10 +256,9 @@ function CashflowTab() {
             <Card key={item.name} className="p-4">
               <div className="flex justify-between items-center">
                 <div>
-                  <p className="font-medium">{item.name}</p>
+                  <p className="font-medium">{t(`categories.${item.name.toLowerCase()}`, item.name)}</p>
                   <p className="text-sm text-muted-foreground">
-                    {item.transactions} transacción
-                    {item.transactions !== 1 && "es"}
+                    {item.transactions} {t("transactions.total", { count: item.transactions })}
                   </p>
                 </div>
                 <div className="text-right">
@@ -279,7 +278,7 @@ function CashflowTab() {
       {/* Transacciones Próximas */}
       <div>
         <div className="mb-4 flex justify-between items-center">
-          <h3 className="font-semibold">Transacciones Próximas</h3>
+          <h3 className="font-semibold">{t("transactions.upcoming")}</h3>
           <span className="text-sm font-medium text-[#222222]">
             -€ {upcomingTotal.toLocaleString()}
           </span>
@@ -290,9 +289,9 @@ function CashflowTab() {
             <Card key={item.name} className="p-4">
               <div className="flex justify-between items-center">
                 <div>
-                  <p className="font-medium">{item.name}</p>
+                  <p className="font-medium">{t(`transactions.${item.name.toLowerCase().replace(/\s+/g, '')}`, item.name)}</p>
                   <p className="text-sm text-muted-foreground">
-                    Vence en {item.dueIn}
+                    {t("transactions.dueIn", { days: item.dueIn })}
                   </p>
                 </div>
                 <div className="text-right">
