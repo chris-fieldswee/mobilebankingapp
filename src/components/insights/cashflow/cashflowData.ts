@@ -1,7 +1,7 @@
 
 // Ingresos (salary) = 5200 €
 export const moneyInData = [
-  { name: "Salario", amount: 5200, transactions: 1, percentage: "100%" },
+  { name: "salary", amount: 5200, transactions: 1, percentage: "100%" },
 ];
 
 // Gastos por categoría (sum = 3600)
