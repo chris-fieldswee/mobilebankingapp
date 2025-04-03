@@ -23,7 +23,10 @@
     "monthlyBudget": "Monthly Budget",
     "spent": "spent",
     "goal": "goal",
-    "overBudget": "over budget"
+    "overBudget": "over budget",
+    "daysLeft": "days left",
+    "utilizationMessage": "You have used {{percent}}% of your budget. You have €{{remaining}} left out of €{{budget}}.",
+    "overBudgetMessage": "You have exceeded your budget by €{{amount}}."
   },
   "spending": {
     "spentThisMonth": "Spent this month",
@@ -211,7 +214,7 @@
     "oneMonth": "1M",
     "today": "Today",
     "yesterday": "Yesterday",
-    "date": "Feb 24"
+    "date": "{{date}}"
   },
   "categories": {
     "dining": "Dining",

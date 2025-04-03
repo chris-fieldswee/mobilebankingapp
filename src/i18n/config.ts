@@ -20,8 +20,8 @@ i18n
         translation: esTranslations
       }
     },
-    lng: 'es', // default language
-    fallbackLng: 'es',
+    lng: 'en', // default language is now English
+    fallbackLng: 'en',
     interpolation: {
       escapeValue: false
     }
