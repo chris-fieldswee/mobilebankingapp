@@ -1,14 +1,16 @@
 
-import { Search, Bell, Zap, User, PieChart } from "lucide-react";
+import { Search, Bell, Zap, User, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const TopNav = () => {
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b">
+    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg">
       <div className="container max-w-md mx-auto px-4 h-16 flex items-center justify-between gap-3">
-        <Button variant="ghost" size="icon" className="rounded-full">
-          <User className="h-6 w-6" />
+        <Button variant="ghost" size="icon" className="rounded-full p-0 bg-[#f1f0fb]">
+          <span className="flex items-center justify-center w-10 h-10 rounded-full bg-[#f1f0fb]">
+            <User className="h-6 w-6 text-primary" />
+          </span>
         </Button>
 
         <Link to="/search" className="flex-1">
@@ -38,9 +40,9 @@ const TopNav = () => {
             <span className="absolute top-1 right-1 h-2 w-2 bg-blue-600 rounded-full" />
           </Link>
 
-          {/* PieChart icon instead of Badge, not linked */}
+          {/* Award icon (not linked) */}
           <span className="rounded-full p-2 flex items-center justify-center">
-            <PieChart className="h-6 w-6" />
+            <Award className="h-6 w-6" />
           </span>
         </div>
       </div>

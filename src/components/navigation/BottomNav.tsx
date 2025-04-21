@@ -1,21 +1,22 @@
 
-import { Home, CreditCard, PieChart, BarChart3, Lightbulb } from "lucide-react";
+import { Home, CreditCard, BarChart3, PieChart, Lightbulb } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
 
 const BottomNav = () => {
   const location = useLocation();
 
+  // Order: Home, Accounts, Insights, Budgets, Advisor
   const menuItems = [
     { icon: Home, label: "Home", path: "/" },
-    { icon: CreditCard, label: "Accounts", path: "/transactions" }, // Using CreditCard instead of Card
-    { icon: PieChart, label: "Budgets", path: "/budgets" }, // Using PieChart instead of Badge
-    { icon: BarChart3, label: "Insights", path: "/insights" }, // Using BarChart3 instead of LineChart
-    { icon: Lightbulb, label: "Advisor", path: "/advisor" }, // Using Lightbulb instead of Bulb
+    { icon: CreditCard, label: "Accounts", path: "/transactions" },
+    { icon: BarChart3, label: "Insights", path: "/insights" },
+    { icon: PieChart, label: "Budgets", path: "/budgets" },
+    { icon: Lightbulb, label: "Advisor", path: "/advisor" },
   ];
 
   return (
-    <nav className="sticky bottom-0 z-50 bg-background/80 backdrop-blur-lg border-t">
+    <nav className="sticky bottom-0 z-50 bg-background/80 backdrop-blur-lg">
       <div className="container max-w-md mx-auto px-4 h-16 flex items-center justify-around">
         {menuItems.map((item) => (
           <Link
