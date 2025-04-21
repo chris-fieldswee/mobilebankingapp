@@ -11,22 +11,25 @@ import PayeesCarousel from "@/components/widgets/PayeesCarousel";
 import UpcomingTransactions from "@/components/transactions/UpcomingTransactions";
 import TotalWealth from "@/components/widgets/TotalWealth";
 
+// Ensure both Navs and content are within the mobile width container
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <TopNav />
-      <main className="container max-w-md mx-auto px-4 pb-20 pt-4">
-        <AccountsCarousel />
-        <QuickActions />
-        <SpendingChallengeWidget />
-        <SpendingChart />
-        <OffersCarousel />
-        <RecentTransactions />
-        <PayeesCarousel />
-        <UpcomingTransactions />
-        <TotalWealth />
-      </main>
-      <BottomNav />
+      <div className="container max-w-md mx-auto p-0">
+        <TopNav />
+        <main className="px-4 pb-20 pt-4">
+          <AccountsCarousel />
+          <QuickActions />
+          <SpendingChallengeWidget />
+          <SpendingChart />
+          <OffersCarousel />
+          <RecentTransactions />
+          <PayeesCarousel />
+          <UpcomingTransactions />
+          <TotalWealth />
+        </main>
+        <BottomNav />
+      </div>
     </div>
   );
 };

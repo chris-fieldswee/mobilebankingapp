@@ -1,25 +1,24 @@
 
-import { Search, Bell, Zap, BarChart2 } from "lucide-react";
+import { Search, Bell, Zap, User, Badge } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import LanguageSelector from "../LanguageSelector";
-import { useTranslation } from "react-i18next";
+// Removed LanguageSelector and i18n translations
 
 const TopNav = () => {
-  const { t } = useTranslation();
-
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg border-b">
-      <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-between gap-3">
-        <LanguageSelector />
-        
+      <div className="container max-w-md mx-auto px-4 h-16 flex items-center justify-between gap-3">
+        <Button variant="ghost" size="icon" className="rounded-full">
+          <User className="h-6 w-6" />
+        </Button>
+
         <Link to="/search" className="flex-1">
           <Button
             variant="secondary"
             className="w-full justify-start text-muted-foreground font-normal"
           >
             <Search className="mr-2 h-4 w-4" />
-            {t('nav.search')}
+            Search...
           </Button>
         </Link>
 
@@ -40,12 +39,10 @@ const TopNav = () => {
             <span className="absolute top-1 right-1 h-2 w-2 bg-blue-600 rounded-full" />
           </Link>
 
-          <Link 
-            to="/insights" 
-            className="rounded-full p-2"
-          >
-            <BarChart2 className="h-6 w-6" />
-          </Link>
+          {/* Badge icon, not linked */}
+          <span className="rounded-full p-2 flex items-center justify-center">
+            <Badge className="h-6 w-6" />
+          </span>
         </div>
       </div>
     </nav>
