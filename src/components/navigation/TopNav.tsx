@@ -1,8 +1,7 @@
 
-import { Search, Bell, Zap, User, Badge } from "lucide-react";
+import { Search, Bell, Zap, User, PieChart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-// Removed LanguageSelector and i18n translations
 
 const TopNav = () => {
   return (
@@ -39,9 +38,9 @@ const TopNav = () => {
             <span className="absolute top-1 right-1 h-2 w-2 bg-blue-600 rounded-full" />
           </Link>
 
-          {/* Badge icon, not linked */}
+          {/* PieChart icon instead of Badge, not linked */}
           <span className="rounded-full p-2 flex items-center justify-center">
-            <Badge className="h-6 w-6" />
+            <PieChart className="h-6 w-6" />
           </span>
         </div>
       </div>

@@ -1,17 +1,14 @@
 
 import { Button } from "@/components/ui/button";
 import { Plus, Send, FileText } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 const QuickActions = () => {
-  const { t } = useTranslation();
-
   return (
     <div className="grid grid-cols-3 gap-4 mb-6">
       {[
-        { icon: Plus, label: t('actions.addMoney') },
-        { icon: Send, label: t('actions.transfer') },
-        { icon: FileText, label: t('actions.details') },
+        { icon: Plus, label: 'Add Money' },
+        { icon: Send, label: 'Transfer' },
+        { icon: FileText, label: 'Details' },
       ].map((action) => (
         <Button
           key={action.label}

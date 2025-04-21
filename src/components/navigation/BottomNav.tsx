@@ -1,18 +1,17 @@
 
-import { Home, Card, LineChart, Bulb, Badge } from "lucide-react";
+import { Home, CreditCard, PieChart, BarChart3, Lightbulb } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
-// Removed useTranslation and translation references
 
 const BottomNav = () => {
   const location = useLocation();
 
   const menuItems = [
     { icon: Home, label: "Home", path: "/" },
-    { icon: Card, label: "Accounts", path: "/transactions" }, // Replaced Send with Card, label is "Accounts"
-    { icon: Badge, label: "Budgets", path: "/budgets" }, // Replaced Card icon with Badge for "Budgets"
-    { icon: LineChart, label: "Insights", path: "/insights" }, // Added LineChart icon for "Insights"
-    { icon: Bulb, label: "Advisor", path: "/advisor" }, // Bulb is used instead of MessageSquare for Advisor
+    { icon: CreditCard, label: "Accounts", path: "/transactions" }, // Using CreditCard instead of Card
+    { icon: PieChart, label: "Budgets", path: "/budgets" }, // Using PieChart instead of Badge
+    { icon: BarChart3, label: "Insights", path: "/insights" }, // Using BarChart3 instead of LineChart
+    { icon: Lightbulb, label: "Advisor", path: "/advisor" }, // Using Lightbulb instead of Bulb
   ];
 
   return (
