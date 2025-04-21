@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Plus, Send, FileText } from "lucide-react";
 
-const iconBg = "flex items-center justify-center w-10 h-10 rounded-full bg-[#DBE9FE] mb-2";
+const iconBg = "flex items-center justify-center w-10 h-10 rounded-full bg-[#1C4ED8] mb-2";
 
 const QuickActions = () => {
   return (

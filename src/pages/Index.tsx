@@ -11,13 +11,15 @@ import PayeesCarousel from "@/components/widgets/PayeesCarousel";
 import UpcomingTransactions from "@/components/transactions/UpcomingTransactions";
 import TotalWealth from "@/components/widgets/TotalWealth";
 
-// Ensure both Navs and content are within the mobile width container
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container max-w-md mx-auto p-0">
         <TopNav />
-        <main className="px-4 pb-20 pt-4 bg-[#f9fafb]">
+        <main className="px-4 py-8 bg-[#f9fafb]">
+          <h1 className="text-xl">
+            Hello, <span className="font-semibold">Ahmed!</span>
+          </h1>
           <AccountsCarousel />
           <QuickActions />
           <SpendingChallengeWidget />
