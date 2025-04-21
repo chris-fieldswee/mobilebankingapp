@@ -17,7 +17,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <div className="container max-w-md mx-auto p-0">
         <TopNav />
-        <main className="px-4 pb-20 pt-4">
+        <main className="px-4 pb-20 pt-4 bg-[#f9fafb]">
           <AccountsCarousel />
           <QuickActions />
           <SpendingChallengeWidget />
@@ -35,3 +35,4 @@ const Index = () => {
 };
 
 export default Index;
+

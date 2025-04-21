@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Plus, Send, FileText } from "lucide-react";
 
-const iconBg = "flex items-center justify-center w-10 h-10 rounded-full bg-[#33C3F0] mb-2";
+const iconBg = "flex items-center justify-center w-10 h-10 rounded-full bg-[#DBE9FE] mb-2";
 
 const QuickActions = () => {
   return (
@@ -15,7 +15,7 @@ const QuickActions = () => {
         <Button
           key={action.label}
           variant="outline"
-          className="flex flex-col h-auto py-4 hover:bg-secondary dark:hover:bg-blue-800/20 transition-colors"
+          className="flex flex-col h-auto py-4 hover:bg-secondary dark:hover:bg-blue-800/20 transition-colors border-0 bg-transparent"
         >
           <span className={iconBg}>
             <action.icon className="h-5 w-5 text-white" />
@@ -28,3 +28,4 @@ const QuickActions = () => {
 };
 
 export default QuickActions;
+
