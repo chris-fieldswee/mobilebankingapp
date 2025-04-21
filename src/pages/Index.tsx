@@ -1,4 +1,3 @@
-
 import TopNav from "@/components/navigation/TopNav";
 import BottomNav from "@/components/navigation/BottomNav";
 import AccountsCarousel from "@/components/widgets/AccountsCarousel";
@@ -10,14 +9,12 @@ import RecentTransactions from "@/components/transactions/RecentTransactions";
 import PayeesCarousel from "@/components/widgets/PayeesCarousel";
 import UpcomingTransactions from "@/components/transactions/UpcomingTransactions";
 import TotalWealth from "@/components/widgets/TotalWealth";
-
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <div className="container max-w-md mx-auto p-0">
         <TopNav />
         <main className="px-4 py-8 bg-[#f9fafb]">
-          <h1 className="text-xl">
+          <h1 className="my-[20px] text-3xl">
             Hello, <span className="font-semibold">Ahmed!</span>
           </h1>
           <AccountsCarousel />
@@ -32,9 +29,6 @@ const Index = () => {
         </main>
         <BottomNav />
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
-
