@@ -79,7 +79,7 @@ const CarbonTab = () => {
       <div>
         <h3 className="text-base font-semibold mb-3">Category Breakdown</h3>
         <div className="space-y-3">
-        // Inside CarbonTab.tsx -> Category Breakdown -> .map loop
+        // Inside CarbonTab.tsx - Category Breakdown - .map loop
         {carbonDataV1.categories.map((category) => {
     const IconComponent = category.icon;
 

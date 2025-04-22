@@ -21,8 +21,6 @@ import Accounts from "./pages/Accounts";
 import GoalsAndBudgets from './pages/GoalsAndBudgets';
 import GoalDetail from './pages/GoalDetail'; // <-- Import GoalDetail
 import BudgetDetail from './pages/BudgetDetail'; // <-- Import BudgetDetail
-import SubscriptionsPage from './pages/SubscriptionsPage'; // <-- Import Subscriptions List Page
-import SubscriptionDetail from './pages/SubscriptionDetail'; // <-- Import Subscription Detail Page
 
 const queryClient = new QueryClient();
 
@@ -55,8 +53,6 @@ const App = () => (
         <Route path="/goals/:id" element={<GoalDetail />} />
         <Route path="/budgets/:id" element={<BudgetDetail />} />
         {/* --- END UPDATED ROUTES --- */}
-        <Route path="/subscriptions" element={<SubscriptionsPage />} />
-        <Route path="/subscriptions/:id" element={<SubscriptionDetail />} />
         {/* Catch-all Not Found Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
