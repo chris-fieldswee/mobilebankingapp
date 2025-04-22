@@ -8,10 +8,10 @@ const BottomNav = () => {
 
   // Order: Home, Accounts, Insights, Budgets, Advisor
   const menuItems = [
-    { icon: Home, label: "Home", path: "/" },
-    { icon: CreditCard, label: "Accounts", path: "/transactions" },
+    { icon: Home, label: "Home", path: "/dashboard" },
+    { icon: CreditCard, label: "Accounts", path: "/accounts" },
     { icon: BarChart3, label: "Insights", path: "/insights" },
-    { icon: PieChart, label: "Budgets", path: "/budgets" },
+    { icon: PieChart, label: "Budgets", path: "/goals-budgets" },
     { icon: Lightbulb, label: "Advisor", path: "/advisor" },
   ];
 

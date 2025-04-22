@@ -1,28 +1,30 @@
-
 import { Bell, DollarSign, CreditCard, Calendar, AlertCircle, XCircle, ShieldCheck, UserCheck, FileText, AlertOctagon, TrendingDown, Gift, Star, Send } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+// REMOVED: import { useTranslation } from "react-i18next";
 
-const NotificationItem = ({ 
-  title, 
-  description, 
-  time, 
+const NotificationItem = ({
+  title,
+  description,
+  time,
   icon: Icon,
-  type = "default" 
-}: { 
-  title: string; 
-  description: string; 
-  time: string; 
-  icon: any;
+  type = "default"
+}: {
+  title: string;
+  description: string;
+  time: string; // Time is now passed directly as processed English string
+  icon: React.ElementType; // Use React.ElementType for component icons
   type?: "default" | "warning" | "success" | "error";
 }) => {
+  // Determine color based on type (optional styling)
+  // const iconColor = type === "warning" ? "text-yellow-500" : type === "error" ? "text-destructive" : type === "success" ? "text-emerald-500" : "text-muted-foreground";
+
   return (
     <div className="p-4 border-b last:border-b-0 hover:bg-secondary/50 transition-colors">
       <div className="flex gap-3">
         <div className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center shrink-0">
-          <Icon className="h-5 w-5 text-muted-foreground" />
+          <Icon className={`h-5 w-5 text-muted-foreground`} /> {/* Apply color dynamically if needed */}
         </div>
         <div className="flex-1">
           <div className="flex justify-between items-start mb-1">
@@ -36,125 +38,124 @@ const NotificationItem = ({
   );
 };
 
-const getTimeTranslation = (time: string, t: any) => {
-  if (time.includes("mins")) {
-    return time.replace("mins", t('time.mins')).replace("ago", t('time.ago'));
-  }
-  if (time.includes("hour")) {
-    return time.replace("hour", t('time.hour')).replace("ago", t('time.ago'));
-  }
-  if (time.includes("Just now")) {
-    return t('time.justNow');
-  }
-  return time;
+// Helper function to get relative time (more robust than simple replacement)
+// This is a simplified example, consider using a library like `date-fns` for real relative time
+const formatRelativeTime = (timeString: string): string => {
+    if (timeString === "Just now") return "Just now";
+    const matchMins = timeString.match(/^(\d+)\s+mins\s+ago$/);
+    if (matchMins) return `${matchMins[1]} mins ago`;
+    const matchHour = timeString.match(/^(\d+)\s+hour\s+ago$/);
+    if (matchHour) return `${matchHour[1]} hour${parseInt(matchHour[1]) > 1 ? 's' : ''} ago`; // Handle plural
+    return timeString; // Fallback
 };
 
 const Notifications = () => {
-  const { t } = useTranslation();
+  // REMOVED: const { t } = useTranslation();
 
-  const notifications = [
+  // Hardcoded English notifications data
+  const notificationsData = [
     {
       icon: DollarSign,
-      title: t('notifications.transactions.paymentReceived'),
-      description: t('notifications.transactions.receivedAmount', { amount: '2,500' }),
-      time: t('time.justNow'),
+      title: "Payment Received",
+      description: `You have received €2,500`,
+      time: "Just now", // Use relative time strings directly
       type: "success"
     },
     {
       icon: CreditCard,
-      title: t('notifications.transactions.harveyPurchase'),
-      description: t('notifications.transactions.purchaseAt', { store: 'Harvey Nichols', amount: '8,800' }),
+      title: "Purchase at Harvey Nichols",
+      description: `Purchase at Harvey Nichols: €8,800`,
       time: "5 mins ago"
     },
     {
       icon: CreditCard,
-      title: t('notifications.transactions.danubePurchase'),
-      description: t('notifications.transactions.purchaseAt', { store: 'Danube Gourmet', amount: '1,200' }),
+      title: "Purchase at Danube Gourmet",
+      description: `Purchase at Danube Gourmet: €1,200`,
       time: "15 mins ago"
     },
     {
       icon: AlertOctagon,
-      title: t('notifications.alerts.lowBalance'),
-      description: t('notifications.alerts.lowBalanceDesc', { amount: '5,000' }),
+      title: "Low Balance Alert",
+      description: `Your account balance is below €5,000.`,
       time: "30 mins ago",
       type: "warning"
     },
     {
       icon: XCircle,
-      title: t('notifications.alerts.paymentFailed'),
-      description: t('notifications.alerts.paymentFailedDesc', { amount: '800', service: 'Helpling' }),
+      title: "Payment Failed",
+      description: `Payment of €800 for Helpling failed.`,
       time: "45 mins ago",
       type: "error"
     },
     {
       icon: ShieldCheck,
-      title: t('notifications.security.passwordChanged'),
-      description: t('notifications.security.passwordChangedDesc'),
+      title: "Password Changed",
+      description: "Your password was successfully changed.",
       time: "1 hour ago",
       type: "success"
     },
     {
       icon: UserCheck,
-      title: t('notifications.security.newLogin'),
-      description: t('notifications.security.newLoginDesc'),
+      title: "New Device Login",
+      description: "A login occurred from a new device.",
       time: "2 hours ago",
       type: "warning"
     },
     {
       icon: FileText,
-      title: t('notifications.statements.available'),
-      description: t('notifications.statements.availableDesc'),
+      title: "Statement Available",
+      description: "Your monthly statement is now available.",
       time: "3 hours ago"
     },
     {
       icon: AlertCircle,
-      title: t('notifications.budget.alert'),
-      description: t('notifications.budget.alertDesc', { amount: '500' }),
+      title: "Budget Alert",
+      description: `You are nearing your budget limit (€500 remaining).`,
       time: "4 hours ago",
       type: "warning"
     },
     {
       icon: AlertOctagon,
-      title: t('notifications.budget.overBudget'),
-      description: t('notifications.budget.overBudgetDesc'),
+      title: "Over Budget Alert",
+      description: "You have exceeded your monthly budget.",
       time: "5 hours ago",
       type: "error"
     },
     {
-      icon: TrendingDown,
-      title: t('notifications.spending.change'),
-      description: t('notifications.spending.changeDesc', { amount: '2,000' }),
+      icon: TrendingDown, // Icon might not perfectly match text - review needed
+      title: "Spending Change Alert",
+      description: `Your spending decreased by €2,000 compared to last month.`,
       time: "6 hours ago",
       type: "success"
     },
     {
       icon: Gift,
-      title: t('notifications.offers.new'),
-      description: t('notifications.offers.newDesc'),
+      title: "New Offer Available",
+      description: "Check out the latest offers available for you.",
       time: "7 hours ago"
     },
     {
       icon: Star,
-      title: t('notifications.rewards.points'),
-      description: t('notifications.rewards.pointsDesc', { points: '15,000' }),
+      title: "Rewards Points Update",
+      description: `You have earned 15,000 rewards points.`,
       time: "8 hours ago"
     },
     {
       icon: Send,
-      title: t('notifications.transactions.paymentSent'),
-      description: t('notifications.transactions.paymentSentDesc', { amount: '3,500', recipient: 'Mercedes-Benz' }),
+      title: "Payment Sent",
+      description: `Payment of €3,500 sent to Mercedes-Benz.`,
       time: "9 hours ago",
       type: "success"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
+    <div className="min-h-screen bg-background flex flex-col"> {/* Use flex layout */}
+      <header className="flex-shrink-0 z-10 bg-background/80 backdrop-blur-lg border-b"> {/* Adjust z-index, remove fixed */}
         <div className="max-w-md mx-auto px-4 h-14 flex items-center">
           <Link to="/">
-            <Button variant="ghost" size="icon" className="mr-2">
-              <svg
+            <Button variant="ghost" size="icon" className="mr-2" aria-label="Go back">
+              <svg // Keep using SVG or import ChevronLeft from lucide-react
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -169,22 +170,26 @@ const Notifications = () => {
               </svg>
             </Button>
           </Link>
-          <h1 className="text-lg font-semibold">{t('notifications.title')}</h1>
+           {/* Hardcoded title */}
+          <h1 className="text-lg font-semibold">Notifications</h1>
         </div>
       </header>
 
-      <ScrollArea className="h-[calc(100vh-56px)] mt-14">
+      {/* Ensure ScrollArea works correctly within flex layout */}
+      <ScrollArea className="flex-1">
         <main className="max-w-md mx-auto">
-          {notifications.map((notification, index) => (
+          {notificationsData.map((notification, index) => (
             <NotificationItem
               key={index}
               icon={notification.icon}
               title={notification.title}
               description={notification.description}
-              time={getTimeTranslation(notification.time, t)}
+              time={formatRelativeTime(notification.time)} // Format time if needed
               type={notification.type as "default" | "warning" | "success" | "error"}
             />
           ))}
+           {/* Add padding at the bottom if content is hidden by nav bars etc. */}
+           <div className="h-16"></div>
         </main>
       </ScrollArea>
     </div>

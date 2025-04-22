@@ -1,11 +1,10 @@
-
 import { Card } from "@/components/ui/card";
-import { useTranslation } from "react-i18next";
+// REMOVED: import { useTranslation } from "react-i18next";
 
 interface UpcomingTransaction {
-  name: string;
+  name: string; // Assuming this holds the English name (e.g., "Netflix Subscription")
   amount: number;
-  dueIn: string;
+  dueIn: string; // Assuming this holds the number of days as a string (e.g., "3")
 }
 
 interface UpcomingTransactionsListProps {
@@ -17,12 +16,13 @@ export const UpcomingTransactionsList = ({
   transactions,
   totalAmount,
 }: UpcomingTransactionsListProps) => {
-  const { t } = useTranslation();
+  // REMOVED: const { t } = useTranslation();
 
   return (
     <div>
       <div className="mb-4 flex justify-between items-center">
-        <h3 className="font-semibold">{t("transactions.upcoming")}</h3>
+         {/* Hardcoded title */}
+        <h3 className="font-semibold">Upcoming Transactions</h3>
         <span className="text-sm font-medium text-[#222222]">
           -€ {totalAmount.toLocaleString()}
         </span>
@@ -33,9 +33,11 @@ export const UpcomingTransactionsList = ({
           <Card key={item.name} className="p-4">
             <div className="flex justify-between items-center">
               <div>
-                <p className="font-medium">{t(`transactions.${item.name.toLowerCase().replace(/\s+/g, '')}`, item.name)}</p>
+                 {/* Use item.name directly */}
+                <p className="font-medium">{item.name}</p>
                 <p className="text-sm text-muted-foreground">
-                  {t("transactions.dueIn", { days: item.dueIn })}
+                   {/* Simple string interpolation */}
+                  {`Due in ${item.dueIn} days`}
                 </p>
               </div>
               <div className="text-right">
@@ -50,3 +52,5 @@ export const UpcomingTransactionsList = ({
     </div>
   );
 };
+
+// Add export default if needed: export default UpcomingTransactionsList;

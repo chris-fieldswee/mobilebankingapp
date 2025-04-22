@@ -4,10 +4,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>elegant-finance-flow</title>
+    <title>Meniga | Mobile Banking Solutions</title>
     <meta name="description" content="A modern mobile banking experience" />
-    <meta name="author" content="Lovable" />
-    <meta property="og:image" content="/lovable-uploads/854fa3b1-0c3f-48dc-bc36-b73baf4320df.png" />
+    <meta name="author" content="Meniga" />
+    <meta property="og:image" content="/og-meniga.png" />
     
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#ffffff" />
@@ -15,7 +15,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="Finance Flow" />
     <link rel="manifest" href="/manifest.json" />
-    <link rel="apple-touch-icon" href="/lovable-uploads/854fa3b1-0c3f-48dc-bc36-b73baf4320df.png" />
+    <link rel="apple-touch-icon" href="/apple-icon.png" />
   </head>
 
   <body>
@@ -23,18 +23,5 @@
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-              console.log('ServiceWorker registration successful');
-            })
-            .catch((err) => {
-              console.log('ServiceWorker registration failed: ', err);
-            });
-        });
-      }
-    </script>
   </body>
 </html>

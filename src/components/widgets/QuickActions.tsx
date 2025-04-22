@@ -19,7 +19,7 @@ const QuickActions = () => {
           className="flex flex-col h-auto py-4 hover:bg-transparent border-0 bg-transparent"
         >
           <span className={iconBg}>
-            <action.icon className="h-5 w-5 text-[#1C4ED8]" />
+            <action.icon className="h-12 w-12 text-[#1C4ED8]" />
           </span>
           <span className="text-xs">{action.label}</span>
         </Button>

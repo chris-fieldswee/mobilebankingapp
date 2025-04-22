@@ -1,9 +1,9 @@
-
 import { User2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+// REMOVED: import { useTranslation } from "react-i18next";
 
+// Using English payee data directly
 const recentPayees = {
   en: [
     { id: 1, name: "John Smith", icon: User2 },
@@ -13,29 +13,14 @@ const recentPayees = {
     { id: 5, name: "Michael Davis", icon: User2 },
     { id: 6, name: "Emma Taylor", icon: User2 },
   ],
-  ar: [
-    { id: 1, name: "فاطمة الفيصل", icon: User2 },
-    { id: 2, name: "أحمد الفيصل", icon: User2 },
-    { id: 3, name: "سعيد الفيصل", icon: User2 },
-    { id: 4, name: "نورة الفيصل", icon: User2 },
-    { id: 5, name: "خالد الراشد", icon: User2 },
-    { id: 6, name: "ليلى القحطاني", icon: User2 },
-  ],
-  es: [
-    { id: 1, name: "Juan García", icon: User2 },
-    { id: 2, name: "María Rodríguez", icon: User2 },
-    { id: 3, name: "Carlos López", icon: User2 },
-    { id: 4, name: "Ana Martínez", icon: User2 },
-    { id: 5, name: "José Sánchez", icon: User2 },
-    { id: 6, name: "Laura Torres", icon: User2 },
-  ]
 };
 
 const PayeesCarousel = () => {
-  const { t, i18n } = useTranslation();
+  // REMOVED: useTranslation hook
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const currentPayees = recentPayees[i18n.language as keyof typeof recentPayees] || recentPayees.en;
+  // Use English data directly
+  const currentPayees = recentPayees.en;
   const totalPages = Math.ceil(currentPayees.length / 3);
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
@@ -63,10 +48,10 @@ const PayeesCarousel = () => {
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (touchStart === null) return;
-    
+
     const currentTouch = e.touches[0].clientX;
     const diff = touchStart - currentTouch;
-    
+
     if (Math.abs(diff) > 50) { // Minimum swipe distance
       const direction = diff > 0 ? 1 : -1;
       const newPage = Math.min(Math.max(currentPage + direction, 0), totalPages - 1);
@@ -89,9 +74,10 @@ const PayeesCarousel = () => {
 
   return (
     <div className="mb-6">
-      <h3 className="font-semibold mb-4">{t("payees.title")}</h3>
+      {/* REPLACED: t("payees.title") */}
+      <h3 className="font-semibold mb-4">Recent Payees</h3>
       <div className="relative">
-        <div 
+        <div
           ref={scrollRef}
           className="flex gap-4 overflow-x-hidden snap-x snap-mandatory pb-4 px-4 mb-4 scroll-smooth touch-pan-x"
           onTouchStart={handleTouchStart}
@@ -99,8 +85,8 @@ const PayeesCarousel = () => {
           onTouchEnd={handleTouchEnd}
         >
           {currentPayees.map((payee) => (
-            <div 
-              key={payee.id} 
+            <div
+              key={payee.id}
               className="flex flex-col items-center shrink-0 w-[calc(33.333%-0.75rem)] snap-start first:ml-0"
             >
               <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center mb-2">

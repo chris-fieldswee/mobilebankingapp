@@ -1,19 +1,20 @@
-
-import { useTranslation } from "react-i18next";
-import { IncomeChart } from "./income/IncomeChart";
-import { IncomeNotice } from "./income/IncomeNotice";
-import { IncomeTransactionList } from "./income/IncomeTransactionList";
-import { periodData, monthlyIncome } from "./income/incomeData";
+// REMOVED: import { useTranslation } from "react-i18next";
+import { IncomeChart } from "./income/IncomeChart"; // Assuming path
+import { IncomeNotice } from "./income/IncomeNotice"; // Assuming path
+import { IncomeTransactionList } from "./income/IncomeTransactionList"; // Assuming path
+import { periodData, monthlyIncome } from "./income/incomeData"; // Assuming path and data
 
 const IncomeTab = () => {
-  const { t } = useTranslation();
+  // REMOVED: const { t } = useTranslation();
 
   return (
     <div className="space-y-6">
       <div>
         <div className="mb-4">
-          <p className="text-sm text-muted-foreground">{t('insights.income')} · {t('insights.thisMonth')}</p>
-          <h2 className="text-3xl font-semibold text-[#222222]">{monthlyIncome.toFixed(2)}€</h2>
+           {/* Hardcoded text */}
+          <p className="text-sm text-muted-foreground">Income · This Month</p>
+          {/* Ensure formatting is correct */}
+          <h2 className="text-3xl font-semibold text-[#222222]">{monthlyIncome.toLocaleString('en-GB', { style: 'currency', currency: 'SAR' })}</h2>
         </div>
 
         <IncomeChart periodData={periodData} />

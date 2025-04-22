@@ -1,206 +1,158 @@
+// src/components/insights/SpendingTab.tsx
 
-import { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { BarChart2, PieChart, ArrowRight, TrendingUp, Utensils, ShoppingBag, Car, Popcorn, ShoppingCart, Receipt, Heart } from "lucide-react";
-import { BarChart, Bar, PieChart as RechartPie, Pie, Cell, ResponsiveContainer, XAxis } from "recharts";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+    ArrowRight, BarChart2, ShoppingBag, ShoppingCart, Lightbulb, Car, Utensils, Plane, Smartphone, Package, ListFilter
+} from "lucide-react";
+import {
+  BarChart,
+  Bar,
+  // Cell, // No longer needed for Bar coloring
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  Tooltip
+} from "recharts";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { useMemo } from "react";
+
+// --- V1 Data Adapted for V1 (Using Lucide Icons, SAR currency) ---
+const categoriesV1 = [
+  { name: "Shopping", value: 9050, icon: ShoppingBag, percentage: 31.7 },
+  { name: "Groceries", value: 600, icon: ShoppingCart, percentage: 2.1 },
+  { name: "Utilities", value: 450, icon: Lightbulb, percentage: 1.6 },
+  { name: "Transport", value: 300, icon: Car, percentage: 1.1 },
+  { name: "Dining", value: 1500, icon: Utensils, percentage: 5.3 },
+  { name: "Travel", value: 2800, icon: Plane, percentage: 9.8 },
+  { name: "Subscriptions", value: 550, icon: Smartphone, percentage: 1.9 },
+  { name: "Other", value: 13150, icon: Package, percentage: 46.5 }
+].filter(cat => cat.value > 0)
+ .sort((a, b) => b.value - a.value);
+
+// --- REMOVED categoryChartColors array ---
+
+const totalSpending = 28400;
+const currencySymbol = "SAR";
+const timePeriods = ["This Month", "Last Month", "Last 3 Months"];
 
 const SpendingTab = () => {
-  const [selectedPeriod, setSelectedPeriod] = useState("1M");
-  const [chartType, setChartType] = useState<"bar" | "pie">("bar");
+  const [timePeriod, setTimePeriod] = useState("This Month");
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
 
-  // Format currency with Euro symbol
   const formatCurrency = useCallback((amount: number) => {
-    return new Intl.NumberFormat(i18n.language, {
-      style: 'currency',
-      currency: 'EUR',
-      currencyDisplay: 'symbol',
-      currencySign: "standard",
-    }).format(amount);
-  }, [i18n.language]);
+    const formattedAmount = new Intl.NumberFormat('en-US', {
+      style: 'decimal', minimumFractionDigits: 2, maximumFractionDigits: 2,
+    }).format(Math.abs(amount));
+    return `-${formattedAmount} ${currencySymbol}`;
+  }, []);
 
-  // Translate period options
-  const periodOptions = [
-    { value: "1W", label: t("time.oneWeek") },
-    { value: "1M", label: t("time.oneMonth") }
-  ];
-
-  const periodData = {
-    "1W": [
-      { name: t("time.monday"), amount: 75 },
-      { name: t("time.tuesday"), amount: 85 },
-      { name: t("time.wednesday"), amount: 65 },
-      { name: t("time.thursday"), amount: 45 },
-      { name: t("time.friday"), amount: 30 },
-      { name: t("time.saturday"), amount: 0 },
-      { name: t("time.sunday"), amount: 0 }
-    ],
-    "1M": [
-      { name: "1-7", amount: 300 },
-      { name: "8-14", amount: 350 },
-      { name: "15-21", amount: 250 },
-      { name: "22-28", amount: 300 }
-    ]
+  const handleTimePeriodChange = (period: string) => {
+    setTimePeriod(period);
+    console.log("Time period changed to:", period);
   };
 
-  const blueShades = [
-    "#0F4C81", "#2B6CA3", "#478DC5", "#63AEE7", "#7FCFF9", "#9BE0FB", "#B7F1FD"
-  ];
+  // Updated Tooltip (Removed color swatch)
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-background p-2 border rounded shadow-lg">
+          <p className="font-medium">{`${label}`}</p>
+          {/* Display formatted spending amount */}
+          <p className="text-sm text-primary">{`Spent: ${formatCurrency(payload[0].value)}`}</p>
+        </div>
+      );
+    }
+    return null;
+  };
 
-  const categoryData = useMemo(() => [
-  { name: t("categories.dining"), amount: 700, transactions: 6, percentage: 19.4, color: blueShades[0], icon: Utensils },
-  { name: t("categories.shopping"), amount: 450, transactions: 3, percentage: 12.5, color: blueShades[1], icon: ShoppingBag },
-  { name: t("categories.transportation"), amount: 500, transactions: 8, percentage: 13.9, color: blueShades[2], icon: Car },
-  { name: t("categories.entertainment"), amount: 350, transactions: 2, percentage: 9.7, color: blueShades[3], icon: Popcorn },
-  { name: t("categories.groceries"), amount: 800, transactions: 5, percentage: 22.2, color: blueShades[4], icon: ShoppingCart },
-  { name: t("categories.bills"), amount: 600, transactions: 3, percentage: 16.7, color: blueShades[5], icon: Receipt },
-  { name: t("categories.wellness"), amount: 200, transactions: 2, percentage: 5.6, color: blueShades[6], icon: Heart }
-], [t, i18n.language]);
-
-  const totalSpent = 3600;
-  const spendingData = periodData[selectedPeriod as keyof typeof periodData];
 
   return (
-    <div className="space-y-6" key={i18n.language}>
-      <div>
-        <div className="flex justify-between items-start mb-4">
-          <div>
-            <p className="text-sm text-muted-foreground">{t('spending.spentThisMonth')} · {t('insights.thisMonth')}</p>
-            <h2 className="text-3xl font-semibold">{formatCurrency(totalSpent)}</h2>
-          </div>
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={() => setChartType(chartType === "bar" ? "pie" : "bar")}
-          >
-            {chartType === "bar" ? (
-              <PieChart className="h-4 w-4" />
-            ) : (
-              <BarChart2 className="h-4 w-4" />
-            )}
-          </Button>
-        </div>
+    <div className="space-y-6">
 
-        <Card className="p-6">
-          <div className="h-[200px] w-full">
+       {/* Time Period Selector */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+        {timePeriods.map((period) => (
+          <Button key={period} variant={timePeriod === period ? "default" : "outline"} size="sm" className="whitespace-nowrap text-xs sm:text-sm" onClick={() => handleTimePeriodChange(period)} > {period} </Button>
+        ))}
+      </div>
+
+      {/* Chart Section */}
+      <div>
+        <div className="mb-4">
+            <p className="text-sm text-muted-foreground">Spent ({timePeriod})</p>
+            <h2 className="text-3xl font-semibold">{formatCurrency(totalSpending)}</h2>
+         </div>
+
+        <Card className="p-4 sm:p-6">
+          <div className="h-[250px] w-full">
             <ResponsiveContainer width="100%" height="100%">
-              {chartType === "bar" ? (
-                <BarChart data={spendingData}>
-                  <defs>
-                    <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#60A5FA" />
-                      <stop offset="100%" stopColor="#3B82F6" />
+              <BarChart data={categoriesV1} margin={{ top: 5, right: 5, left: -25, bottom: 5 }}>
+                {/* --- ADDED Gradient Definition --- */}
+                <defs>
+                    <linearGradient id="spendingBarGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#60A5FA" /> {/* Light Blue */}
+                      <stop offset="100%" stopColor="#3B82F6" /> {/* Darker Blue */}
                     </linearGradient>
-                  </defs>
-                  <XAxis 
-                    dataKey="name" 
-                    stroke="#888888"
-                    fontSize={12}
-                    tickLine={false}
-                    axisLine={false}
-                  />
-                  <Bar
-                    dataKey="amount"
-                    fill="url(#barGradient)"
+                </defs>
+                {/* --- END Gradient Definition --- */}
+
+                <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={10} tickLine={false} axisLine={false} interval={0} />
+                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(value) => `${value / 1000}k`} />
+                <Tooltip content={<CustomTooltip />} cursor={{ fill: 'hsl(var(--accent))', radius: 2 }} />
+                {/* --- UPDATED Bar Component --- */}
+                <Bar
+                    dataKey="value"
                     radius={[4, 4, 0, 0]}
-                  />
-                </BarChart>
-              ) : (
-                <RechartPie>
-                  <Pie
-                    data={categoryData}
-                    dataKey="percentage"
-                    nameKey="name"
-                    innerRadius={60}
-                    outerRadius={80}
-                  >
-                    {categoryData.map((entry, index) => (
-                      <Cell key={`${index}-${i18n.language}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                </RechartPie>
-              )}
+                    fill="url(#spendingBarGradient)" // Apply gradient fill to all bars
+                >
+                    {/* Removed Cell mapping - fill is now applied to the Bar */}
+                </Bar>
+                 {/* --- END UPDATED Bar Component --- */}
+              </BarChart>
             </ResponsiveContainer>
           </div>
-
-          {chartType === "bar" && (
-            <div className="flex gap-2 mt-4">
-              {periodOptions.map((period) => (
-                <Button
-                  key={`${period.value}-${i18n.language}`}
-                  variant={selectedPeriod === period.value ? "default" : "outline"}
-                  onClick={() => setSelectedPeriod(period.value)}
-                  className="flex-1"
-                >
-                  {period.label}
-                </Button>
-              ))}
-            </div>
-          )}
         </Card>
       </div>
 
-      <Card className="p-4 bg-accent">
-        <div className="flex gap-4">
-          <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center flex-shrink-0">
-            <TrendingUp className="h-5 w-5 text-primary" />
-          </div>
-          <div className="space-y-2">
-            <p className="text-sm">
-              {t('spending.insight')}
-            </p>
-            <Button 
-              variant="default" 
-              className="w-full sm:w-auto"
-            >
-              {t('spending.setBudget')}
-            </Button>
-          </div>
-        </div>
-      </Card>
-
+      {/* Category List Section */}
       <div>
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="font-semibold">{t('spending.byCategory')}</h3>
-          <Button variant="ghost" className="text-primary text-sm px-0">
-            {t('actions.seeAll')}
-          </Button>
+        {/* ... (Category list header remains the same) ... */}
+         <div className="flex justify-between items-center mb-4">
+          <h3 className="font-semibold">Spending By Category</h3>
+          <Button variant="ghost" className="text-primary text-sm h-auto p-0" onClick={() => navigate('/transactions')}> See All </Button>
         </div>
 
         <div className="space-y-3">
-          {categoryData.map((category, idx) => (
-            <Card
-              key={`${idx}-${i18n.language}`}
-              className="p-4 flex items-center justify-between hover:bg-accent cursor-pointer"
-              onClick={() => navigate('/transactions')}
-            >
-              <div className="flex items-center gap-3">
-                <div 
-                  className="w-10 h-10 rounded-full bg-[#f4f4f5] flex items-center justify-center"
+          {/* Map over categoriesV1 */}
+          {categoriesV1.map((category) => {
+              const IconComponent = category.icon;
+              return (
+                <Card
+                  key={category.name}
+                  className="p-3 sm:p-4 flex items-center justify-between hover:bg-accent cursor-pointer"
+                  onClick={() => navigate(`/transactions?category=${encodeURIComponent(category.name)}`)}
+                  role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate(`/transactions?category=${encodeURIComponent(category.name)}`)}}
                 >
-                  <category.icon className="h-5 w-5 text-[#888888]" />
-                </div>
-                <div>
-                  <p className="font-medium">{category.name}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {category.transactions} {t('spending.transactions')}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="text-right">
-                  <p className="font-medium text-[#222222] text-[0.95rem]">{formatCurrency(-category.amount)}</p>
-                  <p className="text-sm text-muted-foreground">{category.percentage}%</p>
-                </div>
-                <ArrowRight className="h-4 w-4 text-muted-foreground" />
-              </div>
-            </Card>
-          ))}
+                   {/* ... (List item rendering remains the same, using Lucide icons and bg-muted) ... */}
+                    <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0 bg-muted border">
+                           {IconComponent ? ( <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" /> ) : ( <span className="text-xs sm:text-sm font-medium text-muted-foreground">{category.name[0]}</span> )}
+                        </div>
+                        <div className="min-w-0">
+                          <p className="font-medium text-sm truncate">{category.name}</p>
+                          <p className="text-xs text-muted-foreground">{category.percentage}% of total</p>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-2 sm:gap-4">
+                        <div className="text-right">
+                           <p className="font-medium text-foreground text-sm">{formatCurrency(category.value)}</p>
+                        </div>
+                        <ArrowRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                    </div>
+                </Card>
+              );
+            })}
         </div>
       </div>
     </div>

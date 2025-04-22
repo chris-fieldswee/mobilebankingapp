@@ -1,12 +1,11 @@
-
 import { Card } from "@/components/ui/card";
-import { CircularProgressBar } from "@/components/insights/CircularProgressBar";
+import { CircularProgressBar } from "@/components/insights/CircularProgressBar"; // Assuming path
 import { AlertCircle, Calendar, Coins } from "lucide-react";
-import { useTranslation } from "react-i18next";
+// REMOVED: import { useTranslation } from "react-i18next";
 
 const BudgetTab = () => {
-  const { t } = useTranslation();
-  
+  // REMOVED: const { t } = useTranslation();
+
   // Actual data: goal 4000€ and spent 3600€ (remaining: 400€)
   const budget = 4000;
   const spent = 3600;
@@ -15,13 +14,13 @@ const BudgetTab = () => {
   const isOverBudget = spent > budget;
   const utilizationPercentage = Math.min(Math.round((spent / budget) * 100), 100);
 
-  // Upcoming transactions with proper translation keys
+  // Upcoming transactions with hardcoded English names
   const upcomingTransactions = [
-    { name: t("transactions.tuitionFee"), dueIn: 5, amount: 8000 },
-    { name: t("transactions.netflixSubscription"), dueIn: 3, amount: 15 },
-    { name: t("transactions.spotifyPremium"), dueIn: 7, amount: 10 }
+    { name: "Tuition Fee", dueIn: 5, amount: 8000 },
+    { name: "Netflix Subscription", dueIn: 3, amount: 15 },
+    { name: "Spotify Premium", dueIn: 7, amount: 10 }
   ];
-  
+
   const totalUpcoming = upcomingTransactions.reduce((sum, tx) => sum + tx.amount, 0);
 
   return (
@@ -34,15 +33,17 @@ const BudgetTab = () => {
               percentage={Math.min(progress, 100)}
               strokeWidth={24}
               availableColor="#F4F4F5"
-              spentColor="url(#blueGradient)"
+              spentColor="url(#blueGradient)" // Make sure this gradient is defined elsewhere or replace
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center space-y-2">
               <p className="text-sm text-muted-foreground">
-                {t("budget.monthlyBudget")}
+                 {/* Hardcoded text */}
+                Monthly Budget
               </p>
               <span className="text-3xl font-bold">€ {remainingBudget.toLocaleString()}</span>
               <p className="text-sm text-muted-foreground">
-                9 {t("budget.daysLeft")}
+                 {/* Hardcoded text */}
+                9 days left
               </p>
             </div>
           </div>
@@ -57,20 +58,18 @@ const BudgetTab = () => {
           </div>
           <div>
             <p className="text-sm">
-              {isOverBudget 
-                ? t("budget.overBudgetMessage", { amount: (spent - budget).toLocaleString() })
-                : t("budget.utilizationMessage", { 
-                    percent: utilizationPercentage,
-                    remaining: remainingBudget.toLocaleString(),
-                    budget: budget.toLocaleString()
-                  })
+              {isOverBudget
+                 // Hardcoded interpolated string
+                ? `You are €${(spent - budget).toLocaleString()} over budget.`
+                 // Hardcoded interpolated string
+                : `${utilizationPercentage}% used (€${remainingBudget.toLocaleString()} of €${budget.toLocaleString()} remaining)`
               }
             </p>
           </div>
         </div>
       </Card>
 
-      {/* Message about upcoming transactions */}
+       {/* Message about upcoming transactions - Hardcoded */}
       <Card className="p-4 bg-accent">
         <div className="flex gap-4">
           <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center flex-shrink-0">
@@ -84,6 +83,7 @@ const BudgetTab = () => {
         </div>
       </Card>
 
+
       {/* Upcoming transactions summary */}
       <Card className="p-4">
         <div className="flex items-center justify-between">
@@ -92,7 +92,8 @@ const BudgetTab = () => {
               <Calendar className="h-5 w-5 text-[#222222]" />
             </div>
             <div>
-              <p className="font-medium">{t("transactions.upcoming")}</p>
+               {/* Hardcoded text */}
+              <p className="font-medium">Upcoming Transactions</p>
               <p className="text-sm text-muted-foreground">
                 {upcomingTransactions.length} transactions
               </p>
@@ -102,7 +103,7 @@ const BudgetTab = () => {
         </div>
       </Card>
 
-      {/* Monthly expenses summary */}
+      {/* Monthly expenses summary - Hardcoded */}
       <Card className="p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -111,7 +112,7 @@ const BudgetTab = () => {
             </div>
             <div>
               <p className="font-medium">Spent this month</p>
-              <p className="text-sm text-muted-foreground">51 transactions</p>
+              <p className="text-sm text-muted-foreground">51 transactions</p> {/* Example count */}
             </div>
           </div>
           <span className="font-medium">€ {spent.toLocaleString()}</span>

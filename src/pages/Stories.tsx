@@ -1,116 +1,95 @@
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { storyFramesData } from "@/components/stories/StoryData";
 import { StoryProgress } from "@/components/stories/StoryProgress";
-import { StoryControls } from "@/components/stories/StoryControls";
-import { stories } from "@/components/stories/StoryData";
-
-const STORY_DURATION = 5000; // 5 seconds per story
+import { Button } from "@/components/ui/button";
+import { X, Image as ImageIcon, ArrowRight } from "lucide-react";
 
 const Stories = () => {
   const navigate = useNavigate();
-  const [activeStory, setActiveStory] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [currentFrameIndex, setCurrentFrameIndex] = useState(0);
+  const totalFrames = storyFramesData.length;
+  const currentFrame = storyFramesData[currentFrameIndex];
 
-  useEffect(() => {
-    let animationFrameId: number;
-    let startTime: number;
-
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      if (isPaused) return;
-
-      const elapsed = timestamp - startTime;
-      const newProgress = (elapsed / STORY_DURATION) * 100;
-
-      if (newProgress >= 100) {
-        if (activeStory === stories.length - 1) {
-          navigate('/', { replace: true });
-          return;
-        }
-        setActiveStory(prev => prev + 1);
-        setProgress(0);
-        startTime = timestamp;
-      } else {
-        setProgress(newProgress);
-      }
-
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
-
-    return () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-    };
-  }, [activeStory, isPaused, navigate]);
-
-  const togglePause = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsPaused(!isPaused);
-  };
-
-  const handleNavigateHome = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    navigate('/', { replace: true });
-  };
-
-  const handleTap = (e: React.MouseEvent) => {
-    const x = e.clientX;
-    const width = window.innerWidth;
-    
-    if (x < width / 2) {
-      if (activeStory > 0) {
-        setProgress(0);
-        setActiveStory(prev => prev - 1);
-      }
+  const goToNextFrame = () => {
+    if (currentFrameIndex < totalFrames - 1) {
+      setCurrentFrameIndex(prev => prev + 1);
     } else {
-      if (activeStory < stories.length - 1) {
-        setProgress(0);
-        setActiveStory(prev => prev + 1);
-      } else {
-        navigate('/', { replace: true });
-      }
+      handleClose(); // Close after the last frame
     }
   };
 
-  const currentStory = stories[activeStory];
+  const handleClose = () => {
+    navigate(-1); // Go back in history
+  };
+
+  const handleCtaClick = (link: string | undefined) => {
+    if (link) {
+      navigate(link);
+    }
+  };
+
+  // Define the desired blue color string for Tailwind
+  const primaryButtonBg = "bg-[rgb(28,78,216)]";
+  // Define a slightly darker shade for hover (adjust as needed)
+  const primaryButtonHoverBg = "hover:bg-[rgb(23,62,173)]";
 
   return (
-    <div className="fixed inset-0 bg-white">
-      <div 
-        className="h-full w-full relative"
-        onClick={handleTap}
-      >
-        <div className="absolute inset-0 z-0">
-          <div
-            className="absolute inset-0 bg-white"
-            style={{
-              backgroundImage: `url(${currentStory.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-            }}
-          />
-        </div>
+    // Constrain width, center, set height and layout
+    <div className="relative max-w-md mx-auto h-screen bg-background flex flex-col overflow-hidden shadow-lg border border-gray-200">
 
-        <div className="absolute inset-0 z-10 pointer-events-none">
-          <StoryProgress
-            totalStories={stories.length}
-            activeStory={activeStory}
-            progress={progress}
-          />
-          <StoryControls
-            isPaused={isPaused}
-            onNavigateHome={handleNavigateHome}
-            onTogglePause={togglePause}
-          />
-        </div>
+      {/* Progress Indicator & Close Button */}
+      <StoryProgress totalFrames={totalFrames} currentFrameIndex={currentFrameIndex} />
+      <Button
+        variant="ghost"
+        size="icon"
+        className="absolute top-6 right-2 z-20 text-muted-foreground hover:bg-black/10"
+        onClick={handleClose}
+        aria-label="Close stories"
+      >
+        <X className="h-5 w-5" />
+      </Button>
+
+      {/* Main Content Area (Image + Text + CTA) */}
+      <div className="flex flex-col items-center justify-center text-center flex-grow px-6 py-16">
+
+         {/* Image Placeholder Area */}
+         <div className="w-80 h-80 rounded-lg flex items-center justify-center text-muted-foreground mb-6 overflow-hidden">
+           <img
+             src={currentFrame.imageSrc}
+             alt={`Story Frame ${currentFrame.id}`}
+             className="w-full h-full object-cover"
+             onError={(e) => (e.currentTarget.src = "/placeholder.svg")} // Fallback placeholder
+           />
+         </div>
+
+         {/* Text Content */}
+         <div className="prose prose-sm dark:prose-invert max-w-full">
+           {currentFrame.text}
+         </div>
+
+         {/* CTA Button (conditional) */}
+         {currentFrame.cta && (
+           <Button
+             className="mt-6" // Default primary button style from Shadcn
+             onClick={() => handleCtaClick(currentFrame.cta?.link)}
+           >
+             {currentFrame.cta.text}
+           </Button>
+         )}
       </div>
+
+      {/* --- UPDATED: Next/Finish Button Styling --- */}
+      <Button
+         size="icon"
+         // Applied specific background color, hover state, kept rounding and size
+         className={`absolute bottom-6 right-4 z-20 rounded-full text-white ${primaryButtonBg} ${primaryButtonHoverBg} w-12 h-12`}
+         onClick={goToNextFrame}
+         aria-label={currentFrameIndex === totalFrames - 1 ? "Finish stories" : "Next story"}
+       >
+         <ArrowRight className="h-6 w-6" />
+       </Button>
+
     </div>
   );
 };

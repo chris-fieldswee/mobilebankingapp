@@ -1,11 +1,13 @@
-
 import { Card } from "@/components/ui/card";
 import { TrendingUp } from "lucide-react";
-import { useTranslation } from "react-i18next";
+// REMOVED: import { useTranslation } from "react-i18next";
 
 export const BalanceNotice = () => {
-  const { t } = useTranslation();
-  
+  // REMOVED: const { t } = useTranslation();
+
+  // Define English text directly
+  const noticeText = "Your balance is high! Consider moving some funds to savings.";
+
   return (
     <Card className="p-4 bg-accent">
       <div className="flex gap-4">
@@ -14,10 +16,13 @@ export const BalanceNotice = () => {
         </div>
         <div>
           <p className="text-sm">
-            {t("insights.highBalanceNotice")}
+            {/* REPLACED: t("insights.highBalanceNotice") */}
+            {noticeText}
           </p>
         </div>
       </div>
     </Card>
   );
 };
+
+// Add export default if needed: export default BalanceNotice;

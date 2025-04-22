@@ -1,16 +1,16 @@
-
 import { Card } from "@/components/ui/card";
-import { useTranslation } from "react-i18next";
+// REMOVE: import { useTranslation } from "react-i18next";
 
+// Keep your English budget data or define it here directly
 const budgetData = {
   en: { spent: 3600, goal: 4000, symbol: "€" },
-  ar: { spent: 42600, goal: 52500, symbol: "﷼" },
-  es: { spent: 3600, goal: 4000, symbol: "€" }
+  // other languages removed for simplicity if not needed
 };
 
 const SpendingChallengeWidget = () => {
-  const { t, i18n } = useTranslation();
-  const currentBudget = budgetData[i18n.language as keyof typeof budgetData] || budgetData.en;
+  // REMOVE: const { t, i18n } = useTranslation();
+  // USE English data directly:
+  const currentBudget = budgetData.en;
   const { spent, goal, symbol } = currentBudget;
   const progress = Math.min((spent / goal) * 100, 100);
   const isOverBudget = spent > goal;
@@ -18,9 +18,10 @@ const SpendingChallengeWidget = () => {
   return (
     <Card className="p-6 mb-6">
       <div className="flex flex-col">
-        <h3 className="font-semibold mb-3">{t('budget.monthlyBudget')}</h3>
+        {/* REPLACE t() call with hardcoded string */}
+        <h3 className="font-semibold mb-3">Monthly Budget</h3>
         <div className="h-2 w-full bg-secondary rounded-full mb-3">
-          <div 
+          <div
             className={`h-full rounded-full transition-all duration-500 ${
               isOverBudget ? 'bg-destructive' : 'progress-bar-gradient'
             }`}
@@ -29,13 +30,16 @@ const SpendingChallengeWidget = () => {
         </div>
         <div className="flex justify-between text-sm">
           <span className={isOverBudget ? 'text-destructive' : 'text-muted-foreground'}>
-            {symbol}{spent.toLocaleString()} {t('budget.spent')}
+            {/* REPLACE t() call with hardcoded string */}
+            {symbol}{spent.toLocaleString()} Spent
           </span>
-          <span className="text-muted-foreground">{symbol}{goal.toLocaleString()} {t('budget.goal')}</span>
+          {/* REPLACE t() call with hardcoded string */}
+          <span className="text-muted-foreground">{symbol}{goal.toLocaleString()} Goal</span>
         </div>
         {isOverBudget && (
           <p className="text-sm text-destructive mt-2">
-            {symbol}{(spent - goal).toLocaleString()} {t('budget.overBudget')}
+             {/* REPLACE t() call with hardcoded string */}
+            {symbol}{(spent - goal).toLocaleString()} Over Budget
           </p>
         )}
       </div>

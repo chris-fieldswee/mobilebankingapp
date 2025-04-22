@@ -1,12 +1,18 @@
-
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TrendingUp } from "lucide-react";
-import { useTranslation } from "react-i18next";
+// REMOVED: import { useTranslation } from "react-i18next";
+
+// Assuming this component lives somewhere like src/components/insights/IncomeNotice.tsx
+// or src/components/insights/cashflow/IncomeNotice.tsx
 
 export const IncomeNotice = () => {
-  const { t } = useTranslation();
-  
+  // REMOVED: const { t } = useTranslation();
+
+  // Define the English text directly
+  const noticeText = "Your salary has increased! See how it impacts your finances.";
+  const buttonText = "View Benefits";
+
   return (
     <Card className="p-4 bg-accent">
       <div className="flex gap-4">
@@ -15,16 +21,21 @@ export const IncomeNotice = () => {
         </div>
         <div className="space-y-2">
           <p className="text-sm">
-            {t('insights.salaryIncreaseNotice')}
+             {/* REPLACED: t('insights.salaryIncreaseNotice') */}
+            {noticeText}
           </p>
-          <Button 
-            variant="default" 
+          <Button
+            variant="default"
             className="w-full sm:w-auto"
           >
-            {t('insights.viewBenefits')}
+             {/* REPLACED: t('insights.viewBenefits') */}
+            {buttonText}
           </Button>
         </div>
       </div>
     </Card>
   );
 };
+
+// Export the component if it's not already exported correctly elsewhere
+// export default IncomeNotice; // Uncomment this if needed based on your file structure

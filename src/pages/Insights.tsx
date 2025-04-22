@@ -1,83 +1,83 @@
+// src/pages/Insights.tsx
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { ChevronLeft } from "lucide-react";
-import { useTranslation } from "react-i18next";
+
+// Import Tabs
 import SpendingTab from "@/components/insights/SpendingTab";
 import IncomeTab from "@/components/insights/IncomeTab";
 import CashflowTab from "@/components/insights/CashflowTab";
-import BudgetTab from "@/components/insights/BudgetTab";
+// REMOVE BudgetTab, ADD CarbonTab
+// import BudgetTab from "@/components/insights/BudgetTab"; // Remove this
+import CarbonTab from "@/components/insights/CarbonTab"; // <-- ADD Import for new tab
 
 const Insights = () => {
-  const [activeTab, setActiveTab] = useState("spending");
-  const { t, i18n } = useTranslation();
+  const [activeTab, setActiveTab] = useState("spending"); // Default to spending
+
+  // Update labels
+  const labels = {
+    title: "Insights",
+    spending: "Spending",
+    income: "Income",
+    cashflow: "Cashflow",
+    carbon: "Carbon", // <-- CHANGED: Renamed budget to carbon
+  };
 
   return (
-    <div className="fixed inset-0 bg-background" key={i18n.language}>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg">
-        <div className="max-w-md mx-auto px-4 h-14 flex items-center">
-          <Link to="/">
-            <Button variant="ghost" size="icon" className="mr-2">
-              <ChevronLeft className="h-6 w-6" />
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center pt-safe-top pb-safe-bottom">
+      {/* Header (remains the same) */}
+      <header className="w-full max-w-md flex-shrink-0 sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b">
+        <div className="px-4 h-14 flex items-center">
+          <Link to="/dashboard">
+            <Button variant="ghost" size="icon" className="mr-2 shrink-0">
+              <ChevronLeft className="h-5 w-5" />
+               <span className="sr-only">Back</span>
             </Button>
           </Link>
-          <h1 className="text-lg font-semibold">{t('insights.title')}</h1>
+          <h1 className="text-lg font-semibold">{labels.title}</h1>
         </div>
       </header>
 
-      <main className="h-full pt-14 overflow-hidden">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
-          <div className="flex-none bg-background/80 backdrop-blur-lg">
-            <div className="max-w-md mx-auto">
-              <TabsList className="w-full h-12 bg-transparent">
-                <TabsTrigger 
-                  value="spending" 
-                  className="flex-1 data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
-                >
-                  {t('insights.spending')}
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="income"
-                  className="flex-1 data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
-                >
-                  {t('insights.income')}
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="cashflow"
-                  className="flex-1 data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
-                >
-                  {t('insights.cashflow')}
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="budget"
-                  className="flex-1 data-[state=active]:text-primary data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none"
-                >
-                  {t('insights.budget')}
-                </TabsTrigger>
-              </TabsList>
-            </div>
-          </div>
+      {/* Tabs Component (remains the same structure) */}
+      <Tabs
+         defaultValue="spending"
+         value={activeTab}
+         onValueChange={setActiveTab}
+         className="w-full max-w-md flex-1 flex flex-col mt-0 bg-background shadow-sm"
+       >
+        {/* TabsList (Update last trigger) */}
+        <div className="flex-shrink-0 border-b">
+           <TabsList className="grid w-full grid-cols-4 h-12 bg-transparent p-0">
+              <TabsTrigger value="spending" /* ... */ >{labels.spending}</TabsTrigger>
+              <TabsTrigger value="income" /* ... */ >{labels.income}</TabsTrigger>
+              <TabsTrigger value="cashflow" /* ... */ >{labels.cashflow}</TabsTrigger>
+              {/* --- UPDATED 4th Tab Trigger --- */}
+              <TabsTrigger
+                value="carbon" // <-- CHANGED: value to "carbon"
+                className="data-[state=active]:text-primary data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-primary rounded-none h-full px-1 text-xs sm:text-sm"
+              >
+                {labels.carbon} {/* <-- Use carbon label */}
+              </TabsTrigger>
+            </TabsList>
+        </div>
 
-          <div className="flex-1 overflow-y-auto">
-            <div className="max-w-md mx-auto px-4 py-4 pb-24">
-              <TabsContent value="spending" className="mt-0" key={`spending-${i18n.language}`}>
-                <SpendingTab />
+        {/* Scrollable Content Area (Update last content) */}
+        <ScrollArea className="flex-1">
+          <div className="px-4 py-4 pb-24">
+              <TabsContent forceMount={true} hidden={activeTab !== 'spending'} value="spending" className="mt-0"><SpendingTab /></TabsContent>
+              <TabsContent forceMount={true} hidden={activeTab !== 'income'} value="income" className="mt-0"><IncomeTab /></TabsContent>
+              <TabsContent forceMount={true} hidden={activeTab !== 'cashflow'} value="cashflow" className="mt-0"><CashflowTab /></TabsContent>
+              {/* --- UPDATED 4th Tab Content --- */}
+              <TabsContent forceMount={true} hidden={activeTab !== 'carbon'} value="carbon" className="mt-0">
+                  <CarbonTab /> {/* <-- Render CarbonTab component */}
               </TabsContent>
-              <TabsContent value="income" className="mt-0" key={`income-${i18n.language}`}>
-                <IncomeTab />
-              </TabsContent>
-              <TabsContent value="cashflow" className="mt-0" key={`cashflow-${i18n.language}`}>
-                <CashflowTab />
-              </TabsContent>
-              <TabsContent value="budget" className="mt-0" key={`budget-${i18n.language}`}>
-                <BudgetTab />
-              </TabsContent>
-            </div>
           </div>
-        </Tabs>
-      </main>
+        </ScrollArea>
+      </Tabs>
     </div>
   );
 };

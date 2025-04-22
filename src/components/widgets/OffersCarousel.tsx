@@ -1,16 +1,16 @@
-
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+// REMOVED: import { useTranslation } from "react-i18next";
 
+// Using English offers data directly
 const offers = {
   en: [
     {
       id: 1,
-      title: "Unlock Elite Benefits with the Ibercaja Banco Platinum Credit Card",
+      title: "Unlock Elite Benefits with the SAB Platinum Credit Card",
       image: "/lovable-uploads/fb8acaf7-de28-4c12-b507-3aeb663b02e9.png",
       subtitle: null,
       link: "/platinum-card-offer"
@@ -23,49 +23,18 @@ const offers = {
       link: null
     }
   ],
-  ar: [
-    {
-      id: 1,
-      title: "احصل على مزايا النخبة مع بطاقة البنك السعودي البلاتينية",
-      image: "/lovable-uploads/fb8acaf7-de28-4c12-b507-3aeb663b02e9.png",
-      subtitle: null,
-      link: "/platinum-card-offer"
-    },
-    {
-      id: 2,
-      title: "تناول الطعام في المطاعم الشريكة",
-      subtitle: "احصل على استرداد نقدي 15% عند الدفع ببطاقة البنك السعودي",
-      image: "/lovable-uploads/0ea319fc-0d71-4e22-9bfe-2fd798760224.png",
-      link: null
-    }
-  ],
-  es: [
-    {
-      id: 1,
-      title: "Desbloquea Beneficios Elite con la Tarjeta de Crédito Platinum Ibercaja Banco",
-      image: "/lovable-uploads/fb8acaf7-de28-4c12-b507-3aeb663b02e9.png",
-      subtitle: null,
-      link: "/platinum-card-offer"
-    },
-    {
-      id: 2,
-      title: "Cena en Restaurantes Asociados",
-      subtitle: "Obtén 15% de reembolso al pagar con tu Tarjeta de Crédito Ibercaja Banco",
-      image: "/lovable-uploads/0ea319fc-0d71-4e22-9bfe-2fd798760224.png",
-      link: null
-    }
-  ]
 };
 
 const OffersCarousel = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [currentOffer, setCurrentOffer] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
-  const { i18n } = useTranslation();
+  // REMOVED: useTranslation hook
 
   if (!isVisible) return null;
 
-  const currentOffers = offers[i18n.language as keyof typeof offers] || offers.en;
+  // Use English data directly
+  const currentOffers = offers.en;
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.touches[0].clientX);
@@ -73,10 +42,10 @@ const OffersCarousel = () => {
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (touchStart === null) return;
-    
+
     const currentTouch = e.touches[0].clientX;
     const diff = touchStart - currentTouch;
-    
+
     if (Math.abs(diff) > 50) {
       const direction = diff > 0 ? 1 : -1;
       const newOffer = Math.min(Math.max(currentOffer + direction, 0), currentOffers.length - 1);
@@ -136,13 +105,13 @@ const OffersCarousel = () => {
           <X className="h-4 w-4" />
         </Button>
 
-        <div 
+        <div
           className="flex overflow-hidden w-full"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div 
+          <div
             className="flex w-full transition-transform duration-300 ease-out"
             style={{ transform: `translateX(-${currentOffer * 100}%)` }}
           >

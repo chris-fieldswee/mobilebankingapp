@@ -23,4 +23,4 @@ export const periodData = {
 };
 
 // Monthly income amount
-export const monthlyIncome = 5200;
+export const monthlyIncome = 60000;

@@ -1,15 +1,15 @@
-
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BarChart, Bar, XAxis, ResponsiveContainer, ReferenceLine, Cell } from "recharts";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useTranslation } from "react-i18next";
+// REMOVED: import { useTranslation } from "react-i18next";
 
 // Period filter options
 const periodOptions = ["1W", "1M", "6M", "1Y"];
 
-// Dummy data for different periods
+// Dummy data for different periods (NOTE: Contains non-English labels like 'Lun', 'Mar', 'Mié', 'Ene')
+// You might want to update this data later if needed for consistency.
 const periodData = {
   "1W": [
     { month: "Lun", moneyIn: 0, moneyOut: 75 },
@@ -21,7 +21,7 @@ const periodData = {
     { month: "Dom", moneyIn: 0, moneyOut: 0 },
   ],
   "1M": [
-    { month: "Ene", moneyIn: 5000, moneyOut: 2100 },
+    { month: "Jan", moneyIn: 5000, moneyOut: 2100 }, // Changed Ene -> Jan
     { month: "Feb", moneyIn: 5000, moneyOut: 2300 },
     { month: "Mar", moneyIn: 5000, moneyOut: 2450 },
   ],
@@ -29,22 +29,22 @@ const periodData = {
     { month: "Sep", moneyIn: 52000, moneyOut: 26500 },
     { month: "Oct", moneyIn: 52000, moneyOut: 27800 },
     { month: "Nov", moneyIn: 52000, moneyOut: 25900 },
-    { month: "Dic", moneyIn: 52000, moneyOut: 29600 },
-    { month: "Ene", moneyIn: 52000, moneyOut: 27200 },
+    { month: "Dec", moneyIn: 52000, moneyOut: 29600 }, // Changed Dic -> Dec
+    { month: "Jan", moneyIn: 52000, moneyOut: 27200 }, // Changed Ene -> Jan
     { month: "Feb", moneyIn: 60000, moneyOut: 28400 },
   ],
   "1Y": [
-    { month: "T2 23", moneyIn: 15000, moneyOut: 7200 },
-    { month: "T3 23", moneyIn: 15000, moneyOut: 6900 },
-    { month: "T4 23", moneyIn: 15000, moneyOut: 7200 },
-    { month: "T1 24", moneyIn: 15000, moneyOut: 6850 },
+    { month: "Q2 23", moneyIn: 15000, moneyOut: 7200 }, // Changed T2 -> Q2 etc.
+    { month: "Q3 23", moneyIn: 15000, moneyOut: 6900 },
+    { month: "Q4 23", moneyIn: 15000, moneyOut: 7200 },
+    { month: "Q1 24", moneyIn: 15000, moneyOut: 6850 },
   ],
 };
 
-// Projected balance data
+// Projected balance data (NOTE: Contains non-English labels)
 const predictionData = [
   { name: "Actual", amount: 1600 },
-  { name: "Fin de mes", amount: -6425 },
+  { name: "End of month", amount: -6425 }, // Changed 'Fin de mes'
 ];
 
 interface CashflowChartsProps {
@@ -54,20 +54,21 @@ interface CashflowChartsProps {
 export const CashflowCharts = ({ currentBalance }: CashflowChartsProps) => {
   const [selectedPeriod, setSelectedPeriod] = useState("1M");
   const [activeChart, setActiveChart] = useState(0);
-  const { t } = useTranslation();
+  // REMOVED: const { t } = useTranslation();
 
   // Get the data for the selected period
-  const cashflowData = periodData[selectedPeriod];
+  // Assuming you want English data if you update the keys above
+  const cashflowData = periodData[selectedPeriod as keyof typeof periodData]; // Type assertion added
 
-  // Two different charts: Flujo de Caja Mensual & Saldo Proyectado
+  // Define chart info with hardcoded English titles
   const charts = [
     {
-      title: t("insights.monthlyCashflow"),
+      title: "Monthly Cashflow", // REPLACED: t("insights.monthlyCashflow")
       chart: (
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={cashflowData}>
-            <XAxis 
-              dataKey="month" 
+            <XAxis
+              dataKey="month"
               stroke="#888888"
               fontSize={12}
               tickLine={false}
@@ -80,12 +81,12 @@ export const CashflowCharts = ({ currentBalance }: CashflowChartsProps) => {
       ),
     },
     {
-      title: t("insights.projectedBalance"),
+      title: "Projected Balance", // REPLACED: t("insights.projectedBalance")
       chart: (
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={predictionData}>
-            <XAxis 
-              dataKey="name" 
+            <XAxis
+              dataKey="name"
               stroke="#888888"
               fontSize={12}
               tickLine={false}
@@ -96,7 +97,7 @@ export const CashflowCharts = ({ currentBalance }: CashflowChartsProps) => {
               {predictionData.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
-                  fill={entry.amount < 0 ? "#f0f5fd" : "#3366FF"}
+                  fill={entry.amount < 0 ? "#f0f5fd" : "#3366FF"} // Using different colors based on value
                 />
               ))}
             </Bar>
@@ -117,6 +118,7 @@ export const CashflowCharts = ({ currentBalance }: CashflowChartsProps) => {
             onClick={() =>
               setActiveChart((prev) => (prev === 0 ? charts.length - 1 : prev - 1))
             }
+            aria-label="Previous chart" // Added aria-label for accessibility
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
@@ -126,6 +128,7 @@ export const CashflowCharts = ({ currentBalance }: CashflowChartsProps) => {
             onClick={() =>
               setActiveChart((prev) => (prev === charts.length - 1 ? 0 : prev + 1))
             }
+             aria-label="Next chart" // Added aria-label for accessibility
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
@@ -154,3 +157,8 @@ export const CashflowCharts = ({ currentBalance }: CashflowChartsProps) => {
     </Card>
   );
 };
+
+// NOTE: You might still need to update the actual data within `periodData`
+// (e.g., "Lun", "Mar", "Mié", "Ene") and `predictionData` ("Fin de mes")
+// if you want those labels in the chart axes to be in English as well.
+// I've made some sample changes (like Ene -> Jan) but review them for your needs.

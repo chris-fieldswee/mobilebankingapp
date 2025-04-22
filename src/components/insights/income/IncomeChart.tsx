@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BarChart, Bar, XAxis, ResponsiveContainer } from "recharts";
-import { useTranslation } from "react-i18next";
+// REMOVED: import { useTranslation } from "react-i18next";
 
 // Period data types
 interface PeriodData {
@@ -22,9 +21,9 @@ interface IncomeChartProps {
 
 export const IncomeChart = ({ periodData }: IncomeChartProps) => {
   const [selectedPeriod, setSelectedPeriod] = useState("1M");
-  const { t } = useTranslation();
+  // REMOVED: const { t } = useTranslation();
   const periodOptions = ["1M", "6M", "1Y"];
-  const incomeData = periodData[selectedPeriod as keyof typeof periodData];
+  const incomeData = periodData[selectedPeriod as keyof typeof periodData]; // Type assertion needed
 
   return (
     <Card className="p-6">
@@ -37,8 +36,8 @@ export const IncomeChart = ({ periodData }: IncomeChartProps) => {
                 <stop offset="100%" stopColor="#3B82F6" />
               </linearGradient>
             </defs>
-            <XAxis 
-              dataKey="name" 
+            <XAxis
+              dataKey="name"
               stroke="#888888"
               fontSize={12}
               tickLine={false}
@@ -68,3 +67,6 @@ export const IncomeChart = ({ periodData }: IncomeChartProps) => {
     </Card>
   );
 };
+
+// Assuming the file path is something like: src/components/insights/cashflow/IncomeChart.tsx
+// Please ensure you save this code to the correct file.

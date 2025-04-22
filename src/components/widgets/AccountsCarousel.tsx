@@ -1,163 +1,135 @@
-
-import { Card } from "@/components/ui/card";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { useTranslation } from "react-i18next";
+import AccountBalanceCard from "./AccountBalanceCard"; // Import the card component
 
-const accounts = {
-  en: [
-    {
-      id: 1,
-      title: "Current Account",
-      amount: "6,000",
-      currency: "EUR",
-      symbol: "€",
-      change: "+2.3%"
-    },
-    {
-      id: 2,
-      title: "Savings Account",
-      amount: "190,000",
-      currency: "EUR",
-      symbol: "€",
-      change: "+1.8%"
-    }
-  ],
-  ar: [
-    {
-      id: 1,
-      title: "الحساب الجاري",
-      amount: "36,500",
-      currency: "SAR",
-      symbol: "﷼",
-      change: "+2.3%"
-    },
-    {
-      id: 2,
-      title: "حساب التوفير",
-      amount: "890,000",
-      currency: "SAR",
-      symbol: "﷼",
-      change: "+1.8%"
-    }
-  ],
-  es: [
-    {
-      id: 1,
-      title: "Cuenta Corriente",
-      amount: "6,000",
-      currency: "EUR",
-      symbol: "€",
-      change: "+2.3%"
-    },
-    {
-      id: 2,
-      title: "Cuenta de Ahorro",
-      amount: "190,000",
-      currency: "EUR",
-      symbol: "€",
-      change: "+1.8%"
-    }
-  ]
-};
+// --- CHANGE HERE: Updated interface to use changePercent ---
+interface Account {
+  id: number;
+  logo: string;
+  title: string;
+  amount: number;
+  symbol: string;
+  changePercent?: string; // Expect changePercent string from Index.tsx
+  accountType?: "checking" | "savings" | "credit";
+}
 
-const AccountsCarousel = () => {
-  const { i18n } = useTranslation();
+interface AccountsCarouselProps {
+  accounts: Account[];
+}
+
+const AccountsCarousel = ({ accounts }: AccountsCarouselProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const currentAccounts = accounts[i18n.language as keyof typeof accounts] || accounts.en;
-  const totalPages = currentAccounts.length;
+  const totalPages = accounts.length > 0 ? accounts.length : 1;
+
+  const itemWidthClass = "w-[75%]";
+  const gapClass = "mr-4";
+  const gapValue = 16;
+  const containerPaddingClass = "px-4";
+  const containerPaddingValue = 16;
+
+  // Scroll and State Logic (Use existing correct versions of these handlers)
+  const scrollToPage = useCallback((pageIndex: number) => {
+    if (scrollRef.current && accounts.length > 0) {
+      const validPageIndex = Math.max(0, Math.min(pageIndex, totalPages - 1));
+      const containerElement = scrollRef.current;
+      const firstItemElement = containerElement.children[0] as HTMLElement;
+      if (firstItemElement) {
+          const itemEffectiveWidth = (containerElement.clientWidth - containerPaddingValue * 2) * 0.75;
+          const scrollLeftTarget = validPageIndex * (itemEffectiveWidth + gapValue);
+          containerElement.scrollTo({ left: scrollLeftTarget, behavior: 'smooth' });
+          if (currentPage !== validPageIndex) setCurrentPage(validPageIndex);
+      }
+    }
+  }, [accounts.length, totalPages, currentPage, gapValue, containerPaddingValue]); // Ensure accounts.length is stable if accounts ref changes
+
+  const handleScroll = useCallback(() => {
+     if (scrollRef.current && accounts.length > 0) {
+        const containerElement = scrollRef.current;
+        const firstItemElement = containerElement.children[0] as HTMLElement;
+        if(firstItemElement) {
+            const scrollLeft = containerElement.scrollLeft;
+            const itemEffectiveWidth = (containerElement.clientWidth - containerPaddingValue * 2) * 0.75;
+            const calculatedPage = Math.round(scrollLeft / (itemEffectiveWidth + gapValue));
+            const validPage = Math.max(0, Math.min(calculatedPage, totalPages - 1));
+            if (validPage !== currentPage) setCurrentPage(validPage);
+        }
+     }
+  }, [accounts.length, totalPages, currentPage, gapValue, containerPaddingValue]); // Ensure accounts.length is stable
+
   const [touchStart, setTouchStart] = useState<number | null>(null);
-
-  const scrollToPage = (pageIndex: number) => {
-    if (scrollRef.current) {
-      const scrollWidth = scrollRef.current.clientWidth;
-      scrollRef.current.scrollTo({
-        left: pageIndex * scrollWidth,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const scrollLeft = scrollRef.current.scrollLeft;
-      const width = scrollRef.current.clientWidth;
-      setCurrentPage(Math.round(scrollLeft / width));
-    }
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.touches[0].clientX);
-  };
-
+  const handleTouchStart = (e: React.TouchEvent) => { setTouchStart(e.touches[0].clientX); };
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (touchStart === null) return;
-    
-    const currentTouch = e.touches[0].clientX;
-    const diff = touchStart - currentTouch;
-    
-    if (Math.abs(diff) > 50) {
-      const direction = diff > 0 ? 1 : -1;
-      const newPage = Math.min(Math.max(currentPage + direction, 0), totalPages - 1);
-      scrollToPage(newPage);
-      setTouchStart(null);
-    }
+      if (touchStart === null) return;
+      const currentTouch = e.touches[0].clientX;
+      const diff = touchStart - currentTouch;
+      if (Math.abs(diff) > 50) {
+          const direction = diff > 0 ? 1 : -1;
+          const newPage = Math.min(Math.max(currentPage + direction, 0), totalPages - 1);
+          if (newPage !== currentPage) { scrollToPage(newPage); }
+          setTouchStart(null);
+      }
   };
-
-  const handleTouchEnd = () => {
-    setTouchStart(null);
-  };
+  const handleTouchEnd = () => { setTouchStart(null); };
 
   useEffect(() => {
     const scrollElement = scrollRef.current;
     if (scrollElement) {
-      scrollElement.addEventListener('scroll', handleScroll);
+      scrollElement.addEventListener('scroll', handleScroll, { passive: true });
       return () => scrollElement.removeEventListener('scroll', handleScroll);
     }
-  }, []);
+  }, [handleScroll]);
+
 
   return (
     <div className="mb-6">
-      <Card className="relative progress-bar-gradient text-white p-6">
-        <div 
+      <div className="relative overflow-hidden rounded-lg">
+        <div
           ref={scrollRef}
-          className="flex overflow-x-hidden snap-x snap-mandatory scroll-smooth touch-pan-x transition-transform duration-300"
+          className={`flex overflow-x-hidden snap-x snap-mandatory scroll-smooth touch-pan-x ${containerPaddingClass} no-scrollbar`}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {currentAccounts.map((account) => (
+          {accounts.map((account, index) => (
             <div
               key={account.id}
-              className="w-full flex-none snap-start"
+              className={`${itemWidthClass} flex-shrink-0 snap-start ${index < accounts.length - 1 ? gapClass : ''}`}
             >
-              <p className="text-sm text-white/70">{account.title}</p>
-              <h2 className="text-2xl font-semibold mt-1">
-                {account.symbol}{account.amount}
-              </h2>
-              <p className="text-sm text-emerald-400 mt-1">
-                {account.change} this month
-              </p>
+              {/* --- CORRECTED PROPS PASSED TO AccountBalanceCard --- */}
+              <AccountBalanceCard
+                className="progress-bar-gradient text-white h-full"
+                name={account.title}
+                balance={account.amount}
+                currency={account.symbol}
+                // --- CHANGE HERE: Pass changePercent, not change ---
+                changePercent={account.changePercent || ""} // Pass the string prop
+                accountType={account.accountType ?? "checking"}
+                bankLogo={account.logo}
+              />
             </div>
           ))}
         </div>
-        <div className="flex justify-center gap-2 mt-4">
-          {Array.from({ length: totalPages }).map((_, index) => (
-            <Button
-              key={index}
-              variant="ghost"
-              size="icon"
-              className={`w-2 h-2 p-0 rounded-full ${
-                currentPage === index ? 'bg-white' : 'bg-white/20'
-              }`}
-              onClick={() => scrollToPage(index)}
-            />
-          ))}
-        </div>
-      </Card>
+      </div>
+      {/* Dots container */}
+      <div className="flex justify-center gap-2 mt-4">
+        {Array.from({ length: totalPages }).map((_, index) => (
+          <Button
+            key={index}
+            variant="ghost"
+            size="icon"
+            aria-label={`Go to account ${index + 1}`}
+            className={`w-2 h-2 p-0 rounded-full transition-colors ${
+              currentPage === index ? 'bg-primary' : 'bg-gray-300 hover:bg-gray-400'
+            }`}
+            onClick={() => scrollToPage(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
+
+AccountsCarousel.displayName = "AccountsCarousel";
 
 export default AccountsCarousel;
