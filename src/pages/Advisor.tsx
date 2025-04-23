@@ -207,7 +207,7 @@ const Advisor = () => {
                    message.isSelectionMessage ? "opacity-90 italic" : "" // Style user selection slightly differently
                 )}
               >
-                <p className="whitespace-pre-line text-sm">{message.text}</p>
+                <p className="whitespace-pre-line font-light text-md">{message.text}</p>
               </div>
 
               {/* Options Buttons */}
@@ -221,7 +221,7 @@ const Advisor = () => {
                       key={option.id}
                       variant="outline"
                       size="sm"
-                      className="text-left justify-start h-auto py-2 px-3 w-auto max-w-[85%] bg-background hover:bg-accent whitespace-normal text-sm border-primary/50 text-primary disabled:opacity-100" // Button styles
+                      className="text-left justify-start h-auto py-2 px-3 w-auto max-w-[85%] bg-background hover:bg-accent whitespace-normal font-light text-md border-bg-accent text-primary disabled:opacity-100" // Button styles
                       onClick={option.action}
                       disabled={currentOptionsDisabled}
                     >

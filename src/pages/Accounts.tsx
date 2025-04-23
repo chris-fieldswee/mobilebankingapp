@@ -8,7 +8,7 @@ import BottomNav from "@/components/navigation/BottomNav"; // Verify this path
 
 // --- Interface Definition (Keep as is) ---
 interface Account {
-  id: number | string;
+  id: string; // Simplified to string as only strings are used in data
   logo: string; // Path to the logo image
   title: string;
   amount: number;
@@ -50,9 +50,11 @@ const Accounts = () => {
      return formatter.format(amount);
   }, []);
 
-  const navigateToAccountDetail = (accountId: string | number) => {
+  // --- FIXED NAVIGATION FUNCTION ---
+  const navigateToAccountDetail = (accountId: string) => { // Use string for id based on data
     console.log("Navigate to details/transactions for account:", accountId);
-    navigate(`/transactions`);
+    // Construct the dynamic route using the accountId
+    navigate(`/accounts/${accountId}/transactions`); // <-- FIX: Use the accountId in the path
   };
 
   const navigateToLinkAccount = () => {
@@ -65,25 +67,23 @@ const Accounts = () => {
 
 
   return (
-    // Outer div for full screen background, centering the content vertically and horizontally
-    // items-center will center the max-w-md elements horizontally
     <div className="min-h-screen bg-background flex flex-col items-center pt-safe-top pb-safe-bottom">
 
-       {/* --- Header (Constrained Width) --- */}
-       {/* Added w-full max-w-md to constrain the header itself */}
        <header className="w-full max-w-md flex-shrink-0 sticky top-0 z-10 border-b border-border bg-background/95 backdrop-blur-sm">
-         {/* Removed max-w-md mx-auto from this inner div */}
          <div className="flex items-center h-16 px-4">
-           {/* Back Button */}
            <Button variant="ghost" size="icon" onClick={navigateHome} className="mr-2 shrink-0">
              <ChevronLeft className="h-5 w-5" />
              <span className="sr-only">Back to Home</span>
            </Button>
-           {/* Title */}
            <h1 className="text-lg font-medium flex-1 truncate pr-2">Accounts</h1>
-           {/* Action Buttons */}
            <div className="flex gap-2 shrink-0">
-                <Button size="sm" variant="ghost" className="flex items-center gap-1 h-8 text-primary px-2">
+                {/* --- ADDED onClick HANDLER --- */}
+                <Button
+                    size="sm"
+                    variant="ghost"
+                    className="flex items-center gap-1 h-8 text-primary px-2"
+                    onClick={navigateToLinkAccount} // <-- FIX: Added onClick
+                >
                       <PlusCircle className="h-4 w-4" />
                       <span>Link Account</span>
                 </Button>
@@ -91,11 +91,8 @@ const Accounts = () => {
          </div>
        </header>
 
-       {/* --- Scrollable Main Content (Constrained Width) --- */}
-       {/* Added w-full max-w-md to constrain the scroll area */}
        <ScrollArea className="flex-1 w-full max-w-md">
-          {/* Removed max-w-md mx-auto from main */}
-          <main className="px-4 py-6 space-y-6 pb-24"> {/* Ensure padding bottom accounts for BottomNav */}
+          <main className="px-4 py-6 space-y-6 pb-24">
 
             {/* Total Assets Summary */}
             <Card className="bg-primary/5 border-primary/10">
@@ -116,22 +113,18 @@ const Accounts = () => {
                   <CardContent className="p-0">
                     <button
                       className="w-full flex items-center p-4 text-left"
-                      onClick={() => navigateToAccountDetail(account.id)}
+                      onClick={() => navigateToAccountDetail(account.id)} // Passes correct id
                       aria-label={`View details for ${account.title}`}
                     >
-                      {/* Updated Logo Rendering */}
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-lg mr-4 overflow-hidden">
-                         {/* Assume logo path is always provided now */}
-                         <img src={account.logo} alt={`${account.institution || 'Bank'} logo`} className="w-full h-full object-contain p-1" /> {/* Ensure image scales well */}
+                         <img src={account.logo} alt={`${account.institution || 'Bank'} logo`} className="w-full h-full object-contain p-1" />
                       </div>
-                      {/* Account Title & Details */}
                       <div className="flex-1 min-w-0">
                         <div className="font-medium truncate">{account.title}</div>
                         <div className="text-xs text-muted-foreground">
                           {account.institution || 'Bank'} • {account.accountNumber || '****'}
                         </div>
                       </div>
-                      {/* Amount & Type */}
                       <div className="text-right ml-2">
                         <div className="font-medium">
                           {formatCurrency(account.amount, account.symbol)}
@@ -140,7 +133,6 @@ const Accounts = () => {
                           {account.accountType || 'Account'}
                         </div>
                       </div>
-                      {/* Chevron */}
                       <ChevronRight className="h-5 w-5 text-muted-foreground ml-2 shrink-0" />
                     </button>
                   </CardContent>
@@ -150,8 +142,6 @@ const Accounts = () => {
           </main>
        </ScrollArea>
 
-       {/* --- Bottom Navigation (Constrained Width) --- */}
-       {/* Added w-full max-w-md to constrain the bottom nav container */}
         <div className="w-full max-w-md sticky bottom-0 z-10">
             <BottomNav />
         </div>

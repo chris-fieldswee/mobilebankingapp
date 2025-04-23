@@ -186,6 +186,7 @@ const TransactionDetails = () => {
                </div>
                <div className="text-right shrink-0 ml-2">
                   <p className={`text-xl font-bold ${transaction.type === 'income' ? 'text-emerald-600' : 'text-foreground'}`}> {formatCurrency(transaction.amount, transaction.currency)} </p>
+                  <CardContent className="flex flex-col sm:flex-row p-0"> <Button variant="outline" className="w-full justify-start"> <AlertCircle className="mr-2 h-4 w-4" /> Modify </Button> </CardContent>
                </div>
             </div>
             <Separator />
@@ -241,6 +242,7 @@ const TransactionDetails = () => {
               <Card>
                 <CardHeader className="py-4"> <CardTitle className="text-base font-medium">Category</CardTitle> <CardDescription className="text-xs">Helps you track your spending.</CardDescription> </CardHeader>
                 <CardContent className="pb-4"> <Button variant="outline" size="sm" className="cursor-default"> {transaction.category} </Button> </CardContent>
+                <CardContent className="flex flex-col sm:flex-row gap-3 pb-4"> <Button variant="outline" className="w-full justify-start"> <AlertCircle className="mr-2 h-4 w-4" /> Edit category </Button> </CardContent>
              </Card>
 
 

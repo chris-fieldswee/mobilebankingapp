@@ -7,11 +7,13 @@ const TopNav = () => {
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg">
       <div className="container max-w-md mx-auto px-4 h-16 flex items-center justify-between gap-3">
+        <Link to="/dashboard">
         <Button variant="ghost" size="icon" className="rounded-full p-0 bg-[#f1f0fb]">
           <span className="flex items-center justify-center w-10 h-10 rounded-full bg-[#f1f0fb]">
             <User className="h-6 w-6 text-primary" />
           </span>
         </Button>
+        </Link>
 
         <Link to="/search" className="flex-1">
           <Button

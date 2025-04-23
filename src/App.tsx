@@ -10,7 +10,7 @@ import NotFound from "./pages/NotFound";
 import Notifications from "./pages/Notifications";
 import Stories from "./pages/Stories";
 import Advisor from "./pages/Advisor";
-import Transactions from "./pages/Transactions";
+import AccountTransactionsPage from './pages/AccountTransactionsPage'; // <-- Import new page
 import TransactionDetails from "./pages/TransactionDetails";
 import UpcomingPayments from "./pages/UpcomingPayments";
 import Insights from "./pages/Insights";
@@ -21,6 +21,8 @@ import Accounts from "./pages/Accounts";
 import GoalsAndBudgets from './pages/GoalsAndBudgets';
 import GoalDetail from './pages/GoalDetail'; // <-- Import GoalDetail
 import BudgetDetail from './pages/BudgetDetail'; // <-- Import BudgetDetail
+import SubscriptionsPage from "./pages/SubscriptionsPage";
+import SubscriptionDetail from "./pages/SubscriptionDetail";
 
 const queryClient = new QueryClient();
 
@@ -38,13 +40,15 @@ const App = () => (
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/stories" element={<Stories />} />
         <Route path="/advisor" element={<Advisor />} />
-        <Route path="/transactions" element={<Transactions />} />
         {/* Note: Using :id consistent with transactions route */}
         <Route path="/transactions/:id" element={<TransactionDetails />} />
         <Route path="/upcoming-payments" element={<UpcomingPayments />} />
         <Route path="/insights" element={<Insights />} />
         <Route path="/search" element={<Search />} />
         <Route path="/platinum-card-offer" element={<PlatinumCardOffer />} />
+        <Route path="/subscriptions" element={<SubscriptionsPage />} />
+        <Route path="/subscriptions/:id" element={<SubscriptionDetail />} />
+        <Route path="/accounts/:accountId/transactions" element={<AccountTransactionsPage />} />
 
         {/* Goals & Budgets Routes */}
         <Route path="/goals-budgets" element={<GoalsAndBudgets />} />

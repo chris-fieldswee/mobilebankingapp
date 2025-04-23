@@ -1,61 +1,78 @@
+// src/components/dashboard/AccountsCarousel.tsx
+
 import { useEffect, useRef, useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import AccountBalanceCard from "./AccountBalanceCard"; // Import the card component
+import AccountBalanceCard from "./AccountBalanceCard";
+// --- Import the SHARED AccountV1 interface ---
+import { AccountV1 } from "@/data/goalsBudgetsData"; // Adjust path if needed
 
-// --- CHANGE HERE: Updated interface to use changePercent ---
-interface Account {
-  id: number;
-  logo: string;
-  title: string;
-  amount: number;
-  symbol: string;
-  changePercent?: string; // Expect changePercent string from Index.tsx
-  accountType?: "checking" | "savings" | "credit";
-}
+// --- REMOVED Local Account interface definition ---
+// interface Account {
+//   id: number; // <-- This was the problem (expected number)
+//   logo: string;
+//   title: string;
+//   amount: number;
+//   symbol: string;
+//   changePercent?: string;
+//   accountType?: "checking" | "savings" | "credit";
+// }
 
+// --- Use AccountV1 in Props ---
 interface AccountsCarouselProps {
-  accounts: Account[];
+  accounts: AccountV1[]; // <-- Use the imported AccountV1 interface
 }
 
 const AccountsCarousel = ({ accounts }: AccountsCarouselProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = accounts.length > 0 ? accounts.length : 1;
+  // Ensure totalPages calculation works even if accounts is empty initially
+  const totalPages = Math.max(1, accounts.length);
 
-  const itemWidthClass = "w-[75%]";
-  const gapClass = "mr-4";
-  const gapValue = 16;
-  const containerPaddingClass = "px-4";
-  const containerPaddingValue = 16;
+  const itemWidthClass = "w-[75%]"; // Use fixed width percentage
+  const gapClass = "mr-4"; // Use margin for gap
+  const gapValue = 16; // 1rem = 16px for calculation
+  const containerPaddingClass = "px-4"; // Tailwind class for padding
+  const containerPaddingValue = 16; // Value matching the padding class (px-4 -> 1rem -> 16px)
+
 
   // Scroll and State Logic (Use existing correct versions of these handlers)
   const scrollToPage = useCallback((pageIndex: number) => {
     if (scrollRef.current && accounts.length > 0) {
       const validPageIndex = Math.max(0, Math.min(pageIndex, totalPages - 1));
       const containerElement = scrollRef.current;
-      const firstItemElement = containerElement.children[0] as HTMLElement;
-      if (firstItemElement) {
-          const itemEffectiveWidth = (containerElement.clientWidth - containerPaddingValue * 2) * 0.75;
-          const scrollLeftTarget = validPageIndex * (itemEffectiveWidth + gapValue);
-          containerElement.scrollTo({ left: scrollLeftTarget, behavior: 'smooth' });
-          if (currentPage !== validPageIndex) setCurrentPage(validPageIndex);
+      // Ensure clientWidth is read *after* element is potentially rendered
+      if(containerElement.clientWidth > 0) {
+          const itemEffectiveWidth = (containerElement.clientWidth - containerPaddingValue * 2) * 0.75; // 75% width calculation
+          // Ensure item width is positive before calculating scroll
+          if (itemEffectiveWidth > 0) {
+             const scrollLeftTarget = validPageIndex * (itemEffectiveWidth + gapValue);
+             containerElement.scrollTo({ left: scrollLeftTarget, behavior: 'smooth' });
+             // Update state only if page actually changes to prevent infinite loops
+             setCurrentPage(validPageIndex); // Update state directly here if logic requires it
+          }
       }
     }
-  }, [accounts.length, totalPages, currentPage, gapValue, containerPaddingValue]); // Ensure accounts.length is stable if accounts ref changes
+  }, [accounts.length, totalPages, gapValue, containerPaddingValue]); // Removed currentPage from deps
 
   const handleScroll = useCallback(() => {
      if (scrollRef.current && accounts.length > 0) {
         const containerElement = scrollRef.current;
-        const firstItemElement = containerElement.children[0] as HTMLElement;
-        if(firstItemElement) {
+         if(containerElement.clientWidth > 0) {
             const scrollLeft = containerElement.scrollLeft;
             const itemEffectiveWidth = (containerElement.clientWidth - containerPaddingValue * 2) * 0.75;
-            const calculatedPage = Math.round(scrollLeft / (itemEffectiveWidth + gapValue));
-            const validPage = Math.max(0, Math.min(calculatedPage, totalPages - 1));
-            if (validPage !== currentPage) setCurrentPage(validPage);
-        }
+             if (itemEffectiveWidth > 0) {
+                const calculatedPage = Math.round(scrollLeft / (itemEffectiveWidth + gapValue));
+                const validPage = Math.max(0, Math.min(calculatedPage, totalPages - 1));
+                // Use functional update to avoid stale state issues if needed elsewhere
+                setCurrentPage(prevPage => {
+                    // console.log(`Scroll detected: scrollLeft=${scrollLeft}, calculatedPage=${calculatedPage}, validPage=${validPage}, prevPage=${prevPage}`);
+                    return validPage;
+                });
+            }
+         }
      }
-  }, [accounts.length, totalPages, currentPage, gapValue, containerPaddingValue]); // Ensure accounts.length is stable
+  }, [accounts.length, totalPages, gapValue, containerPaddingValue]); // Removed currentPage from deps
+
 
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const handleTouchStart = (e: React.TouchEvent) => { setTouchStart(e.touches[0].clientX); };
@@ -63,49 +80,66 @@ const AccountsCarousel = ({ accounts }: AccountsCarouselProps) => {
       if (touchStart === null) return;
       const currentTouch = e.touches[0].clientX;
       const diff = touchStart - currentTouch;
-      if (Math.abs(diff) > 50) {
+      // Increased threshold slightly for less sensitivity
+      if (Math.abs(diff) > 60) {
           const direction = diff > 0 ? 1 : -1;
-          const newPage = Math.min(Math.max(currentPage + direction, 0), totalPages - 1);
-          if (newPage !== currentPage) { scrollToPage(newPage); }
-          setTouchStart(null);
+          // Use functional update for currentPage if relying on previous state
+          setCurrentPage(prevPage => {
+              const newPage = Math.min(Math.max(prevPage + direction, 0), totalPages - 1);
+              if (newPage !== prevPage) {
+                  scrollToPage(newPage);
+              }
+              return newPage; // Return new page to update state
+          })
+          setTouchStart(null); // Reset touch start after swipe action
       }
   };
-  const handleTouchEnd = () => { setTouchStart(null); };
+   const handleTouchEnd = () => { setTouchStart(null); };
 
   useEffect(() => {
     const scrollElement = scrollRef.current;
     if (scrollElement) {
-      scrollElement.addEventListener('scroll', handleScroll, { passive: true });
-      return () => scrollElement.removeEventListener('scroll', handleScroll);
+      // Debounce scroll handler slightly to avoid excessive state updates
+      let scrollTimeout: NodeJS.Timeout;
+      const debouncedScrollHandler = () => {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(handleScroll, 100); // Adjust debounce time as needed
+      }
+      scrollElement.addEventListener('scroll', debouncedScrollHandler, { passive: true });
+      return () => {
+          clearTimeout(scrollTimeout);
+          scrollElement.removeEventListener('scroll', debouncedScrollHandler);
+      }
     }
   }, [handleScroll]);
 
 
   return (
     <div className="mb-6">
-      <div className="relative overflow-hidden rounded-lg">
+      <div className="relative overflow-hidden"> {/* Removed rounded-lg if not desired */}
         <div
           ref={scrollRef}
-          className={`flex overflow-x-hidden snap-x snap-mandatory scroll-smooth touch-pan-x ${containerPaddingClass} no-scrollbar`}
+          // Removed scroll-smooth for touch handling compatibility, use JS scroll instead
+          className={`flex overflow-x-auto snap-x snap-mandatory touch-pan-x ${containerPaddingClass} no-scrollbar`}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {accounts.map((account, index) => (
+          {accounts.map((account, index) => ( // account is now type AccountV1
             <div
-              key={account.id}
+              key={account.id} // Use string ID here
               className={`${itemWidthClass} flex-shrink-0 snap-start ${index < accounts.length - 1 ? gapClass : ''}`}
             >
-              {/* --- CORRECTED PROPS PASSED TO AccountBalanceCard --- */}
+              {/* Pass props matching AccountV1 and expected by AccountBalanceCard */}
               <AccountBalanceCard
-                className="progress-bar-gradient text-white h-full"
-                name={account.title}
-                balance={account.amount}
-                currency={account.symbol}
-                // --- CHANGE HERE: Pass changePercent, not change ---
-                changePercent={account.changePercent || ""} // Pass the string prop
+                className="progress-bar-gradient text-white h-full" // Example class
+                accountId={account.id} // Pass string ID
+                name={account.name} // Use account.name
+                balance={account.balance} // Use account.balance
+                currency={account.currency} // Use account.currency
+                changePercent={account.changePercent || ""} // Use account.changePercent
                 accountType={account.accountType ?? "checking"}
-                bankLogo={account.logo}
+                bankLogo={account.logoUrl} // Use account.logoUrl
               />
             </div>
           ))}
@@ -113,6 +147,7 @@ const AccountsCarousel = ({ accounts }: AccountsCarouselProps) => {
       </div>
       {/* Dots container */}
       <div className="flex justify-center gap-2 mt-4">
+        {/* Create dots based on potentially dynamic totalPages */}
         {Array.from({ length: totalPages }).map((_, index) => (
           <Button
             key={index}

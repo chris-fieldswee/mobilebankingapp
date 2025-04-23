@@ -71,7 +71,7 @@ const Stories = () => {
          {/* CTA Button (conditional) */}
          {currentFrame.cta && (
            <Button
-             className="mt-6" // Default primary button style from Shadcn
+             className="mt-6 rounded-full bg-[#2663eb] " // Default primary button style from Shadcn
              onClick={() => handleCtaClick(currentFrame.cta?.link)}
            >
              {currentFrame.cta.text}
