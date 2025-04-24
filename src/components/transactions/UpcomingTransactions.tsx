@@ -52,7 +52,7 @@ const UpcomingTransactions = () => {
     <Card className="p-6 mb-6 bg-white">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold">Upcoming Transactions</h3>
-        <Button variant="ghost" size="sm" onClick={() => navigate('/upcoming-payments')}>
+        <Button variant="ghost" size="sm">
           See All
         </Button>
       </div>
@@ -62,7 +62,7 @@ const UpcomingTransactions = () => {
            const formatted = formatCurrency(transaction.amount);
            const displayAmount = `${formatted.sign}${formatted.amount}${formatted.symbol}`;
            // Determine color based on income/expense
-           const amountColor = transaction.amount >= 0 ? "text-emerald-600" : "text-[#222222]";
+           const amountColor = transaction.amount >= 0 ? "text-[#333]" : "text-[#222222]";
            const dueText = parseInt(transaction.days) > 30 ? `Due Feb 25, 2026` : `Due in ${transaction.days} days`; // Example logic for display date vs days
 
            return (

@@ -30,7 +30,7 @@ const SubscriptionDetail = () => {
   const goBack = () => navigate(-1); // Go back to subscriptions list
 
   // --- Loading / Not Found State ---
-  if (!subscriptionId) { return <div className="p-4 text-center text-red-600">Error: Subscription ID missing.</div>; }
+  if (!subscriptionId) { return <div className="p-4 text-center text-[#333]">Error: Subscription ID missing.</div>; }
   if (!subscription) {
      return (
        <div className="min-h-screen bg-background flex flex-col items-center pt-safe-top pb-safe-bottom">
@@ -118,7 +118,7 @@ const SubscriptionDetail = () => {
                                     <div className="flex justify-between items-center">
                                         <span className="text-sm font-medium">{formatDateV1(payment.date)}</span>
                                         {/* Assume payments are always negative for subscriptions */}
-                                        <span className="text-sm font-medium text-red-600">-{formatCurrencyV1(payment.amount, currency)}</span>
+                                        <span className="text-sm font-medium text-[#333]">-{formatCurrencyV1(payment.amount, currency)}</span>
                                     </div>
                                     <div className="text-xs text-muted-foreground mt-0.5 flex items-center gap-1">
                                       <Wallet className="h-3 w-3"/> {payment.account}

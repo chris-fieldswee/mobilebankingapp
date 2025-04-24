@@ -18,7 +18,7 @@ const offers = {
     {
       id: 2,
       title: "Dine at Partner Restaurant",
-      subtitle: "Get 15% cashback when you pay with your Ibercaja Banco Credit Card",
+      subtitle: "Get 15% cashback when you pay with your SAB Credit Card",
       image: "/lovable-uploads/0ea319fc-0d71-4e22-9bfe-2fd798760224.png",
       link: null
     }
@@ -69,7 +69,7 @@ const OffersCarousel = () => {
           minHeight: '200px'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent flex flex-col justify-end p-6">
+        <div className="absolute inset-0 flex flex-col justify-end p-6">
           <h3 className="text-white text-lg font-semibold mb-1">
             {offer.title}
           </h3>

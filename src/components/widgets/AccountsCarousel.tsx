@@ -120,7 +120,7 @@ const AccountsCarousel = ({ accounts }: AccountsCarouselProps) => {
         <div
           ref={scrollRef}
           // Removed scroll-smooth for touch handling compatibility, use JS scroll instead
-          className={`flex overflow-x-auto snap-x snap-mandatory touch-pan-x ${containerPaddingClass} no-scrollbar`}
+          className={`flex overflow-x-auto snap-x snap-mandatory touch-pan-x no-scrollbar`}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -155,7 +155,7 @@ const AccountsCarousel = ({ accounts }: AccountsCarouselProps) => {
             size="icon"
             aria-label={`Go to account ${index + 1}`}
             className={`w-2 h-2 p-0 rounded-full transition-colors ${
-              currentPage === index ? 'bg-primary' : 'bg-gray-300 hover:bg-gray-400'
+              currentPage === index ? 'bg-[#235fdf]' : 'bg-gray-300 hover:bg-gray-400'
             }`}
             onClick={() => scrollToPage(index)}
           />

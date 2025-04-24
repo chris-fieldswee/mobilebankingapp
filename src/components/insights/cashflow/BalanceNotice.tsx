@@ -6,7 +6,7 @@ export const BalanceNotice = () => {
   // REMOVED: const { t } = useTranslation();
 
   // Define English text directly
-  const noticeText = "Your balance is high! Consider moving some funds to savings.";
+  const noticeText = "Your current balance is high! Consider moving some funds to savings.";
 
   return (
     <Card className="p-4 bg-accent">

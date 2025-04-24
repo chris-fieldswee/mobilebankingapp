@@ -66,7 +66,7 @@ const AccountBalanceCard = ({
                 {bankLogo && ( <div className="w-6 h-6 rounded-full overflow-hidden bg-white flex items-center justify-center shrink-0 border"> <img src={bankLogo} alt={`${name} logo`} className="w-full h-full object-contain" /> </div> )}
                 <span className="text-sm font-medium break-words">{name}</span>
               </div>
-              {displayChange && ( <div className="flex items-center text-xs shrink-0 ml-2"> <div className={cn( "flex items-center rounded-full px-2 py-1 whitespace-nowrap", isPositive ? "bg-emerald-400/30 text-emerald-50" : "bg-red-400/30 text-red-50" )} > {isPositive ? <ArrowUpRight className="h-3 w-3 mr-1 shrink-0" /> : <ArrowDownRight className="h-3 w-3 mr-1 shrink-0" />} {displayChange} </div> </div> )}
+              {displayChange && ( <div className="flex items-center text-xs shrink-0 ml-2"> <div className={cn( "flex items-center rounded-full px-2 py-1 whitespace-nowrap", isPositive ? "bg-[#235fdf] text-emerald-50" : "bg-[#235fdf] text-red-50" )} > {isPositive ? <ArrowUpRight className="h-3 w-3 mr-1 shrink-0" /> : <ArrowDownRight className="h-3 w-3 mr-1 shrink-0" />} {displayChange} </div> </div> )}
             </div>
           {/* Balance */}
           <div className="flex items-baseline mt-auto pt-2">

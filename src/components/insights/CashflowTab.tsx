@@ -1,5 +1,3 @@
-// src/components/insights/CashflowTab.tsx
-
 import React, { useState, useMemo, useCallback } from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -92,7 +90,7 @@ const CustomForecastTooltip = ({ active, payload, label }: any) => {
         <div className="bg-background p-2 border border-border rounded-md shadow-lg text-xs">
           <p className="font-medium mb-1">{dataPoint.date}</p>
           <p className="text-primary mb-1">{dataPoint.formattedBalance}</p>
-          {dataPoint.transactions?.map((txn: any, i: number) => ( <p key={i} className={`text-muted-foreground ${txn.amount < 0 ? 'text-red-600' : 'text-green-600'}`}> {txn.description}: {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'SAR', maximumFractionDigits: 0 }).format(txn.amount)} </p> ))}
+          {dataPoint.transactions?.map((txn: any, i: number) => ( <p key={i} className={`text-muted-foreground ${txn.amount < 0 ? 'text-[#333]' : 'text-[#333]'}`}> {txn.description}: {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'SAR', maximumFractionDigits: 0 }).format(txn.amount)} </p> ))}
         </div>
       );
     }
@@ -132,10 +130,8 @@ function CashflowTab() {
   }, []);
 
 
-  const handleTransactionClick = useCallback((id: string) => {
-    console.log("Navigate to detail for upcoming tx:", id);
-    navigate(`/upcoming-payments/${id}`);
-  }, [navigate]);
+  // Removed handleTransactionClick as items are not clickable
+  // const handleTransactionClick = useCallback((id: string) => { ... }, [navigate]);
 
   const formatListAmount = useCallback((amount: number | undefined, currency = 'SAR', digits = 2) => {
       if (amount === undefined) return '';
@@ -236,11 +232,11 @@ function CashflowTab() {
          </CardContent>
        </Card>
 
-      {/* --- UPDATED: Upcoming Transactions List Grouped by Date --- */}
+      {/* Upcoming Transactions List Grouped by Date */}
        <div>
          <div className="flex justify-between items-center mb-4">
             <h3 className="font-semibold">Upcoming Transactions</h3>
-            <Button variant="ghost" className="text-primary text-sm h-auto p-0" onClick={() => navigate('/upcoming-payments')}>
+            <Button variant="ghost" className="text-primary text-sm h-auto p-0">
                See All
             </Button>
          </div>
@@ -249,46 +245,37 @@ function CashflowTab() {
             {groupedUpcomingTransactions.length > 0 ? (
                groupedUpcomingTransactions.map(([dateGroup, transactionsInGroup]) => (
                   <div key={dateGroup}>
-                     {/* Group Header */}
                      <div className="flex items-center py-2 sticky top-0 bg-background z-10">
                         <div className="text-sm font-medium text-muted-foreground">{dateGroup}</div>
                         <Separator className="ml-4 flex-1" />
                      </div>
-                     {/* Transactions for the group */}
                      <Card className="overflow-hidden">
                         <CardContent className="p-0">
                            <div className="divide-y divide-border">
                               {transactionsInGroup.map(transaction => {
-                                  // --- Get the Icon Component ---
-                                  const IconComponent = transaction.sourceIcon; // Directly use the component from data
+                                  const IconComponent = transaction.sourceIcon;
                                   return (
-                                      <button
+                                      // --- UPDATED: Changed button to div, removed interactive props ---
+                                      <div
                                           key={transaction.id}
-                                          onClick={() => handleTransactionClick(transaction.id)}
-                                          className="w-full text-left p-3 sm:p-4 hover:bg-accent focus:outline-none focus:bg-accent transition-colors flex items-center justify-between"
-                                          aria-label={`View details for upcoming transaction: ${transaction.description}`}
-                                          role="button"
-                                          tabIndex={0}
-                                          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleTransactionClick(transaction.id)}}
+                                          // Removed onClick, role, tabIndex, onKeyDown
+                                          className="w-full text-left p-3 sm:p-4 flex items-center justify-between" // Removed hover/focus styles
+                                          // Removed aria-label as it's not interactive
                                       >
-                                          {/* Left side: Icon/Description */}
                                           <div className="flex items-center gap-3 overflow-hidden">
-                                              {/* --- UPDATED Icon Container --- */}
                                               <div className="flex items-center justify-center h-9 w-9 sm:h-10 sm:w-10 rounded-full border bg-muted flex-shrink-0">
-                                                  {/* Render the Lucide Icon component */}
                                                   <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
                                               </div>
-                                              {/* Description/Source */}
                                               <div className="min-w-0">
                                                   <p className="text-sm font-medium truncate" title={transaction.description}>{transaction.description}</p>
                                                   <p className="text-xs text-muted-foreground capitalize">{transaction.source} transaction</p>
                                               </div>
                                           </div>
-                                          {/* Right side: Amount */}
-                                          <span className={`text-sm font-medium shrink-0 ml-2 ${transaction.amount >= 0 ? 'text-green-600' : 'text-foreground'}`}>
+                                          <span className={`text-sm font-medium shrink-0 ml-2 ${transaction.amount >= 0 ? 'text-[#333]' : 'text-foreground'}`}>
                                               {formatListAmount(transaction.amount, 'SAR', 2)}
                                           </span>
-                                      </button>
+                                      </div>
+                                      // --- END: Update ---
                                   );
                               })}
                            </div>
@@ -307,14 +294,13 @@ function CashflowTab() {
             )}
          </div>
        </div>
-      {/* --- END: Upcoming Transactions Update --- */}
 
-      {/* --- UPDATED: Subscriptions Preview Section --- */}
+      {/* Subscriptions Preview Section */}
        <div>
            <div className="flex justify-between items-center mb-4">
                <h3 className="font-semibold">Subscriptions</h3>
                <Button variant="ghost" className="text-primary text-sm h-auto p-0" onClick={() => navigate('/subscriptions')}>
-                   See All ({subscriptionSummary.count}) <ExternalLink className="ml-1 h-3 w-3"/>
+                   See All
                </Button>
            </div>
            <Card className="p-4 sm:p-6">
@@ -324,38 +310,29 @@ function CashflowTab() {
                          {formatCurrencyV1(subscriptionSummary.totalMonthly, "SAR")}
                      </span>
                 </div>
-                <div className="space-y-3 border-t pt-4">
+                <div className="space-y-4 border-t pt-4">
                    {subscriptionSummary.previewList.map(sub => {
-                        // --- Get the Icon Component (Ensure 'icon' exists on SubscriptionV1) ---
-                        const IconComponent = sub.icon || Package; // Use Package icon as a fallback if sub.icon is missing
+                        const IconComponent = sub.icon || Package;
                        return (
-                           <div key={sub.id} className="flex items-center justify-between">
-                                <div className="flex items-center gap-3">
-                                     {/* --- UPDATED Icon Container (No Image) --- */}
-                                     <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center border flex-shrink-0">
-                                         {/* Render the Lucide Icon component */}
-                                         <IconComponent className="h-4 w-4 text-muted-foreground" />
+                           <div key={sub.id} className="flex items-center justify-between gap-3">
+                                <div className="flex items-center gap-3 overflow-hidden">
+                                     <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-muted flex items-center justify-center border flex-shrink-0">
+                                         <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
                                      </div>
-                                     <span className="text-sm truncate pr-1">{sub.name}</span>
+                                     <span className="text-sm font-medium truncate pr-1">{sub.name}</span>
                                  </div>
-                                 <span className="font-medium text-sm">
+                                 <span className="font-medium text-sm shrink-0 ml-2">
                                      {formatCurrencyV1(sub.amount, sub.currency)}
                                  </span>
                            </div>
                        )
                    })}
-                    {subscriptionSummary.count > subscriptionSummary.previewList.length && (
-                        <p className="text-xs text-muted-foreground text-center pt-2">... and {subscriptionSummary.count - subscriptionSummary.previewList.length} more</p>
-                    )}
                </div>
-            {/* CardContent was implicitly closed by Card structure, ensuring proper nesting */}
            </Card>
        </div>
-      {/* --- END: Subscriptions Preview Section Update --- */}
 
     </div> // End main div
   );
 }
 
 export default CashflowTab;
-

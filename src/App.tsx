@@ -23,6 +23,7 @@ import GoalDetail from './pages/GoalDetail'; // <-- Import GoalDetail
 import BudgetDetail from './pages/BudgetDetail'; // <-- Import BudgetDetail
 import SubscriptionsPage from "./pages/SubscriptionsPage";
 import SubscriptionDetail from "./pages/SubscriptionDetail";
+import CategoryTransactionsPage from './pages/CategoryTransactionsPage'; // Adjust import path
 
 const queryClient = new QueryClient();
 
@@ -49,6 +50,7 @@ const App = () => (
         <Route path="/subscriptions" element={<SubscriptionsPage />} />
         <Route path="/subscriptions/:id" element={<SubscriptionDetail />} />
         <Route path="/accounts/:accountId/transactions" element={<AccountTransactionsPage />} />
+        <Route path="/spending/category/:categoryName" element={<CategoryTransactionsPage />} />
 
         {/* Goals & Budgets Routes */}
         <Route path="/goals-budgets" element={<GoalsAndBudgets />} />
