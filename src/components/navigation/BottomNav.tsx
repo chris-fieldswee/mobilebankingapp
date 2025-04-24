@@ -17,7 +17,7 @@ const BottomNav = () => {
 
   return (
     <nav className="sticky bottom-0 z-50 bg-background/80 backdrop-blur-lg">
-      <div className="container max-w-md mx-auto px-4 h-16 flex items-center justify-around">
+      <div className="container max-w-md mx-auto px-4 py-4 h-16 flex items-center justify-around">
         {menuItems.map((item) => (
           <Link
             key={item.label}
