@@ -49,7 +49,7 @@ const UpcomingTransactions = () => {
   ];
 
   return (
-    <Card className="p-6 mb-6 bg-white">
+    <Card className="p-6 mb-6 bg-card">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold">Upcoming Transactions</h3>
         <Button variant="ghost" size="sm">
@@ -68,8 +68,8 @@ const UpcomingTransactions = () => {
            return (
              <div key={transaction.id} className="flex items-center justify-between">
                <div className="flex items-center">
-                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-3">
-                   <transaction.icon className="h-5 w-5 text-primary" />
+                 <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center mr-3">
+                   <transaction.icon className="h-4 w-4 text-[#222222]" />
                  </div>
                  <div>
                    <p className="font-medium">{transaction.title}</p>

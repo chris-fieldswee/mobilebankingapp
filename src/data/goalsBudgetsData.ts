@@ -186,8 +186,8 @@ export const mockAllTransactionsV1: TransactionV1[] = rawTransactions.map(tx => 
 
 // Mock Goals Data
 export const mockGoalsV1: GoalV1[] = [
-   { id: "g1", title: "Emergency Fund", targetAmount: 20000, currentAmount: 15750, currency: "SAR", icon: ShieldCheck, deadline: "Dec 2025", relatedTransactionIds: ["inc1", "inc3"] },
-   { id: "g2", title: "Hajj Fund", targetAmount: 35000, currentAmount: 12340, currency: "SAR", icon: Landmark, deadline: "July 2026", relatedTransactionIds: ["inc2"] },
+   { id: "g1", title: "Emergency Fund", targetAmount: 20000, currentAmount: 15750, currency: "SAR", icon: ShieldCheck, deadline: "Dec 1st, 2025", relatedTransactionIds: ["inc1", "inc3"] },
+   { id: "g2", title: "Tax my spendings, 5%", targetAmount: 35000, currentAmount: 12340, currency: "SAR", icon: Landmark, deadline: "July 20th, 2026", relatedTransactionIds: ["inc2"] },
    { id: "g3", title: "New Laptop", targetAmount: 7000, currentAmount: 6850, currency: "SAR", icon: Laptop, relatedTransactionIds: ["t6", "t2"] },
 ];
 

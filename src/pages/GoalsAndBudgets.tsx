@@ -55,7 +55,7 @@ const GoalListItem: React.FC<GoalListItemProps> = ({ goal, onClick }) => {
         {/* Progress bar and amounts */}
         <Progress
             value={progress}
-            className={`h-2 mb-2 [&>div]:transition-all ${ isComplete ? '[&>div]:bg-green-500' : '[&>div]:bg-primary' }`}
+            className={`h-2 mb-2 [&>div]:transition-all ${ isComplete ? '[&>div]:bg-green-500' : '[&>div]:bg-[#2463EB]' }`}
         />
         <div className="flex justify-between text-sm">
           <span className={isComplete ? 'text-green-700 font-medium' : 'text-muted-foreground'}>
@@ -114,7 +114,7 @@ const BudgetListItem: React.FC<BudgetListItemProps> = ({ budget, onClick }) => {
                          <span className={isOverBudget ? "text-red-600 font-medium" : ""}>{formatCurrencyV1(budget.spent, budget.currency)} Spent</span>
                         <span>{formatCurrencyV1(budget.allocated, budget.currency)} Budget</span>
                     </div>
-                    <Progress value={progress} className={`h-2 [&>div]:transition-all ${ isOverBudget ? '[&>div]:bg-red-500' : '[&>div]:bg-primary' }`} />
+                    <Progress value={progress} className={`h-2 [&>div]:transition-all ${ isOverBudget ? '[&>div]:bg-red-500' : '[&>div]:bg-[#2463EB]' }`} />
                      <div className={`text-xs text-right mt-1 ${isOverBudget ? "text-red-600" : "text-muted-foreground"}`}>
                         {isOverBudget ? `${formatCurrencyV1(budget.spent - budget.allocated, budget.currency)} Over` : `${Math.round(progress)}% Used`}
                     </div>

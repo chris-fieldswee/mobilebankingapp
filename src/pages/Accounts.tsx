@@ -95,7 +95,7 @@ const Accounts = () => {
           <main className="px-4 py-6 space-y-6 pb-24">
 
             {/* Total Assets Summary */}
-            <Card className="bg-primary/5 border-primary/10">
+            <Card className="bg-card border-primary/10">
               <CardContent className="p-4">
                 <div className="flex flex-col">
                   <span className="text-sm text-muted-foreground">Total Assets</span>
