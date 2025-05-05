@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Routes, Route } from "react-router-dom"; // Keep these imports
+import FloatingChatbot from "./components/widgets/FloatingChatbot";
 
 // Page Imports
 import Index from "./pages/Index";
@@ -32,6 +33,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <FloatingChatbot />
       {/* Routes are defined here, BrowserRouter is in main.tsx */}
       <Routes>
         {/* Existing Routes */}
