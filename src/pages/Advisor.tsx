@@ -67,8 +67,8 @@ const Advisor = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-    //   const response = await fetch("http://localhost:5005/documents/upload", {
-	const response = await fetch("https://intense-ocean-72847-b75a6f991933.herokuapp.com/documents/upload", {
+      const response = await fetch("http://localhost:5005/documents/upload", {
+	// const response = await fetch("https://intense-ocean-72847-b75a6f991933.herokuapp.com/documents/upload", {
         method: "POST",
         body: formData,
       });
@@ -91,8 +91,8 @@ const Advisor = () => {
 
   const sendMessageToApi = async (text: string, documentIds?: string[]): Promise<{text: string; action?: {paymentUrl: string; actionName: string}}> => {
     try {
-    //   const response = await fetch("http://localhost:5005/chat", {
-	const response = await fetch("https://intense-ocean-72847-b75a6f991933.herokuapp.com/chat", {
+      const response = await fetch("http://localhost:5005/chat", {
+	// const response = await fetch("https://intense-ocean-72847-b75a6f991933.herokuapp.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(text),
